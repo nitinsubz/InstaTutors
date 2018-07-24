@@ -1,0 +1,318 @@
+body {
+	width: 100%;
+	overflow-x: hidden;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+}
+
+body, h1, body, div, a, ol, ul, li, h2, p, em, img, button {
+	padding: 0;
+	margin: 0;
+	outline: 0;
+}
+
+h1 {
+	letter-spacing: 1px;
+}
+
+h1 strong {
+	font-weight: 700;
+}
+
+#home {
+  position: fixed;
+  z-index: 89;
+  top: 5px;
+  left: 5px;
+  transition-duration: 0.2s;
+  list-style-type: none;
+}
+
+#home img {
+  width: 110px;
+}
+
+#home:hover {
+	transform: rotate(360deg);
+	list-style-type: none;
+}
+
+#navbar {
+	position: fixed;
+	right: 0;
+	top: 0;
+	background-color: white;
+	border-radius: 0px 0px 0px 20px;
+}
+
+.navig {
+	float: left;
+	list-style-type: none;
+	padding: 18px 35px;
+}
+
+.navig a {
+	font-size: 23px;
+	color: #212664;
+	text-decoration: none;
+	transition-duration: 0.2s;
+}
+
+.navig:hover a {
+	color: #dc5c0f;
+}
+/*Index*/
+#indexhead {
+	padding: 300px 0px;
+}
+
+
+/*Session*/
+
+#mainbody {
+	display: none;
+}
+
+#bookheader {
+	width: 100%;
+	padding: 130px 10% 110px 10%;
+	text-align: center;
+	color: white;
+	background: linear-gradient(135deg, #ae3dc6, #212664, #c67cb7, #dc5c0f);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+	transition-duration: 0.6s;
+	overflow-y: hidden;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+#bookheader h1 {
+	font-size: 60px;
+}
+
+#bookheader h3 {
+	font-size: 30px;
+}
+
+#bookform {
+	margin: -70px 15% 20px 15%;
+	background-color: white;
+	padding: 50px 5%;
+	border-radius: 20px;
+}
+
+#bookform .row {
+	padding-bottom: 30px;
+}
+
+#bookform .col-sm-3 {
+	font-size: 22px;
+	color: #555;
+}
+
+#bookform .col-sm-9 input {
+	width: 100%;
+	font-size: 21px;
+	border: 0px;
+	border-bottom: 1px solid #555;
+	outline: 0;
+	transition-duration: 0.2s;
+}
+
+#bookform .col-sm-9 input:focus {
+	border-bottom: 3px solid #dc5c0f;
+}
+
+#submit {
+	padding: 13px 60px;
+	font-size: 23px;
+	margin: 15px auto 50px auto;
+	display: block;
+	color: white;
+	border: 0;
+	outline: 0;
+	background-color:#ae3dc6;
+	border-radius: 5px;
+	transition-duration: 0.2s;
+}
+
+#submit:hover {
+	background-color: #dc5c0f;
+}
+
+#footer {
+	width: 100%;
+	padding: 10px 0px;
+	background-color: #666;
+}
+
+#footer p {
+	text-align: center;
+	color: white;
+	font-size: 20px;
+}
+
+/*Confirmed*/
+#confirmedbody {
+	padding: 100px 15%;
+}
+
+#confirmedbody h1 {
+	font-size: 54px;
+	color: #ae3dc6;
+}
+
+#confirmedbody h3 {
+	font-size: 32px;
+	color: #555;
+}
+
+#confirmedbody a {
+	padding: 13px 60px;
+	font-size: 23px;
+	margin: 20px 0px;
+	color: white;
+	background-color:#ae3dc6;
+	border-radius: 5px;
+	transition-duration: 0.2s;
+}
+
+#confirmedbody a:hover {
+	background-color: #dc5c0f;
+	text-decoration: none;
+}
+
+/*Login*/
+.main-div, .create-div {
+  width: 25%;
+  margin: 0px auto;
+  margin-top: 150px;
+  padding: 20px;
+  display: block;
+}
+
+.main-div h3, .create-div h3 {
+	font-size: 32px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+.main-div h4 {
+	font-size: 22px;
+	padding-top: 15px;
+	line-height: 35px;
+}
+
+.main-div h4 a {
+	color: #ae3dc6;
+	transition-duration: 0.2s;
+}
+
+.main-div h4 a:hover {
+	color: #dc5c0f;
+	text-decoration: none;
+}
+
+.main-div input, .create-div input {
+  display: block;
+  font-size: 22px;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #777;
+  padding: 10px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 20px;
+  transition-duration: 0.2s;
+}
+
+.main-div input:focus {
+  border-bottom: 3px solid #dc5c0f;
+}
+
+.create-div input:focus {
+	border-bottom: 3px solid #dc5c0f;
+}
+
+#login, #create {
+  background: #ae3dc6;
+  color: #fff;
+  border-radius: 5px;
+  padding: 15px;
+  display: block;
+  font-size: 22px;
+  width: 100%;
+  transition-duration: 0.2s;
+  text-align: center;
+  text-decoration: none;
+}
+
+#login:hover {
+  background: #dc5c0f;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#create:hover {
+  background: #dc5c0f;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#logout {
+	position: fixed;
+	top: 0;
+	right: 0;
+	border-radius: 0px 0px 0px 10px;
+	background-color: #ae3dc6;
+	padding: 15px 40px;
+	color: white;
+	font-size: 24px;
+	transition-duration: 0.2s;
+	display: none;
+}
+
+#logout:hover {
+	cursor: pointer;
+	background-color: #dc5c0f;
+	text-decoration: none;
+}
+
+

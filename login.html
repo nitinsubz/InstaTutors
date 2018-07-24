@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<title>Book a Session</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,700" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+<body>
+		<div id="navbar">
+			<ul id="nav" class="fader">
+				<li id="home"><a href="index.html"><img src="images/logo.png"></a></li>
+			   <!--<li class="navig"><a href="donate.html">Donate</a></li>-->
+			   <a id="logout" onclick="logout()" href="index.html">Logout</a>
+			</ul>
+		</div>
+		<!--<div id="container1" onclick="rotate(this)">
+			<div class="bar1">
+			</div>
+			<div class="bar2">
+			</div>
+		</div>
+		<div id="phonenavlinks">
+			<li class="navig2"><a href="about.html">About</a></li>
+			<li class="navig2"><a href="service.html">Service</a></li>
+			<li class="navig2"><a href="videos.html">Videos</a></li>
+		</div>-->
+		
+		<div id="login_div" class="main-div">
+		    <h3>Log In</h3>
+		    <input type="email" placeholder="Email..." id="email_field" />
+		    <input type="password" placeholder="Password..." id="password_field" />
+
+		    <button onclick="login()" id="login">Login to Account</button>
+		    <h4>Don't have an account? <a href="create.html">Create One Today!</a></h4>
+		 </div>
+	<div id="mainbody">
+		<div id="bookheader">
+			<h1>Book a <strong>Session</strong></h1>
+			<h3 id="welcome">Welcome</h3>
+		</div>
+		<div id="bookform">
+			<form action="https://formspree.io/samuel.q.yang@gmail.com" method="POST">
+			<div class="row">
+				<div class="col-sm-3">
+		    		Name:
+		    	</div>
+		    	<div class="col-sm-9">
+		   			<input type="text" name="name" id="name" placeholder="Enter your name..."><br>
+		   		</div>
+		   	</div>
+		   	<div class="row">
+				<div class="col-sm-3">
+		    		Email:
+		    	</div>
+		    	<div class="col-sm-9">
+		   			<input type="text" name="email" id="email" placeholder="Enter your email..."><br>
+		   		</div>
+		   	</div>
+		   	<div class="row">
+				<div class="col-sm-3">
+		    		Preferred Location:
+		    	</div>
+		    	<div class="col-sm-9">
+		   			<input type="text" name="location" id="location" placeholder="Enter your preferred location, ex. Kennedy Middle School..."><br>
+		   		</div>
+		   	</div>
+		   	<div class="row">
+				<div class="col-sm-3">
+		    		Date:
+		    	</div>
+		    	<div class="col-sm-9">
+		   			<input type="text" name="date" id="date" placeholder="Enter the date for when you would wish to be tutored..."><br>
+		   		</div>
+		   	</div>
+		   	<div class="row">
+				<div class="col-sm-3">
+		    		Time:
+		    	</div>
+		    	<div class="col-sm-9">
+		   			<input type="text" name="time" id="time" placeholder="Enter your preferred time..."><br>
+		   		</div>
+		   	</div>
+		   	<div class="row">
+				<div class="col-sm-3">
+		    		Subject:
+		    	</div>
+		    	<div class="col-sm-9">
+		   			<input type="text" name="subject" id="subject" placeholder="Enter the subject you request help in..."><br>
+		   		</div>
+		   	</div>
+		   	<button type="submit" id="submit" onclick="validate()">Submit</button>
+		    </form>
+		</div>
+		<div id="footer">
+			<p>&#169; InstaTutors 2018.</a></p>
+		</div>
+	</div>
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+	<script src="index.js">
+    </script>
+</body>
+</html>
+
