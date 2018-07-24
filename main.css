@@ -140,13 +140,21 @@ h1 strong {
 	margin: 20px 0px;
 }
 
+#info .col-sm-4 {
+	padding: 0px 10px;
+}
+
+#info iframe {
+	width: 100%;
+}
+
 .border-bot {
 	height: 2px;
 	width: 10%;
 }
 
 #contact {
-	padding: 30px 30% 200px 10%;
+	padding: 30px 30% 70px 10%;
 	color: #444;
 }
 
