@@ -1,24 +1,14 @@
-var config = {
-	    apiKey: "AIzaSyDqQoKK2MYCb_2FzUYmeafETdCVWi22JeI",
-	    authDomain: "insta-tutors.firebaseapp.com",
-	    databaseURL: "https://insta-tutors.firebaseio.com",
-	    projectId: "insta-tutors",
-	    storageBucket: "insta-tutors.appspot.com",
-	    messagingSenderId: "624098741421"
-	  };
-
-firebase.initializeApp(config);
 
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-
     var user = firebase.auth().currentUser;
 
     $("#mainbody").fadeIn();
-    $(".main-div").fadeOut();
+    $(".main-div").css("display", "none");
     $("#logout").css("display", "block");
+    $(".create-div").css("display", "none");
 
     if(user != null){
 
@@ -27,26 +17,29 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   } else {
     // No user is signed in.
-    $("#mainbody").fadeOut();
+    $("#mainbody").css("display", "none");
     $(".main-div").fadeIn();
     $("#logout").css("display", "none");
     
   }
 });
 
+function openCreate() {
+	$(".main-div").css("display", "none");
+	$(".create-div").fadeIn();
+}
+
 function createAccount() {
 	var newEmail = $("#createemail").val();
 	var newPass = $("#createpassword").val();
-
 	firebase.auth().createUserWithEmailAndPassword(newEmail, newPass).catch(function(error) {
-	  // Handle Errors here.
+		event.preventDefault();
 	  var errorCode = error.code;
 	  var errorMessage = error.message;
-	  // ...
+	  alert("Error : " + errorMessage);
 	});
-	window.location.assign("login.html");
+	firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
 }
-
 
 function login() {
 	var userEmail = $("#email_field").val();
@@ -109,32 +102,10 @@ function validate() {
 		alert("Please enter the following: " + missing);
 		event.preventDefault();
 	} else {
-		/*sessionStorage.setItem("name", name); 
-		sessionStorage.setItem("email", email); 
-		sessionStorage.setItem("location", location); 
-		sessionStorage.setItem("date", date); 
-		sessionStorage.setItem("time", time); 
-		sessionStorage.setItem("subject", subject); 
-		window.location.assign("confirmed.html");*/
 		return true;
 
 	}
 }
-
-/*function loadConfirmed() {
-	var name2 = sessionStorage.getItem("name");
-	var email2 = sessionStorage.getItem("email");
-	var location2 = sessionStorage.getItem("location");
-	var date2 = sessionStorage.getItem("date");
-	var time2 = sessionStorage.getItem("time");
-	var subject2 = sessionStorage.getItem("subject");
-
-	$("#bookedheader").html("Hello " + name2);
-	$("#date2").html("Date: " + date2);
-	$("#time2").html("Time: " + time2);
-	$("#location2").html("Location: " + location2);
-	$("#subject2").html("Subject: " + subject2);
-}*/
 
 
 

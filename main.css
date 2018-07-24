@@ -63,7 +63,11 @@ h1 strong {
 }
 /*Index*/
 #indexhead {
-	padding: 300px 0px;
+	padding: 160px 10%;
+}
+
+#indexhead h1 {
+	font-size: 60px;
 }
 
 
@@ -248,6 +252,7 @@ h1 strong {
 .main-div h4 a:hover {
 	color: #dc5c0f;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .main-div input, .create-div input {
@@ -294,6 +299,10 @@ h1 strong {
   background: #dc5c0f;
   cursor: pointer;
   text-decoration: none;
+}
+
+.create-div {
+	display: none;
 }
 
 #logout {

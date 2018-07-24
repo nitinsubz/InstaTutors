@@ -20,7 +20,7 @@
 			<ul id="nav" class="fader">
 				<li id="home"><a href="index.html"><img src="images/logo.png"></a></li>
 			   <!--<li class="navig"><a href="donate.html">Donate</a></li>-->
-			   <a id="logout" onclick="logout()" href="index.html">Logout</a>
+			   <a id="logout" onclick="logout()">Logout</a>
 			</ul>
 		</div>
 		<!--<div id="container1" onclick="rotate(this)">
@@ -34,14 +34,21 @@
 			<li class="navig2"><a href="service.html">Service</a></li>
 			<li class="navig2"><a href="videos.html">Videos</a></li>
 		</div>-->
-		
+		<div class="create-div">
+		    <h3>Create an Account</h3>
+		    <input type="email" placeholder="Enter a Valid Email Address..." id="createemail" />
+		    <input type="password" placeholder="Enter a Password..." id="createpassword" />
+
+		    <a onclick="createAccount()" id="create">Let's Go!</a>
+		 </div>
+
 		<div id="login_div" class="main-div">
 		    <h3>Log In</h3>
 		    <input type="email" placeholder="Email..." id="email_field" />
 		    <input type="password" placeholder="Password..." id="password_field" />
 
 		    <button onclick="login()" id="login">Login to Account</button>
-		    <h4>Don't have an account? <a href="create.html">Create One Today!</a></h4>
+		    <h4>Don't have an account? <a onclick="openCreate()">Create One Today!</a></h4>
 		 </div>
 	<div id="mainbody">
 		<div id="bookheader">
@@ -106,6 +113,18 @@
 		</div>
 	</div>
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+	<script>
+		var config = {
+	    apiKey: "AIzaSyDqQoKK2MYCb_2FzUYmeafETdCVWi22JeI",
+	    authDomain: "insta-tutors.firebaseapp.com",
+	    databaseURL: "https://insta-tutors.firebaseio.com",
+	    projectId: "insta-tutors",
+	    storageBucket: "insta-tutors.appspot.com",
+	    messagingSenderId: "624098741421"
+	  };
+
+		firebase.initializeApp(config);
+	</script>
 	<script src="index.js">
     </script>
 </body>
