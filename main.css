@@ -48,7 +48,8 @@ h1 strong {
 .navig {
 	float: left;
 	list-style-type: none;
-	padding: 18px 35px;
+	padding: 14px 30px;
+	margin: 5px;
 }
 
 .navig a {
@@ -63,13 +64,62 @@ h1 strong {
 }
 /*Index*/
 #indexhead {
-	padding: 160px 10%;
+	padding: 190px 10% 150px 10%;
 }
 
 #indexhead h1 {
 	font-size: 60px;
+	color: #444;
+	margin-bottom: 35px;
 }
 
+#indexhead h1 strong {
+	color: #ae3dc6;
+}
+
+#indexhead a {
+	background-color: transparent;
+	border: 2px solid #ae3dc6;
+	color: #ae3dc6;
+	padding: 12px 50px;
+	border-radius: 10px;
+	font-size: 26px;
+	transition-duration: 0.2s;
+}
+
+#indexhead a:hover {
+	background-color: #dc5c0f;
+	border: 2px solid #dc5c0f;
+	color: white;
+	text-decoration: none;
+}
+
+#bookasession {
+	border: 2px solid #ae3dc6;
+	border-radius: 10px;
+}
+
+#bookasession a {
+	color: #ae3dc6;
+}
+
+#bookasession:hover {
+	background-color: #ae3dc6;
+}
+
+#bookasession:hover a{
+	color: white;
+}
+
+#info {
+	background-color: #ae3dc6;
+	padding: 70px 10%;
+	color: white;
+}
+
+#info h1 {
+	font-size: 45px;
+}
 
 /*Session*/
 

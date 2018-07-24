@@ -102,10 +102,31 @@ function validate() {
 		alert("Please enter the following: " + missing);
 		event.preventDefault();
 	} else {
+		sessionStorage.setItem("name", name); 
+		sessionStorage.setItem("email", email); 
+		sessionStorage.setItem("location", location); 
+		sessionStorage.setItem("date", date); 
+		sessionStorage.setItem("time", time); 
+		sessionStorage.setItem("subject", subject); 
 		return true;
-
 	}
 }
+
+function loadConfirmed() {
+	var name2 = sessionStorage.getItem("name");
+	var email2 = sessionStorage.getItem("email");
+	var location2 = sessionStorage.getItem("location");
+	var date2 = sessionStorage.getItem("date");
+	var time2 = sessionStorage.getItem("time");
+	var subject2 = sessionStorage.getItem("subject");
+
+	$("#bookedheader").html("Hello " + name2);
+	$("#date2").html("Date: " + date2);
+	$("#time2").html("Time: " + time2);
+	$("#location2").html("Location: " + location2);
+	$("#subject2").html("Subject: " + subject2);
+}
+
 
 
 
