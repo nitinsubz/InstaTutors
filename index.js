@@ -1,3 +1,35 @@
+$(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos <= winTop + 600) {
+          $(this).addClass("slideup");
+        }
+    });
+  });
+
+ $(window).scroll(function() {
+    $(".slideanim2").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos <= winTop + 600) {
+          $(this).addClass("slideleft");
+        }
+    });
+  });
+
+ $(window).scroll(function() {
+    $(".slideanim3").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos <= winTop + 600) {
+          $(this).addClass("slideright");
+        }
+    });
+  });
 
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -126,8 +158,6 @@ function loadConfirmed() {
 	$("#location2").html("Location: " + location2);
 	$("#subject2").html("Subject: " + subject2);
 }
-
-
 
 
 

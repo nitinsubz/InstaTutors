@@ -5,7 +5,7 @@
 <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <link rel="icon" href="images/logo.png">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:300,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:300,700|Monoton" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="main.css">
 <body>
 		<div id="navbar">
-			<ul id="nav" class="fader">
-				<li id="home"><a href="index.html"><img src="images/logo.png"></a></li>
+			<div id="home" class="slideleft"><a href="index.html"><img src="images/logo.png"></a></div>
+			<ul id="nav" class="slideright">
 			   	<li class="navig"><a href="team.html">Team</a></li>
 			   	<li class="navig"><a href="contact.html">Contact</a></li>
 			   	<li class="navig" id="bookasession"><a href="login.html">Book A Session</a>
@@ -36,13 +36,25 @@
 			<li class="navig2"><a href="videos.html">Videos</a></li>
 		</div>-->
 		<div id="indexhead">
-			<h1>Simplifying <strong>Tutoring.</strong></h1>
-			<a href="login.html">Get Started</a>
+			<h1 class="slideleft">SIMPLIFYING <strong>TUTORING.</strong></h1>
+			<a href="login.html" class="slideup">GET STARTED</a>
 		</div>
 		<div id="info">
 			<h1>3 <strong>Easy</strong> Steps</h1>
+			<div class="border-bot slideanim" style="background-color: white;"></div>
+			<ol>
+				<li class="slideanim">Create an account or Log In if you already have an account.</li>
+				<iframe src="https://giphy.com/embed/4TnZOrLmZkcy1p4tdj" width="480" height="370" frameBorder="0" class="slideanim"></iframe>
+				<li class="slideanim">Request a tutor through our online form.</li>
+				<iframe src="https://giphy.com/embed/1msBiAAL5rTBfAyZoL" width="480" height="242" frameBorder="0" class="giphy-embed" class="slideanim"></iframe>
+				<li class="slideanim">Your tutor will contact you within 24 hours!</li>
+				<img src="images/email.gif" width="480" class="slideanim">
+			</ol>
 		</div>
-		
+		<div id="team">
+			<h1 class="slideanim2">Meet Our <strong>Team</strong></h1>
+			<div class="border-bot slideanim" style="background-color: #dc5c0f;"></div>
+		</div>
 		<div id="footer">
 			<p>&#169; InstaTutors 2018.</a></p>
 		</div>
