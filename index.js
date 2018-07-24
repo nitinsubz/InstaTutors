@@ -31,6 +31,14 @@ $(window).scroll(function() {
     });
   });
 
+$(document).ready(function() {
+    $("#contactnav").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#contact").offset().top - 50
+                }, 800);
+    });
+});
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -144,6 +152,21 @@ function validate() {
 	}
 }
 
+function loadConfirmed() {
+	var name2 = sessionStorage.getItem("name");
+	var email2 = sessionStorage.getItem("email");
+	var location2 = sessionStorage.getItem("location");
+	var date2 = sessionStorage.getItem("date");
+	var time2 = sessionStorage.getItem("time");
+	var subject2 = sessionStorage.getItem("subject");
+
+	$("#bookedheader").html("Hello " + name2);
+	$("#date2").html("Date: " + date2);
+	$("#time2").html("Time: " + time2);
+	$("#location2").html("Location: " + location2);
+	$("#subject2").html("Subject: " + subject2);
+}
+
 function validatemsg() {
 	var name = $("#msgname").val();
 	var email = $("#msgemail").val();
@@ -167,20 +190,6 @@ function validatemsg() {
 	}
 }
 
-function loadConfirmed() {
-	var name2 = sessionStorage.getItem("name");
-	var email2 = sessionStorage.getItem("email");
-	var location2 = sessionStorage.getItem("location");
-	var date2 = sessionStorage.getItem("date");
-	var time2 = sessionStorage.getItem("time");
-	var subject2 = sessionStorage.getItem("subject");
-
-	$("#bookedheader").html("Hello " + name2);
-	$("#date2").html("Date: " + date2);
-	$("#time2").html("Time: " + time2);
-	$("#location2").html("Location: " + location2);
-	$("#subject2").html("Subject: " + subject2);
-}
 
 
 

@@ -63,6 +63,10 @@ h1 strong {
 .navig:hover a {
 	color: #dc5c0f;
 }
+
+#contactnav:hover {
+	cursor: pointer;
+}
 /*Index*/
 #indexhead {
 	padding: 190px 10% 100px 10%;
