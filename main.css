@@ -141,17 +141,56 @@ h1 strong {
 	width: 10%;
 }
 
-#team {
-	padding: 30px 10% 200px 10%;
+#contact {
+	padding: 30px 30% 200px 10%;
+	color: #444;
 }
 
-#team h1 {
+#contact h1 {
 	font-size: 45px;
 	color: #444;
 }
 
-#team h1 strong {
+#contact h1 strong {
 	color: #dc5c0f;
+}
+
+#contact h4 {
+	font-size: 25px;
+	padding: 15px 0px;
+}
+
+#contact h4 a {
+	color: #ae3dc6;
+}
+
+#contact h4 a:hover {
+	color: #dc5c0f;
+	text-decoration: none;
+}
+
+#contact h3 {
+	font-size: 28px;
+}
+
+#contact form {
+	font-size: 22px;
+}
+
+#contact .row {
+	padding: 10px 0px 30px 0px;
+}
+
+#contact input {
+	width: 100%;
+}
+
+#msg {
+	padding-bottom: 100px;
+}
+
+#contact #submit {
+	margin: 30px 0px;
 }
 /*Session*/
 

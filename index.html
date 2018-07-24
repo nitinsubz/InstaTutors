@@ -51,9 +51,26 @@
 				<img src="images/email.gif" width="480" class="slideanim">
 			</ol>
 		</div>
-		<div id="team">
-			<h1 class="slideanim2">Meet Our <strong>Team</strong></h1>
+		<div id="contact">
+			<h1 class="slideanim2">Get In <strong>Touch</strong></h1>
 			<div class="border-bot slideanim" style="background-color: #dc5c0f;"></div>
+			<h4>Our Email: <a href="mailto:instatutorsteam@gmail.com">instatutorsteam@gmail.com</a></h4>
+			<h3>Send Us A Message</h3>
+			<form action="https://formspree.io/instatutorsteam@gmail.com" method="POST">
+				<div class="row">
+					<div class="col-sm-6">
+					    Name:<br>
+					    <input type="text" id="msgname" name="msgname" placeholder="Your name..">
+					</div>
+					<div class="col-sm-6">
+					    Email:<br>
+					    <input type="text" id="msgemail" name="msgemail" placeholder="Your email..">
+					   </div>
+				</div>
+				    Your Message:<br>
+				    <input type="text" id="msg" name="msg" placeholder="Your message..">
+			    <button type="submit" id="submit" onclick="validatemsg()">Submit</button>
+			  </form>
 		</div>
 		<div id="footer">
 			<p>&#169; InstaTutors 2018.</a></p>

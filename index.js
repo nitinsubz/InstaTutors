@@ -144,6 +144,29 @@ function validate() {
 	}
 }
 
+function validatemsg() {
+	var name = $("#msgname").val();
+	var email = $("#msgemail").val();
+	var message = $("#msg").val();
+	var validemail = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	var missing = [];
+	if(name == "") {
+		missing.push("name");
+	}
+	if(email.search(validemail) == -1) {
+		missing.push(" valid email");
+	}
+	if(message == "") {
+		missing.push(" your message");
+	}
+	if(missing != "") {
+		alert("Please enter the following: " + missing);
+		event.preventDefault();
+	} else {
+		return true;
+	}
+}
+
 function loadConfirmed() {
 	var name2 = sessionStorage.getItem("name");
 	var email2 = sessionStorage.getItem("email");
