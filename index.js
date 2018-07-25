@@ -61,7 +61,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     if(user != null){
 
-      $("#welcome").html("Welcome " + user.email);
+      $("#welcome").html("Welcome " + user.email + "!");
+      $("#user").html("User: " + user.email + "");
     }
 
   } else {
@@ -73,12 +74,27 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+function sessionstab() {
+	$("#sessionstab").fadeIn();
+	 $("#booktab").css("display", "none");
+}
+
+function booktab() {
+	$("#booktab").fadeIn();
+	 $("#sessionstab").css("display", "none");
+}
+
 function openCreate() {
 	$(".main-div").css("display", "none");
 	$(".create-div").fadeIn();
 }
 
+
+var users = firebase.database().ref('users');
+
+
 function createAccount() {
+	var newName = $("#createname").val();
 	var newEmail = $("#createemail").val();
 	var newPass = $("#createpassword").val();
 	var confirmPass = $("#confirmpassword").val();
@@ -91,6 +107,14 @@ function createAccount() {
 		  alert("Error : " + errorMessage);
 		});
 		firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
+
+		var newUser = users.push();
+		newUser.set({
+			name: newName,
+			email: newEmail,
+			password: newPass
+		});
+
 	} else {
 		alert("Please make sure your passwords match.");
 	}
@@ -126,34 +150,14 @@ var requests = firebase.database().ref('requests');
 
 
 //save requests to firebase
-function saveRequest() {
-	var newRequest = requests.push();
-	newRequest.set({
-		name: $("#name").val(),
-		email: firebase.auth().currentUser.email,
-		location: $("#location").val(),
-		date: $("#date").val(),
-		time: $("#time").val(),
-		tutor: $("#tutor").val(),
-		subject: $("#subject").val()
-	});
-}
 
 function validate() {
-	var name = $("#name").val();
-	var email = $("#email").val();
+	var email = firebase.auth().currentUser.email;
 	var location = $("#location").val();
 	var date = $("#date").val();
 	var time = $("#time").val();
 	var subject = $("#subject").val();
-	var validemail = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 	var missing = [];
-	if(name == "") {
-		missing.push("name");
-	}
-	if(email.search(validemail) == -1) {
-		missing.push(" valid email");
-	}
 	if(location == "") {
 		missing.push(" location");
 	}
@@ -171,27 +175,33 @@ function validate() {
 		alert("Please enter the following: " + missing);
 		event.preventDefault();
 	} else {
-		sessionStorage.setItem("name", name); 
-		sessionStorage.setItem("email", email); 
 		sessionStorage.setItem("location", location); 
 		sessionStorage.setItem("date", date); 
 		sessionStorage.setItem("time", time); 
 		sessionStorage.setItem("subject", subject);
-		alert("hello");
-		saveRequest();
+		
+		var newRequest = requests.push();
+		newRequest.set({
+			email: firebase.auth().currentUser.email,
+			location: location,
+			date: date,
+			time: time,
+			tutor: $("#tutor").val(),
+			subject: subject
+		});
+
 		return true;
 	}
 }
 
 function loadConfirmed() {
-	var name2 = sessionStorage.getItem("name");
-	var email2 = sessionStorage.getItem("email");
+	var email2 = null;
 	var location2 = sessionStorage.getItem("location");
 	var date2 = sessionStorage.getItem("date");
 	var time2 = sessionStorage.getItem("time");
 	var subject2 = sessionStorage.getItem("subject");
 
-	$("#bookedheader").html("Hello " + name2);
+	$("#bookedheader").html("Hello " + email2);
 	$("#date2").html("Date: " + date2);
 	$("#time2").html("Time: " + time2);
 	$("#location2").html("Location: " + location2);

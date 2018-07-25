@@ -360,6 +360,7 @@ h1 strong {
 	background-color:#ae3dc6;
 	border-radius: 5px;
 	transition-duration: 0.2s;
+	text-decoration: none;
 }
 
 #submit:hover {
@@ -495,7 +496,6 @@ h1 strong {
 	position: fixed;
 	top: 0;
 	right: 0;
-	border-radius: 0px 0px 0px 10px;
 	background-color: #ae3dc6;
 	padding: 15px 40px;
 	color: white;
@@ -509,6 +509,52 @@ h1 strong {
 	background-color: #dc5c0f;
 	text-decoration: none;
 }
+
+#servicenav {
+	position: fixed;
+	z-index: 89;
+	right: 150px;
+	margin: 0px;
+}
+
+#servicenav button {
+	padding: 15px 40px;
+	margin: 0px;
+	border: 0;
+	font-size: 24px;
+	background-color: white;
+	color: #212664;
+	transition-duration: 0.2s;
+}
+
+#servicenav button:hover {
+	background-color: #dc5c0f;
+	color: white;
+}
+
+#booknav {
+	border-radius: 0px 0px 0px 10px;
+}
+
+#sessionstab {
+	display: none;
+}
+
+#sessionsheader {
+	text-align: center;
+	padding: 130px 10% 60px 10%;
+	background-color: #212664;
+	color: white;
+}
+
+#sessionsheader h1 {
+	font-size: 60px;
+}
+
+#sessionsheader h3 {
+	font-size: 30px;
+}
+
 
 
 .slideanim {visibility:hidden;}

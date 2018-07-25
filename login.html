@@ -36,6 +36,7 @@
 		</div>-->
 		<div class="create-div">
 		    <h3>Create an Account</h3>
+		    <input type="name" placeholder="Enter your Name..." id="createname" />
 		    <input type="email" placeholder="Enter a Valid Email Address..." id="createemail" />
 		    <input type="password" placeholder="Enter a Password..." id="createpassword" />
 		    <input type="password" placeholder="Confirm your Password..." id="confirmpassword" />
@@ -51,70 +52,73 @@
 		    <h4>Don't have an account? <a onclick="openCreate()">Create One Today!</a></h4>
 		 </div>
 	<div id="mainbody">
-		<div id="bookheader">
-			<h1>Book a <strong>Session</strong></h1>
-			<h3 id="welcome">Welcome</h3>
+		<div id="servicenav">
+			<button id="booknav" onclick="booktab()">Book A Session</button>
+			<button id="sessionsnav" onclick="sessionstab()">My Sessions</button>
 		</div>
-		<div id="bookform">
-			<form>
-			<div class="row">
-				<div class="col-sm-3">
-		    		Name:
-		    	</div>
-		    	<div class="col-sm-9">
-		   			<input type="text" name="name" id="name" placeholder="Enter your name..."><br>
-		   		</div>
-		   	</div>
-		   	<div class="row">
-				<div class="col-sm-3">
-		    		Email:
-		    	</div>
-		    	<div class="col-sm-9">
-		   			<input type="text" name="email" id="email" placeholder="Enter your email..."><br>
-		   		</div>
-		   	</div>
-		   	<div class="row">
-				<div class="col-sm-3">
-		    		Preferred Location:
-		    	</div>
-		    	<div class="col-sm-9">
-		   			<input type="text" name="location" id="location" placeholder="Enter your preferred location, ex. Kennedy Middle School..."><br>
-		   		</div>
-		   	</div>
-		   	<div class="row">
-				<div class="col-sm-3">
-		    		Date:
-		    	</div>
-		    	<div class="col-sm-9">
-		   			<input type="text" name="date" id="date" placeholder="Enter the date for when you would wish to be tutored..."><br>
-		   		</div>
-		   	</div>
-		   	<div class="row">
-				<div class="col-sm-3">
-		    		Time:
-		    	</div>
-		    	<div class="col-sm-9">
-		   			<input type="text" name="time" id="time" placeholder="Enter your preferred time..."><br>
-		   		</div>
-		   	</div>
-		   	<div class="row">
-				<div class="col-sm-3">
-		    		Tutor Request (optional):
-		    	</div>
-		    	<div class="col-sm-9">
-		   			<input type="text" name="tutor" id="tutor" placeholder="If you have a preferred tutor, enter their name here..."><br>
-		   		</div>
-		   	</div>
-		   	<div class="row">
-				<div class="col-sm-3">
-		    		Subject:
-		    	</div>
-		    	<div class="col-sm-9">
-		   			<input type="text" name="subject" id="subject" placeholder="Enter the subject you request help in..."><br>
-		   		</div>
-		   	</div>
-		   	<a href="confirmed.html" id="submit" onclick="validate()">Submit</a>
-		    </form>
+
+	    <div class="tab-content" id="myTabContent">
+			<div class="tab" id="booktab">
+				<div id="bookheader">
+					<h1 id="welcome">Welcome <strong></strong>!</h1>
+					<h3>Book A Session</h3>
+				</div>
+				<div id="bookform">
+					<form>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Preferred Location:
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="location" id="location" placeholder="Enter your preferred location, ex. Kennedy Middle School..."><br>
+				   		</div>
+				   	</div>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Date:
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="date" id="date" placeholder="Enter the date for when you would wish to be tutored..."><br>
+				   		</div>
+				   	</div>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Time:
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="time" id="time" placeholder="Enter your preferred time..."><br>
+				   		</div>
+				   	</div>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Tutor Request (optional):
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="tutor" id="tutor" placeholder="If you have a preferred tutor, enter their name here..."><br>
+				   		</div>
+				   	</div>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Subject:
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="subject" id="subject" placeholder="Enter the subject you request help in..."><br>
+				   		</div>
+				   	</div>
+				   	<a href="confirmed.html" id="submit" onclick="validate()">Submit</a>
+				    </form>
+				</div>
+			</div>
+			<div id="sessionstab">
+				<div id="sessionsheader">
+					<h1>My Sessions</h1>
+					<h3 id="user">User: </h3>
+				</div>
+
+
+			</div>
+
+
 		</div>
 		<div id="footer">
 			<p>&#169; InstaTutors 2018.</a></p>
