@@ -89,8 +89,29 @@ function openCreate() {
 	$(".create-div").fadeIn();
 }
 
+function splitEmail(email) {
+	str = email.split("@");
+	var res = str[0].replace(/\./g, "");
+	return(res);
+}
 
-var users = firebase.database().ref('users');
+function splitDate(date) {
+	str = date.split("/");
+	return(str[0] + str[1]);
+}
+
+var database = firebase.database();
+
+
+function writeAccount(name, email, password) {
+	var split = splitEmail(email);
+
+		firebase.database().ref('users/' + split).set({
+			name: name,
+		    email: email,
+			password: password
+		 });
+}
 
 
 function createAccount() {
@@ -108,12 +129,7 @@ function createAccount() {
 		});
 		firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
 
-		var newUser = users.push();
-		newUser.set({
-			name: newName,
-			email: newEmail,
-			password: newPass
-		});
+		writeAccount(newName, newEmail, newPass);
 
 	} else {
 		alert("Please make sure your passwords match.");
@@ -145,19 +161,76 @@ function logout(){
 	});
 }
 
+//previous requests object
+function prevRequest(date, time, location, tutor, done, subject) {
+	alert("hello");
+	this.done = done;
 
-var requests = firebase.database().ref('requests');
+	var req = document.createElement("div");
+	req.setAttribute("class", "req");
+
+	var reqdate = document.createElement("h2");
+	var datenode = document.createTextNode("Tutoring Session on " + date + " at " + location);
+	reqdate.appendChild(datenode);
+	req.appendChild(reqdate);
+
+	var reqtime = document.createElement("h4");
+	var timenode = document.createTextNode("Time: " + time);
+	reqtime.appendChild(timenode);
+	req.appendChild(reqtime);
+
+	var reqsubject = document.createElement("h4");
+	var subnode = document.createTextNode("Subject: " + subject);
+	reqsubject.appendChild(subnode);
+	req.appendChild(reqsubject);
+
+	var reqtutor = document.createElement("h4");
+	var tutornode = document.createTextNode("Tutor: " + tutor);
+	reqtutor.appendChild(tutornode);
+	req.appendChild(reqtutor);
+
+	if(this.done == "no") {
+		req.style.backgroundColor = "#d59292";
+	} else {
+		req.style.backgroundColor = "#7cbf87";
+	}
+
+	var bod = document.getElementById("sessionsbody");
+	bod.appendChild(req);
+}
 
 
 //save requests to firebase
 
+function writeRequest(name, email, location, date, time, subject, done, tutor) {
+	var newEmail = splitEmail(email);
+	var newDate = splitDate(date);
+
+	firebase.database().ref('users/' + newEmail + "/" + newDate).set({
+			name: name,
+			email: email,
+			location: location,
+			date: date,
+			time: time,
+			tutor: tutor,
+			done: "no",
+			subject: subject
+		  });
+}
+
+
 function validate() {
+	var name = $("#name").val();
 	var email = firebase.auth().currentUser.email;
 	var location = $("#location").val();
 	var date = $("#date").val();
 	var time = $("#time").val();
+	var tutor = $("#tutor").val();
 	var subject = $("#subject").val();
 	var missing = [];
+	if(name == "") {
+		missing.push(" location");
+	}
 	if(location == "") {
 		missing.push(" location");
 	}
@@ -175,38 +248,32 @@ function validate() {
 		alert("Please enter the following: " + missing);
 		event.preventDefault();
 	} else {
+		writeRequest(name, email, location, date, time, subject, "no", tutor);
+
+		sessionStorage.setItem("name", name); 
 		sessionStorage.setItem("location", location); 
 		sessionStorage.setItem("date", date); 
 		sessionStorage.setItem("time", time); 
 		sessionStorage.setItem("subject", subject);
-		
-		var newRequest = requests.push();
-		newRequest.set({
-			email: firebase.auth().currentUser.email,
-			location: location,
-			date: date,
-			time: time,
-			tutor: $("#tutor").val(),
-			subject: subject
-		});
 
 		return true;
 	}
 }
 
 function loadConfirmed() {
-	var email2 = null;
+	var name2 = sessionStorage.getItem("name");
 	var location2 = sessionStorage.getItem("location");
 	var date2 = sessionStorage.getItem("date");
 	var time2 = sessionStorage.getItem("time");
 	var subject2 = sessionStorage.getItem("subject");
 
-	$("#bookedheader").html("Hello " + email2);
+	$("#bookedheader").html("Hello " + name2);
 	$("#date2").html("Date: " + date2);
 	$("#time2").html("Time: " + time2);
 	$("#location2").html("Location: " + location2);
 	$("#subject2").html("Subject: " + subject2);
 }
+
 
 function validatemsg() {
 	var name = $("#msgname").val();

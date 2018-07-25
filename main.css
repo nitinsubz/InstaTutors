@@ -542,7 +542,7 @@ h1 strong {
 
 #sessionsheader {
 	text-align: center;
-	padding: 130px 10% 60px 10%;
+	padding: 130px 10% 100px 10%;
 	background-color: #212664;
 	color: white;
 }
@@ -555,6 +555,25 @@ h1 strong {
 	font-size: 30px;
 }
 
+#sessionsbody {
+	margin: -70px 12% 50px 12%;
+	background-color: white;
+	border-radius: 20px 20px 0px 0px;
+}
+
+.req {
+	padding: 50px 5%;
+	border-radius: 20px;
+	margin-bottom: 20px;
+}
+
+.req h2 {
+	font-size: 40px;
+}
+
+.req h4 {
+	font-size: 30px;
+}
 
 
 .slideanim {visibility:hidden;}
