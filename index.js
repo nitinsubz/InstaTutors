@@ -40,6 +40,15 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $("#faqnav").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#faq").offset().top + 40
+                }, 800);
+    });
+});
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
@@ -72,13 +81,19 @@ function openCreate() {
 function createAccount() {
 	var newEmail = $("#createemail").val();
 	var newPass = $("#createpassword").val();
-	firebase.auth().createUserWithEmailAndPassword(newEmail, newPass).catch(function(error) {
-		event.preventDefault();
-	  var errorCode = error.code;
-	  var errorMessage = error.message;
-	  alert("Error : " + errorMessage);
-	});
-	firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
+	var confirmPass = $("#confirmpassword").val();
+
+	if(newPass == confirmPass) {
+		firebase.auth().createUserWithEmailAndPassword(newEmail, newPass).catch(function(error) {
+			event.preventDefault();
+		  var errorCode = error.code;
+		  var errorMessage = error.message;
+		  alert("Error : " + errorMessage);
+		});
+		firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
+	} else {
+		alert("Please make sure your passwords match.");
+	}
 }
 
 function login() {
@@ -107,8 +122,22 @@ function logout(){
 }
 
 
+var requests = firebase.database().ref('requests');
 
 
+//save requests to firebase
+function saveRequest() {
+	var newRequest = requests.push();
+	newRequest.set({
+		name: $("#name").val(),
+		email: firebase.auth().currentUser.email,
+		location: $("#location").val(),
+		date: $("#date").val(),
+		time: $("#time").val(),
+		tutor: $("#tutor").val(),
+		subject: $("#subject").val()
+	});
+}
 
 function validate() {
 	var name = $("#name").val();
@@ -147,7 +176,9 @@ function validate() {
 		sessionStorage.setItem("location", location); 
 		sessionStorage.setItem("date", date); 
 		sessionStorage.setItem("time", time); 
-		sessionStorage.setItem("subject", subject); 
+		sessionStorage.setItem("subject", subject);
+		alert("hello");
+		saveRequest();
 		return true;
 	}
 }

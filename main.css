@@ -67,6 +67,10 @@ h1 strong {
 #contactnav:hover {
 	cursor: pointer;
 }
+
+#faqnav:hover {
+	cursor: pointer;
+}
 /*Index*/
 #indexhead {
 	padding: 190px 10% 100px 10%;
@@ -117,8 +121,14 @@ h1 strong {
 }
 
 #info {
-	background-color: #ae3dc6;
-	padding: 150px 10%;
+	background: linear-gradient(135deg, #ae3dc6, #212664, #dc5c0f);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 10s ease infinite;
+	-moz-animation: Gradient 10s ease infinite;
+	animation: Gradient 10s ease infinite;
+	transition-duration: 0.6s;
+	overflow-y: hidden;
+	padding: 150px 10% 150px 10%;
 	color: white;
 	-webkit-clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
   	clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
@@ -154,7 +164,7 @@ h1 strong {
 }
 
 #contact {
-	padding: 30px 30% 70px 10%;
+	padding: 60px 30% 70px 10%;
 	color: #444;
 }
 
@@ -195,6 +205,11 @@ h1 strong {
 
 #contact input {
 	width: 100%;
+	outline: 0;
+}
+
+#contact input:focus {
+	border: 2px solid #dc5c0f;
 }
 
 #msg {
@@ -204,6 +219,41 @@ h1 strong {
 #contact #submit {
 	margin: 30px 0px;
 }
+
+#faq {
+	padding: 130px 10% 70px 10%;
+	background: linear-gradient(135deg, #ae3dc6, #4b5799, #282635);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 10s ease infinite;
+	-moz-animation: Gradient 10s ease infinite;
+	animation: Gradient 10s ease infinite;
+	transition-duration: 0.6s;
+	overflow-y: hidden;
+	-webkit-clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
+  	clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
+  	color: white;
+}
+
+#faq h1 {
+	font-size: 45px;
+	padding: 10px 0px;
+}
+
+.faqsec {
+	padding: 20px 0px;
+}
+
+.question {
+	font-size: 28px;
+	padding: 10px 0px;
+	transition-duration: 0.2s;
+}
+
+.answer {
+	font-size: 25px;
+	padding-left: 45px;
+}
+
 /*Session*/
 
 #mainbody {
@@ -217,9 +267,9 @@ h1 strong {
 	color: white;
 	background: linear-gradient(135deg, #ae3dc6, #212664, #c67cb7, #dc5c0f);
 	background-size: 400% 400%;
-	-webkit-animation: Gradient 15s ease infinite;
-	-moz-animation: Gradient 15s ease infinite;
-	animation: Gradient 15s ease infinite;
+	-webkit-animation: Gradient 10s ease infinite;
+	-moz-animation: Gradient 10s ease infinite;
+	animation: Gradient 10s ease infinite;
 	transition-duration: 0.6s;
 	overflow-y: hidden;
 }
@@ -300,8 +350,10 @@ h1 strong {
 #submit {
 	padding: 13px 60px;
 	font-size: 23px;
-	margin: 15px auto 50px auto;
+	margin: 40px auto 50px auto;
 	display: block;
+	width: 35%;
+	text-align: center;
 	color: white;
 	border: 0;
 	outline: 0;
@@ -312,6 +364,7 @@ h1 strong {
 
 #submit:hover {
 	background-color: #dc5c0f;
+	text-decoration: none;
 }
 
 #footer {
@@ -362,7 +415,7 @@ h1 strong {
   margin: 0px auto;
   margin-top: 150px;
   padding: 20px;
-  display: block;
+  display: none;
 }
 
 .main-div h3, .create-div h3 {

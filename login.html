@@ -38,7 +38,7 @@
 		    <h3>Create an Account</h3>
 		    <input type="email" placeholder="Enter a Valid Email Address..." id="createemail" />
 		    <input type="password" placeholder="Enter a Password..." id="createpassword" />
-
+		    <input type="password" placeholder="Confirm your Password..." id="confirmpassword" />
 		    <a onclick="createAccount()" id="create">Let's Go!</a>
 		 </div>
 
@@ -56,7 +56,7 @@
 			<h3 id="welcome">Welcome</h3>
 		</div>
 		<div id="bookform">
-			<form action="https://formspree.io/instatutors@googlegroups.com" method="POST">
+			<form>
 			<div class="row">
 				<div class="col-sm-3">
 		    		Name:
@@ -99,14 +99,21 @@
 		   	</div>
 		   	<div class="row">
 				<div class="col-sm-3">
+		    		Tutor Request (optional):
+		    	</div>
+		    	<div class="col-sm-9">
+		   			<input type="text" name="tutor" id="tutor" placeholder="If you have a preferred tutor, enter their name here..."><br>
+		   		</div>
+		   	</div>
+		   	<div class="row">
+				<div class="col-sm-3">
 		    		Subject:
 		    	</div>
 		    	<div class="col-sm-9">
 		   			<input type="text" name="subject" id="subject" placeholder="Enter the subject you request help in..."><br>
 		   		</div>
 		   	</div>
-		   	<input type="hidden" name="_next" value="InstaTutors/confirmed.html" />
-		   	<button type="submit" id="submit" onclick="validate()">Submit</button>
+		   	<a href="confirmed.html" id="submit" onclick="validate()">Submit</a>
 		    </form>
 		</div>
 		<div id="footer">
