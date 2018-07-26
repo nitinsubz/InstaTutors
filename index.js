@@ -58,7 +58,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     var userName = firebase.database().ref('users/' + split).child('name');
 
-	userName.on('value', function(datasnapshot) {
+	userName.on('value', snap => {
 		$("#welcome").html("Welcome " + datasnapshot.val()+ "!");
 	});
 
@@ -137,14 +137,13 @@ function splitDate(date) {
 var database = firebase.database();
 
 //send account data to firebase
-function writeAccount(name, email, phone, password) {
+function writeAccount(name, email, phone) {
 	var split = splitEmail(email);
 
 		firebase.database().ref('users/' + split).set({
 			name: name,
 			phone: phone,
 		    email: email,
-			password: password
 		 });
 }
 
@@ -162,14 +161,14 @@ function createAccount() {
 			event.preventDefault();
 		  var errorCode = error.code;
 		  var errorMessage = error.message;
-		  alert("Error : " + errorMessage);
+		  $("#errormessage2").html("Error : " + errorMessage);
 		});
 		firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
 
-		writeAccount(newName, newEmail, newPhone, newPass);
+		writeAccount(newName, newEmail, newPhone);
 
 	} else {
-		alert("Please make sure your passwords match.");
+		$("#errormessage2").html("Please make sure your passwords match.");
 	}
 }
 
@@ -183,7 +182,7 @@ function login() {
 	    var errorCode = error.code;
 	    var errorMessage = error.message;
 
-	    window.alert("Error : " + errorMessage);
+	    $("#errormessage").html("Error : " + errorMessage);
 
 	    // ...
 	  });
@@ -196,6 +195,8 @@ function logout(){
 	  // An error happened.
 	  event.preventDefault();
 	});
+	$("#errormessage").html("");
+	$("#errormessage2").html("");
 }
 
 
