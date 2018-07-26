@@ -86,7 +86,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     $(".main-div").css("display", "none");
     $("#logout").css("display", "block");
     $(".create-div").css("display", "none");
-    $("#bookasession a").html("BOOK A SESSION");
+    $("#bookasession a").html("Book a Session");
     $("#indexlogout").css("display", "block");
 
     if(user != null){
