@@ -62,7 +62,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 		$("#welcome").html("Welcome " + datasnapshot.val()+ "!");
 	});
 
-
 	//add requests to 'my sessions'
 	var reqRef = firebase.database().ref('users/' + split);
 
@@ -87,6 +86,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     $(".main-div").css("display", "none");
     $("#logout").css("display", "block");
     $(".create-div").css("display", "none");
+    $("#bookasession a").html("BOOK A SESSION");
+    $("#indexlogout").css("display", "block");
 
     if(user != null){
       $("#user").html("User: " + user.email + "");
@@ -97,6 +98,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#mainbody").css("display", "none");
     $(".main-div").fadeIn();
     $("#logout").css("display", "none");
+    $("#bookasession a").html("LOGIN/SIGNUP");
+    $("#indexlogout").css("display", "none");
     
   }
 });
@@ -121,6 +124,7 @@ function openCreate() {
 function splitEmail(email) {
 	str = email.split("@");
 	var res = str[0].replace(/\./g, "");
+	res = res.toLowerCase();
 	return(res);
 }
 
@@ -133,11 +137,12 @@ function splitDate(date) {
 var database = firebase.database();
 
 //send account data to firebase
-function writeAccount(name, email, password) {
+function writeAccount(name, email, phone, password) {
 	var split = splitEmail(email);
 
 		firebase.database().ref('users/' + split).set({
 			name: name,
+			phone: phone,
 		    email: email,
 			password: password
 		 });
@@ -148,6 +153,7 @@ function writeAccount(name, email, password) {
 function createAccount() {
 	var newName = $("#createname").val();
 	var newEmail = $("#createemail").val();
+	var newPhone = $("#createphone").val();
 	var newPass = $("#createpassword").val();
 	var confirmPass = $("#confirmpassword").val();
 
@@ -160,7 +166,7 @@ function createAccount() {
 		});
 		firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
 
-		writeAccount(newName, newEmail, newPass);
+		writeAccount(newName, newEmail, newPhone, newPass);
 
 	} else {
 		alert("Please make sure your passwords match.");

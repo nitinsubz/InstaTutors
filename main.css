@@ -114,9 +114,30 @@ h1 strong {
 
 #bookasession:hover {
 	background-color: #ae3dc6;
+	cursor: pointer;
 }
 
 #bookasession:hover a{
+	color: white;
+}
+
+#indexlogout {
+	border: 2px solid #ae3dc6;
+	border-radius: 10px;
+	transition-duration: 0.2s;
+	display: none;
+}
+
+#indexlogout a {
+	color: #ae3dc6;
+}
+
+#indexlogout:hover {
+	background-color: #ae3dc6;
+	cursor: pointer;
+}
+
+#indexlogout:hover a{
 	color: white;
 }
 
