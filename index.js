@@ -156,7 +156,7 @@ function createAccount() {
 	var newPass = $("#createpassword").val();
 	var confirmPass = $("#confirmpassword").val();
 
-	if(newPass == confirmPass) {
+	if(newPass == confirmPass && newEmail != null) {
 		firebase.auth().createUserWithEmailAndPassword(newEmail, newPass).catch(function(error) {
 			event.preventDefault();
 		  var errorCode = error.code;
