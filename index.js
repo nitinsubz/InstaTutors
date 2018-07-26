@@ -54,14 +54,41 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User is signed in.
     var user = firebase.auth().currentUser;
 
+   	var split = splitEmail(user.email);
+
+    var userName = firebase.database().ref('users/' + split).child('name');
+
+	userName.on('value', function(datasnapshot) {
+		$("#welcome").html("Welcome " + datasnapshot.val()+ "!");
+	});
+
+
+	//add requests to 'my sessions'
+	var reqRef = firebase.database().ref('users/' + split);
+
+
+	//date, time, location, tutor, done, subject
+	reqRef.on("child_added", snap => {
+		var date = snap.child("date").val();
+		var done = snap.child("done").val();
+		var email = snap.child("email").val();
+		var location = snap.child("location").val();
+		var subject = snap.child("subject").val();
+		var time = snap.child("time").val();
+		var tutor = snap.child("tutor").val();
+
+		if(date != null) {
+			$("#sessionsbody").append("<div class=\"req\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+		}
+	});
+
+
     $("#mainbody").fadeIn();
     $(".main-div").css("display", "none");
     $("#logout").css("display", "block");
     $(".create-div").css("display", "none");
 
     if(user != null){
-
-      $("#welcome").html("Welcome " + user.email + "!");
       $("#user").html("User: " + user.email + "");
     }
 
@@ -89,6 +116,8 @@ function openCreate() {
 	$(".create-div").fadeIn();
 }
 
+
+//split functions for syntax
 function splitEmail(email) {
 	str = email.split("@");
 	var res = str[0].replace(/\./g, "");
@@ -100,9 +129,10 @@ function splitDate(date) {
 	return(str[0] + str[1]);
 }
 
+//initialize database
 var database = firebase.database();
 
-
+//send account data to firebase
 function writeAccount(name, email, password) {
 	var split = splitEmail(email);
 
@@ -114,6 +144,7 @@ function writeAccount(name, email, password) {
 }
 
 
+//create new account
 function createAccount() {
 	var newName = $("#createname").val();
 	var newEmail = $("#createemail").val();
@@ -136,6 +167,7 @@ function createAccount() {
 	}
 }
 
+//login + logout
 function login() {
 	var userEmail = $("#email_field").val();
 	var userPass = $("#password_field").val();
@@ -149,7 +181,6 @@ function login() {
 
 	    // ...
 	  });
-
 }
 
 function logout(){
@@ -161,53 +192,13 @@ function logout(){
 	});
 }
 
-//previous requests object
-function prevRequest(date, time, location, tutor, done, subject) {
-	alert("hello");
-	this.done = done;
-
-	var req = document.createElement("div");
-	req.setAttribute("class", "req");
-
-	var reqdate = document.createElement("h2");
-	var datenode = document.createTextNode("Tutoring Session on " + date + " at " + location);
-	reqdate.appendChild(datenode);
-	req.appendChild(reqdate);
-
-	var reqtime = document.createElement("h4");
-	var timenode = document.createTextNode("Time: " + time);
-	reqtime.appendChild(timenode);
-	req.appendChild(reqtime);
-
-	var reqsubject = document.createElement("h4");
-	var subnode = document.createTextNode("Subject: " + subject);
-	reqsubject.appendChild(subnode);
-	req.appendChild(reqsubject);
-
-	var reqtutor = document.createElement("h4");
-	var tutornode = document.createTextNode("Tutor: " + tutor);
-	reqtutor.appendChild(tutornode);
-	req.appendChild(reqtutor);
-
-	if(this.done == "no") {
-		req.style.backgroundColor = "#d59292";
-	} else {
-		req.style.backgroundColor = "#7cbf87";
-	}
-
-	var bod = document.getElementById("sessionsbody");
-	bod.appendChild(req);
-}
-
 
 //save requests to firebase
-
-function writeRequest(name, email, location, date, time, subject, done, tutor) {
+function writeRequest(email, location, date, time, subject, done, tutor) {
 	var newEmail = splitEmail(email);
 	var newDate = splitDate(date);
 
 	firebase.database().ref('users/' + newEmail + "/" + newDate).set({
-			name: name,
 			email: email,
 			location: location,
 			date: date,
@@ -219,8 +210,8 @@ function writeRequest(name, email, location, date, time, subject, done, tutor) {
 }
 
 
+//on tutoring request submit -> pushes form data to firebase
 function validate() {
-	var name = $("#name").val();
 	var email = firebase.auth().currentUser.email;
 	var location = $("#location").val();
 	var date = $("#date").val();
@@ -228,9 +219,7 @@ function validate() {
 	var tutor = $("#tutor").val();
 	var subject = $("#subject").val();
 	var missing = [];
-	if(name == "") {
-		missing.push(" location");
-	}
+
 	if(location == "") {
 		missing.push(" location");
 	}
@@ -248,31 +237,33 @@ function validate() {
 		alert("Please enter the following: " + missing);
 		event.preventDefault();
 	} else {
-		writeRequest(name, email, location, date, time, subject, "no", tutor);
+		writeRequest(email, location, date, time, subject, "no", tutor);
 
-		sessionStorage.setItem("name", name); 
 		sessionStorage.setItem("location", location); 
 		sessionStorage.setItem("date", date); 
 		sessionStorage.setItem("time", time); 
+		sessionStorage.setItem("tutor", tutor); 
 		sessionStorage.setItem("subject", subject);
 
 		return true;
 	}
 }
 
+//loads confirmed.html innerHTML 
 function loadConfirmed() {
-	var name2 = sessionStorage.getItem("name");
 	var location2 = sessionStorage.getItem("location");
 	var date2 = sessionStorage.getItem("date");
 	var time2 = sessionStorage.getItem("time");
+	var tutor2 = sessionStorage.getItem("tutor");
 	var subject2 = sessionStorage.getItem("subject");
 
-	$("#bookedheader").html("Hello " + name2);
-	$("#date2").html("Date: " + date2);
+	$("#bookedheader").html("Your tutoring request for " + date2 + " is logged.");
+	$("#tutor2").html("Date: " + tutor2);
 	$("#time2").html("Time: " + time2);
 	$("#location2").html("Location: " + location2);
 	$("#subject2").html("Subject: " + subject2);
 }
+
 
 
 function validatemsg() {
