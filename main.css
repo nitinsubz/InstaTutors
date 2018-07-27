@@ -440,6 +440,10 @@ h1 strong {
   display: none;
 }
 
+.main-div {
+	margin-top: 160px;
+}
+
 .main-div h3, .create-div h3 {
 	font-size: 32px;
 	padding-bottom: 20px;
@@ -484,7 +488,7 @@ h1 strong {
 	border-bottom: 3px solid #dc5c0f;
 }
 
-#errormessage, #errormessage2 {
+#errormessage, #errormessage2, #formerrors {
 	color: #c90000;
 	font-size: 20px;
 	padding-bottom: 20px;
@@ -544,6 +548,7 @@ h1 strong {
 	border-radius: 20px;
 	margin-bottom: 20px;
 	background-color: white;
+	box-shadow: 5px 5px 20px #666;
 	transition-duration: 0.2s;
 }
 
@@ -558,6 +563,7 @@ h1 strong {
 .tutorreq:hover {
 	background-color: #ddd;
 	cursor: pointer;
+	box-shadow: 10px 10px 40px #444;
 }
 
 #logout {
@@ -633,6 +639,7 @@ h1 strong {
 	padding: 50px 5%;
 	border-radius: 20px;
 	margin-bottom: 20px;
+	box-shadow: 5px 5px 20px #666;
 }
 
 .req h2 {

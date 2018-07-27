@@ -58,8 +58,8 @@ function splitEmail(email) {
 }
 
 function splitDate(date) {
-	str = date.split("/");
-	return(str[0] + str[1]);
+	var newdate = date.split("-");
+	return(newdate[1] + "-" + newdate[2] + "-" + newdate[0]); 
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -146,9 +146,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 			color = "white";
 		}
 
-		var newDate = splitDate(date);
+		var newDate = date;
 		if(newDate != null) {
-			$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"background-color: " + color + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+			$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"background-color: " + color + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + newDate + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
 		}
 	});
 
@@ -166,7 +166,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 function takeSession() {
 	var date = event.currentTarget.childNodes[3].innerHTML;
-	var newdate = splitDate(date.slice(6));
+	var newdate = date.slice(6);
 	var email = event.currentTarget.childNodes[1].innerHTML;
 	var newemail = splitEmail(email.slice(7));
 	var person = prompt("Please enter your name:");
@@ -268,7 +268,7 @@ function writeRequest(email, location, date, time, subject, done, tutor) {
 	firebase.database().ref('users/' + newEmail + "/" + newDate).set({
 			email: email,
 			location: location,
-			date: date,
+			date: newDate,
 			time: time,
 			tutor: tutor,
 			done: "no",
@@ -278,7 +278,7 @@ function writeRequest(email, location, date, time, subject, done, tutor) {
 	firebase.database().ref('requests/' + newDate + newEmail).set({
 			email: email,
 			location: location,
-			date: date,
+			date: newDate,
 			time: time,
 			tutor: tutor,
 			done: "no",
@@ -300,8 +300,12 @@ function validate() {
 	if(location == "") {
 		missing.push(" location");
 	}
-	if(date == "") {
-		missing.push(" date");
+
+	var selectedDate = new Date(date);
+   	var now = new Date();
+
+	if(date == "" || selectedDate < now) {
+		missing.push(" valid date, date cannot be in the past");
 	}
 	if(time == "") {
 		missing.push(" time");
@@ -311,7 +315,7 @@ function validate() {
 	}
 
 	if(missing != "") {
-		alert("Please enter the following: " + missing);
+		$("#formerrors").html("Please enter the following: " + missing);
 		event.preventDefault();
 	} else {
 		writeRequest(email, location, date, time, subject, "no", tutor);
