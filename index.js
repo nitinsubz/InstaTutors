@@ -49,12 +49,36 @@ $(document).ready(function() {
     });
 });
 
+//split functions for syntax
+function splitEmail(email) {
+	str = email.split("@");
+	var res = str[0].replace(/\./g, "");
+	res = res.toLowerCase();
+	return(res);
+}
+
+function splitDate(date) {
+	str = date.split("/");
+	return(str[0] + str[1]);
+}
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
+
     var user = firebase.auth().currentUser;
 
    	var split = splitEmail(user.email);
+
+   	if(user.email == "instatutorsteam@gmail.com") {
+
+   		$(".main-div").css("display", "none");
+	    $("#logout").css("display", "block");
+	    $(".create-div").css("display", "none");
+	    $("#indexlogout").fadeIn();
+	    $("#tutorsessions").fadeIn();
+
+   	} else {
 
     var userName = firebase.database().ref('users/' + split).child('name');
 
@@ -64,7 +88,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 	//add requests to 'my sessions'
 	var reqRef = firebase.database().ref('users/' + split);
-
 
 	//date, time, location, tutor, done, subject
 	reqRef.on("child_added", snap => {
@@ -87,11 +110,30 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#logout").css("display", "block");
     $(".create-div").css("display", "none");
     $("#bookasession a").html("BOOK A SESSION");
-    $("#indexlogout").css("display", "block");
+    $("#indexlogout").fadeIn();
+
+	}
 
     if(user != null){
       $("#user").html("User: " + user.email + "");
     }
+
+    var tutorReq = firebase.database().ref('requests');
+
+    tutorReq.on("child_added", snap => {
+		var date = snap.child("date").val();
+		var done = snap.child("done").val();
+		var email = snap.child("email").val();
+		var location = snap.child("location").val();
+		var subject = snap.child("subject").val();
+		var time = snap.child("time").val();
+		var tutor = snap.child("tutor").val();
+
+		var newDate = splitDate(date);
+		if(date != null) {
+			$("#tutorsessionsbody").append("<div class=\"tutorreq\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+		}
+	});
 
   } else {
     // No user is signed in.
@@ -99,10 +141,20 @@ firebase.auth().onAuthStateChanged(function(user) {
     $(".main-div").fadeIn();
     $("#logout").css("display", "none");
     $("#bookasession a").html("LOGIN/SIGNUP");
-    $("#indexlogout").css("display", "none");
+    $("#indexlogout").fadeOut();
+    $("#tutorsessions").css("display", "none");
     
   }
 });
+
+function takeSession() {
+	var date = event.currentTarget.childNodes[3].innerHTML;
+	var newdate = splitDate(date.slice(6));
+	var email = event.currentTarget.childNodes[0].innerHTML;
+	var newemail = splitEmail(email.slice(7));
+	alert(newemail);
+	firebase.database().ref('requests/' + newdate + newemail).remove();
+}
 
 function sessionstab() {
 	$("#sessionstab").fadeIn();
@@ -117,20 +169,6 @@ function booktab() {
 function openCreate() {
 	$(".main-div").css("display", "none");
 	$(".create-div").fadeIn();
-}
-
-
-//split functions for syntax
-function splitEmail(email) {
-	str = email.split("@");
-	var res = str[0].replace(/\./g, "");
-	res = res.toLowerCase();
-	return(res);
-}
-
-function splitDate(date) {
-	str = date.split("/");
-	return(str[0] + str[1]);
 }
 
 //initialize database
@@ -206,6 +244,16 @@ function writeRequest(email, location, date, time, subject, done, tutor) {
 	var newDate = splitDate(date);
 
 	firebase.database().ref('users/' + newEmail + "/" + newDate).set({
+			email: email,
+			location: location,
+			date: date,
+			time: time,
+			tutor: tutor,
+			done: "no",
+			subject: subject
+		  });
+
+	firebase.database().ref('requests/' + newDate + newEmail).set({
 			email: email,
 			location: location,
 			date: date,

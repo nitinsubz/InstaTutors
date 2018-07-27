@@ -519,6 +519,47 @@ h1 strong {
 	display: none;
 }
 
+#tutorsessions {
+	display: none;
+}
+
+#tutorsessionshead {
+	padding: 140px 10% 90px 10%;
+	background-color: #ae3dc6;
+	color: white;
+}
+
+#tutorsessionshead h1 {
+	font-size: 60px;
+	text-align: center;
+}
+
+#tutorsessionsbody {
+	padding: 0px 10%;
+	margin-top: -50px;
+}
+
+.tutorreq {
+	padding: 50px 5%;
+	border-radius: 20px;
+	margin-bottom: 20px;
+	background-color: white;
+	transition-duration: 0.2s;
+}
+
+.tutorreq h2 {
+	font-size: 40px;
+}
+
+.tutorreq h4 {
+	font-size: 30px;
+}
+
+.tutorreq:hover {
+	background-color: lightgreen;
+	cursor: pointer;
+}
+
 #logout {
 	position: fixed;
 	top: 0;
