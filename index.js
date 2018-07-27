@@ -76,6 +76,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 	    $("#logout").css("display", "block");
 	    $(".create-div").css("display", "none");
 	    $("#indexlogout").fadeIn();
+	    $("#bookasession a").html("SEE ALL REQUESTS");
 	    $("#tutorsessions").fadeIn();
 
    	} else {
@@ -109,15 +110,10 @@ firebase.auth().onAuthStateChanged(function(user) {
     $(".main-div").css("display", "none");
     $("#logout").css("display", "block");
     $(".create-div").css("display", "none");
-<<<<<<< HEAD
     $("#bookasession a").html("BOOK A SESSION");
     $("#indexlogout").fadeIn();
 
 	}
-=======
-    $("#bookasession a").html("Book a Session");
-    $("#indexlogout").css("display", "block");
->>>>>>> 3a57d51d295e1aea0fbe14de0c9e60b5232a86b5
 
     if(user != null){
       $("#user").html("User: " + user.email + "");
@@ -148,8 +144,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#bookasession a").html("LOGIN/SIGNUP");
     $("#indexlogout").fadeOut();
     $("#tutorsessions").css("display", "none");
-    $("#bookasession a").html("Login Or Sign Up");
-    $("#indexlogout").css("display", "none");
     
   }
 });
@@ -157,10 +151,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 function takeSession() {
 	var date = event.currentTarget.childNodes[3].innerHTML;
 	var newdate = splitDate(date.slice(6));
-	var email = event.currentTarget.childNodes[0].innerHTML;
+	var email = event.currentTarget.childNodes[1].innerHTML;
 	var newemail = splitEmail(email.slice(7));
-	alert(newemail);
 	firebase.database().ref('requests/' + newdate + newemail).remove();
+	event.currentTarget.css("display", "none");
 }
 
 function sessionstab() {
