@@ -556,7 +556,7 @@ h1 strong {
 }
 
 .tutorreq:hover {
-	background-color: lightgreen;
+	background-color: #ddd;
 	cursor: pointer;
 }
 

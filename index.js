@@ -100,8 +100,15 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var time = snap.child("time").val();
 		var tutor = snap.child("tutor").val();
 
+		var color;
+		if(done == "yes") {
+			color = "lightgreen";
+		} else {
+			color = "white";
+		}
+
 		if(date != null) {
-			$("#sessionsbody").append("<div class=\"req\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+			$("#sessionsbody").append("<div class=\"req\" style=\"background-color: " + color + "\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
 		}
 	});
 
@@ -121,6 +128,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     var tutorReq = firebase.database().ref('requests');
 
+
+
     tutorReq.on("child_added", snap => {
 		var date = snap.child("date").val();
 		var done = snap.child("done").val();
@@ -130,9 +139,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var time = snap.child("time").val();
 		var tutor = snap.child("tutor").val();
 
+		var color;
+		if(done == "yes") {
+			color = "lightgreen";
+		} else {
+			color = "white";
+		}
+
 		var newDate = splitDate(date);
-		if(date != null) {
-			$("#tutorsessionsbody").append("<div class=\"tutorreq\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+		if(newDate != null) {
+			$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"background-color: " + color + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
 		}
 	});
 
@@ -153,9 +169,13 @@ function takeSession() {
 	var newdate = splitDate(date.slice(6));
 	var email = event.currentTarget.childNodes[1].innerHTML;
 	var newemail = splitEmail(email.slice(7));
-	firebase.database().ref('requests/' + newdate + newemail).remove();
-	firebase.database().ref('users/' + newemail + "/" + newdate).remove();
-	window.location.reload(true);
+	var person = prompt("Please enter your name:");
+	var yes = "yes";
+	firebase.database().ref('requests/' + newdate + newemail).child("done").set(yes);
+	firebase.database().ref('users/' + newemail + "/" + newdate).child("done").set(yes);
+	firebase.database().ref('requests/' + newdate + newemail).child("tutor").set(person);
+	firebase.database().ref('users/' + newemail + "/" + newdate).child("tutor").set(person);
+
 }
 
 function sessionstab() {
