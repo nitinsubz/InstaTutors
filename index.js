@@ -154,7 +154,8 @@ function takeSession() {
 	var email = event.currentTarget.childNodes[1].innerHTML;
 	var newemail = splitEmail(email.slice(7));
 	firebase.database().ref('requests/' + newdate + newemail).remove();
-	event.currentTarget.css("display", "none");
+	firebase.database().ref('users/' + newemail + "/" + newdate).remove();
+	window.location.reload(true);
 }
 
 function sessionstab() {
