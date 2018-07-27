@@ -98,7 +98,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#mainbody").css("display", "none");
     $(".main-div").fadeIn();
     $("#logout").css("display", "none");
-    $("#bookasession a").html("LOGIN/SIGNUP");
+    $("#bookasession a").html("Login Or Sign Up");
     $("#indexlogout").css("display", "none");
     
   }

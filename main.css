@@ -391,14 +391,14 @@ h1 strong {
 
 #footer {
 	width: 100%;
-	padding: 10px 0px;
+	padding: 7px 0px;
 	background-color: #666;
 }
 
 #footer p {
 	text-align: center;
 	color: white;
-	font-size: 20px;
+	font-size: 15px;
 }
 
 /*Confirmed*/
@@ -435,7 +435,7 @@ h1 strong {
 .main-div, .create-div {
   width: 25%;
   margin: 0px auto;
-  margin-top: 150px;
+  margin-top: 90px;
   padding: 20px;
   display: none;
 }

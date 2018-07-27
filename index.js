@@ -109,10 +109,15 @@ firebase.auth().onAuthStateChanged(function(user) {
     $(".main-div").css("display", "none");
     $("#logout").css("display", "block");
     $(".create-div").css("display", "none");
+<<<<<<< HEAD
     $("#bookasession a").html("BOOK A SESSION");
     $("#indexlogout").fadeIn();
 
 	}
+=======
+    $("#bookasession a").html("Book a Session");
+    $("#indexlogout").css("display", "block");
+>>>>>>> 3a57d51d295e1aea0fbe14de0c9e60b5232a86b5
 
     if(user != null){
       $("#user").html("User: " + user.email + "");
@@ -143,6 +148,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#bookasession a").html("LOGIN/SIGNUP");
     $("#indexlogout").fadeOut();
     $("#tutorsessions").css("display", "none");
+    $("#bookasession a").html("Login Or Sign Up");
+    $("#indexlogout").css("display", "none");
     
   }
 });
