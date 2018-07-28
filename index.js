@@ -102,13 +102,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 		var color;
 		if(done == "yes") {
-			color = "lightgreen";
+			color = " green";
 		} else {
-			color = "white";
+			color = "";
 		}
 
 		if(date != null) {
-			$("#sessionsbody").append("<div class=\"req\" style=\"background-color: " + color + "\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+			$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
 		}
 	});
 
@@ -175,7 +175,24 @@ function takeSession() {
 	firebase.database().ref('users/' + newemail + "/" + newdate).child("done").set(yes);
 	firebase.database().ref('requests/' + newdate + newemail).child("tutor").set(person);
 	firebase.database().ref('users/' + newemail + "/" + newdate).child("tutor").set(person);
+}
 
+function cancel() {
+	var input = prompt("To cancel a session, please input your email.");
+	var date = event.currentTarget.parentNode.childNodes[3].innerHTML;
+	var newdate = date.slice(6);
+	var email = firebase.auth().currentUser.email;
+	var newemail = splitEmail(email);
+	if(input == email) {
+		firebase.database().ref('requests/' + newdate + newemail).remove();
+		firebase.database().ref('users/' + newemail + "/" + newdate).remove();
+		firebase.database().ref('requests/' + newdate + newemail).remove();
+		firebase.database().ref('users/' + newemail + "/" + newdate).remove();
+		alert("Tutoring session for " + newdate + " canceled.  page will refresh now.");
+		window.location.reload(true);
+	} else {
+		alert("wrong email. aborting.")
+	}
 }
 
 function sessionstab() {

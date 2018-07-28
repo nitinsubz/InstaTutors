@@ -640,6 +640,7 @@ h1 strong {
 	border-radius: 20px;
 	margin-bottom: 20px;
 	box-shadow: 5px 5px 20px #666;
+	position: relative;
 }
 
 .req h2 {
@@ -650,6 +651,22 @@ h1 strong {
 	font-size: 30px;
 }
 
+.cancel {
+	color: #333;
+	font-size: 30px;
+	position: absolute;
+	top: 10px;
+	right: 20px;
+}
+
+.cancel:hover {
+	color: #c90000;
+	cursor: pointer;
+}
+
+.green {
+	background-color: lightgreen;
+}
 
 .slideanim {visibility:hidden;}
 
