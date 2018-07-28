@@ -70,21 +70,32 @@ firebase.auth().onAuthStateChanged(function(user) {
 
    	var split = splitEmail(user.email);
 
-   	if(user.email == "instatutorsteam@gmail.com") {
+   	var isTutor = firebase.database().ref('users/' + split).child('stat');
 
-   		$(".main-div").css("display", "none");
-	    $("#logout").css("display", "block");
-	    $(".create-div").css("display", "none");
-	    $("#indexlogout").fadeIn();
-	    $("#bookasession a").html("SEE ALL REQUESTS");
-	    $("#tutorsessions").fadeIn();
+	isTutor.on('value', snap => {
+		if(snap.val() == "tutor") {
+			$(".main-div").css("display", "none");
+		    $("#logout").css("display", "block");
+		    $(".create-div").css("display", "none");
+		    $("#indexlogout").fadeIn();
+		    $("#bookasession a").html("SEE ALL REQUESTS");
+		    $("#tutorsessions").fadeIn();
+		} else {
+			$("#mainbody").fadeIn();
+		    $(".main-div").css("display", "none");
+		    $("#logout").css("display", "block");
+		    $(".create-div").css("display", "none");
+		    $("#bookasession a").html("BOOK A SESSION");
+		    $("#indexlogout").fadeIn();
+		}
+	});
 
-   	} else {
 
     var userName = firebase.database().ref('users/' + split).child('name');
 
 	userName.on('value', snap => {
 		$("#welcome").html("Welcome " + snap.val()+ "!");
+		$("#tutorwelcome").html("Welcome " + snap.val()+ "!");
 	});
 
 	//add requests to 'my sessions'
@@ -112,15 +123,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 		}
 	});
 
-
-    $("#mainbody").fadeIn();
-    $(".main-div").css("display", "none");
-    $("#logout").css("display", "block");
-    $(".create-div").css("display", "none");
-    $("#bookasession a").html("BOOK A SESSION");
-    $("#indexlogout").fadeIn();
-
-	}
 
     if(user != null){
       $("#user").html("User: " + user.email + "");
@@ -214,13 +216,14 @@ function openCreate() {
 var database = firebase.database();
 
 //send account data to firebase
-function writeAccount(name, email, phone) {
+function writeAccount(name, email, phone, stat) {
 	var split = splitEmail(email);
 
 		firebase.database().ref('users/' + split).set({
 			name: name,
 			phone: phone,
 		    email: email,
+		    stat: stat
 		 });
 }
 
@@ -232,6 +235,7 @@ function createAccount() {
 	var newPhone = $("#createphone").val();
 	var newPass = $("#createpassword").val();
 	var confirmPass = $("#confirmpassword").val();
+	var stat = "tutee";
 
 	if(newPass == confirmPass && newEmail != null) {
 		firebase.auth().createUserWithEmailAndPassword(newEmail, newPass).catch(function(error) {
@@ -242,7 +246,7 @@ function createAccount() {
 		});
 		firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
 
-		writeAccount(newName, newEmail, newPhone);
+		writeAccount(newName, newEmail, newPhone, stat);
 
 	} else {
 		$("#errormessage2").html("Please make sure your passwords match.");
@@ -386,6 +390,7 @@ function validatemsg() {
 		return true;
 	}
 }
+
 
 
 
