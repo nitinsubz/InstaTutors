@@ -80,6 +80,21 @@ firebase.auth().onAuthStateChanged(function(user) {
 		    $("#indexlogout").fadeIn();
 		    $("#bookasession a").html("SEE ALL REQUESTS");
 		    $("#tutorsessions").fadeIn();
+
+		    var mySession = firebase.database().ref('users/' + split);
+
+			mySession.on("child_added", snap => {
+			var date = snap.child("date").val();
+			var email = snap.child("email").val();
+			var location = snap.child("location").val();
+			var subject = snap.child("subject").val();
+			var time = snap.child("time").val();
+
+			if(date != null) {
+				$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>email: " + email + "</h4>");
+			}
+		});		    
+
 		} else {
 			$("#mainbody").fadeIn();
 		    $(".main-div").css("display", "none");
@@ -87,6 +102,30 @@ firebase.auth().onAuthStateChanged(function(user) {
 		    $(".create-div").css("display", "none");
 		    $("#bookasession a").html("BOOK A SESSION");
 		    $("#indexlogout").fadeIn();
+
+		    var reqRef = firebase.database().ref('users/' + split);
+
+	//date, time, location, tutor, done, subject
+			reqRef.on("child_added", snap => {
+				var date = snap.child("date").val();
+				var done = snap.child("done").val();
+				var email = snap.child("email").val();
+				var location = snap.child("location").val();
+				var subject = snap.child("subject").val();
+				var time = snap.child("time").val();
+				var tutor = snap.child("tutor").val();
+
+				var color;
+				if(done == "yes") {
+					color = " green";
+				} else {
+					color = "";
+				}
+
+				if(date != null) {
+					$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+				}
+			});
 		}
 	});
 
@@ -98,39 +137,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 		$("#tutorwelcome").html("Welcome " + snap.val()+ "!");
 	});
 
-	//add requests to 'my sessions'
-	var reqRef = firebase.database().ref('users/' + split);
-
-	//date, time, location, tutor, done, subject
-	reqRef.on("child_added", snap => {
-		var date = snap.child("date").val();
-		var done = snap.child("done").val();
-		var email = snap.child("email").val();
-		var location = snap.child("location").val();
-		var subject = snap.child("subject").val();
-		var time = snap.child("time").val();
-		var tutor = snap.child("tutor").val();
-
-		var color;
-		if(done == "yes") {
-			color = " green";
-		} else {
-			color = "";
-		}
-
-		if(date != null) {
-			$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
-		}
-	});
-
 
     if(user != null){
       $("#user").html("User: " + user.email + "");
     }
 
     var tutorReq = firebase.database().ref('requests');
-
-
 
     tutorReq.on("child_added", snap => {
 		var date = snap.child("date").val();
@@ -170,13 +182,33 @@ function takeSession() {
 	var date = event.currentTarget.childNodes[3].innerHTML;
 	var newdate = date.slice(6);
 	var email = event.currentTarget.childNodes[1].innerHTML;
+	var time = event.currentTarget.childNodes[5].innerHTML.slice(6);
+	var location = event.currentTarget.childNodes[6].innerHTML.slice(10);
+	var subject = event.currentTarget.childNodes[7].innerHTML.slice(9);
 	var newemail = splitEmail(email.slice(7));
-	var person = prompt("Please enter your name:");
+	var r = confirm("Confirm that you can commit to tutoring this session?");
 	var yes = "yes";
-	firebase.database().ref('requests/' + newdate + newemail).child("done").set(yes);
-	firebase.database().ref('users/' + newemail + "/" + newdate).child("done").set(yes);
-	firebase.database().ref('requests/' + newdate + newemail).child("tutor").set(person);
-	firebase.database().ref('users/' + newemail + "/" + newdate).child("tutor").set(person);
+
+	var split = splitEmail(firebase.auth().currentUser.email);
+
+	var userName = firebase.database().ref('users/' + split).child('name');
+
+	if(r == true) {
+		userName.on('value', snap => {
+			firebase.database().ref('requests/' + newdate + newemail).child("tutor").set(snap.val());
+			firebase.database().ref('users/' + newemail + "/" + newdate).child("tutor").set(snap.val());
+		});
+		firebase.database().ref('requests/' + newdate + newemail).child("done").set(yes);
+		firebase.database().ref('users/' + newemail + "/" + newdate).child("done").set(yes);
+		alert("confirmed.");
+		firebase.database().ref('users/' + split + "/" + newdate).set({
+		    email: email.slice(7),
+		    date: newdate,
+		    time: time,
+			location: location,
+			subject: subject,	
+		 });
+	}	
 }
 
 function cancel() {
@@ -205,6 +237,16 @@ function sessionstab() {
 function booktab() {
 	$("#booktab").fadeIn();
 	 $("#sessionstab").css("display", "none");
+}
+
+function allsessionstab() {
+	$("#allsessions").fadeIn();
+	 $("#tutormysessions").css("display", "none");
+}
+
+function tutorsessionstab() {
+	$("#tutormysessions").fadeIn();
+	 $("#allsessions").css("display", "none");
 }
 
 function openCreate() {

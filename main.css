@@ -543,6 +543,19 @@ h1 strong {
 	margin-top: -50px;
 }
 
+#tutormysessions h1 {
+	background-color: #ae3dc6;
+	padding: 140px 10% 90px 10%;
+	color: white;
+	font-size: 60px;
+	text-align: center;
+}
+
+#tutormysessionsbody {
+	margin-top: -50px;
+	padding: 0px 10% 50px 10%;
+}
+
 .tutorreq {
 	padding: 50px 5%;
 	border-radius: 20px;
@@ -584,14 +597,14 @@ h1 strong {
 	text-decoration: none;
 }
 
-#servicenav {
+#servicenav, #tutornav {
 	position: fixed;
 	z-index: 89;
 	right: 150px;
 	margin: 0px;
 }
 
-#servicenav button {
+#servicenav button, #tutornav button {
 	padding: 15px 40px;
 	margin: 0px;
 	border: 0;
@@ -602,6 +615,11 @@ h1 strong {
 }
 
 #servicenav button:hover {
+	background-color: #dc5c0f;
+	color: white;
+}
+
+#tutornav button:hover {
 	background-color: #dc5c0f;
 	color: white;
 }
@@ -666,6 +684,10 @@ h1 strong {
 
 .green {
 	background-color: lightgreen;
+}
+
+#tutormysessions {
+	display: none;
 }
 
 .slideanim {visibility:hidden;}
