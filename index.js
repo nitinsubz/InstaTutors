@@ -153,16 +153,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var time = snap.child("time").val();
 		var tutor = snap.child("tutor").val();
 
-		var color;
+		var display;
 		if(done == "yes") {
-			color = "lightgreen";
+			display = "none";
 		} else {
-			color = "white";
+			display = "block";
 		}
 
 		var newDate = date;
 		if(newDate != null) {
-			$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"background-color: " + color + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + newDate + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+			$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + newDate + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
 		}
 	});
 
