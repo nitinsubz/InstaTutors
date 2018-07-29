@@ -200,7 +200,7 @@ function takeSession() {
 		});
 		firebase.database().ref('requests/' + newdate + newemail).child("done").set(yes);
 		firebase.database().ref('users/' + newemail + "/" + newdate).child("done").set(yes);
-		alert("confirmed.");
+		alert("confirmed. ");
 		firebase.database().ref('users/' + split + "/" + newdate).set({
 		    email: email.slice(7),
 		    date: newdate,

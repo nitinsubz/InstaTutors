@@ -51,6 +51,7 @@ h1 strong {
 	list-style-type: none;
 	padding: 14px 30px;
 	margin: 5px;
+	background-color: white;
 }
 
 .navig a {
@@ -293,6 +294,55 @@ h1 strong {
 	animation: Gradient 10s ease infinite;
 	transition-duration: 0.6s;
 	overflow-y: hidden;
+}
+
+/*Team*/
+#teamhead {
+	padding: 120px 10% 170px 10%;
+	background: url('images/teamhead.png');
+	background-position: 100% 100%;
+	color: white;
+}
+
+#teamhead h1 {
+	font-size: 60px;
+}
+
+#teamhead h3 {
+	font-size: 35px;
+}
+
+#leadership {
+	margin: -130px 8% 60px 8%;
+	background-color: white;
+	padding: 60px 8%;
+	border-radius: 20px;
+}
+
+#leadership h1 {
+	font-size: 40px;
+	color: #444;
+}
+
+#leadership .row {
+	padding: 30px 0px;
+}
+
+.leader {
+	text-align: center;
+	padding: 10px;
+}
+
+.leader img {
+	width: 100%;
+}
+
+.leader h3 {
+	font-size: 30px;
+}
+
+.leader h5 {
+	font-size: 24px;
 }
 
 @-webkit-keyframes Gradient {
@@ -539,7 +589,7 @@ h1 strong {
 }
 
 #tutorsessionsbody {
-	padding: 0px 10%;
+	padding: 0px 10% 50px 10%;
 	margin-top: -50px;
 }
 
