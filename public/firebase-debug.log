@@ -1,0 +1,41 @@
+[debug] [2018-07-31T07:27:59.812Z] ----------------------------------------------------------------------
+[debug] [2018-07-31T07:27:59.816Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-07-31T07:27:59.816Z] CLI Version:   3.19.3
+[debug] [2018-07-31T07:27:59.816Z] Platform:      darwin
+[debug] [2018-07-31T07:27:59.816Z] Node Version:  v8.11.2
+[debug] [2018-07-31T07:27:59.817Z] Time:          Tue Jul 31 2018 00:27:59 GMT-0700 (PDT)
+[debug] [2018-07-31T07:27:59.817Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-31T07:27:59.847Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-31T07:27:59.847Z] > authorizing via signed-in user
+[debug] [2018-07-31T07:27:59.849Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-07-31T07:27:59.850Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/xhPesBlqTm7530Mhc-l9MErCY-A3DS04Sfqt4_Dx3fA',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Jul 31 2018 00:27:59 GMT-0700 (PDT)
+[debug] [2018-07-31T07:28:00.384Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-31T07:28:00.403Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/insta-tutors  
+  
+ Tue Jul 31 2018 00:28:00 GMT-0700 (PDT)
+[debug] [2018-07-31T07:28:01.344Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-31T07:28:01.345Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/insta-tutors/tokens  
+  
+ Tue Jul 31 2018 00:28:01 GMT-0700 (PDT)
+[debug] [2018-07-31T07:28:02.138Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-31T07:28:02.139Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/insta-tutors  
+  
+ Tue Jul 31 2018 00:28:02 GMT-0700 (PDT)
+[debug] [2018-07-31T07:28:02.713Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/samyang/Desktop/instatutors(local)/InstaTutors'...
+[info] 
+[debug] [2018-07-31T07:28:02.716Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/624098741421/clients/_:getWebAppConfig  
+  
+ Tue Jul 31 2018 00:28:02 GMT-0700 (PDT)
+[debug] [2018-07-31T07:28:03.271Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+

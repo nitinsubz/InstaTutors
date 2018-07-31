@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<title>Book a Session</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:300,700|Monoton" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+<body>
+		<div id="navbar">
+			<ul id="nav" class="fader">
+				<li id="home"><a href="index.html"><img src="images/logo.png"></a></li>
+			   <!--<li class="navig"><a href="donate.html">Donate</a></li>-->
+			   <a id="logout" onclick="logout()">Logout</a>
+			</ul>
+		</div>
+		<!--<div id="container1" onclick="rotate(this)">
+			<div class="bar1">
+			</div>
+			<div class="bar2">
+			</div>
+		</div>
+		<div id="phonenavlinks">
+			<li class="navig2"><a href="about.html">About</a></li>
+			<li class="navig2"><a href="service.html">Service</a></li>
+			<li class="navig2"><a href="videos.html">Videos</a></li>
+		</div>-->
+		<div class="create-div">
+		    <h3>Create an Account</h3>
+		    <input type="name" placeholder="Enter your Name..." id="createname" />
+		    <input type="email" placeholder="Enter a Valid Email Address..." id="createemail" />
+		    <input type="password" placeholder="Enter a Password..." id="createpassword" />
+		    <input type="password" placeholder="Confirm your Password..." id="confirmpassword" />
+		    <input type="name" placeholder="Enter a phone number (optional)..." id="createphone" />
+		    <p id="errormessage2"></p>
+		    <a onclick="createAccount()" id="create">Let's Go!</a>
+		 </div>
+
+		<div id="login_div" class="main-div">
+		    <h3>Log In</h3>
+		    <input type="email" placeholder="Email..." id="email_field" />
+		    <input type="password" placeholder="Password..." id="password_field" />
+		    <p id="errormessage"></p>
+		    <button onclick="login()" id="login">Login to Account</button>
+		    <h4>Don't have an account? <a onclick="openCreate()">Create One Today!</a></h4>
+		 </div>
+	<div id="mainbody">
+		<div id="servicenav">
+			<button id="booknav" onclick="booktab()">Book A Session</button>
+			<button id="sessionsnav" onclick="sessionstab()">My Sessions</button>
+		</div>
+
+	    <div class="tab-content" id="myTabContent">
+			<div class="tab" id="booktab">
+				<div id="bookheader">
+					<h1 id="welcome">Welcome <strong></strong>!</h1>
+					<h3>Book A Session</h3>
+				</div>
+				<div id="bookform">
+					<form>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Preferred Location:
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="location" id="location" placeholder="Enter your preferred location, ex. Kennedy Middle School..."><br>
+				   		</div>
+				   	</div>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Date:
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="date" name="date" id="date" placeholder="Enter the date for when you would wish to be tutored..."><br>
+				   		</div>
+				   	</div>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Time:
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="time" id="time" placeholder="Enter your preferred time..."><br>
+				   		</div>
+				   	</div>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Tutor Request (optional):
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="tutor" id="tutor" placeholder="If you have a preferred tutor, enter their name here..."><br>
+				   		</div>
+				   	</div>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Subject:
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="subject" id="subject" placeholder="Enter the subject you request help in..."><br>
+				   		</div>
+				   	</div>
+				   	<p id="formerrors"></p>
+				   	<a href="confirmed.html" id="submit" onclick="validate(), sendEmail()">Submit</a>
+				    </form>
+				</div>
+			</div>
+			<div id="sessionstab">
+				<div id="sessionsheader">
+					<h1>My Sessions</h1>
+					<h3 id="user">User: </h3>
+				</div>
+				<div id="sessionsbody">
+
+
+				</div>
+			</div>
+
+		</div>
+		<div id="footer">
+			<p>&#169; InstaTutors 2018.</a></p>
+		</div>
+	</div>
+	<div id="tutorsessions">
+		<div id="tutornav">
+			<button id="booknav" onclick="allsessionstab()">See All Requests</button>
+			<button id="sessionsnav" onclick="tutorsessionstab()">My Sessions</button>
+		</div>
+		<div id="allsessions">
+			<div id="tutorsessionshead">
+				<h1 id="tutorwelcome">Welcome Tutor!</h1>
+			</div>
+			<div id="tutorsessionsbody">
+			</div>
+		</div>
+		<div id="tutormysessions">
+			<h1>My Sessions</h1>
+			<div id="tutormysessionsbody">
+			</div>
+		</div>
+		<div id="footer">
+			<p>&#169; InstaTutors 2018.</a></p>
+		</div>
+	</div>
+
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+	<script src="firebase.js">
+	</script>
+	<script src="index.js">
+    </script>
+    <script src="email.js">
+    </script>
+</body>
+</html>
+

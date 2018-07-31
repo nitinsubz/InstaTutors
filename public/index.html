@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<title>Insta Tutors</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:300,700|Monoton" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+<body>
+		<div id="navbar">
+			<div id="home" class="slideleft"><a href="index.html"><img src="images/logo.png"></a></div>
+			<ul id="nav" class="slideright">
+			   	<li class="navig"><a href="team.html">Team</a></li>
+			   	<li class="navig"><a id="contactnav">Contact</a></li>
+			   	<li class="navig"><a id="faqnav">FAQs</a></li>
+			   	<li class="navig" id="bookasession"><a href="login.html">LOGIN/SIGNUP</a></li>
+			   	<li class="navig" id="indexlogout"><a onclick="logout()">LOGOUT</a></li>
+			</ul>
+		</div>
+		<!--<div id="container1" onclick="rotate(this)">
+			<div class="bar1">
+			</div>
+			<div class="bar2">
+			</div>
+		</div>
+		<div id="phonenavlinks">
+			<li class="navig2"><a href="about.html">About</a></li>
+			<li class="navig2"><a href="service.html">Service</a></li>
+			<li class="navig2"><a href="videos.html">Videos</a></li>
+		</div>-->
+		<div id="indexhead">
+			<h1 class="slideleft">SIMPLIFYING <strong>TUTORING.</strong></h1>
+			<h2 id="indexquote">"Never doubt that a small group of thoughtful, committed citizens can change the world; indeed, it's the only thing that ever has."</h2> <h3 style="margin-left: 70%;">- Margaret Mead</h3>
+			<br><br>
+			<a href="login.html" class="slideup">GET STARTED</a>
+		</div>
+		<div id="info">
+			<h1>3 <strong>Easy</strong> Steps</h1>
+			<div class="border-bot slideanim" style="background-color: white;"></div>
+			<ol>
+				<div class="row">
+					<div class="col-sm-4">
+						<li class="slideanim">Create an account or Log In if you already have an account.</li>
+						<iframe src="https://giphy.com/embed/4TnZOrLmZkcy1p4tdj" height="300" frameBorder="0" class="slideanim"></iframe>
+					</div>
+					<div class="col-sm-4">
+						<li class="slideanim">Request a tutor through our online form.</li>
+						<iframe src="https://giphy.com/embed/1msBiAAL5rTBfAyZoL" height="200" frameBorder="0" class="slideanim"></iframe>
+					</div>
+					<div class="col-sm-4">
+						<li class="slideanim">Your tutor will contact you within 24 hours!</li>
+						<img src="images/email.gif" style="width: 100%" class="slideanim">
+					</div>
+				</div>
+			</ol>
+		</div>
+		<div id="contact">
+			<h1 class="slideanim2">Get In <strong>Touch</strong></h1>
+			<div class="border-bot slideanim" style="background-color: #dc5c0f;"></div>
+			<h4 class="slideanim2">Our Email: <a href="mailto:instatutorsteam@gmail.com">instatutorsteam@gmail.com</a></h4>
+			<h3 class="slideanim2">Send Us A Message</h3>
+			<form action="https://formspree.io/nitin@zooglr.com" method="POST" class="slideanim">
+				<div class="row">
+					<div class="col-sm-6">
+					    Name:<br>
+					    <input type="text" id="msgname" name="msgname" placeholder="Your name..">
+					</div>
+					<div class="col-sm-6">
+					    Email:<br>
+					    <input type="text" id="msgemail" name="email" placeholder="Your email..">
+					   </div>
+				</div>
+				    Your Message:<br>
+				    <input type="text" id="msg" name="msg" placeholder="Your message..">
+			    <button type="submit" id="submit" onclick="validatemsg()">Submit</button>
+			  </form>
+		</div>
+		<div id="faq">
+			<h1 class="slideanim2">Frequently Asked Questions</h1>
+			<div class="border-bot slideanim" style="background-color: white;"></div>
+			<div class="faqsec">
+				<div class="question slideanim" id="question1">
+					<p><i class="fas fa-arrow-right"></i>  Are all tutoring sessions free?</p>
+				</div>
+				<div class="answer slideanim" id="answer1">
+					<p>Yes.</p>
+				</div>
+			</div>
+			<div class="faqsec">
+				<div class="question slideanim" id="question2">
+					<p><i class="fas fa-arrow-right"></i>  What is the no-show policy?</p>
+				</div>
+				<div class="answer slideanim" id="answer2">
+					<p>Your account will be terminated if you do not show up to 2 tutoring sessions.</p>
+				</div>
+			</div>
+			<div class="faqsec">
+				<div class="question slideanim" id="question3">
+					<p><i class="fas fa-arrow-right"></i>  Can I request a certain tutor?</p>
+				</div>
+				<div class="answer slideanim" id="answer3">
+					<p>Yes, that is an option on our booking page.</p>
+				</div>
+			</div>
+			<div class="faqsec">
+				<div class="question slideanim" id="question4">
+					<p><i class="fas fa-arrow-right"></i>  How can I become a tutor?</p>
+				</div>
+				<div class="answer slideanim" id="answer4">
+					<p>There is a link on our "team" page.</p>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<p>&#169; InstaTutors 2018.</a></p>
+		</div>
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+	<script src="firebase.js">
+	</script>
+	<script src="index.js">
+    </script>
+</body>
+</html>
+
