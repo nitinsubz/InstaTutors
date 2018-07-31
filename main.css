@@ -736,6 +736,10 @@ h1 strong {
 	background-color: lightgreen;
 }
 
+.green .cancel {
+	display: none;
+}
+
 #tutormysessions {
 	display: none;
 }
