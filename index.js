@@ -336,6 +336,10 @@ function login() {
 
 	    // ...
 	  });
+
+	if(firebase.auth().currentUser.emailVerified == false) {
+		$("#email_div").fadeIn();
+	}
 }
 
 function logout(){
