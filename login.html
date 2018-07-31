@@ -14,12 +14,6 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-	<script type="text/javascript">
-	   (function(){
-	      emailjs.init("user_IDA6ukInXIWMkgcv32gNt");
-	   })();
-	</script>
     <link rel="stylesheet" href="main.css">
 <body>
 		<div id="navbar">
@@ -114,7 +108,7 @@
 				   		</div>
 				   	</div>
 				   	<p id="formerrors"></p>
-				   	<a href="confirmed.html" id="submit" onclick="validate()">Submit</a>
+				   	<a href="confirmed.html" id="submit" onclick="validate(), sendEmail()">Submit</a>
 				    </form>
 				</div>
 			</div>
@@ -160,6 +154,8 @@
 	<script src="firebase.js">
 	</script>
 	<script src="index.js">
+    </script>
+    <script src="email.js">
     </script>
 </body>
 </html>
