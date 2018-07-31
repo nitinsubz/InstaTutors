@@ -201,6 +201,22 @@ function sendVerification() {
 	});
 }
 
+function openResetPass() {
+	$(".main-div").css("display", "none");
+	$("#reset_div").fadeIn();
+}
+
+function resetPass() {
+	var emailAddress = $("#reset_email_field").val();
+
+	firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
+	  alert("Reset email sent!  Please check your inbox and follow the instructions in the email.")
+	}).catch(function(error) {
+	  alert(error.message);
+	  console.log(error);
+	});
+}
+
 function takeSession() {
 	var date = event.currentTarget.childNodes[3].innerHTML;
 	var newdate = date.slice(6);

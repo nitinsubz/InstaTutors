@@ -49,9 +49,17 @@
 		    <h3>Log In</h3>
 		    <input type="email" placeholder="Email..." id="email_field" />
 		    <input type="password" placeholder="Password..." id="password_field" />
+		    <a onclick="openResetPass()">Forgot Password?</a>
 		    <p id="errormessage"></p>
 		    <button onclick="login()" id="login">Login to Account</button>
 		    <h4>Don't have an account? <a onclick="openCreate()">Create One Today!</a></h4>
+		 </div>
+
+		 <div id="reset_div">
+		 	<h3>Reset Your Password</h3>
+		 	<input type="email" placeholder="Email..." id="reset_email_field" />
+		 	<a onclick="resetPass()">Send Reset Email</a>
+		 	<a href="login.html">Log In</a>
 		 </div>
 
 		 <div id="email_div">
