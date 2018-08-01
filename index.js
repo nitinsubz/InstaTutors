@@ -77,7 +77,8 @@ firebase.auth().onAuthStateChanged(function(user) {
    	if(email_verified == false) {
 
    		$("#email_div").fadeIn();
-
+   		$(".main-div").css("display", "none");
+   		
    	} else {
    		$("#email_div").css("display", "none");
 

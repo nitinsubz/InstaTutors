@@ -70,64 +70,78 @@ firebase.auth().onAuthStateChanged(function(user) {
 
    	var split = splitEmail(user.email);
 
-   	var isTutor = firebase.database().ref('users/' + split).child('stat');
+   	var email_verified = user.emailVerified;
+   	console.log(email_verified);
 
-	isTutor.on('value', snap => {
-		if(snap.val() == "tutor") {
-			$(".main-div").css("display", "none");
-		    $("#logout").css("display", "block");
-		    $(".create-div").css("display", "none");
-		    $("#indexlogout").fadeIn();
-		    $("#bookasession a").html("SEE ALL REQUESTS");
-		    $("#tutorsessions").fadeIn();
 
-		    var mySession = firebase.database().ref('users/' + split);
+   	if(email_verified == false) {
 
-			mySession.on("child_added", snap => {
-			var date = snap.child("date").val();
-			var email = snap.child("email").val();
-			var location = snap.child("location").val();
-			var subject = snap.child("subject").val();
-			var time = snap.child("time").val();
+   		$("#email_div").fadeIn();
+   		$(".main-div").css("display", "none");
+   		
+   	} else {
+   		$("#email_div").css("display", "none");
 
-			if(date != null) {
-				$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>email: " + email + "</h4>");
-			}
-		});		    
+	   	var isTutor = firebase.database().ref('users/' + split).child('stat');
 
-		} else {
-			$("#mainbody").fadeIn();
-		    $(".main-div").css("display", "none");
-		    $("#logout").css("display", "block");
-		    $(".create-div").css("display", "none");
-		    $("#bookasession a").html("BOOK A SESSION");
-		    $("#indexlogout").fadeIn();
+		isTutor.on('value', snap => {
+			if(snap.val() == "tutor") {
+				$(".main-div").css("display", "none");
+			    $("#logout").css("display", "block");
+			    $(".create-div").css("display", "none");
+			    $("#indexlogout").fadeIn();
+			    $("#bookasession a").html("SEE ALL REQUESTS");
+			    $("#tutorsessions").fadeIn();
 
-		    var reqRef = firebase.database().ref('users/' + split);
+			    var mySession = firebase.database().ref('users/' + split);
 
-	//date, time, location, tutor, done, subject
-			reqRef.on("child_added", snap => {
+				mySession.on("child_added", snap => {
 				var date = snap.child("date").val();
-				var done = snap.child("done").val();
 				var email = snap.child("email").val();
 				var location = snap.child("location").val();
 				var subject = snap.child("subject").val();
 				var time = snap.child("time").val();
-				var tutor = snap.child("tutor").val();
-
-				var color;
-				if(done == "yes") {
-					color = " green";
-				} else {
-					color = "";
-				}
 
 				if(date != null) {
-					$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+					$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>email: " + email + "</h4>");
 				}
-			});
-		}
-	});
+			});		    
+
+			} else {
+				$("#mainbody").fadeIn();
+			    $(".main-div").css("display", "none");
+			    $("#logout").css("display", "block");
+			    $(".create-div").css("display", "none");
+			    $("#bookasession a").html("BOOK A SESSION");
+			    $("#indexlogout").fadeIn();
+
+			    var reqRef = firebase.database().ref('users/' + split);
+
+		//date, time, location, tutor, done, subject
+				reqRef.on("child_added", snap => {
+					var date = snap.child("date").val();
+					var done = snap.child("done").val();
+					var email = snap.child("email").val();
+					var location = snap.child("location").val();
+					var subject = snap.child("subject").val();
+					var time = snap.child("time").val();
+					var tutor = snap.child("tutor").val();
+
+					var color;
+					if(done == "yes") {
+						color = " green";
+					} else {
+						color = "";
+					}
+
+					if(date != null) {
+						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+					}
+				});
+			}
+		});
+
+	}
 
 
     var userName = firebase.database().ref('users/' + split).child('name');
@@ -177,6 +191,32 @@ firebase.auth().onAuthStateChanged(function(user) {
     
   }
 });
+
+function sendVerification() {
+	var user = firebase.auth().currentUser;
+
+	user.sendEmailVerification().then(function() {
+	  alert("Email verification sent!  Check your inbox in 2-3 minutes, and follow the instructions in the email.")
+	}).catch(function(error) {
+	  alert("Error: " + error.message);
+	});
+}
+
+function openResetPass() {
+	$(".main-div").css("display", "none");
+	$("#reset_div").fadeIn();
+}
+
+function resetPass() {
+	var emailAddress = $("#reset_email_field").val();
+
+	firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
+	  alert("Reset email sent!  Please check your inbox and follow the instructions in the email.")
+	}).catch(function(error) {
+	  alert(error.message);
+	  console.log(error);
+	});
+}
 
 function takeSession() {
 	var date = event.currentTarget.childNodes[3].innerHTML;
@@ -286,9 +326,13 @@ function createAccount() {
 		  var errorMessage = error.message;
 		  $("#errormessage2").html("Error : " + errorMessage);
 		});
+
 		firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
 
 		writeAccount(newName, newEmail, newPhone, stat);
+
+		$(".create-div").css("display", "none");
+		$("#email_div").fadeIn();
 
 	} else {
 		$("#errormessage2").html("Please make sure your passwords match.");
@@ -309,6 +353,10 @@ function login() {
 
 	    // ...
 	  });
+
+	if(firebase.auth().currentUser.emailVerified == false) {
+		$("#email_div").fadeIn();
+	}
 }
 
 function logout(){
