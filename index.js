@@ -450,9 +450,9 @@ function validate() {
 		var content = "Date: " + date + ", Time: " + time + ", Location: " + location + ", Subject: " + subject + ", Tutor: " + tutor;
 
 		Email.send("instatutorsteam@gmail.com",
-			"instatutorsteam@googlegroups.com",
+			"tutors@instatutors.org",
 			"New Tutoring Request",
-			content,
+			"New Tutoring Session ---- " + content,
 			"smtp.elasticemail.com",
 			"instatutorsteam@gmail.com",
 			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
