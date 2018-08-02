@@ -460,6 +460,14 @@ function validate() {
 			"instatutorsteam@gmail.com",
 			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
 
+		Email.send("instatutorsteam@gmail.com",
+			email,
+			"Tutoring Session Requested for " + date,
+			content,
+			"smtp.elasticemail.com",
+			"instatutorsteam@gmail.com",
+			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
+
 		return true;
 	}
 }
