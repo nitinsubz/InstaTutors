@@ -341,6 +341,14 @@ h1 strong {
 	padding: 10px 30px;
 }
 
+.tutor {
+	text-align: left;
+}
+
+.tutor {
+	padding: 40px 30px;
+}
+
 .leader img, .tutor img {
 	width: 100%;
 	border-radius: 100%;
@@ -348,9 +356,14 @@ h1 strong {
 
 .leader h3, .tutor h3 {
 	font-size: 30px;
+	text-align: center;
 }
 
-.leader h5, .tutor h5 {
+.tutor h3 {
+	padding-bottom: 10px;
+}
+
+.leader h5 {
 	font-size: 24px;
 }
 
@@ -360,6 +373,68 @@ h1 strong {
 
 #tutors h4 {
 	font-size: 40px;
+}
+
+.label {
+	border-radius: 20px;
+	padding: 6px 15px;
+	font-size: 16px;
+	line-height: 42px;
+}
+
+.math {
+	border: 2px solid #b63f36;
+	color: #b63f36;
+}
+
+.physics {
+	border: 2px solid #5e92d8;
+	color: #5e92d8;
+}
+
+.bio {
+	border: 2px solid #5ed876;
+	color: #5ed876;
+}
+
+.chem {
+	border: 2px solid #3bffdd;
+	color: #3bffdd;
+}
+
+.writing {
+	border: 2px solid gold;
+	color: gold;
+}
+
+.web {
+	border: 2px solid #af46b3;
+	color: #af46b3;
+}
+
+.java {
+	border: 2px solid #f983c3;
+	color: #f983c3;
+}
+
+.business {
+	border: 2px solid #10174f;
+	color: #10174f;
+}
+
+.history {
+	border: 2px solid #274f32;
+	color: #274f32;
+}
+
+.spanish {
+	border: 2px solid salmon;
+	color: salmon;
+}
+
+.french {
+	border: 2px solid #7d7dd0;
+	color: #7d7dd0;
 }
 
 @-webkit-keyframes Gradient {
