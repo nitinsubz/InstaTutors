@@ -5,7 +5,7 @@
 <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <link rel="icon" href="images/logo.png">
-<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:300,700|Monoton" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,700,800" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -63,7 +63,7 @@
 		 </div>
 
 		 <div id="email_div">
-		 	<h3>Please Verify Your Email Address</h3>
+		 	<h3 id="verifyemail">Please Verify Your Email Address: </h3>
 		 	<a onclick="sendVerification()">Send Verification Email</a>
 		 	<a href="login.html">Log In</a>
 		 </div>
@@ -77,7 +77,7 @@
 	    <div class="tab-content" id="myTabContent">
 			<div class="tab" id="booktab">
 				<div id="bookheader">
-					<h1 id="welcome">Welcome <strong></strong>!</h1>
+					<h1 onclick="sendEmail()" id="welcome">Welcome <strong></strong>!</h1>
 					<h3>Book A Session</h3>
 				</div>
 				<div id="bookform">
@@ -123,7 +123,7 @@
 				   		</div>
 				   	</div>
 				   	<p id="formerrors"></p>
-				   	<a href="confirmed.html" id="submit" onclick="validate(), sendEmail()">Submit</a>
+				   	<a href="confirmed.html" id="submit" onclick="validate()">Submit</a>
 				    </form>
 				</div>
 			</div>
@@ -167,6 +167,8 @@
 
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
 	<script src="firebase.js">
+	</script>
+	<script src="https://smtpjs.com/v2/smtp.js">
 	</script>
 	<script src="index.js">
     </script>

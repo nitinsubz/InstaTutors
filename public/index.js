@@ -31,6 +31,14 @@ $(window).scroll(function() {
     });
   });
 
+ $(window).scroll(function() {
+    var winTop = $(window).scrollTop();
+
+    $("#teamheadimg").css({
+    'margin-top' : winTop/1.2
+    });
+});
+
 $(document).ready(function() {
     $("#contactnav").click(function(event) {
         event.preventDefault();
@@ -68,6 +76,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     var user = firebase.auth().currentUser;
 
+    $("#verifyemail").html("Please Verify Your Email Address: <i>" + user.email + "</i>");
+
    	var split = splitEmail(user.email);
 
    	var email_verified = user.emailVerified;
@@ -78,7 +88,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
    		$("#email_div").fadeIn();
    		$(".main-div").css("display", "none");
-   		
+
    	} else {
    		$("#email_div").css("display", "none");
 
@@ -437,6 +447,16 @@ function validate() {
 		sessionStorage.setItem("tutor", tutor); 
 		sessionStorage.setItem("subject", subject);
 
+		var content = "Date: " + date + ", Time: " + time + ", Location: " + location + ", Subject: " + subject + ", Tutor: " + tutor;
+
+		Email.send("instatutorsteam@gmail.com",
+			"instatutorsteam@googlegroups.com",
+			"New Tutoring Request",
+			content,
+			"smtp.elasticemail.com",
+			"instatutorsteam@gmail.com",
+			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
+
 		return true;
 	}
 }
@@ -481,7 +501,17 @@ function validatemsg() {
 	}
 }
 
+function sendEmail() {
+	Email.send("instatutorsteam@gmail.com",
+			"samuel.q.yang@gmail.com",
+			"New Tutoring Request",
+			"new content",
+			"smtp.elasticemail.com",
+			"instatutorsteam@gmail.com",
+			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
 
+	console.log("email sent");
+}
 
 
 
