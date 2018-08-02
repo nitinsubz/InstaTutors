@@ -327,7 +327,7 @@ h1 strong {
 	border-radius: 20px;
 }
 
-#leadership h1 {
+#leadership h4 {
 	font-size: 40px;
 	color: #444;
 }
@@ -336,21 +336,30 @@ h1 strong {
 	padding: 30px 0px;
 }
 
-.leader {
+.leader, .tutor {
 	text-align: center;
-	padding: 10px;
+	padding: 10px 30px;
 }
 
-.leader img {
+.leader img, .tutor img {
 	width: 100%;
+	border-radius: 100%;
 }
 
-.leader h3 {
+.leader h3, .tutor h3 {
 	font-size: 30px;
 }
 
-.leader h5 {
+.leader h5, .tutor h5 {
 	font-size: 24px;
+}
+
+#tutors {
+	padding: 50px 16%;
+}
+
+#tutors h4 {
+	font-size: 40px;
 }
 
 @-webkit-keyframes Gradient {
