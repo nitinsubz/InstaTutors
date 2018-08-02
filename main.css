@@ -12,7 +12,7 @@ body, h1, body, div, a, ol, ul, li, h2, p, em, img, button {
 }
 
 h1 {
-	font-weight: 500;
+	font-weight: 700;
 }
 
 h1 strong {
@@ -73,22 +73,25 @@ h1 strong {
 	cursor: pointer;
 }
 
-#indexquote {
-	font-size: 29px;
-}
 /*Index*/
 #indexhead {
 	padding: 190px 10% 100px 10%;
 }
 
 #indexhead h1 {
-	font-size: 60px;
+	font-size: 70px;
 	color: #444;
 	margin-bottom: 35px;
+	color: #555;
 }
 
 #indexhead h1 strong {
 	color: #ae3dc6;
+}
+
+#indexquote {
+	font-size: 29px;
+	color: #777;
 }
 
 #indexhead a {
@@ -312,8 +315,9 @@ h1 strong {
 	font-size: 60px;
 }
 
-#teamhead h3 {
+#teamhead p {
 	font-size: 35px;
+	padding: 15px 0px;
 }
 
 #leadership {
