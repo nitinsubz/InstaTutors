@@ -885,7 +885,7 @@ h1 strong {
   @keyframes slide {
     0% {
       opacity: 0;
-      transform: translateY(30%);
+      transform: translateY(10%);
     } 
     100% {
       opacity: 1;
@@ -895,7 +895,7 @@ h1 strong {
   @-webkit-keyframes slideup {
     0% {
       opacity: 0;
-      -webkit-transform: translateY(30%);
+      -webkit-transform: translateY(10%);
     } 
     100% {
       opacity: 1;
@@ -906,7 +906,7 @@ h1 strong {
   @keyframes slideleft {
     0% {
       opacity: 0;
-      transform: translateX(-20%);
+      transform: translateX(-10%);
     } 
     100% {
       opacity: 1;
@@ -916,7 +916,7 @@ h1 strong {
   @-webkit-keyframes slideleft {
     0% {
       opacity: 0;
-      -webkit-transform: translateX(-20%);
+      -webkit-transform: translateX(-10%);
     } 
     100% {
       opacity: 1;
@@ -927,7 +927,7 @@ h1 strong {
   @keyframes slideright {
     0% {
       opacity: 0;
-      -webkit-transform: translateX(20%);
+      -webkit-transform: translateX(10%);
     } 
     100% {
       opacity: 1;
@@ -937,7 +937,7 @@ h1 strong {
   @-webkit-keyframes slideright {
     0% {
       opacity: 0;
-      -webkit-transform: translateX(20%);
+      -webkit-transform: translateX(10%);
     } 
     100% {
       opacity: 1;

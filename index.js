@@ -68,6 +68,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     var user = firebase.auth().currentUser;
 
+    $("#verifyemail").html("Please Verify Your Email Address: <i>" + user.email + "</i>");
+
    	var split = splitEmail(user.email);
 
    	var email_verified = user.emailVerified;
@@ -440,7 +442,7 @@ function validate() {
 		var content = "Date: " + date + ", Time: " + time + ", Location: " + location + ", Subject: " + subject + ", Tutor: " + tutor;
 
 		Email.send("instatutorsteam@gmail.com",
-			"samuel.q.yang@gmail.com",
+			"instatutorsteam@googlegroups.com",
 			"New Tutoring Request",
 			content,
 			"smtp.elasticemail.com",
