@@ -31,6 +31,14 @@ $(window).scroll(function() {
     });
   });
 
+ $(window).scroll(function() {
+    var winTop = $(window).scrollTop();
+
+    $("#teamheadimg").css({
+    'margin-top' : winTop/1.2
+    });
+});
+
 $(document).ready(function() {
     $("#contactnav").click(function(event) {
         event.preventDefault();
