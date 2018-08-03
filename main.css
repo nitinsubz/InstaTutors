@@ -389,17 +389,21 @@ h1 strong {
 	padding: 30px 0px;
 }
 
-.leader, .tutor {
+.leader {
 	text-align: center;
 	padding: 10px 30px;
 }
 
-.tutor {
-	text-align: center;
+.col4 {
+	width: 33%;
+	padding: 10px 3%;
+	float: left;
+	height: 520px;
+	background-color: white;
 }
 
 .tutor {
-	padding: 40px 30px;
+	text-align: center;
 }
 
 .leader img, .tutor img {
@@ -421,8 +425,9 @@ h1 strong {
 }
 
 #tutors {
-	padding: 100px 8%;
+	padding: 100px 8% 60px 8%;
 	margin: 40px 8%;
+	float: left;
 	position: relative;
 	z-index: 10;
 	border-radius: 20px;
@@ -494,6 +499,38 @@ h1 strong {
 	border: 2px solid #7d7dd0;
 	color: #7d7dd0;
 }
+
+#filter {
+	padding-bottom: 30px;
+}
+
+#filter span {
+	font-size: 20px;
+	margin: 0px 10px;
+}
+
+#filter button {
+	font-size: 20px;
+}
+
+#filter .dropdown-menu {
+	margin-left: 175px;
+}
+
+#filter .dropdown-item {
+	display: block;
+	padding: 5px 30px 5px 10px;
+	font-size: 18px;
+	color: #444;
+	transition-duration: 0.1s;
+}
+
+#filter .dropdown-item:hover {
+	background-color: #ddd;
+	text-decoration: none;
+	cursor: pointer;
+}
+
 
 @-webkit-keyframes Gradient {
 	0% {
