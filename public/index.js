@@ -441,17 +441,28 @@ function validate() {
 	} else {
 		writeRequest(email, location, date, time, subject, "no", tutor);
 
-		sessionStorage.setItem("location", location); 
-		sessionStorage.setItem("date", date); 
-		sessionStorage.setItem("time", time); 
-		sessionStorage.setItem("tutor", tutor); 
-		sessionStorage.setItem("subject", subject);
+		var content = "New Tutoring Session ----  \n Date: " + date + "\n Time: " + time + "\n Location: " + location + "\n Subject: " + subject + "\n Tutee Contact: " + email + "\n Tutor: " + tutor;
 
-		var content = "Date: " + date + ", Time: " + time + ", Location: " + location + ", Subject: " + subject + ", Tutor: " + tutor;
+		$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
+		$("#tutor2").html("Tutor: " + tutor);
+		$("#time2").html("Time: " + time);
+		$("#location2").html("Location: " + location);
+		$("#subject2").html("Subject: " + subject);
+
+		$("#mainbody").css("display", "none");
+		$("#confirmedbody").fadeIn();
 
 		Email.send("instatutorsteam@gmail.com",
-			"instatutorsteam@googlegroups.com",
-			"New Tutoring Request",
+			"tutors@instatutors.org",
+			"New Tutoring Request for " + date,
+			content,
+			"smtp.elasticemail.com",
+			"instatutorsteam@gmail.com",
+			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
+
+		Email.send("instatutorsteam@gmail.com",
+			email,
+			"Tutoring Session Requested for " + date,
 			content,
 			"smtp.elasticemail.com",
 			"instatutorsteam@gmail.com",
@@ -460,22 +471,6 @@ function validate() {
 		return true;
 	}
 }
-
-//loads confirmed.html innerHTML 
-function loadConfirmed() {
-	var location2 = sessionStorage.getItem("location");
-	var date2 = sessionStorage.getItem("date");
-	var time2 = sessionStorage.getItem("time");
-	var tutor2 = sessionStorage.getItem("tutor");
-	var subject2 = sessionStorage.getItem("subject");
-
-	$("#bookedheader").html("Your tutoring request for " + date2 + " is logged.");
-	$("#tutor2").html("Date: " + tutor2);
-	$("#time2").html("Time: " + time2);
-	$("#location2").html("Location: " + location2);
-	$("#subject2").html("Subject: " + subject2);
-}
-
 
 
 function validatemsg() {

@@ -552,6 +552,7 @@ h1 strong {
 #submit:hover {
 	background-color: #dc5c0f;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 #footer {
@@ -569,6 +570,7 @@ h1 strong {
 /*Confirmed*/
 #confirmedbody {
 	padding: 100px 15%;
+	display: none;
 }
 
 #confirmedbody h1 {

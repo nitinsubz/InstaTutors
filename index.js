@@ -441,7 +441,7 @@ function validate() {
 	} else {
 		writeRequest(email, location, date, time, subject, "no", tutor);
 
-		var content = "New Tutoring Session ----  \n Date: " + date + "\n Time: " + time + "\n Location: " + location + "\n Subject: " + subject + "\n Tutee Contact: " + email + "\n Tutor: " + tutor;
+		var content = "<h3 style=\"color: #ae3dc6\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Location:</strong> " + location + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 
 		$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
 		$("#tutor2").html("Tutor: " + tutor);
