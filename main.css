@@ -193,7 +193,7 @@ h1 strong {
 
 .border-bot {
 	height: 2px;
-	width: 10%;
+	width: 0;
 }
 
 #contact {
@@ -351,7 +351,7 @@ h1 strong {
 }
 
 .teamnav {
-	font-size: 22px;
+	font-size: 24px;
 	display: inline;
 	padding: 15px 30px;
 }
@@ -1026,6 +1026,15 @@ h1 strong {
       visibility: visible;
   }
 
+  .lengthen {
+  		animation-name: lengthen;
+      -webkit-animation-name: lengthen;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+      width: 10%;
+  }
+
   @keyframes slide {
     0% {
       opacity: 0;
@@ -1103,6 +1112,23 @@ h1 strong {
     } 
     100% {
       opacity: 1;
+    }
+  }
+
+  @keyframes lengthen {
+    0% {
+      width: 0;
+    } 
+    100% {
+     	width: 10%;
+    }
+  }
+  @-webkit-keyframes lengthen {
+    0% {
+      width: 0;
+    } 
+    100% {
+      width: 10%;
     }
   }
 

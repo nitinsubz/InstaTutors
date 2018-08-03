@@ -37,6 +37,17 @@ $(window).scroll(function() {
     });
   });
 
+  $(window).scroll(function() {
+    $(".length").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos <= winTop + 600) {
+          $(this).addClass("lengthen");
+        }
+    });
+  });
+
  $(window).scroll(function() {
     var winTop = $(window).scrollTop();
 
@@ -217,7 +228,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#mainbody").css("display", "none");
     $(".main-div").fadeIn();
     $("#logout").css("display", "none");
-    $("#bookasession a").html("LOGIN/SIGNUP");
+    $("#bookasession a").html("Login or Sign Up");
     $("#indexlogout").fadeOut();
     $("#tutorsessions").css("display", "none");
     
