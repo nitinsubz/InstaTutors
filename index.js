@@ -506,23 +506,20 @@ function validatemsg() {
 	}
 	if(missing != "") {
 		alert("Please enter the following: " + missing);
-		event.preventDefault();
 	} else {
-		return true;
-	}
-}
+		alert("Message Sent!  We will try to get back to you within 24 hours.");
+		var content = "<h3>New Message</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>email:</strong> " + email + "</p> <p><strong>Message:</strong> " + message + "</p>"; 
 
-function sendEmail() {
-	Email.send("instatutorsteam@gmail.com",
-			"samuel.q.yang@gmail.com",
-			"New Tutoring Request",
-			"new content",
+		Email.send("instatutorsteam@gmail.com",
+			"tutors@instatutors.org",
+			"New Message from " + name,
+			content,
 			"smtp.elasticemail.com",
 			"instatutorsteam@gmail.com",
 			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
-
-	console.log("email sent");
+	}
 }
+
 
 
 
