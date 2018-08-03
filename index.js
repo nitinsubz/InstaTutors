@@ -373,19 +373,23 @@ function createAccount() {
 	var stat = "tutee";
 
 	if(newPass == confirmPass && newEmail != null) {
-		firebase.auth().createUserWithEmailAndPassword(newEmail, newPass).catch(function(error) {
+		if($("#termscheck").checked == false) {
+			$("#errormessage2").html("Please agree to the terms and conditions.");
+		} else {
+			firebase.auth().createUserWithEmailAndPassword(newEmail, newPass).catch(function(error) {
 			event.preventDefault();
-		  var errorCode = error.code;
-		  var errorMessage = error.message;
-		  $("#errormessage2").html("Error : " + errorMessage);
-		});
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  $("#errormessage2").html("Error : " + errorMessage);
+			});
 
-		firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
+			firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
 
-		writeAccount(newName, newEmail, newPhone, stat);
+			writeAccount(newName, newEmail, newPhone, stat);
 
-		$(".create-div").css("display", "none");
-		$("#email_div").fadeIn();
+			$(".create-div").css("display", "none");
+			$("#email_div").fadeIn();
+		}
 
 	} else {
 		$("#errormessage2").html("Please make sure your passwords match.");
