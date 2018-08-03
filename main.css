@@ -672,7 +672,7 @@ h1 strong {
 
 /*Login*/
 .main-div, .create-div {
-  width: 25%;
+  width: 30%;
   margin: 0px auto;
   margin-top: 90px;
   padding: 20px;
@@ -689,8 +689,19 @@ h1 strong {
 	text-align: center;
 }
 
-.container {
+#termstext {
 	font-size: 17px;
+	margin: 20px 0px;
+}
+
+#iagree {
+	margin-left: 24px;
+	margin-top: -30px;
+}
+
+#termstext a:hover {
+	cursor: pointer;
+	color: #dc5c0f;
 }
 
 .main-div h4 {

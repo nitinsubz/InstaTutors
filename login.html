@@ -41,9 +41,8 @@
 		    <input type="password" placeholder="Enter a Password..." id="createpassword" />
 		    <input type="password" placeholder="Confirm your Password..." id="confirmpassword" />
 		    <input type="name" placeholder="Enter a phone number (optional)..." id="createphone" />
-			<label class="container" >I agree to the <a onclick="window.open('termsandconditions.html');">Terms and Conditions</a>
-					<input type="checkbox" checked="checked" id="termscheck">
-			</label>
+			<span id="termstext"><div class="col"><input type="checkbox" checked="checked" id="termscheck"></div> <div class="col" id="iagree">I agree to the <a onclick="window.open('termsandconditions.html');">Terms and Conditions</a></div>
+			</span>
 			<p id="errormessage2"></p>
 		
 		    <a onclick="createAccount()" id="create">Let's Go!</a>
