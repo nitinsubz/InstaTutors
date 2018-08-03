@@ -76,7 +76,8 @@ function splitDate(date) {
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
+	typeWriter();
+	if (user) {
     // User is signed in.
 
     var user = firebase.auth().currentUser;
@@ -525,4 +526,14 @@ function sendEmail() {
 
 
 
+var i = 0;
+var txt = 'Never doubt that a small group of thoughtful commited citizens can change the world; indeed it is the only thing that ever has.'; /* The text */
+var speed = 50; /* The speed/duration of the effect in milliseconds */
 
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("indexquote").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
