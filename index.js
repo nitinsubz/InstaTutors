@@ -41,7 +41,7 @@ $(window).scroll(function() {
     var winTop = $(window).scrollTop();
 
     $("#teamheadimg").css({
-    'margin-top' : winTop/1.2
+    'margin-top' : winTop/1.13
     });
 });
 
@@ -52,16 +52,32 @@ $(document).ready(function() {
                     scrollTop: $("#contact").offset().top - 50
                 }, 800);
     });
-});
-
-$(document).ready(function() {
     $("#faqnav").click(function(event) {
         event.preventDefault();
         $("html, body").animate({
                     scrollTop: $("#faq").offset().top + 40
                 }, 800);
     });
+    $("#softwarenav").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#software").offset().top
+                }, 800);
+    });
+    $("#marketingnav").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#marketing").offset().top - 40
+                }, 800);
+    });
+    $("#tutorsnav").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#tutors").offset().top - 40
+                }, 800);
+    });
 });
+
 
 //split functions for syntax
 function splitEmail(email) {

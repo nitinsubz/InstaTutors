@@ -340,8 +340,35 @@ h1 strong {
 	height: 600px;
 }
 
-#leadership {
-	margin: 320px 8% 60px 8%;
+#teamnavbar {
+	position: fixed;
+	padding: 20px 0px;
+	top: 0;
+	right: 0;
+	background-color: white;
+	z-index: 88;
+	border-radius: 0px 0px 0px 30px;
+}
+
+.teamnav {
+	font-size: 22px;
+	display: inline;
+	padding: 15px 30px;
+}
+
+.teamnav a {
+	color: #ae3dc6;
+	transition-duration: 0.2s;
+}
+
+.teamnav a:hover {
+	color: #dc5c0f;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#software, #marketing {
+	margin: 40px 8% 20px 8%;
 	background-color: white;
 	padding: 60px 8%;
 	border-radius: 20px;
@@ -349,12 +376,16 @@ h1 strong {
 	z-index: 40;
 }
 
-#leadership h4 {
+#software {
+	margin-top: 320px;
+}
+
+#software h4, #marketing h4 {
 	font-size: 40px;
 	color: #444;
 }
 
-#leadership .row {
+#software .row, #marketing .row {
 	padding: 30px 0px;
 }
 
@@ -391,7 +422,7 @@ h1 strong {
 
 #tutors {
 	padding: 100px 8%;
-	margin: 0px 8%;
+	margin: 40px 8%;
 	position: relative;
 	z-index: 10;
 	border-radius: 20px;
