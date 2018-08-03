@@ -1,5 +1,6 @@
 $(window).on('load', function () {
 	$("#navbar").show();
+	typeWriter();
 });
 
 
@@ -76,7 +77,6 @@ function splitDate(date) {
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
-	typeWriter();
 	if (user) {
     // User is signed in.
 
