@@ -258,7 +258,17 @@ function takeSession() {
 			location: location,
 			subject: subject,	
 		 });
-	}	
+
+		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Location:</strong> " + location + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
+
+		Email.send("instatutorsteam@gmail.com",
+			email,
+			"Confirmed: Tutoring Session on " + date,
+			content,
+			"smtp.elasticemail.com",
+			"instatutorsteam@gmail.com",
+			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
+		}	
 }
 
 function cancel() {
