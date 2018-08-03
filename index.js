@@ -1,3 +1,8 @@
+$(window).on('load', function () {
+	$("#navbar").show();
+});
+
+
 $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
