@@ -505,9 +505,9 @@ function validatemsg() {
 		missing.push(" your message");
 	}
 	if(missing != "") {
-		alert("Please enter the following: " + missing);
+		$("#formStatus").html("Please enter the following: " + missing + ".");
 	} else {
-		alert("Message Sent!  We will try to get back to you within 24 hours.");
+		$("#formStatus").html("Message Sent!  We will try to get back to you within 24 hours.");
 		var content = "<h3>New Message</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>email:</strong> " + email + "</p> <p><strong>Message:</strong> " + message + "</p>"; 
 
 		Email.send("instatutorsteam@gmail.com",
@@ -524,7 +524,7 @@ function validatemsg() {
 
 
 var i = 0;
-var txt = 'Never doubt that a small group of thoughtful commited citizens can change the world; indeed it is the only thing that ever has.'; /* The text */
+var txt = '"Never doubt that a small group of thoughtful commited citizens can change the world; indeed it"' + 's the only thing that ever has."'; /* The text */
 var speed = 50; /* The speed/duration of the effect in milliseconds */
 
 function typeWriter() {
