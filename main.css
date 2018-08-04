@@ -829,7 +829,6 @@ h1 strong {
 
 #create:hover {
 	background-position: left;
-  background: #dc5c0f;
   cursor: pointer;
   text-decoration: none;
 }

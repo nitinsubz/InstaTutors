@@ -767,7 +767,7 @@ $(document).ready(function() {
 		$("#chirag").show();
 		$("#sophie").hide();
 		$("#rohit").show();
-		$("#samyang").show();
+		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").show();
     });

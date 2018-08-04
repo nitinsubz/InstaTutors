@@ -1031,14 +1031,16 @@ h1 strong {
 	display: block;
 	margin: 20px auto;
 	color: white;
-	background-color: #ae3dc6;
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 200% 100%;
+	background-position: right;
 	transition-duration: 0.2s;
 	text-align: center;
 	border-radius: 30px;
 }
 
 #email_div a:hover {
-	background-color: #dc5c0f;
+	background-position: left;
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -1070,7 +1072,7 @@ h1 strong {
 }
 
 #reset_div input:focus {
-  border-bottom: 3px solid #dc5c0f;
+  border-bottom: 3px solid #30CFD0;
 }
 
 #reset_div a {
@@ -1079,14 +1081,16 @@ h1 strong {
 	display: block;
 	margin: 20px auto;
 	color: white;
-	background-color: #ae3dc6;
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 200% 100%;
+	background-position: right;
 	transition-duration: 0.2s;
 	text-align: center;
 	border-radius: 30px;
 }
 
 #reset_div a:hover {
-	background-color: #dc5c0f;
+	background-position: left;
 	text-decoration: none;
 	cursor: pointer;
 }
