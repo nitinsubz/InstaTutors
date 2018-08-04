@@ -1,3 +1,9 @@
+$(window).on('load', function () {
+	$("#navbar").show();
+	typeWriter();
+});
+
+
 $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
@@ -31,11 +37,22 @@ $(window).scroll(function() {
     });
   });
 
+  $(window).scroll(function() {
+    $(".length").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos <= winTop + 600) {
+          $(this).addClass("lengthen");
+        }
+    });
+  });
+
  $(window).scroll(function() {
     var winTop = $(window).scrollTop();
 
     $("#teamheadimg").css({
-    'margin-top' : winTop/1.2
+    'margin-top' : winTop/1.13
     });
 });
 
@@ -46,16 +63,32 @@ $(document).ready(function() {
                     scrollTop: $("#contact").offset().top - 50
                 }, 800);
     });
-});
-
-$(document).ready(function() {
     $("#faqnav").click(function(event) {
         event.preventDefault();
         $("html, body").animate({
                     scrollTop: $("#faq").offset().top + 40
                 }, 800);
     });
+    $("#softwarenav").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#software").offset().top
+                }, 800);
+    });
+    $("#marketingnav").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#marketing").offset().top - 40
+                }, 800);
+    });
+    $("#tutorsnav").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#tutors").offset().top - 40
+                }, 800);
+    });
 });
+
 
 //split functions for syntax
 function splitEmail(email) {
@@ -71,7 +104,7 @@ function splitDate(date) {
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
+	if (user) {
     // User is signed in.
 
     var user = firebase.auth().currentUser;
@@ -195,7 +228,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#mainbody").css("display", "none");
     $(".main-div").fadeIn();
     $("#logout").css("display", "none");
-    $("#bookasession a").html("LOGIN/SIGNUP");
+    $("#bookasession a").html("Login or Sign Up");
     $("#indexlogout").fadeOut();
     $("#tutorsessions").css("display", "none");
     
@@ -258,7 +291,17 @@ function takeSession() {
 			location: location,
 			subject: subject,	
 		 });
-	}	
+
+		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Location:</strong> " + location + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
+
+		Email.send("instatutorsteam@gmail.com",
+			email,
+			"Confirmed: Tutoring Session on " + date,
+			content,
+			"smtp.elasticemail.com",
+			"instatutorsteam@gmail.com",
+			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
+		}	
 }
 
 function cancel() {
@@ -330,19 +373,23 @@ function createAccount() {
 	var stat = "tutee";
 
 	if(newPass == confirmPass && newEmail != null) {
-		firebase.auth().createUserWithEmailAndPassword(newEmail, newPass).catch(function(error) {
+		if($("#termscheck").checked == false) {
+			$("#errormessage2").html("Please agree to the terms and conditions.");
+		} else {
+			firebase.auth().createUserWithEmailAndPassword(newEmail, newPass).catch(function(error) {
 			event.preventDefault();
-		  var errorCode = error.code;
-		  var errorMessage = error.message;
-		  $("#errormessage2").html("Error : " + errorMessage);
-		});
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  $("#errormessage2").html("Error : " + errorMessage);
+			});
 
-		firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
+			firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
 
-		writeAccount(newName, newEmail, newPhone, stat);
+			writeAccount(newName, newEmail, newPhone, stat);
 
-		$(".create-div").css("display", "none");
-		$("#email_div").fadeIn();
+			$(".create-div").css("display", "none");
+			$("#email_div").fadeIn();
+		}
 
 	} else {
 		$("#errormessage2").html("Please make sure your passwords match.");
@@ -441,7 +488,7 @@ function validate() {
 	} else {
 		writeRequest(email, location, date, time, subject, "no", tutor);
 
-		var content = "New Tutoring Session ----  \n Date: " + date + "\n Time: " + time + "\n Location: " + location + "\n Subject: " + subject + "\n Tutee Contact: " + email + "\n Tutor: " + tutor;
+		var content = "<h3 style=\"color: #ae3dc6\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Location:</strong> " + location + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 
 		$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
 		$("#tutor2").html("Tutor: " + tutor);
@@ -489,25 +536,32 @@ function validatemsg() {
 		missing.push(" your message");
 	}
 	if(missing != "") {
-		alert("Please enter the following: " + missing);
-		event.preventDefault();
+		$("#formStatus").html("Please enter the following: " + missing + ".");
 	} else {
-		return true;
-	}
-}
+		$("#formStatus").html("Message Sent!  We will try to get back to you within 24 hours.");
+		var content = "<h3>New Message</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>email:</strong> " + email + "</p> <p><strong>Message:</strong> " + message + "</p>"; 
 
-function sendEmail() {
-	Email.send("instatutorsteam@gmail.com",
-			"samuel.q.yang@gmail.com",
-			"New Tutoring Request",
-			"new content",
+		Email.send("instatutorsteam@gmail.com",
+			"tutors@instatutors.org",
+			"New Message from " + name,
+			content,
 			"smtp.elasticemail.com",
 			"instatutorsteam@gmail.com",
 			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
-
-	console.log("email sent");
+	}
 }
 
 
 
 
+var i = 0;
+var txt = '"Never doubt that a small group of thoughtful commited citizens can change the world; indeed it"' + 's the only thing that ever has."'; /* The text */
+var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("indexquote").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}

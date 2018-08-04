@@ -22,8 +22,8 @@
 			   	<li class="navig"><a href="team.html">Who Are We?</a></li>
 			   	<li class="navig"><a id="contactnav">Contact</a></li>
 			   	<li class="navig"><a id="faqnav">FAQs</a></li>
-			   	<li class="navig" id="bookasession"><a href="login.html">LOGIN/SIGNUP</a></li>
-			   	<li class="navig" id="indexlogout"><a onclick="logout()">LOGOUT</a></li>
+			   	<li class="navig" id="bookasession"><a href="login.html">Login or Signup</a></li>
+			   	<li class="navig" id="indexlogout"><a onclick="logout()">Log Out</a></li>
 			</ul>
 		</div>
 		<!--<div id="container1" onclick="rotate(this)">
@@ -39,13 +39,13 @@
 		</div>-->
 		<div id="indexhead">
 			<h1 class="slideleft">SIMPLIFYING <strong>TUTORING.</strong></h1>
-			<p id="indexquote" class="slideup">"Never doubt that a small group of thoughtful, committed citizens can change the world; indeed, it's the only thing that ever has."</p> <h3 style="margin-left: 70%;" class="slideright">- Margaret Mead</h3>
+			<p id="indexquote" class="slideup"></p> <h3 style="margin-left: 70%;" class="slideright">- Margaret Mead</h3>
 			<br><br>
 			<a href="login.html" class="slideup">Get Started</a>
 		</div>
 		<div id="info">
 			<h1>3 <strong>Easy</strong> Steps</h1>
-			<div class="border-bot slideanim" style="background-color: white;"></div>
+			<div class="border-bot length" style="background-color: white;"></div>
 			<ol>
 				<div class="row">
 					<div class="col-sm-4">
@@ -65,10 +65,10 @@
 		</div>
 		<div id="contact">
 			<h1 class="slideanim2">Get In <strong>Touch</strong></h1>
-			<div class="border-bot slideanim" style="background-color: #dc5c0f;"></div>
-			<h4 class="slideanim2">Our Email: <a href="mailto:instatutorsteam@gmail.com">instatutorsteam@gmail.com</a></h4>
+			<div class="border-bot length" style="background-color: #dc5c0f;"></div>
+			<h4 class="slideanim2">Our Email: <a href="mailto:contact@instatutors.org">contact@instatutors.org</a></h4>
 			<h3 class="slideanim2">Send Us A Message</h3>
-			<form action="https://formspree.io/nitin@zooglr.com" method="POST" class="slideanim">
+			<form class="slideanim">
 				<div class="row">
 					<div class="col-sm-6">
 					    Name:<br>
@@ -81,12 +81,14 @@
 				</div>
 				    Your Message:<br>
 				    <input type="text" id="msg" name="msg" placeholder="Your message..">
-			    <button type="submit" id="submit" onclick="validatemsg()">Submit</button>
 			  </form>
+			  <p type = "hidden"id="formStatus" style="color: red; font-size: 25px;"> </p>
+				<button type="submit" id="submit" onclick="validatemsg()">Submit</button>
+				
 		</div>
 		<div id="faq">
 			<h1 class="slideanim2">Frequently Asked Questions</h1>
-			<div class="border-bot slideanim" style="background-color: white;"></div>
+			<div class="border-bot length" style="background-color: white;"></div>
 			<div class="faqsec">
 				<div class="question slideanim" id="question1">
 					<p><i class="fas fa-arrow-right"></i>  Are all tutoring sessions free?</p>
@@ -128,7 +130,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="footer" onclick="sendEmail()">
+		<div id="footer">
 			<p>&#169; InstaTutors 2018.</a></p>
 		</div>
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>

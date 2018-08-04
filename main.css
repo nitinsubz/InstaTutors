@@ -22,6 +22,10 @@ h1 strong {
 	font-weight: 800;
 }
 
+#phonenavlinks, #container {
+	display: none;
+}
+
 #home {
   position: fixed;
   z-index: 85;
@@ -115,6 +119,10 @@ h1 strong {
 	text-decoration: none;
 }
 
+#indexhead h3 {
+	margin-left: 75%;
+}
+
 #bookasession {
 	border: 2px solid #ae3dc6;
 	border-radius: 10px;
@@ -138,6 +146,8 @@ h1 strong {
 	border-radius: 10px;
 	transition-duration: 0.2s;
 	display: none;
+	position: relative;
+	z-index: 4;
 }
 
 #indexlogout a {
@@ -1202,5 +1212,285 @@ h1 strong {
       width: 10%;
     }
   }
+
+
+@media only screen and (max-width: 768px) {
+	#navbar {
+		padding: 0px 0px;
+		width: 0;
+	}
+
+	#home img {
+	  width: 70px;
+	}
+
+	.navig {
+		display: none;
+	}
+
+	#container1 {
+	    display: block;
+	    position: fixed;
+	    right: 4px;
+	    top: 5px;
+	    border-radius: 100%;
+	    background-color: white;
+	    z-index: 70;
+	    padding: 13px 11px;
+	    transition-duration: 0.2s;
+	    border: 2px solid white;
+	  }
+
+	#container1:hover {
+	    border: 2px solid #ae3dc6;
+	    cursor: pointer;
+	  }
+
+	.bar1, .bar2 {
+	    width: 40px;
+	    height: 3px;
+	    margin: 10px 0px;
+	    background: #ae3dc6;
+	    transition-duration: 0.2s;
+	  }
+
+	.change .bar1 {
+	    -webkit-transform: rotate(-45deg) translate(-5px, 7px);
+	    transform: rotate(-45deg) translate(-5px, 7px);
+	  }
+
+	.change .bar2 {
+	    -webkit-transform: rotate(45deg) translate(-2px, -4px);
+	    transform: rotate(45deg) translate(-2px, -4px);
+	  }
+
+	#phonenavlinks {
+	    background-color: white;
+	    padding: 60px 10px 30px 10px;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    z-index: 30;
+	    display: none;
+	  }
+
+	.navig2 {
+	    list-style-type: none;
+	    padding: 15px 0px;
+	    text-align: center;
+	  }
+
+	.navig2 a {
+		color: #ae3dc6;
+		font-size: 22px;
+		text-decoration: none;
+		transition-duration: 0.2s;
+		}
+
+	.navig2 a:hover {
+			color: #dc5c0f;
+		}
+
+	#indexlogout {
+			transform: scale(0);
+		}
+
+	#faqnav2:hover {
+		cursor: pointer;
+	}
+
+	#contactnav2:hover {
+		cursor: pointer;
+	}
+
+	#indexhead {
+		padding: 110px 10% 40px 10%;
+	}
+
+	#indexhead h1 {
+		font-size: 35px;
+		margin-bottom: 25px;
+	}
+
+	#indexhead h1 strong {
+		font-size: 40px;
+	}
+
+	#indexquote {
+		font-size: 19px;
+	}
+
+	#indexhead h3 {
+		margin-left: 30%;
+		font-size: 21px;
+	}
+
+	#indexhead a {
+		padding: 12px 30px;
+		font-size: 20px;
+	}
+
+	#info {
+		padding: 100px 10%;
+		color: white;
+		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
+	  	clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
+	  	position: relative;
+	  	z-index: 2;
+	}
+
+	#info h1 {
+		font-size: 34px;
+	}
+
+	#info ol {
+		margin-left: 7%;
+	}
+
+	#info li {
+		font-size: 18px;
+	}
+
+	#contact {
+		padding: 40px 10%;
+	}
+
+	#contact h1 {
+		font-size: 34px;
+		padding: 10px 0px;
+	}
+
+	#contact h4 {
+		font-size: 20px;
+		padding: 15px 0px;
+	}
+
+	#contact h3 {
+		font-size: 23px;
+	}
+
+	#contact form {
+		font-size: 18px;
+	}
+
+	#contact .row {
+		padding: 10px 0px 10px 0px;
+	}
+
+	#contact #submit {
+		margin: 30px 0px;
+		width: 100%;
+	}
+
+	#faq {
+		padding: 70px 10%;
+		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
+	  	clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
+	}
+
+	#faq h1 {
+		font-size: 32px;
+	}
+
+	.faqsec {
+		padding: 10px 0px;
+	}
+
+	.question {
+		font-size: 20px;
+	}
+
+	.answer {
+		font-size: 18px;
+		padding-left: 30px;
+	}
+
+	.main-div, .create-div {
+	  	width: 87%;
+	}
+
+	.main-div {
+		margin-top: 100px;
+	}
+
+	.main-div h3, .create-div h3 {
+		font-size: 28px;
+	}
+
+	.main-div h4 {
+		font-size: 18px;
+		line-height: 30px;
+		padding: 0;
+	}
+
+	#terms {
+		margin: 80px 10%;
+		padding: 70px 8%;
+		position: relative;
+		z-index: 40;
+		background-color: white;
+		border-radius: 20px;
+	}
+
+	.main-div input, .create-div input {
+	  font-size: 18px;
+	}
+
+	#errormessage, #errormessage2, #formerrors {
+		font-size: 18px;
+	}
+
+	.main-div a {
+		font-size: 18px;
+	}
+
+	#login, #create {
+	  padding: 10px;
+	  font-size: 20px;
+	  margin: 0;
+	}
+
+	#email_div {
+		width: 84%;
+	  	margin-top: 100px;
+	}
+
+	#email_div h3 {
+		font-size: 20px;
+	}
+
+	#email_div a {
+		font-size: 20px;
+		padding: 10px 0px;
+		margin: 10px auto;
+	}
+
+	#reset_div {
+		width: 80%;
+	  	margin: 0px auto;
+	  	margin-top: 120px;
+	  	padding: 20px;
+	  	display: none;
+	}
+
+	#reset_div h3 {
+		font-size: 28px;
+		padding-bottom: 15px;
+	}
+
+	#reset_div input {
+	  font-size: 18px;
+	  padding: 5px;
+	}
+
+	#reset_div a {
+		font-size: 20px;
+		padding: 10px 0px;
+		margin: 10px auto;
+	}
+
+	
+}
 
 

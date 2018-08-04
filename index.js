@@ -56,6 +56,11 @@ $(window).scroll(function() {
     });
 });
 
+ function rotate(x) {
+    x.classList.toggle("change");
+    $("#phonenavlinks").slideToggle("fast");
+}
+
 $(document).ready(function() {
     $("#contactnav").click(function(event) {
         event.preventDefault();
@@ -63,11 +68,27 @@ $(document).ready(function() {
                     scrollTop: $("#contact").offset().top - 50
                 }, 800);
     });
+    $("#contactnav2").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#contact").offset().top - 50
+                }, 800);
+        $("#phonenavlinks").slideToggle("fast");
+        $("#container1").toggleClass("change");
+    });
     $("#faqnav").click(function(event) {
         event.preventDefault();
         $("html, body").animate({
                     scrollTop: $("#faq").offset().top + 40
                 }, 800);
+    });
+    $("#faqnav2").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#faq").offset().top + 40
+                }, 800);
+        $("#phonenavlinks").slideToggle("fast");
+        $("#container1").toggleClass("change");
     });
     $("#softwarenav").click(function(event) {
         event.preventDefault();
@@ -121,6 +142,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
    		$("#email_div").fadeIn();
    		$(".main-div").css("display", "none");
+   		$("#logout").css("display", "block");
 
    	} else {
    		$("#email_div").css("display", "none");
@@ -133,7 +155,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 			    $("#logout").css("display", "block");
 			    $(".create-div").css("display", "none");
 			    $("#indexlogout").fadeIn();
-			    $("#bookasession a").html("SEE ALL REQUESTS");
+			    $("#bookasession a").html("See All Requests");
+			    $("#login2").html("See All Requests");
 			    $("#tutorsessions").fadeIn();
 
 			    var mySession = firebase.database().ref('users/' + split);
@@ -155,7 +178,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 			    $(".main-div").css("display", "none");
 			    $("#logout").css("display", "block");
 			    $(".create-div").css("display", "none");
-			    $("#bookasession a").html("BOOK A SESSION");
+			    $("#bookasession a").html("Book A Session");
+			    $("#login2").html("Book A Session");
 			    $("#indexlogout").fadeIn();
 
 			    var reqRef = firebase.database().ref('users/' + split);
@@ -227,6 +251,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     // No user is signed in.
     $("#mainbody").css("display", "none");
     $(".main-div").fadeIn();
+    $("#email_div").css("display", "none");
     $("#logout").css("display", "none");
     $("#bookasession a").html("Login or Sign Up");
     $("#indexlogout").fadeOut();
@@ -555,7 +580,7 @@ function validatemsg() {
 
 
 var i = 0;
-var txt = '"Never doubt that a small group of thoughtful commited citizens can change the world; indeed it"' + 's the only thing that ever has."'; /* The text */
+var txt = '"Never doubt that a small group of thoughtful commited citizens can change the world; indeed it\'s the only thing that ever has."'; /* The text */
 var speed = 50; /* The speed/duration of the effect in milliseconds */
 
 function typeWriter() {
