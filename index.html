@@ -69,7 +69,7 @@
 			<div class="border-bot length" style="background-color: #dc5c0f;"></div>
 			<h4 class="slideanim2">Our Email: <a href="mailto:contact@instatutors.org">contact@instatutors.org</a></h4>
 			<h3 class="slideanim2">Send Us A Message</h3>
-			<form class="slideanim">
+			<form class="slideanim" id="contactForm">
 				<div class="row">
 					<div class="col-sm-6">
 					    Name:<br>
@@ -83,7 +83,8 @@
 				    Your Message:<br>
 				    <input type="text" id="msg" name="msg" placeholder="Your message..">
 			  </form>
-			  <p type = "hidden"id="formStatus" style="color: red; font-size: 25px;"> </p>
+			  <p type = "hidden"id="formStatus" style="color: green; font-size: 25px;"> </p>
+			  <p type = "hidden"id="formStat" style="color: red; font-size: 25px;"> </p>
 				<button type="submit" id="submit" onclick="validatemsg()">Submit</button>
 				
 		</div>

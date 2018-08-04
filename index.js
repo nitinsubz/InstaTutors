@@ -556,10 +556,11 @@ function validatemsg() {
 		missing.push(" your message");
 	}
 	if(missing != "") {
-		$("#formStatus").html("Please enter the following: " + missing + ".");
+		$("#formStat").html("Please enter the following: " + missing + ".");
 	} else {
 		$("#formStatus").html("Message Sent!  We will try to get back to you within 24 hours.");
 		var content = "<h3>New Message</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>email:</strong> " + email + "</p> <p><strong>Message:</strong> " + message + "</p>"; 
+		document.getElementById("contactForm").reset();
 
 		Email.send("instatutorsteam@gmail.com",
 			"tutors@instatutors.org",
