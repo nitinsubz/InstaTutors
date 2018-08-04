@@ -1,0 +1,55 @@
+[debug] [2018-08-04T09:12:23.888Z] ----------------------------------------------------------------------
+[debug] [2018-08-04T09:12:23.892Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-08-04T09:12:23.893Z] CLI Version:   3.19.3
+[debug] [2018-08-04T09:12:23.893Z] Platform:      darwin
+[debug] [2018-08-04T09:12:23.893Z] Node Version:  v8.11.2
+[debug] [2018-08-04T09:12:23.893Z] Time:          Sat Aug 04 2018 02:12:23 GMT-0700 (PDT)
+[debug] [2018-08-04T09:12:23.893Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-04T09:12:23.931Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-04T09:12:23.932Z] > authorizing via signed-in user
+[debug] [2018-08-04T09:12:23.936Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/insta-tutors  
+  
+ Sat Aug 04 2018 02:12:23 GMT-0700 (PDT)
+[debug] [2018-08-04T09:12:24.411Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-04T09:12:24.412Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/insta-tutors/tokens  
+  
+ Sat Aug 04 2018 02:12:24 GMT-0700 (PDT)
+[debug] [2018-08-04T09:12:24.866Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'insta-tutors'...
+[info] 
+[info] i  deploying database, hosting
+[info] i  database: checking rules syntax...
+[debug] [2018-08-04T09:12:25.278Z] >>> HTTP REQUEST PUT https://insta-tutors.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "true",
+    ".write": "true"
+  }
+} 
+ Sat Aug 04 2018 02:12:25 GMT-0700 (PDT)
+[debug] [2018-08-04T09:12:25.589Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database insta-tutors is valid
+[info] i  hosting: preparing public directory for upload...
+[debug] [2018-08-04T09:12:26.264Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/insta-tutors/uploads/-LJ3COQFUNz4NUTvx49R?fileCount=42&message=  
+  
+ Sat Aug 04 2018 02:12:26 GMT-0700 (PDT)
+[debug] [2018-08-04T09:12:42.220Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-04T09:12:42.220Z] [hosting] .tgz uploaded successfully, waiting for extraction
+[info] ✔  hosting: 42 files uploaded successfully
+[debug] [2018-08-04T09:12:42.920Z] [hosting] deploy completed after 17323ms
+[info] i  database: releasing rules...
+[debug] [2018-08-04T09:28:04.968Z] >>> HTTP REQUEST PUT https://insta-tutors.firebaseio.com/.settings/rules.json  
+ {
+  "rules": {
+    ".read": "true",
+    ".write": "true"
+  }
+} 
+ Sat Aug 04 2018 02:28:04 GMT-0700 (PDT)
+[debug] [2018-08-04T09:28:04.986Z] Error: getaddrinfo ENOTFOUND insta-tutors.firebaseio.com insta-tutors.firebaseio.com:443
+    at errnoException (dns.js:50:10)
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:92:26)
+[error] 
+[error] Error: Server Error. getaddrinfo ENOTFOUND insta-tutors.firebaseio.com insta-tutors.firebaseio.com:443

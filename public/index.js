@@ -523,13 +523,13 @@ function validate() {
 		$("#mainbody").css("display", "none");
 		$("#confirmedbody").fadeIn();
 
-		Email.send("instatutorsteam@gmail.com",
+		Email.send("support@instatutors.org",
 			"tutors@instatutors.org",
 			"New Tutoring Request for " + date,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 
-		Email.send("instatutorsteam@gmail.com",
+		Email.send("support@instatutors.org",
 			email,
 			"Tutoring Session Requested for " + date,
 			content,
@@ -565,13 +565,11 @@ function validatemsg() {
 		var content = "<h3>New Message</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>email:</strong> " + email + "</p> <p><strong>Message:</strong> " + message + "</p>"; 
 		document.getElementById("contactForm").reset();
 
-		Email.send("instatutorsteam@gmail.com",
+		Email.send("inquiries@instatutors.org",
 			"tutors@instatutors.org",
 			"New Message from " + name,
 			content,
-			"smtp.elasticemail.com",
-			"instatutorsteam@gmail.com",
-			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 	}
 }
 
@@ -634,7 +632,7 @@ $(document).ready(function() {
 		$("#nitin").show();
 		$("#sahana").hide();
 		$("#keshav").hide();
-		$("#chirag").show();
+		$("#chirag").hide();
 		$("#sophie").show();
 		$("#rohit").show();
 		$("#samyang").show();
