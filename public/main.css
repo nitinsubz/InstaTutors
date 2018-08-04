@@ -1520,14 +1520,14 @@ h1 strong {
 
 	#servicenav button, #tutornav button {
 		padding: 12px 15px;
-		font-size: 20px;
+		font-size: 17px;
 		background-color: #eee;
 	}
 
 	#booknav {
 		position: fixed;
 		bottom: 0;
-		width: 50%;
+		width: 55%;
 		left: 0;
 		margin: 0;
 		border-radius: 0px;
@@ -1537,7 +1537,7 @@ h1 strong {
 		position: fixed;
 		bottom: 0;
 		right: 0;
-		width: 50%;
+		width: 45%;
 		margin: 0;
 	}
 
