@@ -648,6 +648,11 @@ h1 strong {
 	text-decoration: none;
 }
 
+#formerrors {
+	color: red;
+	font-size: 18px;
+}
+
 #submit:hover {
 	background-position: left;
 	text-decoration: none;
@@ -658,12 +663,21 @@ h1 strong {
 	width: 100%;
 	padding: 7px 0px;
 	background-color: #666;
+	text-align: center;
 }
 
-#footer p {
-	text-align: center;
+#footer span, #footer a {
 	color: white;
 	font-size: 15px;
+	margin: 0px 15px;
+}
+
+#footer a {
+	color: #30CFD0;
+}
+
+#footer a:hover {
+	cursor: pointer;
 }
 
 /*Confirmed*/
@@ -674,7 +688,9 @@ h1 strong {
 
 #confirmedbody h1 {
 	font-size: 54px;
-	color: #ae3dc6;
+	background: linear-gradient(135deg, #30CFD0, #330867);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 #confirmedbody h3 {
@@ -687,13 +703,15 @@ h1 strong {
 	font-size: 23px;
 	margin: 20px 0px;
 	color: white;
-	background-color:#ae3dc6;
+	background: linear-gradient(to right, #330867, #30CFD0);
+	  background-size: 200% 100%;
+	  background-position: right;
 	border-radius: 30px;
 	transition-duration: 0.2s;
 }
 
 #confirmedbody a:hover {
-	background-color: #dc5c0f;
+	background-position: left;
 	text-decoration: none;
 }
 
