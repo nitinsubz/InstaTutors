@@ -528,17 +528,14 @@ function validate() {
 			"tutors@instatutors.org",
 			"New Tutoring Request for " + date,
 			content,
-			"smtp.elasticemail.com",
-			"instatutorsteam@gmail.com",
-			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 
 		Email.send("instatutorsteam@gmail.com",
 			email,
 			"Tutoring Session Requested for " + date,
 			content,
-			"smtp.elasticemail.com",
-			"instatutorsteam@gmail.com",
-			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+			//527d49d6-dba7-4334-8775-1b8ccd9b3eeb 
 
 		return true;
 	}
