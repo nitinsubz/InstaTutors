@@ -561,6 +561,7 @@ function validatemsg() {
 		$("#formStatus").css("color", "green");
 		$("#formStatus").html("Message Sent!  We will try to get back to you within 24 hours.");
 		var content = "<h3>New Message</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>email:</strong> " + email + "</p> <p><strong>Message:</strong> " + message + "</p>"; 
+		document.getElementById("contactForm").reset();
 
 		Email.send("instatutorsteam@gmail.com",
 			"tutors@instatutors.org",
