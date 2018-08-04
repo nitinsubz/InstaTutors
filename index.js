@@ -576,7 +576,7 @@ function validatemsg() {
 
 var i = 0;
 var txt = '"Never doubt that a small group of thoughtful commited citizens can change the world; indeed it\'s the only thing that ever has."'; /* The text */
-var speed = 50; /* The speed/duration of the effect in milliseconds */
+var speed = 20; /* The speed/duration of the effect in milliseconds */
 
 function typeWriter() {
   if (i < txt.length) {
