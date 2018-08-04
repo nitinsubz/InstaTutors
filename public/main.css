@@ -494,6 +494,11 @@ h1 strong {
 	color: #f983c3;
 }
 
+.python {
+	border: 2px solid #306998;
+	color: #306998;
+}
+
 .business {
 	border: 2px solid #10174f;
 	color: #10174f;
@@ -1717,6 +1722,10 @@ h1 strong {
 		padding: 5px 10px;
 		font-size: 14px;
 		line-height: 38px;
+	}
+
+	#filter .dropdown-menu {
+		margin-left: 0px;
 	}
 }
 

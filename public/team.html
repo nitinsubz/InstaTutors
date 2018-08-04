@@ -96,15 +96,15 @@
 				</div>
 			</div>
 		</div>
-		<div id="tutors">
+		<div id="tutors" class="slideanim">
 			<h4>Tutors</h4>
 			<div class="border-bot length" style="background-color: #ae3dc6; margin-bottom: 20px;"></div>
 			<div id="filter">
 				<div class="dropdown">
 					<span>Filter By Subject: </span>
-			      <button class="btn btn-default dropdown-toggle" type="button" id="byLocation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All <i class="fas fa-caret-down"></i></button>
+			      <button class="btn btn-default dropdown-toggle" type="button" id="byLocation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="filtertext">All</span> <i class="fas fa-caret-down"></i></button>
 			      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			        <a class="dropdown-item" id="all">All</a>
+			        <a class="dropdown-item" id="all" onclick="filterall()">All</a>
 			        <a class="dropdown-item" id="math">Math</a>
 			        <a class="dropdown-item" id="physics">Physics</a>
 			        <a class="dropdown-item" id="bio">Biology</a>
@@ -113,13 +113,14 @@
 			        <a class="dropdown-item" id="history">History</a>
 			        <a class="dropdown-item" id="webdev">Web Development</a>
 			        <a class="dropdown-item" id="java">Java</a>
+			        <a class="dropdown-item" id="python">Python</a>
 			        <a class="dropdown-item" id="business">Business</a>
 			        <a class="dropdown-item" id="spanish">Spanish</a>
 			        <a class="dropdown-item" id="french">French</a>
 			      </div>
 			    </div>
 			</div>
-				<div class="col4 tutor slideanim" id="matthewcho">
+				<div class="col4 tutor" id="matthewcho">
 					<img src="images/matthewcho.png">
 					<h3>Matthew Cho</h3>
 					<h5 class="label math">Math</h5>
@@ -127,8 +128,9 @@
 					<h5 class="label java">Java</h5>
 					<h5 class="label web">WebDev</h5>
 					<h5 class="label spanish">Spanish</h5>
+					<h5 class="label python">Python</h5>
 				</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="varsha">
 					<img src="images/varsha.png">
 					<h3>Varsha Subramanyam</h3>
 					<h5 class="label math">Math</h5>
@@ -138,15 +140,17 @@
 					<h5 class="label bio">Biology</h5>
 					
 				</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="reedit">
 						<img src="images/reedit.png">
 						<h3>Reedit Shahriar</h3>
 						<h5 class="label math">Math</h5>
 						<h5 class="label physics">Physics</h5>
-						<h5 class="label web">WebDev</h5>
+						<h5 class="label history">History</h5>
+						<h5 class="label writing">Writing</h5>
 						<h5 class="label java">Java</h5>
+						<h5 class="label python">Python</h5>
 				</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="matthewsheh">
 					<img src="images/matthew.jpg">
 					<h3>Matthew Sheh</h3>
 					<h5 class="label math">Math</h5>
@@ -155,7 +159,7 @@
 					<h5 class="label writing">Writing</h5>
 					<h5 class="label spanish">Spanish</h5>
 				</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="sangita">
 						<img src="images/sangita.jpg">
 						<h3>Sangita Kunapuli</h3>
 						<h5 class="label bio">Biology</h5>
@@ -164,14 +168,14 @@
 						<h5 class="label chem">Chemistry</h5>
 						
 				</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="conner">
 						<img src="images/conner.jpg">
 						<h3>Conner Hsu</h3>
 						<h5 class="label math">Math</h5>
 						<h5 class="label chem">Chemistry</h5>
 						<h5 class="label java">Java</h5>			
 			</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="kyle">
 						<img src="images/kyle.png">
 						<h3>Kyle Tsujimoto</h3>
 						<h5 class="label math">Math</h5>
@@ -181,7 +185,7 @@
 						<h5 class="label java">Java</h5>
 						<h5 class="label history">History</h5>
 				</div>
-					<div class="col4 tutor slideanim">
+					<div class="col4 tutor" id="stuti">
 						<img src="images/stuti.jpeg">
 						<h3>Stuti Upadhyay</h3>
 						<h5 class="label math">Math</h5>
@@ -190,7 +194,7 @@
 						<h5 class="label writing">Writing</h5>
 						<h5 class="label business">Business</h5>
 					</div>
-					<div class="col4 tutor slideanim">
+					<div class="col4 tutor" id="dan">
 							<img src="images/dan.png">
 							<h3>Dan Sachs</h3>
 							<h5 class="label french">French</h5>
@@ -198,7 +202,7 @@
 							<h5 class="label history">History</h5>
 							<h5 class="label chem">Chemistry</h5>
 						</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="nitin">
 					<img src="images/nitin.jpeg">
 					<h3>Nitin Subramanian</h3>
 					<h5 class="label math">Math</h5>
@@ -207,7 +211,7 @@
 					<h5 class="label java">Java</h5>
 					<h5 class="label spanish">Spanish</h5>
 				</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="sahana">
 						<img src="images/sahana.jpg">
 						<h3>Sahana Prasanna</h3>
 						<h5 class="label math">Math</h5>
@@ -216,22 +220,21 @@
 						<h5 class="label chem">Chemistry</h5>
 						<h5 class="label business">Business</h5>				
 					</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="keshav">
 					<img src="images/keshav.jpg">
 					<h3>Keshav Taneja</h3>
 					<h5 class="label math">Math</h5>
 					<h5 class="label chem">Chemistry</h5>
-					<h5 class="label spanish">Spanish</h5>
 				</div>
 				
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="chirag">
 					<img src="images/chirag.png">
 					<h3>Chirag Mehta</h3>
 					<h5 class="label math">Math</h5>
 					<h5 class="label chem">Chemistry</h5>
 					<h5 class="label java">Java</h5>
 				</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="sophie">
 						<img src="images/sophie.png">
 						<h3>Sophie Ye</h3>
 						<h5 class="label math">Math</h5>
@@ -240,15 +243,16 @@
 						<h5 class="label history">History</h5>
 						<h5 class="label bio">Biology</h5>			
 				</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="rohit">
 					<img src="images/rohit.png">
 					<h3>Rohit Tanikella</h3>
 					<h5 class="label math">Math</h5>
 					<h5 class="label physics">Physics</h5>
 					<h5 class="label java">Java</h5>
 					<h5 class="label spanish">Spanish</h5>
+					<h5 class="label python">Python</h5>
 				</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="samyang">
 					<img src="images/sam.jpg">
 					<h3>Sam Yang</h3>
 					<h5 class="label math">Math</h5>
@@ -257,14 +261,14 @@
 					<h5 class="label java">Java</h5>
 					<h5 class="label history">History</h5>
 				</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="rukmini">
 					<img src="images/rukmini.jpg">
 					<h3>Rukmini Banerjee</h3>
 					<h5 class="label math">Math</h5>
 					<h5 class="label writing">Writing</h5>
 					<h5 class="label history">History</h5>
 				</div>
-				<div class="col4 tutor slideanim">
+				<div class="col4 tutor" id="rohun">
 					<img src="images/rohun.jpg">
 					<h3>Rohun Agrawal</h3>
 					<h5 class="label math">Math</h5>
