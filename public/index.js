@@ -114,8 +114,10 @@ $(document).ready(function() {
 //split functions for syntax
 function splitEmail(email) {
 	str = email.split("@");
-	var res = str[0].replace(/\./g, "");
-	res = res.toLowerCase();
+	var res1 = str[0].replace(/\./g, "");
+	var res2 = str[1].split(".");
+
+	res = (res1 + res2[0]).toLowerCase();
 	return(res);
 }
 
@@ -572,6 +574,294 @@ function validatemsg() {
 			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
 	}
 }
+
+$(document).ready(function() {
+    $("#all").click(function(event) {
+    	$("#filtertext").html("All");
+        $("#matthewcho").show();
+		$("#varsha").show();
+		$("#reedit").show();
+		$("#matthewsheh").show();
+		$("#sangita").show();
+		$("#conner").show();
+		$("#kyle").show();
+		$("#stuti").show();
+		$("#dan").show();
+		$("#nitin").show();
+		$("#sahana").show();
+		$("#keshav").show();
+		$("#chirag").show();
+		$("#sophie").show();
+		$("#rohit").show();
+		$("#samyang").show();
+		$("#rukmini").show();
+		$("#rohun").show();
+    });
+
+    $("#math").click(function(event) {
+    	$("#filtertext").html("Math");
+        $("#matthewcho").show();
+		$("#varsha").show();
+		$("#reedit").show();
+		$("#matthewsheh").show();
+		$("#sangita").show();
+		$("#conner").show();
+		$("#kyle").show();
+		$("#stuti").show();
+		$("#dan").hide();
+		$("#nitin").show();
+		$("#sahana").show();
+		$("#keshav").show();
+		$("#chirag").show();
+		$("#sophie").show();
+		$("#rohit").show();
+		$("#samyang").show();
+		$("#rukmini").show();
+		$("#rohun").show();
+    });
+
+    $("#physics").click(function(event) {
+    	$("#filtertext").html("Physics");
+        $("#matthewcho").show();
+		$("#varsha").hide();
+		$("#reedit").show();
+		$("#matthewsheh").show();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").show();
+		$("#stuti").show();
+		$("#dan").hide();
+		$("#nitin").show();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").show();
+		$("#sophie").show();
+		$("#rohit").show();
+		$("#samyang").show();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+    $("#bio").click(function(event) {
+    	$("#filtertext").html("Biology");
+        $("#matthewcho").hide();
+		$("#varsha").show();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").show();
+		$("#conner").hide();
+		$("#kyle").hide();
+		$("#stuti").show();
+		$("#dan").hide();
+		$("#nitin").hide();
+		$("#sahana").show();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").show();
+		$("#rohit").hide();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+    $("#chem").click(function(event) {
+    	$("#filtertext").html("Chemistry");
+        $("#matthewcho").hide();
+		$("#varsha").show();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").show();
+		$("#conner").show();
+		$("#kyle").hide();
+		$("#stuti").hide();
+		$("#dan").show();
+		$("#nitin").hide();
+		$("#sahana").show();
+		$("#keshav").show();
+		$("#chirag").show();
+		$("#sophie").hide();
+		$("#rohit").hide();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+    $("#writing").click(function(event) {
+    	$("#filtertext").html("Writing");
+        $("#matthewcho").hide();
+		$("#varsha").show();
+		$("#reedit").show();
+		$("#matthewsheh").show();
+		$("#sangita").show();
+		$("#conner").hide();
+		$("#kyle").show();
+		$("#stuti").show();
+		$("#dan").show();
+		$("#nitin").hide();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").show();
+		$("#rohit").hide();
+		$("#samyang").hide();
+		$("#rukmini").show();
+		$("#rohun").hide();
+    });
+
+    $("#history").click(function(event) {
+    	$("#filtertext").html("History");
+        $("#matthewcho").hide();
+		$("#varsha").show();
+		$("#reedit").show();
+		$("#matthewsheh").show();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").show();
+		$("#stuti").hide();
+		$("#dan").show();
+		$("#nitin").hide();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").show();
+		$("#rohit").hide();
+		$("#samyang").show();
+		$("#rukmini").show();
+		$("#rohun").hide();
+    });
+
+    $("#webdev").click(function(event) {
+    	$("#filtertext").html("Web Development");
+        $("#matthewcho").show();
+		$("#varsha").hide();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").show();
+		$("#stuti").hide();
+		$("#dan").hide();
+		$("#nitin").show();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").hide();
+		$("#rohit").hide();
+		$("#samyang").show();
+		$("#rukmini").hide();
+		$("#rohun").show();
+    });
+
+    $("#java").click(function(event) {
+    	$("#filtertext").html("Java");
+        $("#matthewcho").show();
+		$("#varsha").hide();
+		$("#reedit").show();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
+		$("#conner").show();
+		$("#kyle").show();
+		$("#stuti").hide();
+		$("#dan").hide();
+		$("#nitin").show();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").show();
+		$("#sophie").hide();
+		$("#rohit").show();
+		$("#samyang").show();
+		$("#rukmini").hide();
+		$("#rohun").show();
+    });
+
+    $("#python").click(function(event) {
+    	$("#filtertext").html("Python");
+        $("#matthewcho").show();
+		$("#varsha").hide();
+		$("#reedit").show();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").hide();
+		$("#stuti").hide();
+		$("#dan").hide();
+		$("#nitin").hide();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").hide();
+		$("#rohit").show();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+    $("#business").click(function(event) {
+    	$("#filtertext").html("Business");
+        $("#matthewcho").hide();
+		$("#varsha").hide();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").hide();
+		$("#stuti").show();
+		$("#dan").hide();
+		$("#nitin").hide();
+		$("#sahana").show();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").hide();
+		$("#rohit").hide();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+    $("#spanish").click(function(event) {
+    	$("#filtertext").html("Spanish");
+        $("#matthewcho").show();
+		$("#varsha").show();
+		$("#reedit").show();
+		$("#matthewsheh").show();
+		$("#sangita").show();
+		$("#conner").hide();
+		$("#kyle").hide();
+		$("#stuti").hide();
+		$("#dan").hide();
+		$("#nitin").show();
+		$("#sahana").show();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").hide();
+		$("#rohit").show();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+   $("#french").click(function(event) {
+    	$("#filtertext").html("French");
+        $("#matthewcho").hide();
+		$("#varsha").hide();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").hide();
+		$("#stuti").hide();
+		$("#dan").show();
+		$("#nitin").hide();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").hide();
+		$("#rohit").hide();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+});
 
 
 
