@@ -19,9 +19,8 @@
 		<div id="navbar">
 			<div id="home" class="slideleft"><a href="index.html"><img src="images/logo.png"></a></div>
 			<ul id="nav" class="slideright">
-			   	<li class="navig"><a href="team.html">Who Are We?</a></li>
+			   	<li class="navig" id="whoarewe"><a href="team.html">Who Are We?</a></li>
 			   	<li class="navig"><a id="contactnav">Contact</a></li>
-			   	<li class="navig"><a id="faqnav">FAQs</a></li>
 			   	<li class="navig" id="bookasession"><a href="login.html">Login or Signup</a></li>
 			   	<li class="navig" id="indexlogout"><a onclick="logout()">Log Out</a></li>
 			</ul>
@@ -66,22 +65,22 @@
 		</div>
 		<div id="contact">
 			<h1 class="slideanim2">Get In <strong>Touch</strong></h1>
-			<div class="border-bot length" style="background-color: #dc5c0f;"></div>
+			<div class="border-bot length" style="background-color: #30CFD0;"></div>
 			<h4 class="slideanim2">Our Email: <a href="mailto:contact@instatutors.org">contact@instatutors.org</a></h4>
 			<h3 class="slideanim2">Send Us A Message</h3>
 			<form class="slideanim" id="contactForm">
 				<div class="row">
 					<div class="col-sm-6">
 					    Name:<br>
-					    <input type="text" id="msgname" name="msgname" placeholder="Your name..">
+					    <input type="text" id="msgname" name="msgname">
 					</div>
 					<div class="col-sm-6">
 					    Email:<br>
-					    <input type="text" id="msgemail" name="email" placeholder="Your email..">
+					    <input type="text" id="msgemail" name="email">
 					   </div>
 				</div>
 				    Your Message:<br>
-				    <input type="text" id="msg" name="msg" placeholder="Your message..">
+				    <input type="text" id="msg" name="msg">
 			  </form>
 			  <p id="formStatus"> </p>
 				<button type="submit" id="submit" onclick="validatemsg()">Submit</button>

@@ -50,16 +50,15 @@ h1 strong {
 	top: 0;
 	z-index: 55;
 	background-color: white;
-	border-radius: 0px 0px 0px 20px;
-	display: none;
+	border-radius: 0px 0px 0px 30px;
 }
 
 .navig {
 	float: left;
 	list-style-type: none;
 	padding: 14px 30px;
+	border-radius: 20px;
 	margin: 5px;
-	background-color: white;
 }
 
 .navig a {
@@ -70,7 +69,7 @@ h1 strong {
 }
 
 .navig:hover a {
-	color: #dc5c0f;
+	color: #30CFD0;
 }
 
 #contactnav:hover {
@@ -94,7 +93,13 @@ h1 strong {
 }
 
 #indexhead h1 strong {
-	color: #ae3dc6;
+	background: linear-gradient(135deg, #30CFD0, #330867);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 7s ease infinite;
+	-moz-animation: Gradient 7s ease infinite;
+	animation: Gradient 7s ease infinite;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 #indexquote {
@@ -103,19 +108,18 @@ h1 strong {
 }
 
 #indexhead a {
-	background-color: transparent;
-	border: 2px solid #ae3dc6;
-	color: #ae3dc6;
-	padding: 12px 50px;
-	border-radius: 10px;
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 230% 100%;
+	background-position: right;
+	color: white;
+	padding: 15px 50px;
+	border-radius: 30px;
 	font-size: 26px;
 	transition-duration: 0.2s;
 }
 
 #indexhead a:hover {
-	background-color: #dc5c0f;
-	border: 2px solid #dc5c0f;
-	color: white;
+	background-position: left;
 	text-decoration: none;
 }
 
@@ -124,47 +128,44 @@ h1 strong {
 }
 
 #bookasession {
-	border: 2px solid #ae3dc6;
-	border-radius: 10px;
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 200% 100%;
+	background-position: right;
+	border-radius: 30px;
+	transition-duration: 0.2s;
 }
 
 #bookasession a {
-	color: #ae3dc6;
-}
-
-#bookasession:hover {
-	background-color: #ae3dc6;
-	cursor: pointer;
-}
-
-#bookasession:hover a{
 	color: white;
 }
 
+#bookasession:hover {
+	background-position: left;
+}
+
 #indexlogout {
-	border: 2px solid #ae3dc6;
-	border-radius: 10px;
+	background: linear-gradient(to left, #330867, #30CFD0);
+	background-size: 120% 100%;
+	background-position: right;
+	border-radius: 30px;
 	transition-duration: 0.2s;
 	display: none;
 	position: relative;
 	z-index: 4;
+	transform: scale(1);
 }
 
 #indexlogout a {
-	color: #ae3dc6;
-}
-
-#indexlogout:hover {
-	background-color: #ae3dc6;
-	cursor: pointer;
-}
-
-#indexlogout:hover a{
 	color: white;
 }
 
+#indexlogout:hover {
+	background-position: left;
+	cursor: pointer;
+}
+
 #info {
-	background: linear-gradient(135deg, #ae3dc6, #212664, #dc5c0f);
+	background: linear-gradient(135deg, #30CFD0, #212664, #330867);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 10s ease infinite;
 	-moz-animation: Gradient 10s ease infinite;
@@ -217,7 +218,9 @@ h1 strong {
 }
 
 #contact h1 strong {
-	color: #dc5c0f;
+	background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 #contact h4 {
@@ -226,11 +229,14 @@ h1 strong {
 }
 
 #contact h4 a {
-	color: #ae3dc6;
+	color: #212664;
+	transition-duration: 0.2s;
 }
 
 #contact h4 a:hover {
-	color: #dc5c0f;
+	background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 	text-decoration: none;
 }
 
@@ -238,7 +244,7 @@ h1 strong {
 	font-size: 28px;
 }
 
-#contact form {
+#contactForm {
 	font-size: 22px;
 }
 
@@ -249,10 +255,14 @@ h1 strong {
 #contact input {
 	width: 100%;
 	outline: 0;
+	border: 1px solid #ccc;
+	transition-duration: 0.2s;
+	border-radius: 10px;
+	padding-left: 4px;
 }
 
 #contact input:focus {
-	border: 2px solid #dc5c0f;
+	border: 2px solid #30CFD0;
 }
 
 #msg {
@@ -265,7 +275,7 @@ h1 strong {
 
 #faq {
 	padding: 130px 10% 70px 10%;
-	background: linear-gradient(135deg, #ae3dc6, #4b5799, #282635);
+	background: linear-gradient(135deg, #30CFD0, #212664, #330867);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 10s ease infinite;
 	-moz-animation: Gradient 10s ease infinite;
@@ -312,12 +322,7 @@ h1 strong {
 	padding: 130px 10% 110px 10%;
 	text-align: center;
 	color: white;
-	background: linear-gradient(135deg, #ae3dc6, #212664, #c67cb7, #dc5c0f);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 10s ease infinite;
-	-moz-animation: Gradient 10s ease infinite;
-	animation: Gradient 10s ease infinite;
-	transition-duration: 0.6s;
+	background-color: #330867;
 	overflow-y: hidden;
 }
 
@@ -371,12 +376,12 @@ h1 strong {
 }
 
 .teamnav a {
-	color: #ae3dc6;
+	color: #330867;
 	transition-duration: 0.2s;
 }
 
 .teamnav a:hover {
-	color: #dc5c0f;
+	color: #30CFD0;
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -635,14 +640,16 @@ h1 strong {
 	color: white;
 	border: 0;
 	outline: 0;
-	background-color:#ae3dc6;
-	border-radius: 5px;
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 200% 100%;
+	background-position: right;
+	border-radius: 30px;
 	transition-duration: 0.2s;
 	text-decoration: none;
 }
 
 #submit:hover {
-	background-color: #dc5c0f;
+	background-position: left;
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -681,7 +688,7 @@ h1 strong {
 	margin: 20px 0px;
 	color: white;
 	background-color:#ae3dc6;
-	border-radius: 5px;
+	border-radius: 30px;
 	transition-duration: 0.2s;
 }
 
@@ -731,12 +738,12 @@ h1 strong {
 }
 
 .main-div h4 a {
-	color: #ae3dc6;
+	color: #330867;
 	transition-duration: 0.2s;
 }
 
 .main-div h4 a:hover {
-	color: #dc5c0f;
+	color: #30CFD0;
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -747,7 +754,7 @@ h1 strong {
 	position: relative;
 	z-index: 40;
 	background-color: white;
-	border-radius: 20px;
+	border-radius: 30px;
 }
 
 #terms h4 {
@@ -774,11 +781,11 @@ h1 strong {
 }
 
 .main-div input:focus {
-  border-bottom: 3px solid #dc5c0f;
+  border-bottom: 3px solid #30CFD0;
 }
 
 .create-div input:focus {
-	border-bottom: 3px solid #dc5c0f;
+	border-bottom: 3px solid #30CFD0;
 }
 
 #errormessage, #errormessage2, #formStatus {
@@ -789,19 +796,21 @@ h1 strong {
 
 .main-div a {
 	font-size: 22px;
-	color: #ae3dc6;
+	color: #330867;
 	text-decoration: none;
+	transition-duration: 0.2s;
 }
 
 .main-div a:hover {
-	color: #dc5c0f;
+	color: #30CFD0;
 	cursor: pointer;
 }
 
 #login, #create {
-  background: #ae3dc6;
-  color: #fff;
-  border-radius: 5px;
+  background: linear-gradient(to right, #330867, #30CFD0);
+  background-size: 200% 100%;
+  background-position: right;
+  border-radius: 30px;
   padding: 15px;
   display: block;
   font-size: 22px;
@@ -809,15 +818,17 @@ h1 strong {
   transition-duration: 0.2s;
   text-align: center;
   text-decoration: none;
+  color: white;
 }
 
 #login:hover {
-  background: #dc5c0f;
+ 	background-position: left;
   cursor: pointer;
   text-decoration: none;
 }
 
 #create:hover {
+	background-position: left;
   background: #dc5c0f;
   cursor: pointer;
   text-decoration: none;
@@ -833,7 +844,7 @@ h1 strong {
 
 #tutorsessionshead {
 	padding: 140px 10% 90px 10%;
-	background-color: #ae3dc6;
+	background: #330867;
 	color: white;
 }
 
@@ -848,7 +859,7 @@ h1 strong {
 }
 
 #tutormysessions h1 {
-	background-color: #ae3dc6;
+	background-color: #212664;
 	padding: 140px 10% 90px 10%;
 	color: white;
 	font-size: 60px;
@@ -887,7 +898,9 @@ h1 strong {
 	position: fixed;
 	top: 0;
 	right: 0;
-	background-color: #ae3dc6;
+	background: linear-gradient(to right, #30CFD0, transparent);
+	background-size: 200% 100%;
+	background-position: right;
 	padding: 15px 40px;
 	color: white;
 	font-size: 24px;
@@ -897,7 +910,7 @@ h1 strong {
 
 #logout:hover {
 	cursor: pointer;
-	background-color: #dc5c0f;
+	background-position: left;
 	text-decoration: none;
 }
 
@@ -919,17 +932,17 @@ h1 strong {
 }
 
 #servicenav button:hover {
-	background-color: #dc5c0f;
+	background-color: #30CFD0; 
 	color: white;
 }
 
 #tutornav button:hover {
-	background-color: #dc5c0f;
+	background-color: #30CFD0;
 	color: white;
 }
 
 #booknav {
-	border-radius: 0px 0px 0px 10px;
+	border-radius: 0px 0px 0px 20px;
 }
 
 #sessionstab {
@@ -1021,7 +1034,7 @@ h1 strong {
 	background-color: #ae3dc6;
 	transition-duration: 0.2s;
 	text-align: center;
-	border-radius: 5px;
+	border-radius: 30px;
 }
 
 #email_div a:hover {
@@ -1069,7 +1082,7 @@ h1 strong {
 	background-color: #ae3dc6;
 	transition-duration: 0.2s;
 	text-align: center;
-	border-radius: 5px;
+	border-radius: 30px;
 }
 
 #reset_div a:hover {
@@ -1248,19 +1261,25 @@ h1 strong {
 	    z-index: 70;
 	    padding: 13px 11px;
 	    transition-duration: 0.2s;
-	    border: 2px solid white;
 	  }
 
 	#container1:hover {
-	    border: 2px solid #ae3dc6;
 	    cursor: pointer;
+	  }
+
+	  #container1:hover .bar1 {
+	  	background: #30CFD0;
+	  }
+
+	  #container1:hover .bar2 {
+	  	background: #30CFD0;
 	  }
 
 	.bar1, .bar2 {
 	    width: 40px;
 	    height: 3px;
 	    margin: 10px 0px;
-	    background: #ae3dc6;
+	    background: #330867;
 	    transition-duration: 0.2s;
 	  }
 
@@ -1292,14 +1311,14 @@ h1 strong {
 	  }
 
 	.navig2 a {
-		color: #ae3dc6;
+		color: #330867;
 		font-size: 22px;
 		text-decoration: none;
 		transition-duration: 0.2s;
 		}
 
 	.navig2 a:hover {
-			color: #dc5c0f;
+			color: #30CFD0;
 		}
 
 	#indexlogout {
@@ -1380,7 +1399,7 @@ h1 strong {
 		font-size: 23px;
 	}
 
-	#contact form {
+	#contactForm {
 		font-size: 18px;
 	}
 
@@ -1521,7 +1540,6 @@ h1 strong {
 		background-color: #ae3dc6;
 		padding: 10px 20px;
 		font-size: 20px;
-		border-radius: 0px 0px 0px 20px;
 	}
 
 	#servicenav button, #tutornav button {
