@@ -51,6 +51,7 @@ h1 strong {
 	z-index: 55;
 	background-color: white;
 	border-radius: 0px 0px 0px 30px;
+	display:none;
 }
 
 .navig {
