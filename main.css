@@ -50,16 +50,15 @@ h1 strong {
 	top: 0;
 	z-index: 55;
 	background-color: white;
-	border-radius: 0px 0px 0px 20px;
-	display: none;
+	border-radius: 0px 0px 0px 30px;
 }
 
 .navig {
 	float: left;
 	list-style-type: none;
 	padding: 14px 30px;
+	border-radius: 20px;
 	margin: 5px;
-	background-color: white;
 }
 
 .navig a {
@@ -94,7 +93,11 @@ h1 strong {
 }
 
 #indexhead h1 strong {
-	background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	background: linear-gradient(135deg, #30CFD0, #330867);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 7s ease infinite;
+	-moz-animation: Gradient 7s ease infinite;
+	animation: Gradient 7s ease infinite;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
@@ -110,7 +113,7 @@ h1 strong {
 	background-position: right;
 	color: white;
 	padding: 15px 50px;
-	border-radius: 10px;
+	border-radius: 30px;
 	font-size: 26px;
 	transition-duration: 0.2s;
 }
@@ -128,7 +131,7 @@ h1 strong {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 200% 100%;
 	background-position: right;
-	border-radius: 10px;
+	border-radius: 30px;
 	transition-duration: 0.2s;
 }
 
@@ -144,11 +147,12 @@ h1 strong {
 	background: linear-gradient(to left, #330867, #30CFD0);
 	background-size: 120% 100%;
 	background-position: right;
-	border-radius: 10px;
+	border-radius: 30px;
 	transition-duration: 0.2s;
 	display: none;
 	position: relative;
 	z-index: 4;
+	transform: scale(1);
 }
 
 #indexlogout a {
@@ -240,7 +244,7 @@ h1 strong {
 	font-size: 28px;
 }
 
-#contact form {
+#contactForm {
 	font-size: 22px;
 }
 
@@ -251,7 +255,10 @@ h1 strong {
 #contact input {
 	width: 100%;
 	outline: 0;
+	border: 1px solid #ccc;
 	transition-duration: 0.2s;
+	border-radius: 10px;
+	padding-left: 4px;
 }
 
 #contact input:focus {
@@ -369,12 +376,12 @@ h1 strong {
 }
 
 .teamnav a {
-	color: #ae3dc6;
+	color: #330867;
 	transition-duration: 0.2s;
 }
 
 .teamnav a:hover {
-	color: #dc5c0f;
+	color: #30CFD0;
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -636,7 +643,7 @@ h1 strong {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 200% 100%;
 	background-position: right;
-	border-radius: 5px;
+	border-radius: 30px;
 	transition-duration: 0.2s;
 	text-decoration: none;
 }
@@ -681,7 +688,7 @@ h1 strong {
 	margin: 20px 0px;
 	color: white;
 	background-color:#ae3dc6;
-	border-radius: 5px;
+	border-radius: 30px;
 	transition-duration: 0.2s;
 }
 
@@ -747,7 +754,7 @@ h1 strong {
 	position: relative;
 	z-index: 40;
 	background-color: white;
-	border-radius: 20px;
+	border-radius: 30px;
 }
 
 #terms h4 {
@@ -803,7 +810,7 @@ h1 strong {
   background: linear-gradient(to right, #330867, #30CFD0);
   background-size: 200% 100%;
   background-position: right;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 15px;
   display: block;
   font-size: 22px;
@@ -935,7 +942,7 @@ h1 strong {
 }
 
 #booknav {
-	border-radius: 0px 0px 0px 10px;
+	border-radius: 0px 0px 0px 20px;
 }
 
 #sessionstab {
@@ -1027,7 +1034,7 @@ h1 strong {
 	background-color: #ae3dc6;
 	transition-duration: 0.2s;
 	text-align: center;
-	border-radius: 5px;
+	border-radius: 30px;
 }
 
 #email_div a:hover {
@@ -1075,7 +1082,7 @@ h1 strong {
 	background-color: #ae3dc6;
 	transition-duration: 0.2s;
 	text-align: center;
-	border-radius: 5px;
+	border-radius: 30px;
 }
 
 #reset_div a:hover {
@@ -1392,7 +1399,7 @@ h1 strong {
 		font-size: 23px;
 	}
 
-	#contact form {
+	#contactForm {
 		font-size: 18px;
 	}
 
@@ -1533,7 +1540,6 @@ h1 strong {
 		background-color: #ae3dc6;
 		padding: 10px 20px;
 		font-size: 20px;
-		border-radius: 0px 0px 0px 20px;
 	}
 
 	#servicenav button, #tutornav button {
