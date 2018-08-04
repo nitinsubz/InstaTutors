@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Insta Tutors</title>
+<title>InstaTutors</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -26,20 +26,21 @@
 			   	<li class="navig" id="indexlogout"><a onclick="logout()">Log Out</a></li>
 			</ul>
 		</div>
-		<!--<div id="container1" onclick="rotate(this)">
+		<div class="slideright" id="container1" onclick="rotate(this)">
 			<div class="bar1">
 			</div>
 			<div class="bar2">
 			</div>
 		</div>
 		<div id="phonenavlinks">
-			<li class="navig2"><a href="about.html">About</a></li>
-			<li class="navig2"><a href="service.html">Service</a></li>
-			<li class="navig2"><a href="videos.html">Videos</a></li>
-		</div>-->
+			<li class="navig2"><a href="team.html">Who Are We?</a></li>
+			<li class="navig2"><a id="contactnav2">Contact</a></li>
+			<li class="navig2"><a id="faqnav2">FAQs</a></li>
+			<li class="navig2"><a href="login.html" id="login2">Login or Signup</a></li>
+		</div>
 		<div id="indexhead">
 			<h1 class="slideleft">SIMPLIFYING <strong>TUTORING.</strong></h1>
-			<p id="indexquote" class="slideup"></p> <h3 style="margin-left: 70%;" class="slideright">- Margaret Mead</h3>
+			<p id="indexquote" class="slideup"></p> <h3 class="slideright">- Margaret Mead</h3>
 			<br><br>
 			<a href="login.html" class="slideup">Get Started</a>
 		</div>
@@ -82,7 +83,7 @@
 				    Your Message:<br>
 				    <input type="text" id="msg" name="msg" placeholder="Your message..">
 			  </form>
-			  <p type = "hidden"id="formStatus" style="color: red; font-size: 25px;"> </p>
+			  <p id="formStatus"> </p>
 				<button type="submit" id="submit" onclick="validatemsg()">Submit</button>
 				
 		</div>

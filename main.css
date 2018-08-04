@@ -775,7 +775,7 @@ h1 strong {
 	border-bottom: 3px solid #dc5c0f;
 }
 
-#errormessage, #errormessage2, #formerrors {
+#errormessage, #errormessage2, #formStatus {
 	color: #c90000;
 	font-size: 20px;
 	padding-bottom: 20px;
@@ -1447,7 +1447,7 @@ h1 strong {
 	  font-size: 18px;
 	}
 
-	#errormessage, #errormessage2, #formerrors {
+	#errormessage, #errormessage2, #formStatus {
 		font-size: 18px;
 	}
 
@@ -1656,7 +1656,68 @@ h1 strong {
 		font-size: 18px;
 	}
 
-	
+	#teamnavbar {
+		display: none;
+	}
+
+	#teamhead {
+		padding: 100px 10% 90px 10%;
+	}
+
+	#teamhead h1 {
+		font-size: 38px;
+	}
+
+	#teamhead p {
+		font-size: 23px;
+	}
+
+	#software, #marketing {
+		margin: 20px 8% 20px 8%;
+		padding: 30px 6%;
+	}
+
+	#software {
+		margin-top: 300px;
+	}
+
+	#software h4, #marketing h4 {
+		font-size: 30px;
+		text-align: center;
+	}
+
+	#software .border-bot, #marketing .border-bot {
+		margin: auto;
+	}
+
+	#software .row, #marketing .row {
+		padding: 0px 0px;
+	}
+
+	.leader h3, .tutor h3 {
+		font-size: 25px;
+	}
+
+	.leader h5 {
+		font-size: 18px;
+	}
+
+	.col4 {
+		width: 100%;
+		padding: 10px 0%;
+		height: 440px;
+	}
+
+	.tutor {
+		text-align: center;
+	}
+
+	.label {
+		border-radius: 20px;
+		padding: 5px 10px;
+		font-size: 14px;
+		line-height: 38px;
+	}
 }
 
 

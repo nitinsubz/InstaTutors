@@ -56,6 +56,11 @@ $(window).scroll(function() {
     });
 });
 
+ function rotate(x) {
+    x.classList.toggle("change");
+    $("#phonenavlinks").slideToggle("fast");
+}
+
 $(document).ready(function() {
     $("#contactnav").click(function(event) {
         event.preventDefault();
@@ -63,11 +68,27 @@ $(document).ready(function() {
                     scrollTop: $("#contact").offset().top - 50
                 }, 800);
     });
+    $("#contactnav2").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#contact").offset().top - 50
+                }, 800);
+        $("#phonenavlinks").slideToggle("fast");
+        $("#container1").toggleClass("change");
+    });
     $("#faqnav").click(function(event) {
         event.preventDefault();
         $("html, body").animate({
                     scrollTop: $("#faq").offset().top + 40
                 }, 800);
+    });
+    $("#faqnav2").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({
+                    scrollTop: $("#faq").offset().top + 40
+                }, 800);
+        $("#phonenavlinks").slideToggle("fast");
+        $("#container1").toggleClass("change");
     });
     $("#softwarenav").click(function(event) {
         event.preventDefault();
@@ -121,6 +142,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
    		$("#email_div").fadeIn();
    		$(".main-div").css("display", "none");
+   		$("#logout").css("display", "block");
 
    	} else {
    		$("#email_div").css("display", "none");
@@ -133,7 +155,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 			    $("#logout").css("display", "block");
 			    $(".create-div").css("display", "none");
 			    $("#indexlogout").fadeIn();
-			    $("#bookasession a").html("SEE ALL REQUESTS");
+			    $("#bookasession a").html("See All Requests");
+			    $("#login2").html("See All Requests");
 			    $("#tutorsessions").fadeIn();
 
 			    var mySession = firebase.database().ref('users/' + split);
@@ -155,7 +178,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 			    $(".main-div").css("display", "none");
 			    $("#logout").css("display", "block");
 			    $(".create-div").css("display", "none");
-			    $("#bookasession a").html("BOOK A SESSION");
+			    $("#bookasession a").html("Book A Session");
+			    $("#login2").html("Book A Session");
 			    $("#indexlogout").fadeIn();
 
 			    var reqRef = firebase.database().ref('users/' + split);
@@ -183,7 +207,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 				});
 			}
 		});
-
 	}
 
 
@@ -227,6 +250,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     // No user is signed in.
     $("#mainbody").css("display", "none");
     $(".main-div").fadeIn();
+    $("#email_div").css("display", "none");
     $("#logout").css("display", "none");
     $("#bookasession a").html("Login or Sign Up");
     $("#indexlogout").fadeOut();
@@ -298,9 +322,7 @@ function takeSession() {
 			email,
 			"Confirmed: Tutoring Session on " + date,
 			content,
-			"smtp.elasticemail.com",
-			"instatutorsteam@gmail.com",
-			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 		}	
 }
 
@@ -503,17 +525,14 @@ function validate() {
 			"tutors@instatutors.org",
 			"New Tutoring Request for " + date,
 			content,
-			"smtp.elasticemail.com",
-			"instatutorsteam@gmail.com",
-			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 
 		Email.send("instatutorsteam@gmail.com",
 			email,
 			"Tutoring Session Requested for " + date,
 			content,
-			"smtp.elasticemail.com",
-			"instatutorsteam@gmail.com",
-			"dcd15e42-4567-40bb-ad90-ae4b6a78f967");
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+			//527d49d6-dba7-4334-8775-1b8ccd9b3eeb 
 
 		return true;
 	}
@@ -536,8 +555,10 @@ function validatemsg() {
 		missing.push(" your message");
 	}
 	if(missing != "") {
+		$("#formStatus").css("color", "red");
 		$("#formStatus").html("Please enter the following: " + missing + ".");
 	} else {
+		$("#formStatus").css("color", "green");
 		$("#formStatus").html("Message Sent!  We will try to get back to you within 24 hours.");
 		var content = "<h3>New Message</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>email:</strong> " + email + "</p> <p><strong>Message:</strong> " + message + "</p>"; 
 
@@ -555,8 +576,8 @@ function validatemsg() {
 
 
 var i = 0;
-var txt = '"Never doubt that a small group of thoughtful commited citizens can change the world; indeed it"' + 's the only thing that ever has."'; /* The text */
-var speed = 50; /* The speed/duration of the effect in milliseconds */
+var txt = '"Never doubt that a small group of thoughtful commited citizens can change the world; indeed it\'s the only thing that ever has."'; /* The text */
+var speed = 20; /* The speed/duration of the effect in milliseconds */
 
 function typeWriter() {
   if (i < txt.length) {
