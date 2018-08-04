@@ -820,10 +820,10 @@ $(document).ready(function() {
     $("#spanish").click(function(event) {
     	$("#filtertext").html("Spanish");
         $("#matthewcho").show();
-		$("#varsha").show();
-		$("#reedit").show();
-		$("#matthewsheh").show();
-		$("#sangita").show();
+		$("#varsha").hide();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
 		$("#conner").hide();
 		$("#kyle").hide();
 		$("#stuti").hide();

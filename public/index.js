@@ -396,7 +396,7 @@ function createAccount() {
 	var confirmPass = $("#confirmpassword").val();
 	var stat = "tutee";
 
-	if(newPass == confirmPass && newEmail != null) {
+	if(newPass == confirmPass && newPass != "" && newEmail != "") {
 		if($("#termscheck").checked == false) {
 			$("#errormessage2").html("Please agree to the terms and conditions.");
 		} else {
@@ -522,6 +522,7 @@ function validate() {
 
 		$("#mainbody").css("display", "none");
 		$("#confirmedbody").fadeIn();
+		$("#logout").css("display", "none");
 
 		Email.send("support@instatutors.org",
 			"tutors@instatutors.org",
@@ -767,7 +768,7 @@ $(document).ready(function() {
 		$("#chirag").show();
 		$("#sophie").hide();
 		$("#rohit").show();
-		$("#samyang").show();
+		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").show();
     });

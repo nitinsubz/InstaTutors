@@ -14,7 +14,9 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="clockpicker.css">
     <link rel="stylesheet" href="main.css">
+    <script src="clockpicker.js"></script>
 <body>
 		<div id="navbar">
 			<ul id="nav" class="fader">
@@ -115,7 +117,15 @@
 				    		Time:
 				    	</div>
 				    	<div class="col-sm-9">
-				   			<input type="time" name="time" id="time" placeholder="Enter your preferred time..."><br>
+				   			<div class="input-group clockpicker">
+							    <input type="text" class="form-control" value="09:30">
+							    <span class="input-group-addon">
+							        <span class="glyphicon glyphicon-time"></span>
+							    </span>
+							</div>
+							<script type="text/javascript">
+								$('.clockpicker').clockpicker();
+							</script>
 				   		</div>
 				   	</div>
 				   	<div class="row">
