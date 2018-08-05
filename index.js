@@ -617,7 +617,11 @@ function addSubject() {
 	});
 
 	if(subject != "") {
-		if(currentSubjects.search(subject) == -1) {
+		if(currentSubjects == null) {
+			$("#subjectmessage").css("color", "green");
+			$("#subjectmessage").html(subject + " added as a subject!");
+			firebase.database().ref('users/' + newEmail).update({ subjects: subject + ", " + currentSubjects});
+		} else if (currentSubjects.search(subject) == -1) {
 			$("#subjectmessage").css("color", "green");
 			$("#subjectmessage").html(subject + " added as a subject!");
 			firebase.database().ref('users/' + newEmail).update({ subjects: subject + ", " + currentSubjects});
