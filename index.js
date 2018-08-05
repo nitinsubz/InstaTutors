@@ -135,6 +135,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#verifyemail").html("Please Verify Your Email Address: <i>" + user.email + "</i>");
 
    	var split = splitEmail(user.email);
+   	$('.clockpicker').clockpicker();
 
    	var email_verified = user.emailVerified;
    	console.log(email_verified);
@@ -335,12 +336,20 @@ function cancel() {
 	var email = firebase.auth().currentUser.email;
 	var newemail = splitEmail(email);
 	if(input == email) {
+
 		firebase.database().ref('requests/' + newdate + newemail).remove();
 		firebase.database().ref('users/' + newemail + "/" + newdate).remove();
 		firebase.database().ref('requests/' + newdate + newemail).remove();
 		firebase.database().ref('users/' + newemail + "/" + newdate).remove();
-		alert("Tutoring session for " + newdate + " canceled.  page will refresh now.");
-		window.location.reload(true);
+
+		/*var content = "<h3 style=\"color: #ae3dc6\">Tutoring Session Canceled -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Reason:</strong> " + reason + "</p> <p><strong>Tutee Contact:</strong> " + email; 
+		Email.send("support@instatutors.org",
+			"tutors@instatutors.org",
+			"Tutoring Session Canceled for " + date,
+			content,
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+		*/
+		alert("Tutoring session for " + newdate + " canceled.");
 	} else {
 		alert("wrong email. aborting.")
 	}
