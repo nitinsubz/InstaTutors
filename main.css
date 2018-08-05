@@ -560,6 +560,11 @@ h1 strong {
 	color: #7d7dd0;
 }
 
+.chinese {
+	border: 2px solid #ff4f3b;
+	color: #ff4f3b;
+}
+
 .back2top {
 	text-align: center;
 	display: block;
