@@ -144,7 +144,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
    		$("#email_div").fadeIn();
    		$(".main-div").css("display", "none");
-   		$("#logout").css("display", "block");
+   		$("#logout").css("display", "none");
 
    	} else {
    		$("#email_div").css("display", "none");
