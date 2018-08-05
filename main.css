@@ -446,7 +446,7 @@ h1 strong {
 }
 
 #tutors {
-	padding: 100px 8% 60px 8%;
+	padding: 100px 8% 30px 8%;
 	margin: 40px 8%;
 	width: 84%;
 	float: left;
@@ -526,6 +526,22 @@ h1 strong {
 	border: 2px solid #7d7dd0;
 	color: #7d7dd0;
 }
+
+.back2top {
+	text-align: center;
+	display: block;
+	margin: auto;
+	font-size: 50px;
+	margin-bottom: 20px;
+	padding: 10px 0px;
+	color: #444;
+	transition-duration: 0.2s;
+}
+
+.back2top:hover {
+	color: #30CFD0;
+}
+
 
 #filter {
 	padding-bottom: 30px;
@@ -1747,6 +1763,10 @@ h1 strong {
 
 	.leader h5 {
 		font-size: 18px;
+	}
+
+	#tutors {
+		padding: 30px 6%;
 	}
 
 	.col4 {
