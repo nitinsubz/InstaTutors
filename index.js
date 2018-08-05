@@ -166,6 +166,21 @@ firebase.auth().onAuthStateChanged(function(user) {
 			    $("#login2").html("See All Requests");
 			    $("#tutorsessions").fadeIn();
 
+			    var tutorSubjects = firebase.database().ref('users/' + split).child("subjects");
+
+				tutorSubjects.on("value", snap => {
+					var subjects = snap.val();
+					var splitsubs = subjects.split(",");
+					var text = "";
+					for(var i=0; i<splitsubs.length; i++) {
+						var sub = splitsubs[i].toLowerCase();
+
+						text += "<h5 class=\"label " + sub + "\">" + splitsubs[i] + "</h5> ";
+					}
+
+					$("#tutorsubjectsarea").html(text);
+				});
+
 			    var mySession = firebase.database().ref('users/' + split);
 
 				mySession.on("child_added", snap => {
@@ -241,6 +256,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     if(user != null){
       $("#user").html("User: " + user.email + "");
+      $("#tutoruser").html(user.email);
     }
 
     var tutorReq = firebase.database().ref('requests');

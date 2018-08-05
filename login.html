@@ -138,10 +138,10 @@
 				   	</div>
 				   	<div class="row">
 						<div class="col-sm-3">
-				    		Subject:
+				    		Subject(s):
 				    	</div>
 				    	<div class="col-sm-9">
-				   			<input type="text" name="subject" id="subject" placeholder="Enter the subject you request help in..."><br>
+				   			<input type="text" name="subject" id="subject" placeholder="Enter the subject(s) you request help in..."><br>
 				   		</div>
 				   	</div>
 				   	<p id="formerrors"></p>
@@ -205,7 +205,7 @@
 	<div id="tutorsessions">
 		<div id="tutornav">
 			<button id="booknav" onclick="allsessionstab()">See All Requests</button>
-			<button id="sessionsnav" onclick="tutorsessionstab()">My Sessions</button>
+			<button id="sessionsnav" onclick="tutorsessionstab()">My Account</button>
 		</div>
 		<div id="allsessions">
 			<div id="tutorsessionshead">
@@ -215,8 +215,23 @@
 			</div>
 		</div>
 		<div id="tutormysessions">
-			<h1>My Sessions</h1>
-			<div id="tutormysessionsbody">
+			<h1>My Account</h1>
+			<div id="tutoraccount" class="row">
+				<div id="tutoraccountinfo" class="col-sm-6">
+					<h3>Tutor:</h3>
+					<h4 id="tutoruser"></h4>
+					<h3>Change Password:</h3>
+					<a id="resetPass2" onclick="resetPass2()">Send Reset Email</a>
+					<div id="tutorsubjects">
+						<h3>My Subjects</h3>
+						<p>Contact Nitin or Sam if you would like to change your subjects.</p>
+						<div id="tutorsubjectsarea">
+						</div>
+					</div>
+				</div>
+				<div id="tutormysessionsbody" class="col-sm-6">
+					<h3>My Sessions</h3>
+				</div>
 			</div>
 		</div>
 		<div id="footer">

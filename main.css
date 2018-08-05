@@ -928,19 +928,52 @@ h1 strong {
 
 #tutormysessions h1 {
 	background-color: #212664;
-	padding: 140px 10% 90px 10%;
+	padding: 140px 10% 110px 10%;
 	color: white;
 	font-size: 60px;
 	text-align: center;
 }
 
+#tutoraccount {
+	padding: 40px 3%;
+	margin: -70px 9% 50px 9%;
+	background-color: white;
+	border-radius: 20px 20px 0px 0px;
+}
+
+#tutoraccount h3 {
+	font-size: 30px;
+	color: #444;
+	padding-bottom: 20px;
+}
+
+#tutoruser {
+	font-size: 24px;
+	color: #30CFD0;
+	margin: -10px 0px 20px 0px;
+}
+
+#tutorsubjects {
+	padding: 20px 0px;
+}
+
+#tutorsubjects p {
+	font-size: 20px;
+	margin: -20px 0px 20px 0px;
+}
+
+#tutorsubjects .label {
+	font-size: 20px;
+	margin: 3px;
+	line-height: 50px;
+}
+
 #tutormysessionsbody {
-	margin-top: -50px;
-	padding: 0px 10% 50px 10%;
+	padding: 0px;
 }
 
 .tutorreq {
-	padding: 50px 5%;
+	padding: 30px 4%;
 	border-radius: 20px;
 	margin-bottom: 20px;
 	background-color: white;
@@ -949,11 +982,11 @@ h1 strong {
 }
 
 .tutorreq h2 {
-	font-size: 40px;
+	font-size: 30px;
 }
 
 .tutorreq h4 {
-	font-size: 30px;
+	font-size: 22px;
 }
 
 .tutorreq:hover {
