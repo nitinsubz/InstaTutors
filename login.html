@@ -86,12 +86,12 @@
 	<div id="mainbody">
 		<div id="servicenav">
 			<button id="booknav" onclick="booktab()">Book A Session</button>
-			<button id="sessionsnav" onclick="sessionstab()">My Sessions</button>
+			<button id="sessionsnav" onclick="sessionstab()">My Account</button>
 		</div>
 	    <div class="tab-content" id="myTabContent">
 			<div class="tab" id="booktab">
 				<div id="bookheader">
-					<h1 onclick="sendEmail()" id="welcome">Welcome <strong></strong>!</h1>
+					<h1 id="welcome">Welcome <strong></strong>!</h1>
 					<h3>Book A Session</h3>
 				</div>
 				<div id="bookform">
@@ -123,6 +123,9 @@
 							        <span class="glyphicon glyphicon-time"></span>
 							    </span>
 							</div>
+							<script>
+								   	$('.clockpicker').clockpicker();
+							</script>
 				   		</div>
 				   	</div>
 				   	<div class="row">
@@ -148,12 +151,49 @@
 			</div>
 			<div id="sessionstab">
 				<div id="sessionsheader">
-					<h1>My Sessions</h1>
+					<h1>My Account</h1>
 					<h3 id="user">User: </h3>
 				</div>
-				<div id="sessionsbody">
+				<div class="row" id="account">
+					<div id="accountinfo" class="col-sm-6">
+						<h3>Change Password</h3>
+						<a id="resetPass2" onclick="resetPass2()">Send Reset Email</a>
+						<div id="tuteeaddsubjects">
+							<h3>Add Subjects</h3>
+							<p>Enter the subjects you need help in, and we can match you with the perfect tutor!</p>
+							<input type="text" name="newsubject" id="newsubject" placeholder=""><br>
+							<div class="dropdown">
+						      <button class="btn btn-default dropdown-toggle" type="button" id="subjectselector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="subjecttext">Subject </span> <i class="fas fa-caret-down"></i></button>
+						      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						        <a class="dropdown-item" id="math2">Math</a>
+						        <a class="dropdown-item" id="physics2">Physics</a>
+						        <a class="dropdown-item" id="bio2">Biology</a>
+						        <a class="dropdown-item" id="chem2">Chemistry</a>
+						        <a class="dropdown-item" id="writing2">Writing</a>
+						        <a class="dropdown-item" id="history2">History</a>
+						        <a class="dropdown-item" id="webdev2">WebDev</a>
+						        <a class="dropdown-item" id="java2">Java</a>
+						        <a class="dropdown-item" id="python2">Python</a>
+						        <a class="dropdown-item" id="business2">Business</a>
+						        <a class="dropdown-item" id="spanish2">Spanish</a>
+						        <a class="dropdown-item" id="french2">French</a>
+						      </div>
+						    </div>
+						    <div class="row">
+						    	<p id="subjectmessage"></p>
+							    <a onclick="addSubject()" id="addsubject">Add Subject</a>
+							</div>
+						</div>
+						<div id="tuteemysubjects">
+							<h3>My Subjects</h3>
+							<div id="mysubjectsarea">
+							</div>
+						</div>
+					</div>
+					<div id="sessionsbody" class="col-sm-6">
+						<h3>My Sessions</h3>
 
-
+					</div>
 				</div>
 			</div>
 

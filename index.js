@@ -140,7 +140,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#verifyemail").html("Please Verify Your Email Address: <i>" + user.email + "</i>");
 
    	var split = splitEmail(user.email);
-   	$('.clockpicker').clockpicker();
 
    	var email_verified = user.emailVerified;
    	console.log(email_verified);
@@ -160,7 +159,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		isTutor.on('value', snap => {
 			if(snap.val() == "tutor") {
 				$(".main-div").css("display", "none");
-			    $("#logout").css("display", "block");
+			    $("#logout").fadeIn();
 			    $(".create-div").css("display", "none");
 			    $("#indexlogout").fadeIn();
 			    $("#bookasession a").html("See All Requests");
@@ -184,14 +183,28 @@ firebase.auth().onAuthStateChanged(function(user) {
 			} else {
 				$("#mainbody").fadeIn();
 			    $(".main-div").css("display", "none");
-			    $("#logout").css("display", "block");
+			    $("#logout").fadeIn();
 			    $(".create-div").css("display", "none");
 			    $("#bookasession a").html("Book A Session");
 			    $("#login2").html("Book A Session");
 			    $("#indexlogout").fadeIn();
 
-			    var reqRef = firebase.database().ref('users/' + split);
+			    var tuteeSubjects = firebase.database().ref('users/' + split).child("subjects");
 
+				tuteeSubjects.on("value", snap => {
+					var subjects = snap.val();
+					var splitsubs = subjects.split(",");
+					var text = "";
+					for(var i=0; i<splitsubs.length; i++) {
+						var sub = splitsubs[i].toLowerCase();
+
+						text += "<h5 class=\"label " + sub + "\">" + splitsubs[i] + "</h5> ";
+					}
+
+					$("#mysubjectsarea").html(text);
+				});
+
+			    var reqRef = firebase.database().ref('users/' + split);
 		//date, time, location, tutor, done, subject
 				reqRef.on("child_added", snap => {
 					var date = snap.child("date").val();
@@ -284,6 +297,17 @@ function openResetPass() {
 
 function resetPass() {
 	var emailAddress = $("#reset_email_field").val();
+
+	firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
+	  alert("Reset email sent!  Please check your inbox and follow the instructions in the email.")
+	}).catch(function(error) {
+	  alert(error.message);
+	  console.log(error);
+	});
+}
+
+function resetPass2() {
+	var emailAddress = firebase.auth().currentUser.email;
 
 	firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
 	  alert("Reset email sent!  Please check your inbox and follow the instructions in the email.")
@@ -434,6 +458,14 @@ function createAccount() {
 	}
 }
 
+$( "#tuteeaddsubjects .dropdown-item" ).each(function(index) {
+    $(this).on("click", function(){
+        // For the boolean value
+        $("#newsubject").val(this.innerHTML); 
+        $("#subjecttext").html(this.innerHTML + "");
+    });
+});
+
 //login + logout
 function login() {
 	var userEmail = $("#email_field").val();
@@ -552,6 +584,34 @@ function validate() {
 			//527d49d6-dba7-4334-8775-1b8ccd9b3eeb 
 
 		return true;
+	}
+}
+
+function addSubject() {
+	var email = firebase.auth().currentUser.email;
+	var subject = $("#newsubject").val();
+	var newEmail = splitEmail(email);
+
+	var tuteeSubjects = firebase.database().ref('users/' + newEmail).child("subjects");
+
+	var currentSubjects;
+
+	tuteeSubjects.on("value", snap => {
+		currentSubjects = snap.val();
+	});
+
+	if(subject != "") {
+		if(currentSubjects.search(subject) == -1) {
+			$("#subjectmessage").css("color", "green");
+			$("#subjectmessage").html(subject + " added as a subject!");
+			firebase.database().ref('users/' + newEmail).update({ subjects: subject + ", " + currentSubjects});
+		} else {
+			$("#subjectmessage").css("color", "red");
+			$("#subjectmessage").html("You already have " + subject + " as a subject!");
+		}
+	} else {
+		$("#subjectmessage").css("color", "red");
+		$("#subjectmessage").html("Please enter a subject.")
 	}
 }
 

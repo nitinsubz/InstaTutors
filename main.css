@@ -365,16 +365,34 @@ h1 strong {
 	position: fixed;
 	padding: 20px 0px;
 	top: 0;
-	right: 0;
+	right: 250px;
 	background-color: white;
 	z-index: 88;
 	border-radius: 0px 0px 0px 30px;
 }
 
+#tutorapply {
+		position: fixed;
+		z-index: 99;
+		right: 0;
+		top: 0;
+		font-size: 22px;
+		padding: 20px 30px;
+		background-color: #330867;
+		color: white;
+		transition-duration: 0.2s;
+}
+
+#tutorapply:hover {
+	background-color: #30CFD0;
+	text-decoration: none;
+}
+
+
 .teamnav {
-	font-size: 24px;
+	font-size: 22px;
 	display: inline;
-	padding: 15px 30px;
+	padding: 10px 30px;
 }
 
 .teamnav a {
@@ -482,7 +500,17 @@ h1 strong {
 	color: #5ed876;
 }
 
+.biology {
+	border: 2px solid #5ed876;
+	color: #5ed876;
+}
+
 .chem {
+	border: 2px solid #3bffdd;
+	color: #3bffdd;
+}
+
+.chemistry {
 	border: 2px solid #3bffdd;
 	color: #3bffdd;
 }
@@ -493,6 +521,11 @@ h1 strong {
 }
 
 .web {
+	border: 2px solid #af46b3;
+	color: #af46b3;
+}
+
+.webdev {
 	border: 2px solid #af46b3;
 	color: #af46b3;
 }
@@ -952,7 +985,7 @@ h1 strong {
 #servicenav, #tutornav {
 	position: fixed;
 	z-index: 89;
-	right: 150px;
+	right: 160px;
 	margin: 0px;
 }
 
@@ -999,14 +1032,142 @@ h1 strong {
 	font-size: 30px;
 }
 
-#sessionsbody {
-	margin: -70px 12% 50px 12%;
+#account {
+	padding: 40px 3%;
+	margin: -70px 9% 50px 9%;
 	background-color: white;
 	border-radius: 20px 20px 0px 0px;
 }
 
+#accountinfo h3 {
+	font-size: 30px;
+	color: #444;
+	padding-bottom: 20px;
+}
+
+#resetPass2, #addsubject {
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 200% 100%;
+	background-position: right;
+	transition-duration: 0.2s;
+	text-align: center;
+	border-radius: 30px;
+	padding: 13px 40px;
+	font-size: 22px;
+	color: white;
+}
+
+#resetPass2:hover {
+	text-decoration: none;
+	cursor: pointer;
+	background-position: left;
+}
+
+#tuteeaddsubjects {
+	padding-top: 25px;
+}
+
+#tuteeaddsubjects p {
+	font-size: 16px;
+	color: #330867;
+	margin-top: -10px;
+}
+
+#newsubject {
+	display: inline;
+	width: 50%;
+	float: left;
+	font-size: 20px;
+	margin-top: 28px;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	transition-duration: 0.1s;
+	outline: 0;
+}
+
+#newsubject:focus {
+	border-bottom: 3px solid #30CFD0;
+}
+
+#tuteeaddsubjects button {
+	margin-left: 5px;
+	font-size: 20px;
+}
+
+#tuteeaddsubjects .dropdown {
+	margin: 0;
+	padding: 0;
+	float: left;
+	display: inline;
+}
+
+#tuteeaddsubjects .dropdown-menu {
+	width: 90%;
+	margin-left: 50%;
+	margin-top: 20px;
+}
+
+#tuteeaddsubjects .dropdown-item {
+	display: block;
+	width: 100%;
+	color: #444;
+	padding: 4px 5px;
+	font-size: 18px;
+	transition-duration: 0.2s;
+}
+
+#tuteeaddsubjects .dropdown-item:hover {
+	background-color: #ddd;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#tuteeaddsubjects .row {
+	display: block;
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+	margin-left: 0px;
+}
+
+#addsubject {
+	margin-bottom: 30px;
+}
+
+#addsubject:hover {
+	text-decoration: none;
+	cursor: pointer;
+	background-position: left;
+}
+
+#subjectmessage {
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+#tuteemysubjects {
+	margin-top: 30px;
+	float: left;
+}
+
+#mysubjectsarea .label {
+	font-size: 20px;
+	margin: 3px;
+	line-height: 50px;
+}
+
+#sessionsbody h3 {
+	font-size: 30px;
+	color: #444;
+	padding-bottom: 20px;
+}
+
+#sessionsbody {
+	background-color: white;
+}
+
 .req {
-	padding: 50px 5%;
+	padding: 20px 4%;
 	border-radius: 20px;
 	margin-bottom: 20px;
 	box-shadow: 5px 5px 20px #666;
@@ -1014,16 +1175,16 @@ h1 strong {
 }
 
 .req h2 {
-	font-size: 40px;
+	font-size: 30px;
 }
 
 .req h4 {
-	font-size: 30px;
+	font-size: 24px;
 }
 
 .cancel {
 	color: #333;
-	font-size: 30px;
+	font-size: 25px;
 	position: absolute;
 	top: 10px;
 	right: 20px;
@@ -1643,9 +1804,9 @@ h1 strong {
 	}
 
 	#sessionsbody {
-		margin: -60px 7% 50px 7%;
+		float: left;
+		margin: 0px;
 		background-color: white;
-		border-radius: 20px 20px 0px 0px;
 	}
 
 	.req {
@@ -1721,6 +1882,12 @@ h1 strong {
 
 	#teamnavbar {
 		display: none;
+	}
+
+	#tutorapply {
+		font-size: 18px;
+		padding: 10px 20px;
+		border-radius: 0px 0px 0px 20px;
 	}
 
 	#teamhead {

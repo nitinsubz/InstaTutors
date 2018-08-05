@@ -108,6 +108,11 @@ $(document).ready(function() {
                     scrollTop: $("#tutors").offset().top - 40
                 }, 800);
     });
+    $(".back2top").click(function(event) {
+    event.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, 800);
+    return false;
+      });
 });
 
 
@@ -135,6 +140,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#verifyemail").html("Please Verify Your Email Address: <i>" + user.email + "</i>");
 
    	var split = splitEmail(user.email);
+   	$('.clockpicker').clockpicker();
 
    	var email_verified = user.emailVerified;
    	console.log(email_verified);
@@ -335,12 +341,20 @@ function cancel() {
 	var email = firebase.auth().currentUser.email;
 	var newemail = splitEmail(email);
 	if(input == email) {
+		var reason = prompt("What is your reason for canceling?");
 		firebase.database().ref('requests/' + newdate + newemail).remove();
 		firebase.database().ref('users/' + newemail + "/" + newdate).remove();
 		firebase.database().ref('requests/' + newdate + newemail).remove();
 		firebase.database().ref('users/' + newemail + "/" + newdate).remove();
-		alert("Tutoring session for " + newdate + " canceled.  page will refresh now.");
-		window.location.reload(true);
+
+		var content = "<h3 style=\"color: red\">Tutoring Session Canceled -</h3>  <p><strong>Date:</strong> " + newdate + "</p> <p><strong>Reason:</strong> " + reason + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p>"; 
+		Email.send("support@instatutors.org",
+			"tutors@instatutors.org",
+			"New Tutoring Request for " + newdate,
+			content,
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+		
+		alert("Tutoring session for " + newdate + " canceled.");
 	} else {
 		alert("wrong email. aborting.")
 	}
@@ -526,13 +540,13 @@ function validate() {
 
 		Email.send("support@instatutors.org",
 			"tutors@instatutors.org",
-			"New Tutoring Request for " + date,
+			"New Tutoring Request for " + splitDate(date),
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 
 		Email.send("support@instatutors.org",
 			email,
-			"Tutoring Session Requested for " + date,
+			"Tutoring Session Requested for " + splitDate(date),
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 			//527d49d6-dba7-4334-8775-1b8ccd9b3eeb 
@@ -820,10 +834,10 @@ $(document).ready(function() {
     $("#spanish").click(function(event) {
     	$("#filtertext").html("Spanish");
         $("#matthewcho").show();
-		$("#varsha").show();
-		$("#reedit").show();
-		$("#matthewsheh").show();
-		$("#sangita").show();
+		$("#varsha").hide();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
 		$("#conner").hide();
 		$("#kyle").hide();
 		$("#stuti").hide();
