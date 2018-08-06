@@ -1230,6 +1230,7 @@ h1 strong {
 	margin-top: 30px;
 	float: left;
 	width: 100%;
+	position: relative;
 }
 
 #tuteemysubjects h3 {
@@ -1237,14 +1238,14 @@ h1 strong {
 }
 
 #subjectdelete {
-	float: left;
-	margin: 10px 0px;
-	padding: 8px 15px;
-	font-size: 20px;
+	position: absolute;
+	right: 12%;
+	top: 20px;
+	padding: 5px 15px;
+	font-size: 19px;
 	text-align: center;
 	border-radius: 20px;
 	color: #f25549;
-	border: 2px solid #f25549;
 	transition-duration: 0.2s;
 }
 
@@ -1313,6 +1314,8 @@ h1 strong {
 
 #sessionsbody {
 	background-color: white;
+	max-height: 1200px;
+	overflow: auto;
 }
 
 .req {
