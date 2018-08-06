@@ -312,6 +312,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 				var reqsubs = subject.split(", ");
 
 				var overlap = intersect(splitsubs, reqsubs).length;
+				//check whether request's subjects overlap tutor's subjects
+				//if not, don't show request
 
 				console.log(overlap);
 
@@ -357,6 +359,7 @@ function openResetPass() {
 	$("#reset_div").fadeIn();
 }
 
+//reset Password
 function resetPass() {
 	var emailAddress = $("#reset_email_field").val();
 
@@ -368,6 +371,7 @@ function resetPass() {
 	});
 }
 
+//Same thing, but from the account
 function resetPass2() {
 	var emailAddress = firebase.auth().currentUser.email;
 
@@ -379,6 +383,7 @@ function resetPass2() {
 	});
 }
 
+//for Tutors to claim a session
 function takeSession() {
 	var date = event.currentTarget.childNodes[3].innerHTML;
 	var newdate = date.slice(6);
@@ -420,6 +425,7 @@ function takeSession() {
 		}	
 }
 
+//cancel Tutoring session (request)
 function cancel() {
 	var input = prompt("To cancel a session, please input your email.");
 	var date = event.currentTarget.parentNode.childNodes[3].innerHTML;
@@ -629,12 +635,14 @@ function validate() {
 		$("#confirmedbody").fadeIn();
 		$("#logout").css("display", "none");
 
+		//send email to all tutors
 		Email.send("support@instatutors.org",
 			"tutors@instatutors.org",
 			"New Tutoring Request for " + subject,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 
+		//send confirmation email to user
 		Email.send("support@instatutors.org",
 			email,
 			"Tutoring Session Requested for " + splitDate(date),
@@ -646,6 +654,7 @@ function validate() {
 	}
 }
 
+//add subject to user's subjects
 function addSubject() {
 	var email = firebase.auth().currentUser.email;
 	var subject = $("#newsubject").val();
@@ -678,6 +687,7 @@ function addSubject() {
 	}
 }
 
+//delete all subjects from user's subjects
 function deletesubjects() {
 	alert("Deleting all subjects.");
 	var email = firebase.auth().currentUser.email;
@@ -685,6 +695,7 @@ function deletesubjects() {
 	firebase.database().ref('users/' + newEmail).update({ subjects: ""});
 }
 
+//find a tutor
 function matchTutors() {
 	var user = firebase.auth().currentUser;
 	var split = splitEmail(user.email);
@@ -704,6 +715,7 @@ function matchTutors() {
 	var goodtutors = "";
 
 	var ref = firebase.database().ref('users');
+	//get uids of all tutors
 	ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
 	 	tutordata = snap.val();
 	 	var tutorids = Object.keys(snap.val());
@@ -713,6 +725,7 @@ function matchTutors() {
 	 	for(var i=0; i<tutorids.length; i++) {
 	 		var tutorSub = firebase.database().ref('users/' + tutorids[i]).child("subjects");
 
+	 		//determine overlap between user subjects & tutor subjects
 	 		tutorSub.on("value", snap => {
 	 			var tutorSubArray = snap.val().split(",");
 	 			var inCommon = intersect(tuteeSubArray, tutorSubArray);
@@ -730,6 +743,7 @@ function matchTutors() {
 	 	var matches = matchedtutors.split(",");
 	 	var good = goodtutors.split(",");
 
+	 	//add tutors to "great matches"
 		for(var i=0; i<matches.length; i++) {
 			var tutorRef = firebase.database().ref('users/' + matches[i]);
 			tutorRef.on("value", snap => {
@@ -748,15 +762,15 @@ function matchTutors() {
 			});
 		}
 
+		//add tutors to "good matches"
 		for(var i=0; i<good.length; i++) {
 			var tutorRef = firebase.database().ref('users/' + good[i]);
 			tutorRef.on("value", snap => {
 				var name = snap.child("name").val();
 				var email = snap.child("email").val();
-				var subjects = snap.child("subjects").val().split(", ");
+				var subjects = snap.child("subjects").val().split(",");
 				var intersection = intersect(subjects, tuteeSubArray);
 
-				console.log(subjects);
 				var subjectLabels = "";
 				for(var k=0; k<intersection.length; k++) {
 					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
@@ -766,6 +780,7 @@ function matchTutors() {
 			});
 		}
 
+		//add DOM elements to matched tutors
 		if(mytutors == "") {
 			$("#mytutorsarea").html("<p>No tutors found.  Sorry.</p>");
 		} else {
@@ -776,7 +791,7 @@ function matchTutors() {
 
 }
 
-
+//validate message on homepage
 function validatemsg() {
 	var name = $("#msgname").val();
 	var email = $("#msgemail").val();
@@ -809,6 +824,10 @@ function validatemsg() {
 	}
 }
 
+
+//filter function 
+
+//TO DO: make this dynamic
 $(document).ready(function() {
     $("#all").click(function(event) {
     	$("#filtertext").html("All");
@@ -1099,7 +1118,7 @@ $(document).ready(function() {
 
 
 
-
+//typewriter on homepage
 var i = 0;
 var txt = '"Never doubt that a small group of thoughtful commited citizens can change the world; indeed it\'s the only thing that ever has."'; /* The text */
 var speed = 20; /* The speed/duration of the effect in milliseconds */

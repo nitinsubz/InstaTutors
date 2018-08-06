@@ -2108,6 +2108,107 @@ h1 strong {
 	#filter .dropdown-menu {
 		margin-left: 0px;
 	}
+
+	#bookform .col-sm-9 #subject {
+		width: 100%;
+		float: left;
+	}
+
+	.col-sm-9 .dropdown {
+		float: left;
+		width: 50%;
+		margin-top: 20px;
+	}
+
+	#subjectselector2 {
+		width: 100%;
+		text-align: center;
+		font-size: 18px;
+		margin-top: -5px;
+	}
+
+
+	#sessionsheader h3 {
+		font-size: 24px;
+	}
+
+	#account {
+		padding: 20px 5%;
+		margin: -60px 6% 50px 6%;
+	}
+
+	#accountinfo h3 {
+		font-size: 24px;
+	}
+
+	#resetPass2, #addsubject, #matchtutors {
+		padding: 10px 20px;
+		font-size: 18px;
+		color: white;
+	}
+
+	#newsubject {
+		margin-top: 28px;
+		width: 45%;
+		font-size: 18px;
+	}
+
+	#tuteeaddsubjects .dropdown-menu {
+		width: 100%;
+	}
+
+	#tuteeaddsubjects .dropdown-item {
+		padding: 3px 5px;
+		font-size: 16px;
+	}
+
+	#addsubject {
+		margin-bottom: 20px;
+	}
+
+	#subjectmessage {
+		font-size: 16px;
+	}
+
+	#subjectdelete {
+		display: none;
+	}
+
+	#mysubjectsarea .label {
+		font-size: 16px;
+		line-height: 45px;
+	}
+
+	#matchtutors {
+		margin: 10px 0px;
+	}
+
+	#mytutorsarea p {
+		font-size: 16px;
+	}
+
+	.mytutor h2 {
+		font-size: 24px;
+	}
+
+	.mytutor h4 {
+		font-size: 17px;
+		color: #555;
+	}
+
+	.mytutor a:hover {
+		text-decoration: none;
+	}
+
+	#sessionsbody h3 {
+		font-size: 24px;
+	}
+
+	#sessionsbody {
+		background-color: white;
+		max-height: 30000px;
+		overflow: auto;
+	}
 }
 
 
