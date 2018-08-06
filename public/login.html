@@ -86,12 +86,12 @@
 	<div id="mainbody">
 		<div id="servicenav">
 			<button id="booknav" onclick="booktab()">Book A Session</button>
-			<button id="sessionsnav" onclick="sessionstab()">My Sessions</button>
+			<button id="sessionsnav" onclick="sessionstab()">My Account</button>
 		</div>
 	    <div class="tab-content" id="myTabContent">
 			<div class="tab" id="booktab">
 				<div id="bookheader">
-					<h1 onclick="sendEmail()" id="welcome">Welcome <strong></strong>!</h1>
+					<h1 id="welcome">Welcome <strong></strong>!</h1>
 					<h3>Book A Session</h3>
 				</div>
 				<div id="bookform">
@@ -102,6 +102,32 @@
 				    	</div>
 				    	<div class="col-sm-9">
 				   			<input type="text" name="location" id="location" placeholder="Enter your preferred location, ex. Kennedy Middle School..."><br>
+				   		</div>
+				   	</div>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Subject(s):
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="subject" id="subject" placeholder="Use the dropdown to add subjects you need help in...">
+				   			<div class="dropdown">
+						      <button class="btn btn-default dropdown-toggle" type="button" id="subjectselector2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="subjecttext2">Subject </span> <i class="fas fa-caret-down"></i></button>
+						      <div class="dropdown-menu" id="subjectmenu" aria-labelledby="dropdownMenuButton">
+						        <a class="dropdown-item">Math</a>
+						        <a class="dropdown-item">Physics</a>
+						        <a class="dropdown-item">Biology</a>
+						        <a class="dropdown-item">Chemistry</a>
+						        <a class="dropdown-item">Writing</a>
+						        <a class="dropdown-item">History</a>
+						        <a class="dropdown-item">WebDev</a>
+						        <a class="dropdown-item">Java</a>
+						        <a class="dropdown-item">Python</a>
+						        <a class="dropdown-item">Business</a>
+						        <a class="dropdown-item">Spanish</a>
+						        <a class="dropdown-item">French</a>
+						        <a class="dropdown-item">Chinese</a>
+						      </div>
+						    </div>
 				   		</div>
 				   	</div>
 				   	<div class="row">
@@ -123,6 +149,9 @@
 							        <span class="glyphicon glyphicon-time"></span>
 							    </span>
 							</div>
+							<script>
+								   	$('.clockpicker').clockpicker();
+							</script>
 				   		</div>
 				   	</div>
 				   	<div class="row">
@@ -133,14 +162,6 @@
 				   			<input type="text" name="tutor" id="tutor" placeholder="If you have a preferred tutor, enter their name here..."><br>
 				   		</div>
 				   	</div>
-				   	<div class="row">
-						<div class="col-sm-3">
-				    		Subject:
-				    	</div>
-				    	<div class="col-sm-9">
-				   			<input type="text" name="subject" id="subject" placeholder="Enter the subject you request help in..."><br>
-				   		</div>
-				   	</div>
 				   	<p id="formerrors"></p>
 				   	<a id="submit" onclick="validate()">Submit</a>
 				    </form>
@@ -148,12 +169,60 @@
 			</div>
 			<div id="sessionstab">
 				<div id="sessionsheader">
-					<h1>My Sessions</h1>
+					<h1>My Account</h1>
 					<h3 id="user">User: </h3>
 				</div>
-				<div id="sessionsbody">
+				<div class="row" id="account">
+					<div id="accountinfo" class="col-sm-6">
+						<h3>Change Password</h3>
+						<a id="resetPass2" onclick="resetPass2()">Send Reset Email</a>
+						<div id="tuteeaddsubjects">
+							<h3>Add Subjects</h3>
+							<p>Enter the subjects you need help in, and we can match you with the perfect tutor!</p>
+							<input type="text" name="newsubject" id="newsubject" placeholder=""><br>
+							<div class="dropdown">
+						      <button class="btn btn-default dropdown-toggle" type="button" id="subjectselector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="subjecttext">Subject </span> <i class="fas fa-caret-down"></i></button>
+						      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						        <a class="dropdown-item">Math</a>
+						        <a class="dropdown-item">Physics</a>
+						        <a class="dropdown-item">Biology</a>
+						        <a class="dropdown-item">Chemistry</a>
+						        <a class="dropdown-item">Writing</a>
+						        <a class="dropdown-item">History</a>
+						        <a class="dropdown-item">WebDev</a>
+						        <a class="dropdown-item">Java</a>
+						        <a class="dropdown-item">Python</a>
+						        <a class="dropdown-item">Business</a>
+						        <a class="dropdown-item">Spanish</a>
+						        <a class="dropdown-item">French</a>
+						        <a class="dropdown-item">Chinese</a>
+						      </div>
+						    </div>
+						    <div class="row">
+						    	<p id="subjectmessage"></p>
+							    <a onclick="addSubject()" id="addsubject">Add Subject</a>
+							</div>
+						</div>
+						<div id="tuteemysubjects">
+							<div class="row">
+								<div class="col-sm-7"><h3>My Subjects</h3></div>
+								<div class="col-sm-5"><a id="subjectdelete" onclick="deletesubjects()"><i class="fas fa-trash-alt"></i></a></div>
+							</div>
+							<div id="mysubjectsarea">
+							</div>
+							<a id="matchtutors" onclick="matchTutors()">Find Tutors</a>
+							<div id="mytutorsarea">
+								<div id="greatmatches">
+								</div>
+								<div id="goodmatches">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="sessionsbody" class="col-sm-6">
+						<h3>My Sessions</h3>
 
-
+					</div>
 				</div>
 			</div>
 
@@ -165,7 +234,7 @@
 	<div id="tutorsessions">
 		<div id="tutornav">
 			<button id="booknav" onclick="allsessionstab()">See All Requests</button>
-			<button id="sessionsnav" onclick="tutorsessionstab()">My Sessions</button>
+			<button id="sessionsnav" onclick="tutorsessionstab()">My Account</button>
 		</div>
 		<div id="allsessions">
 			<div id="tutorsessionshead">
@@ -175,8 +244,23 @@
 			</div>
 		</div>
 		<div id="tutormysessions">
-			<h1>My Sessions</h1>
-			<div id="tutormysessionsbody">
+			<h1>My Account</h1>
+			<div id="tutoraccount" class="row">
+				<div id="tutoraccountinfo" class="col-sm-6">
+					<h3>Tutor:</h3>
+					<h4 id="tutoruser"></h4>
+					<h3>Change Password:</h3>
+					<a id="resetPass2" onclick="resetPass2()">Send Reset Email</a>
+					<div id="tutorsubjects">
+						<h3>My Subjects</h3>
+						<p>Contact Nitin or Sam if you would like to change your subjects.</p>
+						<div id="tutorsubjectsarea">
+						</div>
+					</div>
+				</div>
+				<div id="tutormysessionsbody" class="col-sm-6">
+					<h3>My Sessions</h3>
+				</div>
 			</div>
 		</div>
 		<div id="footer">

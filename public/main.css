@@ -365,16 +365,34 @@ h1 strong {
 	position: fixed;
 	padding: 20px 0px;
 	top: 0;
-	right: 0;
+	right: 250px;
 	background-color: white;
 	z-index: 88;
 	border-radius: 0px 0px 0px 30px;
 }
 
+#tutorapply {
+		position: fixed;
+		z-index: 99;
+		right: 0;
+		top: 0;
+		font-size: 22px;
+		padding: 20px 30px;
+		background-color: #330867;
+		color: white;
+		transition-duration: 0.2s;
+}
+
+#tutorapply:hover {
+	background-color: #30CFD0;
+	text-decoration: none;
+}
+
+
 .teamnav {
-	font-size: 24px;
+	font-size: 22px;
 	display: inline;
-	padding: 15px 30px;
+	padding: 10px 30px;
 }
 
 .teamnav a {
@@ -482,7 +500,17 @@ h1 strong {
 	color: #5ed876;
 }
 
+.biology {
+	border: 2px solid #5ed876;
+	color: #5ed876;
+}
+
 .chem {
+	border: 2px solid #3bffdd;
+	color: #3bffdd;
+}
+
+.chemistry {
 	border: 2px solid #3bffdd;
 	color: #3bffdd;
 }
@@ -493,6 +521,11 @@ h1 strong {
 }
 
 .web {
+	border: 2px solid #af46b3;
+	color: #af46b3;
+}
+
+.webdev {
 	border: 2px solid #af46b3;
 	color: #af46b3;
 }
@@ -525,6 +558,11 @@ h1 strong {
 .french {
 	border: 2px solid #7d7dd0;
 	color: #7d7dd0;
+}
+
+.chinese {
+	border: 2px solid #ff4f3b;
+	color: #ff4f3b;
 }
 
 .back2top {
@@ -645,7 +683,50 @@ h1 strong {
 }
 
 #bookform .col-sm-9 input:focus {
-	border-bottom: 3px solid #dc5c0f;
+	border-bottom: 3px solid #30CFD0;
+}
+
+#bookform .col-sm-9 #subject {
+	width: 76%;
+	float: left;
+}
+
+.col-sm-9 .dropdown {
+	float: left;
+	width: 24%;
+}
+
+#subjectselector2 {
+	width: 100%;
+	text-align: center;
+	font-size: 18px;
+	margin-top: -5px;
+}
+
+.col-sm-9 .dropdown {
+	margin: 0;
+	padding: 0;
+	float: left;
+	display: inline;
+}
+
+.col-sm-9 .dropdown-menu {
+	width: 90%;
+}
+
+.col-sm-9 .dropdown-item {
+	display: block;
+	width: 100%;
+	color: #444;
+	padding: 4px 5px;
+	font-size: 18px;
+	transition-duration: 0.2s;
+}
+
+.col-sm-9 .dropdown-item:hover {
+	background-color: #ddd;
+	cursor: pointer;
+	text-decoration: none;
 }
 
 #submit {
@@ -895,19 +976,52 @@ h1 strong {
 
 #tutormysessions h1 {
 	background-color: #212664;
-	padding: 140px 10% 90px 10%;
+	padding: 140px 10% 110px 10%;
 	color: white;
 	font-size: 60px;
 	text-align: center;
 }
 
+#tutoraccount {
+	padding: 40px 3%;
+	margin: -70px 9% 50px 9%;
+	background-color: white;
+	border-radius: 20px 20px 0px 0px;
+}
+
+#tutoraccount h3 {
+	font-size: 30px;
+	color: #444;
+	padding-bottom: 20px;
+}
+
+#tutoruser {
+	font-size: 24px;
+	color: #30CFD0;
+	margin: -10px 0px 20px 0px;
+}
+
+#tutorsubjects {
+	padding: 20px 0px;
+}
+
+#tutorsubjects p {
+	font-size: 20px;
+	margin: -20px 0px 20px 0px;
+}
+
+#tutorsubjects .label {
+	font-size: 20px;
+	margin: 3px;
+	line-height: 50px;
+}
+
 #tutormysessionsbody {
-	margin-top: -50px;
-	padding: 0px 10% 50px 10%;
+	padding: 0px;
 }
 
 .tutorreq {
-	padding: 50px 5%;
+	padding: 30px 4%;
 	border-radius: 20px;
 	margin-bottom: 20px;
 	background-color: white;
@@ -916,11 +1030,11 @@ h1 strong {
 }
 
 .tutorreq h2 {
-	font-size: 40px;
+	font-size: 30px;
 }
 
 .tutorreq h4 {
-	font-size: 30px;
+	font-size: 22px;
 }
 
 .tutorreq:hover {
@@ -933,7 +1047,7 @@ h1 strong {
 	position: fixed;
 	top: 0;
 	right: 0;
-	background: linear-gradient(to right, #30CFD0, transparent);
+	background: linear-gradient(to right, #30CFD0, #212664);
 	background-size: 200% 100%;
 	background-position: right;
 	padding: 15px 40px;
@@ -952,7 +1066,7 @@ h1 strong {
 #servicenav, #tutornav {
 	position: fixed;
 	z-index: 89;
-	right: 150px;
+	right: 160px;
 	margin: 0px;
 }
 
@@ -961,7 +1075,7 @@ h1 strong {
 	margin: 0px;
 	border: 0;
 	font-size: 24px;
-	background-color: white;
+	background-color: #eee;
 	color: #212664;
 	transition-duration: 0.2s;
 }
@@ -969,11 +1083,13 @@ h1 strong {
 #servicenav button:hover {
 	background-color: #30CFD0; 
 	color: white;
+	cursor: pointer;
 }
 
 #tutornav button:hover {
 	background-color: #30CFD0;
 	color: white;
+	cursor: pointer;
 }
 
 #booknav {
@@ -999,14 +1115,211 @@ h1 strong {
 	font-size: 30px;
 }
 
-#sessionsbody {
-	margin: -70px 12% 50px 12%;
+#account {
+	padding: 40px 3%;
+	margin: -70px 9% 50px 9%;
 	background-color: white;
 	border-radius: 20px 20px 0px 0px;
 }
 
+#accountinfo h3 {
+	font-size: 30px;
+	color: #444;
+	padding-bottom: 20px;
+}
+
+#resetPass2, #addsubject, #matchtutors {
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 200% 100%;
+	background-position: right;
+	transition-duration: 0.2s;
+	text-align: center;
+	border-radius: 30px;
+	padding: 13px 40px;
+	font-size: 22px;
+	color: white;
+}
+
+#resetPass2:hover {
+	text-decoration: none;
+	cursor: pointer;
+	background-position: left;
+}
+
+#tuteeaddsubjects {
+	padding-top: 25px;
+}
+
+#tuteeaddsubjects p {
+	font-size: 16px;
+	color: #330867;
+	margin-top: -10px;
+}
+
+#newsubject {
+	display: inline;
+	width: 50%;
+	float: left;
+	font-size: 20px;
+	margin-top: 28px;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	transition-duration: 0.1s;
+	outline: 0;
+}
+
+#newsubject:focus {
+	border-bottom: 3px solid #30CFD0;
+}
+
+#tuteeaddsubjects button {
+	margin-left: 5px;
+	font-size: 20px;
+}
+
+#tuteeaddsubjects .dropdown {
+	margin: 0;
+	padding: 0;
+	float: left;
+	display: inline;
+}
+
+#tuteeaddsubjects .dropdown-menu {
+	width: 90%;
+}
+
+#tuteeaddsubjects .dropdown-item {
+	display: block;
+	width: 100%;
+	color: #444;
+	padding: 4px 5px;
+	font-size: 18px;
+	transition-duration: 0.2s;
+}
+
+#tuteeaddsubjects .dropdown-item:hover {
+	background-color: #ddd;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#tuteeaddsubjects .row {
+	display: block;
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+	margin-left: 0px;
+}
+
+#addsubject {
+	margin-bottom: 30px;
+}
+
+#addsubject:hover {
+	text-decoration: none;
+	cursor: pointer;
+	background-position: left;
+}
+
+#subjectmessage {
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+#tuteemysubjects {
+	margin-top: 30px;
+	float: left;
+	width: 100%;
+	position: relative;
+}
+
+#tuteemysubjects h3 {
+	margin-bottom: 0px;
+}
+
+#subjectdelete {
+	position: absolute;
+	right: 12%;
+	top: 20px;
+	padding: 5px 15px;
+	font-size: 19px;
+	text-align: center;
+	border-radius: 20px;
+	color: #f25549;
+	transition-duration: 0.2s;
+}
+
+#subjectdelete:hover {
+	color: white;
+	background-color: #f25549;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#mysubjectsarea .label {
+	font-size: 20px;
+	margin: 3px;
+	line-height: 50px;
+}
+
+#matchtutors {
+	float: left;
+	margin: 20px 0px;
+}
+
+#matchtutors:hover {
+	text-decoration: none;
+	cursor: pointer;
+	background-position: left;
+}
+
+#mytutorsarea p {
+	font-size: 19px;
+	float: left;
+	margin: 15px 0px;
+}
+
+.mytutor {
+	margin: 10px 0px;
+	float: left;
+	padding: 20px 3%;
+}
+
+.great {
+	border-left: 6px solid #24dc63;
+}
+
+.good {
+	border-left: 3px solid #30CFD0;
+}
+
+.mytutor h2 {
+	font-size: 28px;
+}
+
+.mytutor h4 {
+	font-size: 23px;
+	color: #555;
+}
+
+.mytutor a:hover {
+	text-decoration: none;
+}
+
+#sessionsbody h3 {
+	font-size: 30px;
+	color: #444;
+	padding-bottom: 20px;
+}
+
+#sessionsbody {
+	background-color: white;
+	max-height: 1200px;
+	overflow: auto;
+}
+
 .req {
-	padding: 50px 5%;
+	padding: 20px 4%;
 	border-radius: 20px;
 	margin-bottom: 20px;
 	box-shadow: 5px 5px 20px #666;
@@ -1014,16 +1327,16 @@ h1 strong {
 }
 
 .req h2 {
-	font-size: 40px;
+	font-size: 30px;
 }
 
 .req h4 {
-	font-size: 30px;
+	font-size: 24px;
 }
 
 .cancel {
 	color: #333;
-	font-size: 30px;
+	font-size: 25px;
 	position: absolute;
 	top: 10px;
 	right: 20px;
@@ -1643,9 +1956,9 @@ h1 strong {
 	}
 
 	#sessionsbody {
-		margin: -60px 7% 50px 7%;
+		float: left;
+		margin: 0px;
 		background-color: white;
-		border-radius: 20px 20px 0px 0px;
 	}
 
 	.req {
@@ -1721,6 +2034,12 @@ h1 strong {
 
 	#teamnavbar {
 		display: none;
+	}
+
+	#tutorapply {
+		font-size: 18px;
+		padding: 10px 20px;
+		border-radius: 0px 0px 0px 20px;
 	}
 
 	#teamhead {

@@ -56,6 +56,20 @@ $(window).scroll(function() {
     });
 });
 
+
+function intersect(a, b) {
+    var d = {};
+    var results = [];
+    for (var i = 0; i < b.length; i++) {
+        d[b[i]] = true;
+    }
+    for (var j = 0; j < a.length; j++) {
+        if (d[a[j]]) 
+            results.push(a[j]);
+    }
+    return results;
+}
+
  function rotate(x) {
     x.classList.toggle("change");
     $("#phonenavlinks").slideToggle("fast");
@@ -113,6 +127,26 @@ $(document).ready(function() {
     $("html, body").animate({ scrollTop: 0 }, 800);
     return false;
       });
+
+    $( "#tuteeaddsubjects .dropdown-item" ).each(function(index) {
+	    $(this).on("click", function(){
+	        // For the boolean value
+	        $("#newsubject").val(this.innerHTML.toLowerCase()); 
+	        $("#subjecttext").html(this.innerHTML);
+	    });
+	});
+
+	$( "#subjectmenu .dropdown-item" ).each(function(index) {
+	    $(this).on("click", function(){
+	        // For the boolean value
+	        if($("#subject").val() == "") {
+	        	$("#subject").val(this.innerHTML.toLowerCase());
+	        } else {
+	        	$("#subject").val($("#subject").val() + ", " + this.innerHTML.toLowerCase()); 
+	        }
+	        $("#subjecttext2").html(this.innerHTML);
+	    });
+	});
 });
 
 
@@ -140,7 +174,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#verifyemail").html("Please Verify Your Email Address: <i>" + user.email + "</i>");
 
    	var split = splitEmail(user.email);
-   	$('.clockpicker').clockpicker();
 
    	var email_verified = user.emailVerified;
    	console.log(email_verified);
@@ -160,38 +193,68 @@ firebase.auth().onAuthStateChanged(function(user) {
 		isTutor.on('value', snap => {
 			if(snap.val() == "tutor") {
 				$(".main-div").css("display", "none");
-			    $("#logout").css("display", "block");
+			    $("#logout").fadeIn();
 			    $(".create-div").css("display", "none");
 			    $("#indexlogout").fadeIn();
 			    $("#bookasession a").html("See All Requests");
 			    $("#login2").html("See All Requests");
 			    $("#tutorsessions").fadeIn();
 
+			    var tutorSubjects = firebase.database().ref('users/' + split).child("subjects");
+
+				tutorSubjects.on("value", snap => {
+					var subjects = snap.val();
+					var splitsubs = subjects.split(",");
+					var text = "";
+					for(var i=0; i<splitsubs.length; i++) {
+						var sub = splitsubs[i].toLowerCase();
+
+						text += "<h5 class=\"label " + sub + "\">" + splitsubs[i] + "</h5> ";
+					}
+
+					$("#tutorsubjectsarea").html(text);
+				});
+
 			    var mySession = firebase.database().ref('users/' + split);
 
 				mySession.on("child_added", snap => {
-				var date = snap.child("date").val();
-				var email = snap.child("email").val();
-				var location = snap.child("location").val();
-				var subject = snap.child("subject").val();
-				var time = snap.child("time").val();
+					var date = snap.child("date").val();
+					var email = snap.child("email").val();
+					var location = snap.child("location").val();
+					var subject = snap.child("subject").val();
+					var time = snap.child("time").val();
 
-				if(date != null) {
-					$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>email: " + email + "</h4>");
-				}
+					if(date != null) {
+							$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>email: " + email + "</h4>");
+						}
+
 			});		    
 
 			} else {
 				$("#mainbody").fadeIn();
 			    $(".main-div").css("display", "none");
-			    $("#logout").css("display", "block");
+			    $("#logout").fadeIn();
 			    $(".create-div").css("display", "none");
 			    $("#bookasession a").html("Book A Session");
 			    $("#login2").html("Book A Session");
 			    $("#indexlogout").fadeIn();
 
-			    var reqRef = firebase.database().ref('users/' + split);
+			    var tuteeSubjects = firebase.database().ref('users/' + split).child("subjects");
 
+				tuteeSubjects.on("value", snap => {
+					var subjects = snap.val();
+					var splitsubs = subjects.split(",");
+					var text = "";
+					for(var i=0; i<splitsubs.length; i++) {
+						var sub = splitsubs[i].toLowerCase();
+
+						text += "<h5 class=\"label " + sub + "\">" + splitsubs[i] + "</h5> ";
+					}
+
+					$("#mysubjectsarea").html(text);
+				});
+
+			    var reqRef = firebase.database().ref('users/' + split);
 		//date, time, location, tutor, done, subject
 				reqRef.on("child_added", snap => {
 					var date = snap.child("date").val();
@@ -210,8 +273,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 					}
 
 					if(date != null) {
-						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
 					}
+
 				});
 			}
 		});
@@ -228,6 +292,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     if(user != null){
       $("#user").html("User: " + user.email + "");
+      $("#tutoruser").html(user.email);
     }
 
     var tutorReq = firebase.database().ref('requests');
@@ -241,17 +306,27 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var time = snap.child("time").val();
 		var tutor = snap.child("tutor").val();
 
-		var display;
-		if(done == "yes") {
-			display = "none";
-		} else {
-			display = "block";
-		}
+		var myUser = firebase.database().ref('users/' + split).child("subjects");
+		myUser.on("value", snap => {
+				var splitsubs = snap.val().split(",");
+				var reqsubs = subject.split(", ");
 
-		var newDate = date;
-		if(newDate != null) {
-			$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + newDate + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
-		}
+				var overlap = intersect(splitsubs, reqsubs).length;
+
+				console.log(overlap);
+
+				var display;
+				if(overlap == 0 || done == "yes") {
+					display = "none";
+				} else {
+					display = "block";
+				}
+
+				if(date != null) {
+					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+				}
+		});
+
 	});
 
   } else {
@@ -293,6 +368,17 @@ function resetPass() {
 	});
 }
 
+function resetPass2() {
+	var emailAddress = firebase.auth().currentUser.email;
+
+	firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
+	  alert("Reset email sent!  Please check your inbox and follow the instructions in the email.")
+	}).catch(function(error) {
+	  alert(error.message);
+	  console.log(error);
+	});
+}
+
 function takeSession() {
 	var date = event.currentTarget.childNodes[3].innerHTML;
 	var newdate = date.slice(6);
@@ -324,7 +410,7 @@ function takeSession() {
 			subject: subject,	
 		 });
 
-		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Location:</strong> " + location + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
+		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Location:</strong> " + location + "</p> <p><strong>Subjects:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
 
 		Email.send("instatutorsteam@gmail.com",
 			email,
@@ -340,6 +426,9 @@ function cancel() {
 	var newdate = date.slice(6);
 	var email = firebase.auth().currentUser.email;
 	var newemail = splitEmail(email);
+	var subject = event.currentTarget.parentNode.childNodes[7].innerHTML.slice(10);
+	console.log(subject);
+
 	if(input == email) {
 		var reason = prompt("What is your reason for canceling?");
 		firebase.database().ref('requests/' + newdate + newemail).remove();
@@ -350,7 +439,7 @@ function cancel() {
 		var content = "<h3 style=\"color: red\">Tutoring Session Canceled -</h3>  <p><strong>Date:</strong> " + newdate + "</p> <p><strong>Reason:</strong> " + reason + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p>"; 
 		Email.send("support@instatutors.org",
 			"tutors@instatutors.org",
-			"New Tutoring Request for " + newdate,
+			"New Tutoring Request for " + subject,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 		
@@ -427,6 +516,8 @@ function createAccount() {
 
 			$(".create-div").css("display", "none");
 			$("#email_div").fadeIn();
+
+			sendVerification();
 		}
 
 	} else {
@@ -540,7 +631,7 @@ function validate() {
 
 		Email.send("support@instatutors.org",
 			"tutors@instatutors.org",
-			"New Tutoring Request for " + splitDate(date),
+			"New Tutoring Request for " + subject,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 
@@ -553,6 +644,136 @@ function validate() {
 
 		return true;
 	}
+}
+
+function addSubject() {
+	var email = firebase.auth().currentUser.email;
+	var subject = $("#newsubject").val();
+	var newEmail = splitEmail(email);
+
+	var tuteeSubjects = firebase.database().ref('users/' + newEmail).child("subjects");
+
+	var currentSubjects;
+
+	tuteeSubjects.on("value", snap => {
+		currentSubjects = snap.val();
+	});
+
+	if(subject != "") {
+		if(currentSubjects == null) {
+			$("#subjectmessage").css("color", "green");
+			$("#subjectmessage").html(subject + " added as a subject!");
+			firebase.database().ref('users/' + newEmail).update({ subjects: subject.toLowerCase() + "," + currentSubjects});
+		} else if (currentSubjects.search(subject) === -1) {
+			$("#subjectmessage").css("color", "green");
+			$("#subjectmessage").html(subject + " added as a subject!");
+			firebase.database().ref('users/' + newEmail).update({ subjects: subject.toLowerCase() + "," + currentSubjects});
+		} else {
+			$("#subjectmessage").css("color", "red");
+			$("#subjectmessage").html("You already have " + subject + " as a subject!");
+		}
+	} else {
+		$("#subjectmessage").css("color", "red");
+		$("#subjectmessage").html("Please enter a subject.")
+	}
+}
+
+function deletesubjects() {
+	alert("Deleting all subjects.");
+	var email = firebase.auth().currentUser.email;
+	var newEmail = splitEmail(email);
+	firebase.database().ref('users/' + newEmail).update({ subjects: ""});
+}
+
+function matchTutors() {
+	var user = firebase.auth().currentUser;
+	var split = splitEmail(user.email);
+	var tuteeSubjects = firebase.database().ref('users/' + split).child("subjects");
+	var tuteeSubArray = "";
+
+	tuteeSubjects.on("value", snap => {
+		tuteeSubArray = snap.val();
+	});
+
+	tuteeSubArray = tuteeSubArray.split(",");
+	console.log(tuteeSubArray);
+
+	var tutordata;
+
+	var matchedtutors = "";
+	var goodtutors = "";
+
+	var ref = firebase.database().ref('users');
+	ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
+	 	tutordata = snap.val();
+	 	var tutorids = Object.keys(snap.val());
+
+	 	console.log(tutorids);
+
+	 	for(var i=0; i<tutorids.length; i++) {
+	 		var tutorSub = firebase.database().ref('users/' + tutorids[i]).child("subjects");
+
+	 		tutorSub.on("value", snap => {
+	 			var tutorSubArray = snap.val().split(",");
+	 			var inCommon = intersect(tuteeSubArray, tutorSubArray);
+
+	 			if(inCommon.length > 1) {
+	 				matchedtutors += tutorids[i] + ",";
+	 			} else if (inCommon.length == 1) {
+	 				goodtutors += tutorids[i] + ",";
+	 			}
+	 		});
+	 	}
+
+	 	var mytutors = "";
+
+	 	var matches = matchedtutors.split(",");
+	 	var good = goodtutors.split(",");
+
+		for(var i=0; i<matches.length; i++) {
+			var tutorRef = firebase.database().ref('users/' + matches[i]);
+			tutorRef.on("value", snap => {
+				var name = snap.child("name").val();
+				var email = snap.child("email").val();
+				var subjects = snap.child("subjects").val().split(",");
+				var intersection = intersect(subjects, tuteeSubArray);
+
+				console.log(subjects);
+				var subjectLabels = "";
+				for(var k=0; k<intersection.length; k++) {
+					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
+				}
+
+				mytutors += "<div class=\"mytutor great\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+			});
+		}
+
+		for(var i=0; i<good.length; i++) {
+			var tutorRef = firebase.database().ref('users/' + good[i]);
+			tutorRef.on("value", snap => {
+				var name = snap.child("name").val();
+				var email = snap.child("email").val();
+				var subjects = snap.child("subjects").val().split(", ");
+				var intersection = intersect(subjects, tuteeSubArray);
+
+				console.log(subjects);
+				var subjectLabels = "";
+				for(var k=0; k<intersection.length; k++) {
+					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
+				}
+
+				mytutors += "<div class=\"mytutor good\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+			});
+		}
+
+		if(mytutors == "") {
+			$("#mytutorsarea").html("<p>No tutors found.  Sorry.</p>");
+		} else {
+			$("#mytutorsarea").html(mytutors);
+		}
+	});
+
+
 }
 
 
