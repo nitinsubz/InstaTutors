@@ -127,6 +127,26 @@ $(document).ready(function() {
     $("html, body").animate({ scrollTop: 0 }, 800);
     return false;
       });
+
+    $( "#tuteeaddsubjects .dropdown-item" ).each(function(index) {
+	    $(this).on("click", function(){
+	        // For the boolean value
+	        $("#newsubject").val(this.innerHTML.toLowerCase()); 
+	        $("#subjecttext").html(this.innerHTML);
+	    });
+	});
+
+	$( "#subjectmenu .dropdown-item" ).each(function(index) {
+	    $(this).on("click", function(){
+	        // For the boolean value
+	        if($("#subject").val() == "") {
+	        	$("#subject").val(this.innerHTML.toLowerCase());
+	        } else {
+	        	$("#subject").val($("#subject").val() + ", " + this.innerHTML.toLowerCase()); 
+	        }
+	        $("#subjecttext2").html(this.innerHTML);
+	    });
+	});
 });
 
 
@@ -198,15 +218,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 			    var mySession = firebase.database().ref('users/' + split);
 
 				mySession.on("child_added", snap => {
-				var date = snap.child("date").val();
-				var email = snap.child("email").val();
-				var location = snap.child("location").val();
-				var subject = snap.child("subject").val();
-				var time = snap.child("time").val();
+					var date = snap.child("date").val();
+					var email = snap.child("email").val();
+					var location = snap.child("location").val();
+					var subject = snap.child("subject").val();
+					var time = snap.child("time").val();
 
-				if(date != null) {
-					$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>email: " + email + "</h4>");
-				}
+					if(date != null) {
+							$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>email: " + email + "</h4>");
+						}
+
 			});		    
 
 			} else {
@@ -252,7 +273,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 					}
 
 					if(date != null) {
-						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
 					}
 
 				});
@@ -285,17 +306,27 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var time = snap.child("time").val();
 		var tutor = snap.child("tutor").val();
 
-		var display;
-		if(done == "yes") {
-			display = "none";
-		} else {
-			display = "block";
-		}
+		var myUser = firebase.database().ref('users/' + split).child("subjects");
+		myUser.on("value", snap => {
+				var splitsubs = snap.val().split(",");
+				var reqsubs = subject.split(", ");
 
-		var newDate = date;
-		if(newDate != null) {
-			$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + newDate + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
-		}
+				var overlap = intersect(splitsubs, reqsubs).length;
+
+				console.log(overlap);
+
+				var display;
+				if(overlap == 0 || done == "yes") {
+					display = "none";
+				} else {
+					display = "block";
+				}
+
+				if(date != null) {
+					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+				}
+		});
+
 	});
 
   } else {
@@ -379,7 +410,7 @@ function takeSession() {
 			subject: subject,	
 		 });
 
-		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Location:</strong> " + location + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
+		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Location:</strong> " + location + "</p> <p><strong>Subjects:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
 
 		Email.send("instatutorsteam@gmail.com",
 			email,
@@ -482,20 +513,14 @@ function createAccount() {
 
 			$(".create-div").css("display", "none");
 			$("#email_div").fadeIn();
+
+			sendVerification();
 		}
 
 	} else {
 		$("#errormessage2").html("Please make sure your passwords match.");
 	}
 }
-
-$( "#tuteeaddsubjects .dropdown-item" ).each(function(index) {
-    $(this).on("click", function(){
-        // For the boolean value
-        $("#newsubject").val(this.innerHTML.toLowerCase()); 
-        $("#subjecttext").html(this.innerHTML);
-    });
-});
 
 //login + logout
 function login() {
@@ -686,7 +711,7 @@ function matchTutors() {
 	 		var tutorSub = firebase.database().ref('users/' + tutorids[i]).child("subjects");
 
 	 		tutorSub.on("value", snap => {
-	 			var tutorSubArray = snap.val().split(", ");
+	 			var tutorSubArray = snap.val().split(",");
 	 			var inCommon = intersect(tuteeSubArray, tutorSubArray);
 
 	 			if(inCommon.length > 1) {
@@ -707,7 +732,7 @@ function matchTutors() {
 			tutorRef.on("value", snap => {
 				var name = snap.child("name").val();
 				var email = snap.child("email").val();
-				var subjects = snap.child("subjects").val().split(", ");
+				var subjects = snap.child("subjects").val().split(",");
 				var intersection = intersect(subjects, tuteeSubArray);
 
 				console.log(subjects);

@@ -683,7 +683,50 @@ h1 strong {
 }
 
 #bookform .col-sm-9 input:focus {
-	border-bottom: 3px solid #dc5c0f;
+	border-bottom: 3px solid #30CFD0;
+}
+
+#bookform .col-sm-9 #subject {
+	width: 76%;
+	float: left;
+}
+
+.col-sm-9 .dropdown {
+	float: left;
+	width: 24%;
+}
+
+#subjectselector2 {
+	width: 100%;
+	text-align: center;
+	font-size: 18px;
+	margin-top: -5px;
+}
+
+.col-sm-9 .dropdown {
+	margin: 0;
+	padding: 0;
+	float: left;
+	display: inline;
+}
+
+.col-sm-9 .dropdown-menu {
+	width: 90%;
+}
+
+.col-sm-9 .dropdown-item {
+	display: block;
+	width: 100%;
+	color: #444;
+	padding: 4px 5px;
+	font-size: 18px;
+	transition-duration: 0.2s;
+}
+
+.col-sm-9 .dropdown-item:hover {
+	background-color: #ddd;
+	cursor: pointer;
+	text-decoration: none;
 }
 
 #submit {
