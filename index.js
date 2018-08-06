@@ -492,8 +492,8 @@ function createAccount() {
 $( "#tuteeaddsubjects .dropdown-item" ).each(function(index) {
     $(this).on("click", function(){
         // For the boolean value
-        $("#newsubject").val(this.innerHTML); 
-        $("#subjecttext").html(this.innerHTML + "");
+        $("#newsubject").val(this.innerHTML.toLowerCase()); 
+        $("#subjecttext").html(this.innerHTML);
     });
 });
 
@@ -635,11 +635,11 @@ function addSubject() {
 		if(currentSubjects == null) {
 			$("#subjectmessage").css("color", "green");
 			$("#subjectmessage").html(subject + " added as a subject!");
-			firebase.database().ref('users/' + newEmail).update({ subjects: subject.toLowerCase() + ", " + currentSubjects});
-		} else if (currentSubjects.search(subject) == -1) {
+			firebase.database().ref('users/' + newEmail).update({ subjects: subject.toLowerCase() + "," + currentSubjects});
+		} else if (currentSubjects.search(subject) === -1) {
 			$("#subjectmessage").css("color", "green");
 			$("#subjectmessage").html(subject + " added as a subject!");
-			firebase.database().ref('users/' + newEmail).update({ subjects: subject.toLowerCase() + ", " + currentSubjects});
+			firebase.database().ref('users/' + newEmail).update({ subjects: subject.toLowerCase() + "," + currentSubjects});
 		} else {
 			$("#subjectmessage").css("color", "red");
 			$("#subjectmessage").html("You already have " + subject + " as a subject!");
@@ -665,39 +665,42 @@ function matchTutors() {
 
 	var tutordata;
 
-	var matchedtutors = [];
+	var matchedtutors = "";
 
 	var ref = firebase.database().ref('users');
 	ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
 	 	tutordata = snap.val();
 	 	var tutorids = Object.keys(snap.val());
 
+	 	console.log(tutorids);
+
 	 	for(var i=0; i<tutorids.length; i++) {
 	 		var tutorSub = firebase.database().ref('users/' + tutorids[i]).child("subjects");
 
 	 		tutorSub.on("value", snap => {
-	 			var tutorSubArray = snap.val().split(",");
+	 			var tutorSubArray = snap.val().split(", ");
 	 			var inCommon = intersect(tuteeSubArray, tutorSubArray);
 
 	 			if(inCommon.length > 1) {
-	 				matchedtutors.push(tutorids[i]);
+	 				matchedtutors += tutorids[i] + ",";
 	 			}
-
 	 		});
 	 	}
 
-	 	firebase.database().ref('users/' + split).update({ matchedTutors: matchedtutors});
-
 	 	var mytutors = "";
 
-		for(var i=0; i<matchedtutors.length; i++) {
-			var tutorRef = firebase.database().ref('users/' + matchedtutors[i]);
+	 	var matches = matchedtutors.split(",");
+
+	 	console.log(matches);
+		for(var i=0; i<matches.length; i++) {
+			var tutorRef = firebase.database().ref('users/' + matches[i]);
 			tutorRef.on("value", snap => {
 				var name = snap.child("name").val();
 				var email = snap.child("email").val();
-				var subjects = snap.child("subjects").val().split(",");
+				var subjects = snap.child("subjects").val().split(", ");
 				var intersection = intersect(subjects, tuteeSubArray);
 
+				console.log(subjects);
 				var subjectLabels = "";
 				for(var k=0; k<intersection.length; k++) {
 					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";

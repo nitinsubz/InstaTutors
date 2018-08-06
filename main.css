@@ -1210,7 +1210,8 @@ h1 strong {
 }
 
 .mytutor {
-	border-radius: 20px;
+	border-left: 4px solid #30CFD0;
+	margin: 10px 0px;
 	float: left;
 	padding: 20px 3%;
 }
