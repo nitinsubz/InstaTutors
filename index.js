@@ -56,6 +56,20 @@ $(window).scroll(function() {
     });
 });
 
+
+function intersect(a, b) {
+    var d = {};
+    var results = [];
+    for (var i = 0; i < b.length; i++) {
+        d[b[i]] = true;
+    }
+    for (var j = 0; j < a.length; j++) {
+        if (d[a[j]]) 
+            results.push(a[j]);
+    }
+    return results;
+}
+
  function rotate(x) {
     x.classList.toggle("change");
     $("#phonenavlinks").slideToggle("fast");
@@ -240,6 +254,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 					if(date != null) {
 						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subject: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
 					}
+
 				});
 			}
 		});
@@ -620,11 +635,11 @@ function addSubject() {
 		if(currentSubjects == null) {
 			$("#subjectmessage").css("color", "green");
 			$("#subjectmessage").html(subject + " added as a subject!");
-			firebase.database().ref('users/' + newEmail).update({ subjects: subject + ", " + currentSubjects});
+			firebase.database().ref('users/' + newEmail).update({ subjects: subject.toLowerCase() + ", " + currentSubjects});
 		} else if (currentSubjects.search(subject) == -1) {
 			$("#subjectmessage").css("color", "green");
 			$("#subjectmessage").html(subject + " added as a subject!");
-			firebase.database().ref('users/' + newEmail).update({ subjects: subject + ", " + currentSubjects});
+			firebase.database().ref('users/' + newEmail).update({ subjects: subject.toLowerCase() + ", " + currentSubjects});
 		} else {
 			$("#subjectmessage").css("color", "red");
 			$("#subjectmessage").html("You already have " + subject + " as a subject!");
@@ -633,6 +648,69 @@ function addSubject() {
 		$("#subjectmessage").css("color", "red");
 		$("#subjectmessage").html("Please enter a subject.")
 	}
+}
+
+function matchTutors() {
+	var user = firebase.auth().currentUser;
+	var split = splitEmail(user.email);
+	var tuteeSubjects = firebase.database().ref('users/' + split).child("subjects");
+	var tuteeSubArray = "";
+
+	tuteeSubjects.on("value", snap => {
+		tuteeSubArray = snap.val();
+	});
+
+	tuteeSubArray = tuteeSubArray.split(",");
+	console.log(tuteeSubArray);
+
+	var tutordata;
+
+	var matchedtutors = [];
+
+	var ref = firebase.database().ref('users');
+	ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
+	 	tutordata = snap.val();
+	 	var tutorids = Object.keys(snap.val());
+
+	 	for(var i=0; i<tutorids.length; i++) {
+	 		var tutorSub = firebase.database().ref('users/' + tutorids[i]).child("subjects");
+
+	 		tutorSub.on("value", snap => {
+	 			var tutorSubArray = snap.val().split(",");
+	 			var inCommon = intersect(tuteeSubArray, tutorSubArray);
+
+	 			if(inCommon.length > 1) {
+	 				matchedtutors.push(tutorids[i]);
+	 			}
+
+	 		});
+	 	}
+
+	 	firebase.database().ref('users/' + split).update({ matchedTutors: matchedtutors});
+
+	 	var mytutors = "";
+
+		for(var i=0; i<matchedtutors.length; i++) {
+			var tutorRef = firebase.database().ref('users/' + matchedtutors[i]);
+			tutorRef.on("value", snap => {
+				var name = snap.child("name").val();
+				var email = snap.child("email").val();
+				var subjects = snap.child("subjects").val().split(",");
+				var intersection = intersect(subjects, tuteeSubArray);
+
+				var subjectLabels = "";
+				for(var k=0; k<intersection.length; k++) {
+					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
+				}
+
+				mytutors += "<div class=\"mytutor\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+			});
+		}
+
+		$("#mytutorsarea").html(mytutors);
+	});
+
+
 }
 
 

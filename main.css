@@ -1004,7 +1004,7 @@ h1 strong {
 	position: fixed;
 	top: 0;
 	right: 0;
-	background: linear-gradient(to right, #30CFD0, transparent);
+	background: linear-gradient(to right, #30CFD0, #212664);
 	background-size: 200% 100%;
 	background-position: right;
 	padding: 15px 40px;
@@ -1032,7 +1032,7 @@ h1 strong {
 	margin: 0px;
 	border: 0;
 	font-size: 24px;
-	background-color: white;
+	background-color: #eee;
 	color: #212664;
 	transition-duration: 0.2s;
 }
@@ -1040,11 +1040,13 @@ h1 strong {
 #servicenav button:hover {
 	background-color: #30CFD0; 
 	color: white;
+	cursor: pointer;
 }
 
 #tutornav button:hover {
 	background-color: #30CFD0;
 	color: white;
+	cursor: pointer;
 }
 
 #booknav {
@@ -1083,7 +1085,7 @@ h1 strong {
 	padding-bottom: 20px;
 }
 
-#resetPass2, #addsubject {
+#resetPass2, #addsubject, #matchtutors {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 200% 100%;
 	background-position: right;
@@ -1186,10 +1188,44 @@ h1 strong {
 	float: left;
 }
 
+#tuteemysubjects h3 {
+	margin-bottom: 0px;
+}
+
 #mysubjectsarea .label {
 	font-size: 20px;
 	margin: 3px;
 	line-height: 50px;
+}
+
+#matchtutors {
+	float: left;
+	margin: 10px 0px;
+}
+
+#matchtutors:hover {
+	text-decoration: none;
+	cursor: pointer;
+	background-position: left;
+}
+
+.mytutor {
+	border-radius: 20px;
+	float: left;
+	padding: 20px 3%;
+}
+
+.mytutor h2 {
+	font-size: 28px;
+}
+
+.mytutor h4 {
+	font-size: 23px;
+	color: #555;
+}
+
+.mytutor a:hover {
+	text-decoration: none;
 }
 
 #sessionsbody h3 {
