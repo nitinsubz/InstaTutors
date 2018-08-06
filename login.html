@@ -185,11 +185,18 @@
 							</div>
 						</div>
 						<div id="tuteemysubjects">
-							<h3>My Subjects</h3>
+							<div class="row">
+								<div class="col-sm-7"><h3>My Subjects</h3></div>
+								<div class="col-sm-5"><a id="subjectdelete" onclick="deletesubjects()">Delete All <i class="fas fa-trash-alt"></i></a></div>
+							</div>
 							<div id="mysubjectsarea">
 							</div>
 							<a id="matchtutors" onclick="matchTutors()">Find Tutors</a>
 							<div id="mytutorsarea">
+								<div id="greatmatches">
+								</div>
+								<div id="goodmatches">
+								</div>
 							</div>
 						</div>
 					</div>

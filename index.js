@@ -650,6 +650,13 @@ function addSubject() {
 	}
 }
 
+function deletesubjects() {
+	alert("Deleting all subjects.");
+	var email = firebase.auth().currentUser.email;
+	var newEmail = splitEmail(email);
+	firebase.database().ref('users/' + newEmail).update({ subjects: ""});
+}
+
 function matchTutors() {
 	var user = firebase.auth().currentUser;
 	var split = splitEmail(user.email);
@@ -666,6 +673,7 @@ function matchTutors() {
 	var tutordata;
 
 	var matchedtutors = "";
+	var goodtutors = "";
 
 	var ref = firebase.database().ref('users');
 	ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
@@ -683,6 +691,8 @@ function matchTutors() {
 
 	 			if(inCommon.length > 1) {
 	 				matchedtutors += tutorids[i] + ",";
+	 			} else if (inCommon.length == 1) {
+	 				goodtutors += tutorids[i] + ",";
 	 			}
 	 		});
 	 	}
@@ -690,8 +700,8 @@ function matchTutors() {
 	 	var mytutors = "";
 
 	 	var matches = matchedtutors.split(",");
+	 	var good = goodtutors.split(",");
 
-	 	console.log(matches);
 		for(var i=0; i<matches.length; i++) {
 			var tutorRef = firebase.database().ref('users/' + matches[i]);
 			tutorRef.on("value", snap => {
@@ -706,11 +716,33 @@ function matchTutors() {
 					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
 				}
 
-				mytutors += "<div class=\"mytutor\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+				mytutors += "<div class=\"mytutor great\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
 			});
 		}
 
-		$("#mytutorsarea").html(mytutors);
+		for(var i=0; i<good.length; i++) {
+			var tutorRef = firebase.database().ref('users/' + good[i]);
+			tutorRef.on("value", snap => {
+				var name = snap.child("name").val();
+				var email = snap.child("email").val();
+				var subjects = snap.child("subjects").val().split(", ");
+				var intersection = intersect(subjects, tuteeSubArray);
+
+				console.log(subjects);
+				var subjectLabels = "";
+				for(var k=0; k<intersection.length; k++) {
+					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
+				}
+
+				mytutors += "<div class=\"mytutor good\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+			});
+		}
+
+		if(mytutors == "") {
+			$("#mytutorsarea").html("<p>No tutors found.  Sorry.</p>");
+		} else {
+			$("#mytutorsarea").html(mytutors);
+		}
 	});
 
 
