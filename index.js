@@ -426,6 +426,9 @@ function cancel() {
 	var newdate = date.slice(6);
 	var email = firebase.auth().currentUser.email;
 	var newemail = splitEmail(email);
+	var subject = event.currentTarget.parentNode.childNodes[7].innerHTML.slice(10);
+	console.log(subject);
+
 	if(input == email) {
 		var reason = prompt("What is your reason for canceling?");
 		firebase.database().ref('requests/' + newdate + newemail).remove();
@@ -436,7 +439,7 @@ function cancel() {
 		var content = "<h3 style=\"color: red\">Tutoring Session Canceled -</h3>  <p><strong>Date:</strong> " + newdate + "</p> <p><strong>Reason:</strong> " + reason + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p>"; 
 		Email.send("support@instatutors.org",
 			"tutors@instatutors.org",
-			"New Tutoring Request for " + newdate,
+			"New Tutoring Request for " + subject,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 		
@@ -628,7 +631,7 @@ function validate() {
 
 		Email.send("support@instatutors.org",
 			"tutors@instatutors.org",
-			"New Tutoring Request for " + splitDate(date),
+			"New Tutoring Request for " + subject,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 
