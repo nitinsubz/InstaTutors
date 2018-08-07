@@ -9,7 +9,7 @@ body, h1, body, div, a, ol, ul, li, h2, p, em, img, button {
 	padding: 0;
 	margin: 0;
 	outline: 0;
-	
+	font-weight: 300;
 }
 
 h6{
@@ -81,10 +81,17 @@ h1 strong {
 	font-weight: 700;
 	color: #999;
 	transition-duration: 0.2s;
+	padding: 10px 50px 10px 20px;
+	border-radius: 30px;
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 230% 100%;
+	background-position: right;
+	color: white;
+
 }
 
 .bar11, .bar22 {
-	background-color: #999;
+	background-color: white;
 	height: 3px;
 	width: 20px;
 	position: fixed;
@@ -93,30 +100,26 @@ h1 strong {
 }
 
 .bar11 {
-	top: 21px;
-	left: 110px;
+	top: 32px;
+	left: 125px;
 }
 
 .bar22 {
-	top: 33px;
-	left: 110px;
+	top: 42px;
+	left: 125px;
 }
 
 #menubar:hover {
-	background: linear-gradient(135deg, #30CFD0, #330867);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	background-position: left;
 	cursor: pointer;
 }
 
 #menubar:hover .bar11 {
-	top: 23px;
-	background: linear-gradient(135deg, #30CFD0, #330867);
+	top: 33px;
 }
 
 #menubar:hover .bar22 {
-	top: 31px;
-	background: linear-gradient(135deg, #30CFD0, #330867);
+	top: 41px;
 }
 
 .sidebar {
@@ -162,7 +165,7 @@ h1 strong {
 }
 
 .sidebar .border-bot {
-	height: 3px;
+	height: 4px;
 	background-color: white;
 	width: 10%;
 }
@@ -248,6 +251,7 @@ h1 strong {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 230% 100%;
 	background-position: right;
+	font-weight: 700;
 	color: white;
 	padding: 15px 50px;
 	border-radius: 30px;
@@ -292,6 +296,7 @@ h1 strong {
 	background-size: 200% 100%;
 	background-position: right;
 	border-radius: 30px;
+	font-weight: 700;
 	transition-duration: 0.2s;
 	opacity: 0;
 }
@@ -319,6 +324,7 @@ h1 strong {
 
 #indexlogout a {
 	color: white;
+	font-weight: 700;
 }
 
 #indexlogout:hover {
@@ -348,6 +354,10 @@ h1 strong {
 
 #info .border-bot {
 	background: linear-gradient(135deg, #30CFD0, #330867);
+}
+
+#team {
+	padding: 0;
 }
 
 .border-bot {
@@ -468,6 +478,7 @@ h1 strong {
 
 #mainbody {
 	display: none;
+	background-color: #ddd;
 }
 
 #bookheader {
@@ -531,30 +542,25 @@ h1 strong {
 }
 
 #software, #marketing {
-	margin: 40px 8% 20px 8%;
-	background-color: white;
-	padding: 60px 8%;
-	border-radius: 20px;
+	margin: 40px 10% 20px 10%;
+	padding: 20px 0%;
 	position: relative;
 	z-index: 40;
-}
-
-#software {
-	margin-top: 320px;
 }
 
 #software h4, #marketing h4 {
 	font-size: 40px;
 	color: #444;
+	font-weight: 700;
 }
 
 #software .row, #marketing .row {
-	padding: 30px 0px;
+	padding-top: 30px;
 }
 
 .leader {
 	text-align: center;
-	padding: 10px 30px;
+	padding: 0px 30px;
 }
 
 .col4 {
@@ -585,6 +591,7 @@ h1 strong {
 
 .leader h5 {
 	font-size: 24px;
+	color: #330867;
 }
 
 #tutors {
@@ -858,6 +865,7 @@ h1 strong {
 }
 
 #submit {
+	font-weight: 700;
 	padding: 13px 60px;
 	font-size: 23px;
 	margin: 40px auto 50px auto;
@@ -888,23 +896,47 @@ h1 strong {
 
 #footer {
 	width: 100%;
-	padding: 7px 0px;
-	background-color: #666;
-	text-align: center;
+	padding: 30px 10% 30px 10%; 
+	background-color: black;
 }
 
-#footer span, #footer a {
+#footer img {
+	width: 25%;
+	margin-top: 20px;
+}
+
+#footer h3 {
 	color: white;
-	font-size: 15px;
-	margin: 0px 15px;
+	font-size: 25px;
+	font-weight: 700;
 }
 
 #footer a {
+	display: block;
+	margin: 10px 0px;
+	font-size: 18px;
 	color: #30CFD0;
 }
 
 #footer a:hover {
 	cursor: pointer;
+}
+
+#foot {
+	padding: 6px 10%;
+	background-color: #222;
+}
+
+#foot span {
+	font-size: 16px;
+	color: #ddd;
+	float: right;
+}
+
+#foot a {
+	font-size: 16px;
+	float: right;
+	margin-right: 20px;
 }
 
 /*Confirmed*/
@@ -959,6 +991,8 @@ h1 strong {
 	font-size: 32px;
 	padding-bottom: 20px;
 	text-align: center;
+	font-weight: 700;
+	color: #333;
 }
 
 #termstext {
@@ -1064,6 +1098,7 @@ h1 strong {
   text-align: center;
   text-decoration: none;
   color: white;
+  font-weight: 700;
 }
 
 #login:hover {
@@ -1084,6 +1119,7 @@ h1 strong {
 
 #tutorsessions {
 	display: none;
+	background-color: #ddd;
 }
 
 #tutorsessionshead {
@@ -1102,8 +1138,12 @@ h1 strong {
 	margin-top: -50px;
 }
 
+#tutormysessions {
+	background-color: #ddd;
+}
+
 #tutormysessions h1 {
-	background-color: #212664;
+	background-color: black;
 	padding: 140px 10% 110px 10%;
 	color: white;
 	font-size: 60px;
@@ -1111,8 +1151,8 @@ h1 strong {
 }
 
 #tutoraccount {
-	padding: 40px 3%;
-	margin: -70px 9% 50px 9%;
+	padding: 40px 3% 70px 3%;
+	margin: -70px 9% 0px 9%;
 	background-color: white;
 	border-radius: 20px 20px 0px 0px;
 }
@@ -1204,7 +1244,7 @@ h1 strong {
 	border: 0;
 	font-size: 24px;
 	background-color: #eee;
-	color: #212664;
+	color: #333;
 	transition-duration: 0.2s;
 }
 
@@ -1231,7 +1271,7 @@ h1 strong {
 #sessionsheader {
 	text-align: center;
 	padding: 130px 10% 100px 10%;
-	background-color: #212664;
+	background-color: black;
 	color: white;
 }
 
@@ -1244,8 +1284,8 @@ h1 strong {
 }
 
 #account {
-	padding: 40px 3%;
-	margin: -70px 9% 50px 9%;
+	padding: 40px 3% 70px 3%;
+	margin: -70px 9% 0px 9%;
 	background-color: white;
 	border-radius: 20px 20px 0px 0px;
 }
@@ -1266,6 +1306,7 @@ h1 strong {
 	padding: 13px 40px;
 	font-size: 22px;
 	color: white;
+	font-weight: 500;
 }
 
 #resetPass2:hover {
@@ -1814,7 +1855,7 @@ h1 strong {
 	}
 
 	#indexhead {
-		padding: 110px 10% 40px 10%;
+		padding: 70px 10% 40px 10%;
 	}
 
 	#indexhead h1 {
@@ -1824,6 +1865,10 @@ h1 strong {
 
 	#indexhead h1 strong {
 		font-size: 40px;
+	}
+
+	#indexhead p {
+		font-size: 18px;
 	}
 
 	#indexhead a {
@@ -1877,8 +1922,8 @@ h1 strong {
 
 	#faq {
 		padding: 70px 10%;
-		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
-	  	clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
+		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 94%);
+	  	clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 94%);
 	}
 
 	#faq h1 {
@@ -2003,6 +2048,7 @@ h1 strong {
 		background-color: #ae3dc6;
 		padding: 10px 20px;
 		font-size: 20px;
+		border-radius: 0px 0px 0px 20px;
 	}
 
 	#servicenav button, #tutornav button {
@@ -2167,11 +2213,7 @@ h1 strong {
 
 	#software, #marketing {
 		margin: 20px 8% 20px 8%;
-		padding: 30px 6%;
-	}
-
-	#software {
-		margin-top: 300px;
+		padding: 30px 2%;
 	}
 
 	#software h4, #marketing h4 {
@@ -2180,7 +2222,7 @@ h1 strong {
 	}
 
 	#software .border-bot, #marketing .border-bot {
-		margin: auto;
+		margin: 0px auto 20px auto;
 	}
 
 	#software .row, #marketing .row {
@@ -2197,6 +2239,10 @@ h1 strong {
 
 	#tutors {
 		padding: 30px 6%;
+	}
+
+	.leader {
+		padding: 20px 0px;
 	}
 
 	.col4 {
@@ -2323,6 +2369,29 @@ h1 strong {
 
 	#menubar {
 		display: none;
+	}
+
+	#footer {
+		width: 100%;
+		padding: 20px 8%; 
+		background-color: black;
+	}
+
+	#footer img {
+		width: 50%;
+		margin-top: 20px;
+	}
+
+	#footer h3 {
+		font-size: 20px;
+	}
+
+	#footer a {
+		font-size: 16px;
+	}
+
+	#footer a:hover {
+		cursor: pointer;
 	}
 }
 
