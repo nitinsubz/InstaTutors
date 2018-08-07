@@ -77,7 +77,6 @@
 		<h1 id="bookedheader">Your tutoring request for DATE is confirmed. </strong><h1>
 		<h3 id="bookedinfo">A tutor will email you within 24 hours to confirm your session.</h3>
 		<h3 id="time2">Time: </h3>
-		<h3 id="location2">Location: </h3>
 		<h3 id="tutor2">Tutor Request: </h3>
 		<h3 id="subject2" style="padding-bottom: 30px;">Subject: </h3>
 		<a href="login.html">Book Another Session <i class="fas fa-undo-alt"></i></a>
@@ -96,14 +95,6 @@
 				</div>
 				<div id="bookform">
 					<form>
-				   	<div class="row">
-						<div class="col-sm-3">
-				    		Preferred Location:
-				    	</div>
-				    	<div class="col-sm-9">
-				   			<input type="text" name="location" id="location" placeholder="Enter your preferred location, ex. Kennedy Middle School..."><br>
-				   		</div>
-				   	</div>
 				   	<div class="row">
 						<div class="col-sm-3">
 				    		Subject(s):
@@ -154,14 +145,18 @@
 							</script>
 				   		</div>
 				   	</div>
-				   	<div class="row">
+				   	<div class="row" id="tutorinput">
 						<div class="col-sm-3">
 				    		Tutor Request (optional):
 				    	</div>
 				    	<div class="col-sm-9">
-				   			<input type="text" name="tutor" id="tutor" placeholder="If you have a preferred tutor, enter their name here..."><br>
+				   			<input type="text" name="tutor" id="tutor" placeholder="If you have a preferred tutor, enter their name here...">
+				   			<a id="viewtutors" onclick="viewTutors()">View Tutors</a>
 				   		</div>
 				   	</div>
+				   	<div class="scrolling-wrapper" id="tutorspace">
+					  
+					</div>
 				   	<p id="formerrors"></p>
 				   	<a id="submit" onclick="validate()">Submit</a>
 				    </form>

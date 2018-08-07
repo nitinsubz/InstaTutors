@@ -54,12 +54,6 @@ $(window).scroll(function() {
     $("#teamheadimg").css({
     'margin-top' : winTop/1.13
     });
-
-    if(winTop>$("#info").offset().top) {
-    	$("#bookasession").css("opacity", "1");
-    } else {
-    	$("#bookasession").css("opacity", "0");
-    }
 });
 
 
@@ -261,12 +255,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 				mySession.on("child_added", snap => {
 					var date = snap.child("date").val();
 					var email = snap.child("email").val();
-					var location = snap.child("location").val();
 					var subject = snap.child("subject").val();
 					var time = snap.child("time").val();
 
 					if(date != null) {
-							$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>email: " + email + "</h4>");
+							$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4>" + "<h4>email: " + email + "</h4>");
 						}
 
 			});		    
@@ -302,7 +295,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 					var date = snap.child("date").val();
 					var done = snap.child("done").val();
 					var email = snap.child("email").val();
-					var location = snap.child("location").val();
 					var subject = snap.child("subject").val();
 					var time = snap.child("time").val();
 					var tutor = snap.child("tutor").val();
@@ -315,7 +307,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 					}
 
 					if(date != null) {
-						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
 					}
 
 				});
@@ -343,7 +335,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var date = snap.child("date").val();
 		var done = snap.child("done").val();
 		var email = snap.child("email").val();
-		var location = snap.child("location").val();
 		var subject = snap.child("subject").val();
 		var time = snap.child("time").val();
 		var tutor = snap.child("tutor").val();
@@ -367,7 +358,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 				}
 
 				if(date != null) {
-					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4>" + "<h4>location: " + location + "</h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
 				}
 		});
 
@@ -432,7 +423,6 @@ function takeSession() {
 	var newdate = date.slice(6);
 	var email = event.currentTarget.childNodes[1].innerHTML;
 	var time = event.currentTarget.childNodes[5].innerHTML.slice(6);
-	var location = event.currentTarget.childNodes[6].innerHTML.slice(10);
 	var subject = event.currentTarget.childNodes[7].innerHTML.slice(9);
 	var newemail = splitEmail(email.slice(7));
 	var r = confirm("Confirm that you can commit to tutoring this session?");
@@ -454,11 +444,10 @@ function takeSession() {
 		    email: email.slice(7),
 		    date: newdate,
 		    time: time,
-			location: location,
 			subject: subject,	
 		 });
 
-		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Location:</strong> " + location + "</p> <p><strong>Subjects:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
+		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subjects:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
 
 		Email.send("instatutorsteam@gmail.com",
 			email,
@@ -607,13 +596,12 @@ function logout(){
 
 
 //save requests to firebase
-function writeRequest(email, location, date, time, subject, done, tutor) {
+function writeRequest(email, date, time, subject, done, tutor) {
 	var newEmail = splitEmail(email);
 	var newDate = splitDate(date);
 
 	firebase.database().ref('users/' + newEmail + "/" + newDate).set({
 			email: email,
-			location: location,
 			date: newDate,
 			time: time,
 			tutor: tutor,
@@ -623,7 +611,6 @@ function writeRequest(email, location, date, time, subject, done, tutor) {
 
 	firebase.database().ref('requests/' + newDate + newEmail).set({
 			email: email,
-			location: location,
 			date: newDate,
 			time: time,
 			tutor: tutor,
@@ -636,16 +623,11 @@ function writeRequest(email, location, date, time, subject, done, tutor) {
 //on tutoring request submit -> pushes form data to firebase
 function validate() {
 	var email = firebase.auth().currentUser.email;
-	var location = $("#location").val();
 	var date = $("#date").val();
 	var time = $("#time").val();
 	var tutor = $("#tutor").val();
 	var subject = $("#subject").val();
 	var missing = [];
-
-	if(location == "") {
-		missing.push(" location");
-	}
 
 	var selectedDate = new Date(date);
    	var now = new Date();
@@ -664,14 +646,13 @@ function validate() {
 		$("#formerrors").html("Please enter the following: " + missing);
 		event.preventDefault();
 	} else {
-		writeRequest(email, location, date, time, subject, "no", tutor);
+		writeRequest(email, date, time, subject, "no", tutor);
 
-		var content = "<h3 style=\"color: #ae3dc6\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Location:</strong> " + location + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+		var content = "<h3 style=\"color: #ae3dc6\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 
 		$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
 		$("#tutor2").html("Tutor: " + tutor);
 		$("#time2").html("Time: " + time);
-		$("#location2").html("Location: " + location);
 		$("#subject2").html("Subject: " + subject);
 
 		$("#mainbody").css("display", "none");
@@ -830,8 +811,95 @@ function matchTutors() {
 			$("#mytutorsarea").html(mytutors);
 		}
 	});
+}
 
+function viewTutors() {
+	var tuteeSubArray = $("#subject").val().split(", ");
+	console.log(tuteeSubArray);
 
+	var tutordata;
+
+	var matchedtutors = "";
+	var goodtutors = "";
+
+	var ref = firebase.database().ref('users');
+	//get uids of all tutors
+	ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
+	 	tutordata = snap.val();
+	 	var tutorids = Object.keys(snap.val());
+
+	 	for(var i=0; i<tutorids.length; i++) {
+	 		var tutorSub = firebase.database().ref('users/' + tutorids[i]).child("subjects");
+
+	 		//determine overlap between user subjects & tutor subjects
+	 		tutorSub.on("value", snap => {
+	 			var tutorSubArray = snap.val().split(",");
+	 			var inCommon = intersect(tuteeSubArray, tutorSubArray);
+
+	 			if(inCommon.length > 1) {
+	 				matchedtutors += tutorids[i] + ",";
+	 			} else if (inCommon.length == 1) {
+	 				goodtutors += tutorids[i] + ",";
+	 			}
+	 		});
+	 	}
+
+	 	var mytutors = "";
+
+	 	var matches = matchedtutors.split(",");
+	 	var good = goodtutors.split(",");
+
+	 	//add tutors to "great matches"
+		for(var i=0; i<matches.length; i++) {
+			var tutorRef = firebase.database().ref('users/' + matches[i]);
+			tutorRef.on("value", snap => {
+				var name = snap.child("name").val();
+				var email = snap.child("email").val();
+				var subjects = snap.child("subjects").val().split(",");
+				var intersection = intersect(subjects, tuteeSubArray);
+
+				console.log(subjects);
+				var subjectLabels = "";
+				for(var k=0; k<intersection.length; k++) {
+					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
+				}
+
+				mytutors += "<div class=\"viewtutor great\" onclick=\"selectTutor()\"> <h2>" + name + "</h2> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+			});
+		}
+
+		//add tutors to "good matches"
+		for(var i=0; i<good.length; i++) {
+			var tutorRef = firebase.database().ref('users/' + good[i]);
+			tutorRef.on("value", snap => {
+				var name = snap.child("name").val();
+				var email = snap.child("email").val();
+				var subjects = snap.child("subjects").val().split(",");
+				var intersection = intersect(subjects, tuteeSubArray);
+
+				var subjectLabels = "";
+				for(var k=0; k<intersection.length; k++) {
+					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
+				}
+
+				mytutors += "<div class=\"viewtutor good\" onclick=\"selectTutor()\"> <h2>" + name + "</h2> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+			});
+		}
+
+		//add DOM elements to matched tutors
+		if(mytutors == "") {
+			$("#tutorspace").html("<p>No tutors found.  Sorry.</p>");
+		} else {
+			$("#tutorspace").html(mytutors);
+		}
+	});
+}
+
+function selectTutor() {
+	var name = event.currentTarget.childNodes[1].innerHTML;
+	$("#tutor").val(name);
+	$("#formerrors").css("color", "#444");
+	$("#formerrors").html("Selected " + name + " as a tutor.");
 }
 
 //validate message on homepage
