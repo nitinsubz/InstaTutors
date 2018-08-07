@@ -16,12 +16,30 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
 <body>
-	<div id="home" class="slideleft"><a href="index.html"><img src="images/logo.png"></a></div>
-		<div id="teamnavbar">
-			<li class="teamnav"><a id="softwarenav">Software</a></li>
-			<li class="teamnav"><a id="marketingnav">Marketing & Operations</a></li>
-			<li class="teamnav"><a id="tutorsnav">Tutors</a></li>
+	<div id="menubar" onclick="opensidenav()">
+		MENU <div class="bar11"></div><div class="bar22"></div>
+	</div>
+
+	<div class="sidebar">
+		<div class="sidecancel" onclick="closesidenav()">X</div>
+		<div id="mainlinks">
+			<a href="index.html">HOME</a>
+			<a href="login.html" id="sidelogin">LOGIN or SIGNUP</a>
 		</div>
+		<div class="border-bot"></div>
+		<div id="seclinks">
+			<a href="team.html">Tutors</a>
+			<a href="termsandconditions.html">Terms</a>
+			<a href="donate.html">Donate</a>
+			<a href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply to Tutor</a>
+		</div>
+		<div class="socialmedia">
+			<a href=""><i class="fab fa-facebook-square"></i></a>
+			<a href=""><i class="fab fa-instagram"></i></a>
+		</div>
+	</div>
+	<div class="sidemask" onclick="closesidenav()">
+	</div>
 		<a id="tutorapply" href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply to be a Tutor</a>
 		<!--<div id="container1" onclick="rotate(this)">
 			<div class="bar1">
@@ -35,70 +53,14 @@
 			<li class="navig2"><a href="videos.html">Videos</a></li>
 		</div>-->
 		<div id="teamhead">
-			<h1 class="slideleft">WHO ARE WE?</h1>
-			<p class="slideup">We are leaders, tutors, students, and developers.</p>
+			<h1 class="slideleft">OUR TUTORS</h1>
+			<p class="slideup">We are leaders, students, developers and world-changers.</p>
 		</div>
 		<div id="teamheadimg">
 			<img src="images/teamhead.png">
 		</div>
-		<div id="software" class="slideup">
-			<h4>Software Team</h4>
-			<div class="border-bot length" style="background-color: #30CFD0;"></div>
-			<div class="row">
-				<div class="col-sm-4 leader">
-					<img src="images/nitin.jpeg">
-					<h3>Nitin Subramanian</h3>
-					<h5>Founder, <br>Executive Director</h5>
-				</div>
-				<div class="col-sm-4 leader">
-					<img src="images/sam.jpg">
-					<h3>Sam Yang</h3>
-					<h5>Software Team Lead, <br> Director</h5>
-				</div>
-				<div class="col-sm-4 leader">
-					<img src="images/reedit.png">
-					<h3>Reedit Shahriar</h3>
-					<h5>Android Lead</h5>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4 leader slideanim">
-					<img src="images/rohit.png">
-					<h3>Rohit Tanikella</h3>
-					<h5>iOS Lead</h5>
-				</div>
-			</div>
-		</div>
-		<div id="marketing" class="slideanim">
-			<h4>Operations & Marketing Team</h4>
-			<div class="border-bot length" style="background-color: #30CFD0;"></div>
-			<div class="row">
-				<div class="col-sm-4 leader slideanim">
-					<img src="images/stuti.jpeg">
-					<h3>Stuti Upadhyay</h3>
-					<h5>Marketing Team Lead, <br> Director</h5>
-				</div>
-				<div class="col-sm-4 leader slideanim">
-					<img src="images/sahana.jpg">
-					<h3>Sahana Prasanna</h3>
-					<h5>Media Lead</h5>
-				</div>
-				<div class="col-sm-4 leader slideanim">
-					<img src="images/matthewcho.png">
-					<h3>Matthew Cho</h3>
-					<h5>South Bay Operations Lead</h5>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-4 leader slideanim">
-					<img src="images/chrisyen.png">
-					<h3>Christopher Yen</h3>
-					<h5>East Bay Operations Lead</h5>
-				</div>
-			</div>
-		</div>
-		<div id="tutors" class="slideanim">
-			<h4>Tutors</h4>
+		<div id="tutors">
+			<h4><strong>All</strong> Tutors</h4>
 			<div class="border-bot length" style="background-color: #30CFD0; margin-bottom: 20px;"></div>
 			<div id="filter">
 				<div class="dropdown">
@@ -278,8 +240,31 @@
 		</div>
 		<a class="back2top" href="#"><i class="fas fa-chevron-up"></i></a>
 		<div id="footer">
-			<a id="footertermslinks" onclick="window.open('termsandconditions.html')">Terms</a><a href="tutorrequirements.pdf">Tutor Requirements</a><span>&#169; InstaTutors 2018.</span>
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="images/logo.png">
+				</div>
+				<div class="col-sm-2">
+					<h3>Donate</h3>
+					<a href="tutorrequirements.pdf">Donate</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>Contact</h3>
+					<a href="mailto:support@instatutors.org">Support</a>
+					<a href="mailto:support@instatutors.org">Report a Bug</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>For Tutors</h3>
+					<a href="tutorrequirements.pdf">Requirements</a>
+					<a href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply</a>
+					<a href="https://tutors.instatutors.org">Crash Course</a>
+				</div>
+			</div>
 		</div>
+		<div class="row" id="foot">
+				<span>&#169; InstaTutors 2018.</span>
+				<a onclick="window.open('termsandconditions.html')">Terms</a>
+			</div>
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
 	<script src="firebase.js">
 	</script>

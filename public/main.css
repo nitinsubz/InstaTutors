@@ -9,7 +9,8 @@ body, h1, body, div, a, ol, ul, li, h2, p, em, img, button {
 	padding: 0;
 	margin: 0;
 	outline: 0;
-	
+	font-weight: 300;
+	word-wrap: break-word;
 }
 
 h6{
@@ -50,8 +51,6 @@ h1 strong {
 	right: 0;
 	top: 0;
 	z-index: 55;
-	background-color: white;
-	border-radius: 0px 0px 0px 30px;
 	display:none;
 }
 
@@ -74,24 +73,170 @@ h1 strong {
 	color: #30CFD0;
 }
 
-#contactnav:hover {
+#menubar {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	z-index: 70;
+	font-size: 28px;
+	font-weight: 700;
+	color: #999;
+	transition-duration: 0.2s;
+	padding: 10px 50px 10px 20px;
+	border-radius: 30px;
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 230% 100%;
+	background-position: right;
+	color: white;
+
+}
+
+.bar11, .bar22 {
+	background-color: white;
+	height: 3px;
+	width: 20px;
+	position: fixed;
+	z-index: 70;
+	transition-duration: 0.2s;
+}
+
+.bar11 {
+	top: 32px;
+	left: 125px;
+}
+
+.bar22 {
+	top: 42px;
+	left: 125px;
+}
+
+#menubar:hover {
+	background-position: left;
 	cursor: pointer;
 }
 
-#faqnav:hover {
+#menubar:hover .bar11 {
+	top: 33px;
+}
+
+#menubar:hover .bar22 {
+	top: 41px;
+}
+
+.sidebar {
+	height: 100vh;
+	width: 400px;
+	background: linear-gradient(135deg, #30CFD0, #330867);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 7s ease infinite;
+	-moz-animation: Gradient 7s ease infinite;
+	animation: Gradient 7s ease infinite;
+	position: fixed;
+	top: 0;
+	left: -400px;
+	padding: 70px 40px;
+	z-index: 99;
+	transition-duration: 0.3s;
+	opacity: 0.5;
+}
+
+.sidecancel {
+	position: fixed;
+	top: 20px;
+	left: -60px;
+	z-index: 99;
+	transition-duration: 0.3s;
+	font-size: 30px;
+	color: white;
+}
+
+.sidecancel:hover {
 	cursor: pointer;
 }
 
+.sidebar a {
+	color: white;
+	font-weight: 700;
+	display: block;
+	transition-duration: 0.2s;
+}
+
+.sidebar a:hover {
+	transform: scale(1.02);
+	text-decoration: none;
+}
+
+.sidebar .border-bot {
+	height: 4px;
+	background-color: white;
+	width: 10%;
+}
+
+#mainlinks {
+	padding-bottom: 10px;
+}
+
+#mainlinks a {
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+#seclinks {
+	padding: 20px 0px;
+}
+
+#seclinks a {
+	font-size: 24px;
+	margin-bottom: 17px;
+}
+
+.socialmedia {
+	position: fixed;
+	bottom: 50px;
+	left: -360px;
+	transition-duration: 0.3s;
+}
+
+.socialmedia a {
+	font-size: 40px;
+	display: inline;
+	margin: 0px 20px;
+}
+
+.socialmedia a i:hover {
+	background: linear-gradient(135deg, #30CFD0, #330867);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.sidemask {
+	height: 100vh;
+	width: 0%;
+	background-color: #444;
+	position: fixed;
+	overflow: hidden;
+	top: 0;
+	right: 0;
+	opacity: 0;
+	z-index: 70;
+	transition-duration: 0.05s;
+}
 /*Index*/
+
 #indexhead {
-	padding: 190px 10% 100px 10%;
+	padding: 110px 10% 150px 10%;
+	text-align: center;
+}
+
+#indeximg {
+	width: 150px;
+	margin-bottom: 20px;
 }
 
 #indexhead h1 {
-	font-size: 70px;
-	color: #444;
-	margin-bottom: 35px;
-	color: #555;
+	font-size: 79px;
+	color: #222;
+	margin-bottom: 25px;
 }
 
 #indexhead h1 strong {
@@ -104,15 +249,11 @@ h1 strong {
 	-webkit-text-fill-color: transparent;
 }
 
-#indexquote {
-	font-size: 29px;
-	color: #777;
-}
-
 #indexhead a {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 230% 100%;
 	background-position: right;
+	font-weight: 700;
 	color: white;
 	padding: 15px 50px;
 	border-radius: 30px;
@@ -125,8 +266,31 @@ h1 strong {
 	text-decoration: none;
 }
 
-#indexhead h3 {
-	margin-left: 75%;
+#indexhead a i {
+	transform: translateX(-80px);
+	opacity: 0;
+	transition-duration: 0.1s;
+}
+
+#indexhead a:hover i {
+	transform: translateX(0px);
+	opacity: 1;
+}
+
+#indexhead p {
+	font-size: 23px;
+	color: #555;
+	margin: 10px 0px;
+}
+
+#indexhead li {
+	font-size: 26px;
+	margin: 10px 0px;
+	color: #555;
+}
+
+#indexhead .row {
+	margin-bottom: 35px;
 }
 
 #bookasession {
@@ -135,9 +299,11 @@ h1 strong {
 	background-position: right;
 	border-radius: 30px;
 	transition-duration: 0.2s;
+	opacity: 0;
 }
 
 #bookasession a {
+	font-weight: 700;
 	color: white;
 }
 
@@ -159,6 +325,7 @@ h1 strong {
 
 #indexlogout a {
 	color: white;
+	font-weight: 700;
 }
 
 #indexlogout:hover {
@@ -167,41 +334,52 @@ h1 strong {
 }
 
 #info {
-	background: linear-gradient(135deg, #30CFD0, #212664, #330867);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 10s ease infinite;
-	-moz-animation: Gradient 10s ease infinite;
-	animation: Gradient 10s ease infinite;
-	transition-duration: 0.6s;
+	background: linear-gradient(black, #333);
 	overflow-y: hidden;
-	padding: 150px 10% 150px 10%;
+	padding: 120px 10% 480px 10%;
 	color: white;
-	-webkit-clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
-  	clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
   	position: relative;
-  	z-index: 2;
+  	z-index: 40;
+  	-webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
+  	clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
 }
 
-#info h1 {
+canvas {
+	position: absolute;
+  	display: block;
+  	top: 0;
+  	left: 0;  
+	z-index: 30;
+}
+
+#infotext {
+	position: absolute;
+	top: 100px;
+	left: 10%;
+	right: 10%;
+	z-index: 40;
+}
+
+#infotext h1 {
 	font-size: 45px;
 	padding-bottom: 15px;
+	background: linear-gradient(90deg, #30CFD0, #330867);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	width: 39%;
 }
 
-#info ol {
-	margin-left: 2%;
+#info .border-bot {
+	background: linear-gradient(135deg, #30CFD0, #330867);
 }
 
-#info li {
+#team {
+	padding: 0;
+}
+
+#mission {
+	font-weight: 700;
 	font-size: 26px;
-	margin: 20px 0px;
-}
-
-#info .col-sm-4 {
-	padding: 0px 10px;
-}
-
-#info iframe {
-	width: 100%;
 }
 
 .border-bot {
@@ -209,8 +387,28 @@ h1 strong {
 	width: 0;
 }
 
+#infotext p {
+	padding: 20px 0px;
+	font-size: 24px;
+}
+
+#infomask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #212664;
+	color: white;
+	opacity: 0.85;
+}
+
+#mission p {
+	font-size: 30px;
+}
+
 #contact {
-	padding: 60px 30% 70px 10%;
+	padding: 100px 30% 70px 10%;
 	color: #444;
 }
 
@@ -276,7 +474,7 @@ h1 strong {
 }
 
 #faq {
-	padding: 130px 10% 70px 10%;
+	padding: 130px 10% 130px 10%;
 	background: linear-gradient(135deg, #30CFD0, #212664, #330867);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 10s ease infinite;
@@ -284,13 +482,13 @@ h1 strong {
 	animation: Gradient 10s ease infinite;
 	transition-duration: 0.6s;
 	overflow-y: hidden;
-	-webkit-clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
-  	clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
+	-webkit-clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
+  	clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
   	color: white;
 }
 
 #faq h1 {
-	font-size: 45px;
+	font-size: 40px;
 	padding: 10px 0px;
 }
 
@@ -317,6 +515,7 @@ h1 strong {
 
 #mainbody {
 	display: none;
+	background-color: #ddd;
 }
 
 #bookheader {
@@ -361,76 +560,47 @@ h1 strong {
 	height: 600px;
 }
 
-#teamnavbar {
-	position: fixed;
-	padding: 20px 0px;
-	top: 0;
-	right: 250px;
-	background-color: white;
-	z-index: 88;
-	border-radius: 0px 0px 0px 30px;
-}
-
 #tutorapply {
 		position: fixed;
 		z-index: 99;
-		right: 0;
-		top: 0;
-		font-size: 22px;
-		padding: 20px 30px;
-		background-color: #330867;
+		right: 5px;
+		top: 5px;
+		font-size: 24px;
+		padding: 15px 20px;
+		background: linear-gradient(to right, #330867, #30CFD0);
+		background-size: 200% 100%;
+		background-position: right;
+		border-radius: 30px;
 		color: white;
 		transition-duration: 0.2s;
+		font-weight: 700;
 }
 
 #tutorapply:hover {
-	background-color: #30CFD0;
+	background-position: left;
 	text-decoration: none;
-}
-
-
-.teamnav {
-	font-size: 22px;
-	display: inline;
-	padding: 10px 30px;
-}
-
-.teamnav a {
-	color: #330867;
-	transition-duration: 0.2s;
-}
-
-.teamnav a:hover {
-	color: #30CFD0;
-	text-decoration: none;
-	cursor: pointer;
 }
 
 #software, #marketing {
-	margin: 40px 8% 20px 8%;
-	background-color: white;
-	padding: 60px 8%;
-	border-radius: 20px;
+	margin: 40px 10% 20px 10%;
+	padding: 20px 0%;
 	position: relative;
 	z-index: 40;
-}
-
-#software {
-	margin-top: 320px;
 }
 
 #software h4, #marketing h4 {
 	font-size: 40px;
 	color: #444;
+	font-weight: 700;
 }
 
 #software .row, #marketing .row {
-	padding: 30px 0px;
+	padding-top: 30px;
 }
 
 .leader {
 	text-align: center;
-	padding: 10px 30px;
+	padding: 0px 30px;
 }
 
 .col4 {
@@ -461,11 +631,12 @@ h1 strong {
 
 .leader h5 {
 	font-size: 24px;
+	color: #330867;
 }
 
 #tutors {
 	padding: 100px 8% 30px 8%;
-	margin: 40px 8%;
+	margin: 320px 8% 40px 8%;
 	width: 84%;
 	float: left;
 	position: relative;
@@ -476,6 +647,10 @@ h1 strong {
 
 #tutors h4 {
 	font-size: 40px;
+}
+
+#tutors h4 strong {
+	color: #212664;
 }
 
 .label {
@@ -730,6 +905,7 @@ h1 strong {
 }
 
 #submit {
+	font-weight: 700;
 	padding: 13px 60px;
 	font-size: 23px;
 	margin: 40px auto 50px auto;
@@ -760,23 +936,49 @@ h1 strong {
 
 #footer {
 	width: 100%;
-	padding: 7px 0px;
-	background-color: #666;
-	text-align: center;
+	padding: 30px 10% 30px 10%; 
+	background-color: #333;
 }
 
-#footer span, #footer a {
+#footer img {
+	width: 25%;
+	margin-top: 20px;
+}
+
+#footer h3 {
 	color: white;
-	font-size: 15px;
-	margin: 0px 15px;
+	font-size: 25px;
+	font-weight: 700;
 }
 
 #footer a {
-	color: #30CFD0;
+	display: block;
+	margin: 10px 0px;
+	font-size: 18px;
+	color: #cff1f5;
+	transition-duration: 0.2s;
 }
 
 #footer a:hover {
+	color: #30CFD0;
 	cursor: pointer;
+}
+
+#foot {
+	padding: 6px 10%;
+	background-color: #222;
+}
+
+#foot span {
+	font-size: 16px;
+	color: #ddd;
+	float: right;
+}
+
+#foot a {
+	font-size: 16px;
+	float: right;
+	margin-right: 20px;
 }
 
 /*Confirmed*/
@@ -831,6 +1033,8 @@ h1 strong {
 	font-size: 32px;
 	padding-bottom: 20px;
 	text-align: center;
+	font-weight: 700;
+	color: #333;
 }
 
 #termstext {
@@ -936,6 +1140,7 @@ h1 strong {
   text-align: center;
   text-decoration: none;
   color: white;
+  font-weight: 700;
 }
 
 #login:hover {
@@ -956,6 +1161,7 @@ h1 strong {
 
 #tutorsessions {
 	display: none;
+	background-color: #ddd;
 }
 
 #tutorsessionshead {
@@ -974,8 +1180,12 @@ h1 strong {
 	margin-top: -50px;
 }
 
+#tutormysessions {
+	background-color: #ddd;
+}
+
 #tutormysessions h1 {
-	background-color: #212664;
+	background-color: black;
 	padding: 140px 10% 110px 10%;
 	color: white;
 	font-size: 60px;
@@ -983,8 +1193,8 @@ h1 strong {
 }
 
 #tutoraccount {
-	padding: 40px 3%;
-	margin: -70px 9% 50px 9%;
+	padding: 40px 3% 70px 3%;
+	margin: -70px 9% 0px 9%;
 	background-color: white;
 	border-radius: 20px 20px 0px 0px;
 }
@@ -1076,7 +1286,7 @@ h1 strong {
 	border: 0;
 	font-size: 24px;
 	background-color: #eee;
-	color: #212664;
+	color: #333;
 	transition-duration: 0.2s;
 }
 
@@ -1103,7 +1313,7 @@ h1 strong {
 #sessionsheader {
 	text-align: center;
 	padding: 130px 10% 100px 10%;
-	background-color: #212664;
+	background-color: black;
 	color: white;
 }
 
@@ -1116,8 +1326,8 @@ h1 strong {
 }
 
 #account {
-	padding: 40px 3%;
-	margin: -70px 9% 50px 9%;
+	padding: 40px 3% 70px 3%;
+	margin: -70px 9% 0px 9%;
 	background-color: white;
 	border-radius: 20px 20px 0px 0px;
 }
@@ -1138,6 +1348,7 @@ h1 strong {
 	padding: 13px 40px;
 	font-size: 22px;
 	color: white;
+	font-weight: 500;
 }
 
 #resetPass2:hover {
@@ -1610,7 +1821,7 @@ h1 strong {
 	    top: 5px;
 	    border-radius: 100%;
 	    background-color: white;
-	    z-index: 70;
+	    z-index: 99;
 	    padding: 13px 11px;
 	    transition-duration: 0.2s;
 	  }
@@ -1652,7 +1863,7 @@ h1 strong {
 	    top: 0;
 	    left: 0;
 	    width: 100%;
-	    z-index: 30;
+	    z-index: 88;
 	    display: none;
 	  }
 
@@ -1686,7 +1897,7 @@ h1 strong {
 	}
 
 	#indexhead {
-		padding: 110px 10% 40px 10%;
+		padding: 70px 10% 40px 10%;
 	}
 
 	#indexhead h1 {
@@ -1698,13 +1909,8 @@ h1 strong {
 		font-size: 40px;
 	}
 
-	#indexquote {
-		font-size: 19px;
-	}
-
-	#indexhead h3 {
-		margin-left: 30%;
-		font-size: 21px;
+	#indexhead p {
+		font-size: 18px;
 	}
 
 	#indexhead a {
@@ -1723,14 +1929,6 @@ h1 strong {
 
 	#info h1 {
 		font-size: 34px;
-	}
-
-	#info ol {
-		margin-left: 7%;
-	}
-
-	#info li {
-		font-size: 18px;
 	}
 
 	#contact {
@@ -1766,8 +1964,8 @@ h1 strong {
 
 	#faq {
 		padding: 70px 10%;
-		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
-	  	clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 100%);
+		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 94%);
+	  	clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 94%);
 	}
 
 	#faq h1 {
@@ -1892,6 +2090,7 @@ h1 strong {
 		background-color: #ae3dc6;
 		padding: 10px 20px;
 		font-size: 20px;
+		border-radius: 0px 0px 0px 20px;
 	}
 
 	#servicenav button, #tutornav button {
@@ -2038,6 +2237,8 @@ h1 strong {
 
 	#tutorapply {
 		font-size: 18px;
+		top: 0;
+		right: 0;
 		padding: 10px 20px;
 		border-radius: 0px 0px 0px 20px;
 	}
@@ -2056,11 +2257,7 @@ h1 strong {
 
 	#software, #marketing {
 		margin: 20px 8% 20px 8%;
-		padding: 30px 6%;
-	}
-
-	#software {
-		margin-top: 300px;
+		padding: 30px 2%;
 	}
 
 	#software h4, #marketing h4 {
@@ -2069,7 +2266,7 @@ h1 strong {
 	}
 
 	#software .border-bot, #marketing .border-bot {
-		margin: auto;
+		margin: 0px auto 20px auto;
 	}
 
 	#software .row, #marketing .row {
@@ -2086,6 +2283,10 @@ h1 strong {
 
 	#tutors {
 		padding: 30px 6%;
+	}
+
+	.leader {
+		padding: 20px 0px;
 	}
 
 	.col4 {
@@ -2208,6 +2409,33 @@ h1 strong {
 		background-color: white;
 		max-height: 30000px;
 		overflow: auto;
+	}
+
+	#menubar {
+		display: none;
+	}
+
+	#footer {
+		width: 100%;
+		padding: 20px 8%; 
+		background-color: black;
+	}
+
+	#footer img {
+		width: 50%;
+		margin-top: 20px;
+	}
+
+	#footer h3 {
+		font-size: 20px;
+	}
+
+	#footer a {
+		font-size: 16px;
+	}
+
+	#footer a:hover {
+		cursor: pointer;
 	}
 }
 

@@ -5,7 +5,7 @@
 <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <link rel="icon" href="images/logo.png">
-<link href="https://fonts.googleapis.com/css?family=Raleway:300,700,800" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,800" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -16,11 +16,32 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
 <body>
+	<div id="menubar" onclick="opensidenav()">
+		MENU <div class="bar11"></div><div class="bar22"></div>
+	</div>
+
+	<div class="sidebar">
+		<div class="sidecancel" onclick="closesidenav()">X</div>
+		<div id="mainlinks">
+			<a href="index.html">HOME</a>
+			<a href="login.html" id="sidelogin">LOGIN or SIGNUP</a>
+		</div>
+		<div class="border-bot"></div>
+		<div id="seclinks">
+			<a href="team.html">Tutors</a>
+			<a href="termsandconditions.html">Terms</a>
+			<a href="donate.html">Donate</a>
+			<a href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply to Tutor</a>
+		</div>
+		<div class="socialmedia">
+			<a href=""><i class="fab fa-facebook-square"></i></a>
+			<a href=""><i class="fab fa-instagram"></i></a>
+		</div>
+	</div>
+	<div class="sidemask" onclick="closesidenav()">
+	</div>
 		<div id="navbar">
-			<div id="home" class="slideleft"><a href="index.html"><img src="images/logo.png"></a></div>
 			<ul id="nav" class="slideright">
-			   	<li class="navig" id="whoarewe"><a href="team.html">Who Are We?</a></li>
-			   	<li class="navig"><a id="contactnav">Contact</a></li>
 			   	<li class="navig" id="bookasession"><a href="login.html">Login or Signup</a></li>
 			   	<li class="navig" id="indexlogout"><a onclick="logout()">Log Out</a></li>
 			</ul>
@@ -32,60 +53,89 @@
 			</div>
 		</div>
 		<div id="phonenavlinks">
-			<li class="navig2"><a href="team.html">Who Are We?</a></li>
+			<li class="navig2"><a href="team.html">Tutors</a></li>
 			<li class="navig2"><a id="contactnav2">Contact</a></li>
 			<li class="navig2"><a id="faqnav2">FAQs</a></li>
 			<li class="navig2"><a href="login.html" id="login2">Login or Signup</a></li>
 		</div>
 		<div id="indexhead">
-			<h1 class="slideleft">SIMPLIFYING <strong>TUTORING.</strong></h1>
-			<p id="indexquote" class="slideup"></p> <h3 class="slideright">- Margaret Mead</h3>
-			<br><br>
-			<a href="login.html" class="slideup">Get Started</a>
+			<img src="images/logo.png" id="indeximg" class="slideup">
+			<h1 id="indextitle" class="slideleft">SIMPLIFYING <strong>TUTORING.</strong></h1>
+			<p class="slideup">1. Create an account or Log In if you already have an account.</p>
+			<p class="slideup">2. Request a tutoring session through our online form.</p>
+			<p class="slideup" style="margin-bottom: 40px;">3. Your tutor will contact you within 24 hours!</p>
+			<a href="login.html" class="slideup">Get Started <i class="fas fa-arrow-right"></i></a>
 		</div>
 		<div id="info">
-			<h1>3 <strong>Easy</strong> Steps</h1>
-			<div class="border-bot length" style="background-color: white;"></div>
-			<ol>
-				<div class="row">
-					<div class="col-sm-8">
-						<li class="slideanim">Create an account or Log In if you already have an account.</li>
-					</div>
-					<div class="col-sm-8">
-						<li class="slideanim">Request a tutor through our online form.</li>
-					</div>
-					<div class="col-sm-8">
-						<li class="slideanim">Your tutor will contact you within 24 hours!</li>
-					</div>
-				</div>
-			</ol>
+			<canvas id="nokey">
+			    Your Browser Don't Support Canvas, Please Download Chrome ^_^``
+			</canvas>
+			<div id="infomask">
+			</div>
+			<div id="infotext">
+				<h1 class="slideleft"><strong>Who</strong> are we?</h1>
+				<p class="slideanim">InstaTutors is a platform created by students to help students who need tutoring connect with tutors, schedule tutoring sessions, and receive the help they need in all of their subjects.</p>
+				<p class="slideanim">InstaTutors gives the option between holding tutoring sessions in person, or over video call, which gives the possibility of connecting tutors from all over the world.</p>
+				<p class="slideanim" id="mission">Our mission is to provide better tutoring solutions to students all over the world, from any background.</p>
+			</div>
 		</div>
-		<div id="contact">
-			<h1 class="slideanim2">Get In <strong>Touch</strong></h1>
-			<div class="border-bot length" style="background-color: #30CFD0;"></div>
-			<h4 class="slideanim2">Our Email: <a href="mailto:contact@instatutors.org">contact@instatutors.org</a></h4>
-			<h3 class="slideanim2">Send Us A Message</h3>
-			<form class="slideanim" id="contactForm">
+		</div>
+		<div id="team">
+			<div id="software">
+				<h4 class="slideanim2">Software Team</h4>
+				<div class="border-bot length" style="background-color: #30CFD0;"></div>
 				<div class="row">
-					<div class="col-sm-6">
-					    Name:<br>
-					    <input type="text" id="msgname" name="msgname">
+					<div class="col-sm-3 leader slideanim">
+						<img src="images/nitin.jpeg">
+						<h3>Nitin Subramanian</h3>
+						<h5>Founder, <br>Executive Director</h5>
 					</div>
-					<div class="col-sm-6">
-					    Email:<br>
-					    <input type="text" id="msgemail" name="email">
-					   </div>
+					<div class="col-sm-3 leader slideanim">
+						<img src="images/sam.jpg">
+						<h3>Sam Yang</h3>
+						<h5>Software Team Lead, <br> Director</h5>
+					</div>
+					<div class="col-sm-3 leader slideanim">
+						<img src="images/reedit.png">
+						<h3>Reedit Shahriar</h3>
+						<h5>Android Lead</h5>
+					</div>
+					<div class="col-sm-3 leader slideanim">
+						<img src="images/rohit.png">
+						<h3>Rohit Tanikella</h3>
+						<h5>iOS Lead</h5>
+					</div>
 				</div>
-				    Your Message:<br>
-				    <input type="text" id="msg" name="msg">
-			  </form>
-			  <p id="formStatus"> </p>
-				<button type="submit" id="submit" onclick="validatemsg()">Submit</button>
-				
+			</div>
+			<div id="marketing">
+				<h4 class="slideanim2">Operations & Marketing Team</h4>
+				<div class="border-bot length" style="background-color: #30CFD0;"></div>
+				<div class="row">
+					<div class="col-sm-3 leader slideanim">
+						<img src="images/stuti.jpeg">
+						<h3>Stuti Upadhyay</h3>
+						<h5>Marketing Team Lead, <br> Director</h5>
+					</div>
+					<div class="col-sm-3 leader slideanim">
+						<img src="images/sahana.jpg">
+						<h3>Sahana Prasanna</h3>
+						<h5>Media Lead</h5>
+					</div>
+					<div class="col-sm-3 leader slideanim">
+						<img src="images/matthewcho.png">
+						<h3>Matthew Cho</h3>
+						<h5>South Bay Operations Lead</h5>
+					</div>
+					<div class="col-sm-3 leader slideanim">
+						<img src="images/chrisyen.png">
+						<h3>Christopher Yen</h3>
+						<h5>East Bay Operations Lead</h5>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div id="faq">
 			<h1 class="slideanim2">Frequently Asked Questions</h1>
-			<div class="border-bot length" style="background-color: white;"></div>
 			<div class="faqsec">
 				<div class="question slideanim" id="question1">
 					<p><i class="fas fa-arrow-right"></i>  Are all tutoring sessions free?</p>
@@ -127,10 +177,58 @@
 				</div>
 			</div>
 		</div>
-		<div id="footer">
-			<a id="footertermslinks" onclick="window.open('termsandconditions.html')">Terms</a><a href="tutorrequirements.pdf">Tutor Requirements</a><span>&#169; InstaTutors 2018.</span>
+		<div id="contact">
+			<h1 class="slideanim2">Get In <strong>Touch</strong></h1>
+			<div class="border-bot length" style="background-color: #30CFD0;"></div>
+			<h4 class="slideanim2">Our Email: <a href="mailto:contact@instatutors.org">contact@instatutors.org</a></h4>
+			<h3 class="slideanim2">Send Us A Message</h3>
+			<form class="slideanim" id="contactForm">
+				<div class="row">
+					<div class="col-sm-6">
+					    Name:<br>
+					    <input type="text" id="msgname" name="msgname">
+					</div>
+					<div class="col-sm-6">
+					    Email:<br>
+					    <input type="text" id="msgemail" name="email">
+					   </div>
+				</div>
+				    Your Message:<br>
+				    <input type="text" id="msg" name="msg">
+			  </form>
+			  <p id="formStatus"> </p>
+				<button type="submit" id="submit" onclick="validatemsg()">Submit</button>
+				
 		</div>
+		<div id="footer">
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="images/logo.png">
+				</div>
+				<div class="col-sm-2">
+					<h3>Donate</h3>
+					<a href="tutorrequirements.pdf">Donate</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>Contact</h3>
+					<a href="mailto:support@instatutors.org">Support</a>
+					<a href="mailto:support@instatutors.org">Report a Bug</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>For Tutors</h3>
+					<a href="tutorrequirements.pdf">Requirements</a>
+					<a href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply</a>
+					<a href="https://tutors.instatutors.org">Crash Course</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="foot">
+				<span>&#169; InstaTutors 2018.</span>
+				<a onclick="window.open('termsandconditions.html')">Terms</a>
+			</div>
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+	<script src="particles.js">
+    </script>
 	<script src="firebase.js">
 	</script>
 	<script src="https://smtpjs.com/v2/smtp.js">
