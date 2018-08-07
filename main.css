@@ -363,9 +363,7 @@ canvas {
 #infotext h1 {
 	font-size: 45px;
 	padding-bottom: 15px;
-	background: linear-gradient(90deg, #30CFD0, #330867);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	color: #30CFD0;
 	width: 39%;
 }
 
@@ -1919,7 +1917,7 @@ canvas {
 	}
 
 	#info {
-		padding: 100px 10%;
+		padding: 600px 10% 200px 10%;
 		color: white;
 		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
 	  	clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
@@ -1928,7 +1926,11 @@ canvas {
 	}
 
 	#info h1 {
-		font-size: 34px;
+		font-size: 30px;
+	}
+
+	#info p {
+		font-size: 18px;
 	}
 
 	#contact {
@@ -2428,6 +2430,10 @@ canvas {
 
 	#footer h3 {
 		font-size: 20px;
+	}
+
+	#footer img {
+		display: none;
 	}
 
 	#footer a {
