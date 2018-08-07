@@ -10,6 +10,7 @@ body, h1, body, div, a, ol, ul, li, h2, p, em, img, button {
 	margin: 0;
 	outline: 0;
 	font-weight: 300;
+	word-wrap: break-word;
 }
 
 h6{
@@ -334,14 +335,22 @@ h1 strong {
 }
 
 #info {
-	background: black;
+	background: linear-gradient(black, #333);
 	overflow-y: hidden;
 	padding: 150px 10% 150px 10%;
 	color: white;
 	-webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
   	clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
   	position: relative;
-  	z-index: 2;
+  	z-index: 40;
+}
+
+canvas {
+	position: absolute;
+  	display: block;
+  	top: 0;
+  	left: 0;  
+	z-index: 30;
 }
 
 #info h1 {
@@ -527,18 +536,21 @@ h1 strong {
 #tutorapply {
 		position: fixed;
 		z-index: 99;
-		right: 0;
-		top: 0;
-		font-size: 22px;
-		padding: 20px 30px;
-		background-color: #330867;
+		right: 5px;
+		top: 5px;
+		font-size: 24px;
+		padding: 15px 20px;
+		background: linear-gradient(to right, #330867, #30CFD0);
+		background-size: 200% 100%;
+		background-position: right;
+		border-radius: 30px;
 		color: white;
 		transition-duration: 0.2s;
-		border-radius: 0px 0px 0px 30px;
+		font-weight: 700;
 }
 
 #tutorapply:hover {
-	background-color: #30CFD0;
+	background-position: left;
 	text-decoration: none;
 }
 
@@ -898,7 +910,7 @@ h1 strong {
 #footer {
 	width: 100%;
 	padding: 30px 10% 30px 10%; 
-	background-color: black;
+	background-color: #333;
 }
 
 #footer img {
@@ -916,10 +928,12 @@ h1 strong {
 	display: block;
 	margin: 10px 0px;
 	font-size: 18px;
-	color: #30CFD0;
+	color: #cff1f5;
+	transition-duration: 0.2s;
 }
 
 #footer a:hover {
+	color: #30CFD0;
 	cursor: pointer;
 }
 
@@ -2196,6 +2210,8 @@ h1 strong {
 
 	#tutorapply {
 		font-size: 18px;
+		top: 0;
+		right: 0;
 		padding: 10px 20px;
 		border-radius: 0px 0px 0px 20px;
 	}
