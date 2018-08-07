@@ -99,7 +99,7 @@ function closesidenav() {
 	$(".sidebar").css("opacity", "0.5");
 	$(".sidebar").css("left", "-400px");
     $(".sidecancel").css("left", "-60px");
-    $(".socialmedia").css("left", "-360x");
+    $(".socialmedia").css("left", "-360px");
     $(".sidemask").css("width", "0");
     $(".sidemask").css("opacity", "0");
     $(".sidebar a").each(function(){
@@ -167,6 +167,13 @@ $(document).ready(function() {
 	        // For the boolean value
 	        $("#newsubject").val(this.innerHTML.toLowerCase()); 
 	        $("#subjecttext").html(this.innerHTML);
+	    });
+	});
+
+	$( "#tutors .dropdown-item" ).each(function(index) {
+	    $(this).on("click", function(){
+	        // For the boolean value
+	        $("#tutors h4 strong").html(this.innerHTML);
 	    });
 	});
 

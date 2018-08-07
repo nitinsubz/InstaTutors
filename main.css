@@ -79,12 +79,12 @@ h1 strong {
 	z-index: 70;
 	font-size: 28px;
 	font-weight: 700;
-	color: #777;
+	color: #999;
 	transition-duration: 0.2s;
 }
 
 .bar11, .bar22 {
-	background-color: #777;
+	background-color: #999;
 	height: 3px;
 	width: 20px;
 	position: fixed;
@@ -139,13 +139,12 @@ h1 strong {
 	z-index: 99;
 	transition-duration: 0.3s;
 	font-size: 30px;
-	color: white;
+	background: linear-gradient(160deg, #30CFD0, #330867);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .sidecancel:hover {
-	background: linear-gradient(135deg, #30CFD0, #330867);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
 	cursor: pointer;
 }
 
@@ -362,7 +361,7 @@ h1 strong {
 }
 
 #contact {
-	padding: 60px 30% 70px 10%;
+	padding: 100px 30% 70px 10%;
 	color: #444;
 }
 
@@ -428,7 +427,7 @@ h1 strong {
 }
 
 #faq {
-	padding: 130px 10% 70px 10%;
+	padding: 130px 10% 130px 10%;
 	background: linear-gradient(135deg, #30CFD0, #212664, #330867);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 10s ease infinite;
@@ -436,13 +435,13 @@ h1 strong {
 	animation: Gradient 10s ease infinite;
 	transition-duration: 0.6s;
 	overflow-y: hidden;
-	-webkit-clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
-  	clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 100%);
+	-webkit-clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
+  	clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
   	color: white;
 }
 
 #faq h1 {
-	font-size: 45px;
+	font-size: 40px;
 	padding: 10px 0px;
 }
 
@@ -513,16 +512,6 @@ h1 strong {
 	height: 600px;
 }
 
-#teamnavbar {
-	position: fixed;
-	padding: 20px 0px;
-	top: 0;
-	right: 250px;
-	background-color: white;
-	z-index: 88;
-	border-radius: 0px 0px 0px 30px;
-}
-
 #tutorapply {
 		position: fixed;
 		z-index: 99;
@@ -533,29 +522,12 @@ h1 strong {
 		background-color: #330867;
 		color: white;
 		transition-duration: 0.2s;
+		border-radius: 0px 0px 0px 30px;
 }
 
 #tutorapply:hover {
 	background-color: #30CFD0;
 	text-decoration: none;
-}
-
-
-.teamnav {
-	font-size: 22px;
-	display: inline;
-	padding: 10px 30px;
-}
-
-.teamnav a {
-	color: #330867;
-	transition-duration: 0.2s;
-}
-
-.teamnav a:hover {
-	color: #30CFD0;
-	text-decoration: none;
-	cursor: pointer;
 }
 
 #software, #marketing {
@@ -617,7 +589,7 @@ h1 strong {
 
 #tutors {
 	padding: 100px 8% 30px 8%;
-	margin: 40px 8%;
+	margin: 320px 8% 40px 8%;
 	width: 84%;
 	float: left;
 	position: relative;
@@ -628,6 +600,10 @@ h1 strong {
 
 #tutors h4 {
 	font-size: 40px;
+}
+
+#tutors h4 strong {
+	color: #212664;
 }
 
 .label {
