@@ -18,24 +18,35 @@
     <link rel="stylesheet" href="main.css">
     <script src="clockpicker.js"></script>
 <body>
+	<div id="menubar" onclick="opensidenav()">
+		MENU <div class="bar11"></div><div class="bar22"></div>
+	</div>
+	<div class="sidebar">
+		<div class="sidecancel" onclick="closesidenav()">X</div>
+		<div id="mainlinks">
+			<a href="index.html">HOME</a>
+			<a href="login.html" id="sidelogin">LOGIN or SIGNUP</a>
+		</div>
+		<div class="border-bot"></div>
+		<div id="seclinks">
+			<a href="team.html">Tutors</a>
+			<a href="donate.html">Donate</a>
+			<a href="leadership.html">Leadership</a>
+			<a href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply to Tutor</a>
+		</div>
+		<div class="socialmedia">
+			<a href=""><i class="fab fa-facebook-square"></i></a>
+			<a href=""><i class="fab fa-instagram"></i></a>
+		</div>
+	</div>
+	<div class="sidemask" onclick="closesidenav()">
+	</div>
 		<div id="navbar">
 			<ul id="nav" class="fader">
-				<li id="home"><a href="index.html"><img src="images/logo.png"></a></li>
 			   <!--<li class="navig"><a href="donate.html">Donate</a></li>-->
 			   <a id="logout" onclick="logout()">Logout</a>
 			</ul>
 		</div>
-		<!--<div id="container1" onclick="rotate(this)">
-			<div class="bar1">
-			</div>
-			<div class="bar2">
-			</div>
-		</div>
-		<div id="phonenavlinks">
-			<li class="navig2"><a href="about.html">About</a></li>
-			<li class="navig2"><a href="service.html">Service</a></li>
-			<li class="navig2"><a href="videos.html">Videos</a></li>
-		</div>-->
 		<div class="create-div">
 		    <h3>Create an Account</h3>
 		    <input type="name" placeholder="Enter your Name..." id="createname" />
@@ -91,7 +102,7 @@
 			<div class="tab" id="booktab">
 				<div id="bookheader">
 					<h1 id="welcome">Welcome <strong></strong>!</h1>
-					<h3>Book A Session</h3>
+					<h3>Request A Session</h3>
 				</div>
 				<div id="bookform">
 					<form>
@@ -158,7 +169,7 @@
 					  
 					</div>
 				   	<p id="formerrors"></p>
-				   	<a id="submit" onclick="validate()">Submit</a>
+				   	<a id="submit" onclick="validate()">Request Session</a>
 				    </form>
 				</div>
 			</div>

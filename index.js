@@ -102,53 +102,6 @@ function closesidenav() {
 }
 
 $(document).ready(function() {
-
-    $("#contactnav").click(function(event) {
-        event.preventDefault();
-        $("html, body").animate({
-                    scrollTop: $("#contact").offset().top - 50
-                }, 800);
-    });
-    $("#contactnav2").click(function(event) {
-        event.preventDefault();
-        $("html, body").animate({
-                    scrollTop: $("#contact").offset().top - 50
-                }, 800);
-        $("#phonenavlinks").slideToggle("fast");
-        $("#container1").toggleClass("change");
-    });
-    $("#faqnav").click(function(event) {
-        event.preventDefault();
-        $("html, body").animate({
-                    scrollTop: $("#faq").offset().top + 40
-                }, 800);
-    });
-    $("#faqnav2").click(function(event) {
-        event.preventDefault();
-        $("html, body").animate({
-                    scrollTop: $("#faq").offset().top + 40
-                }, 800);
-        $("#phonenavlinks").slideToggle("fast");
-        $("#container1").toggleClass("change");
-    });
-    $("#softwarenav").click(function(event) {
-        event.preventDefault();
-        $("html, body").animate({
-                    scrollTop: $("#software").offset().top
-                }, 800);
-    });
-    $("#marketingnav").click(function(event) {
-        event.preventDefault();
-        $("html, body").animate({
-                    scrollTop: $("#marketing").offset().top - 40
-                }, 800);
-    });
-    $("#tutorsnav").click(function(event) {
-        event.preventDefault();
-        $("html, body").animate({
-                    scrollTop: $("#tutors").offset().top - 40
-                }, 800);
-    });
     $(".back2top").click(function(event) {
     event.preventDefault();
     $("html, body").animate({ scrollTop: 0 }, 800);
@@ -270,8 +223,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 			    $("#logout").fadeIn();
 			    $(".create-div").css("display", "none");
 			    $("#bookasession").css("display", "none");
-			    $("#sidelogin").html("BOOK a SESSION");
-			    $("#login2").html("Book A Session");
+			    $("#sidelogin").html("Request a Session");
+			    $("#login2").html("Request a Session");
 			    $("#indexlogout").fadeIn();
 
 			    var tuteeSubjects = firebase.database().ref('users/' + split).child("subjects");

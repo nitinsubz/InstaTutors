@@ -203,12 +203,6 @@ h1 strong {
 	margin: 0px 20px;
 }
 
-.socialmedia a i:hover {
-	background: linear-gradient(135deg, #30CFD0, #330867);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-
 .sidemask {
 	height: 100vh;
 	width: 0%;
@@ -224,7 +218,7 @@ h1 strong {
 /*Index*/
 
 #indexhead {
-	padding: 110px 10% 150px 10%;
+	padding: 120px 10% 200px 10%;
 	text-align: center;
 }
 
@@ -234,7 +228,7 @@ h1 strong {
 }
 
 #indexhead h1 {
-	font-size: 79px;
+	font-size: 85px;
 	color: #222;
 	margin-bottom: 25px;
 }
@@ -278,9 +272,10 @@ h1 strong {
 }
 
 #indexhead p {
-	font-size: 23px;
+	font-size: 30px;
 	color: #555;
 	margin: 10px 0px;
+	padding-bottom: 30px;
 }
 
 #indexhead li {
@@ -339,8 +334,6 @@ h1 strong {
 	color: white;
   	position: relative;
   	z-index: 40;
-  	-webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
-  	clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
 }
 
 canvas {
@@ -389,6 +382,38 @@ canvas {
 	font-size: 24px;
 }
 
+#infotext .row {
+	padding: 30px 0px;
+}
+
+#infotext a {
+	font-size: 24px;
+	padding: 15px 20px;
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 200% 100%;
+	background-position: right;
+	border-radius: 30px;
+	color: white;
+	transition-duration: 0.2s;
+	font-weight: 700;
+}
+
+#infotext a:hover {
+	background-position: left;
+	text-decoration: none;
+}
+
+#infotext a i {
+	transform: translateX(-80px);
+	opacity: 0;
+	transition-duration: 0.1s;
+}
+
+#infotext a:hover i {
+	transform: translateX(0px);
+	opacity: 1;
+}
+
 #infomask {
 	position: absolute;
 	top: 0;
@@ -397,15 +422,25 @@ canvas {
 	width: 100%;
 	background-color: #212664;
 	color: white;
-	opacity: 0.85;
+	opacity: 0.4;
 }
 
 #mission p {
 	font-size: 30px;
 }
 
+#howitworks {
+	padding: 80px 10%;
+}
+
+#howitworks h1 {
+	color: #444;
+	padding: 10px 0px;
+	font-size: 40px;
+}
+
 #contact {
-	padding: 100px 30% 70px 10%;
+	padding: 70px 30% 70px 10%;
 	color: #444;
 }
 
@@ -578,28 +613,6 @@ canvas {
 	text-decoration: none;
 }
 
-#software, #marketing {
-	margin: 40px 10% 20px 10%;
-	padding: 20px 0%;
-	position: relative;
-	z-index: 40;
-}
-
-#software h4, #marketing h4 {
-	font-size: 40px;
-	color: #444;
-	font-weight: 700;
-}
-
-#software .row, #marketing .row {
-	padding-top: 30px;
-}
-
-.leader {
-	text-align: center;
-	padding: 0px 30px;
-}
-
 .col4 {
 	width: 33%;
 	padding: 10px 3%;
@@ -632,7 +645,7 @@ canvas {
 }
 
 #tutors {
-	padding: 100px 8% 30px 8%;
+	padding: 70px 8% 30px 8%;
 	margin: 320px 8% 40px 8%;
 	width: 84%;
 	float: left;
@@ -830,7 +843,7 @@ canvas {
 }
 
 #bookform {
-	margin: -70px 15% 40px 15%;
+	margin: -70px 12% 40px 12%;
 	background-color: white;
 	padding: 50px 5% 10px 5%;
 	border-radius: 20px;
@@ -861,6 +874,15 @@ canvas {
 #bookform .col-sm-9 #subject {
 	width: 76%;
 	float: left;
+}
+
+#bookform .col-sm-9 #time {
+	outline: 0;
+	border-radius: 0;
+}
+
+#bookform .col-sm-9 .input-group {
+	outline: 0;
 }
 
 .col-sm-9 .dropdown {
@@ -1062,6 +1084,58 @@ canvas {
 #confirmedbody a:hover {
 	background-position: left;
 	text-decoration: none;
+}
+
+/*Leadership */
+#leadershead {
+	padding: 100px 10% 80px 12%;
+	background: linear-gradient(to right, black, #576b8a, #330867);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 10s ease infinite;
+	-moz-animation: Gradient 10s ease infinite;
+	animation: Gradient 10s ease infinite;
+	color: white;
+}
+
+#leadershead h1 {
+	font-size: 60px;
+}
+
+#leadershead h3 {
+	font-size: 28px;
+}
+
+#leadersbody {
+	background-color: #ddd;
+	padding-top: 50px;
+}
+
+#software, #marketing {
+	margin: 0px 10% 0px 10%;
+	padding: 40px 6%;
+	position: relative;
+	z-index: 40;
+	background-color: white;
+}
+
+#software {
+	margin-top: -100px;
+	border-radius: 20px 20px 0px 0px;
+}
+
+#software h4, #marketing h4 {
+	font-size: 40px;
+	color: #444;
+	font-weight: 700;
+}
+
+#software .row, #marketing .row {
+	padding-top: 30px;
+}
+
+.leader {
+	text-align: center;
+	padding: 0px 30px;
 }
 
 /*Login*/
@@ -1967,10 +2041,8 @@ canvas {
 	}
 
 	#info {
-		padding: 600px 10% 200px 10%;
+		padding: 550px 10% 200px 10%;
 		color: white;
-		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
-	  	clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
 	  	position: relative;
 	  	z-index: 2;
 	}
@@ -1979,8 +2051,23 @@ canvas {
 		font-size: 30px;
 	}
 
-	#info p {
+	#infotext p {
+		padding: 10px 0px;
+		font-size: 17px;
+	}
+
+	#infotext .row {
+		padding: 10px 0px;
+	}
+
+	#infotext .col-sm-6 {
+		padding: 20px 0px;
+	}
+
+	#infotext a {
 		font-size: 18px;
+		padding: 10px 16px;
+		margin: 20px 0px;
 	}
 
 	#contact {
