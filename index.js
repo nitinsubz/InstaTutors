@@ -585,6 +585,7 @@ function validate() {
 	var selectedDate = new Date(date);
    	var now = new Date();
 
+
 	if(date == "" || selectedDate < now) {
 		missing.push(" valid date, date cannot be in the past");
 	}
@@ -603,6 +604,36 @@ function validate() {
 
 		var content = "<h3 style=\"color: #ae3dc6\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 
+		var ref = firebase.database().ref('users');
+	//get uids of all tutors
+		ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
+	 		var tutorids = Object.keys(snap.val());
+	 		console.log(tutorids);
+	 		for(var i=0; i<tutorids.length; i++) {
+	 			var myUser = firebase.database().ref('users/' + tutorids[i]).child("subjects");
+				myUser.on("value", snap => {
+						var splitsubs = snap.val().split(",");
+						var reqsubs = subject.split(", ");
+
+						var overlap = intersect(splitsubs, reqsubs).length;
+						//check whether request's subjects overlap tutor's subjects
+						//if not, don't show request
+						if(overlap > 0) {
+							var tutoremail = firebase.database().ref('users/' + tutorids[i]).child("email");
+							tutoremail.on("value", snap => {
+								console.log(snap.val());
+								Email.send("support@instatutors.org",
+											snap.val(),
+											"Tutoring Session Requested for " + splitDate(date),
+											content,
+											{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+							});
+						}
+
+				});
+			}
+		 });
+		
 		$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
 		$("#tutor2").html("Tutor: " + tutor);
 		$("#time2").html("Time: " + time);
@@ -611,13 +642,6 @@ function validate() {
 		$("#mainbody").css("display", "none");
 		$("#confirmedbody").fadeIn();
 		$("#logout").css("display", "none");
-
-		//send email to all tutors
-		Email.send("support@instatutors.org",
-			"tutors@instatutors.org",
-			"New Tutoring Request for " + subject,
-			content,
-			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 
 		//send confirmation email to user
 		Email.send("support@instatutors.org",
