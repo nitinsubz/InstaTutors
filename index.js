@@ -1,6 +1,5 @@
 $(window).on('load', function () {
 	$("#navbar").show();
-	typeWriter();
 });
 
 
@@ -54,6 +53,14 @@ $(window).scroll(function() {
     $("#teamheadimg").css({
     'margin-top' : winTop/1.13
     });
+
+    if(winTop>$("#info").offset().top) {
+    	$("#bookasession").css("opacity", "1");
+    	$("#indexlogout").css("opacity", "1");
+    } else {
+    	$("#indexlogout").css("opacity", "0");
+    	$("#bookasession").css("opacity", "0");
+    }
 });
 
 
@@ -75,7 +82,34 @@ function intersect(a, b) {
     $("#phonenavlinks").slideToggle("fast");
 }
 
+function opensidenav() {
+    $(".sidebar").css("left", "0px");
+    $(".sidebar").css("opacity", "1");
+    $(".sidecancel").css("left", "340px");
+    $(".socialmedia").css("left", "40px");
+    $(".sidemask").css("width", "100%");
+    $(".sidemask").css("opacity", "0.8");
+    $(".sidebar a").each(function(){
+          $(this).addClass("slideleft");
+    });
+    $(".sidebar .border-bot").addClass("lengthen");
+}
+
+function closesidenav() {
+	$(".sidebar").css("opacity", "0.5");
+	$(".sidebar").css("left", "-400px");
+    $(".sidecancel").css("left", "-60px");
+    $(".socialmedia").css("left", "-360x");
+    $(".sidemask").css("width", "0");
+    $(".sidemask").css("opacity", "0");
+    $(".sidebar a").each(function(){
+          $(this).removeClass("slideleft");
+    });
+    $(".sidebar .border-bot").removeClass("lengthen");
+}
+
 $(document).ready(function() {
+
     $("#contactnav").click(function(event) {
         event.preventDefault();
         $("html, body").animate({
@@ -196,7 +230,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 			    $("#logout").fadeIn();
 			    $(".create-div").css("display", "none");
 			    $("#indexlogout").fadeIn();
-			    $("#bookasession a").html("See All Requests");
+			    $("#bookasession").css("display", "none");
+			    $("#sidelogin").html("SEE ALL REQUESTS");
 			    $("#login2").html("See All Requests");
 			    $("#tutorsessions").fadeIn();
 
@@ -235,7 +270,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 			    $(".main-div").css("display", "none");
 			    $("#logout").fadeIn();
 			    $(".create-div").css("display", "none");
-			    $("#bookasession a").html("Book A Session");
+			    $("#bookasession").css("display", "none");
+			    $("#sidelogin").html("BOOK a SESSION");
 			    $("#login2").html("Book A Session");
 			    $("#indexlogout").fadeIn();
 
@@ -337,7 +373,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     $(".main-div").fadeIn();
     $("#email_div").css("display", "none");
     $("#logout").css("display", "none");
-    $("#bookasession a").html("Login or Sign Up");
+    $("#bookasession").css("display", "block");
+    $("#sidelogin").html("LOGIN or SIGNUP");
     $("#indexlogout").fadeOut();
     $("#tutorsessions").css("display", "none");
     
@@ -1115,18 +1152,3 @@ $(document).ready(function() {
 		$("#rohun").hide();
     });
 });
-
-
-
-//typewriter on homepage
-var i = 0;
-var txt = '"Never doubt that a small group of thoughtful commited citizens can change the world; indeed it\'s the only thing that ever has."'; /* The text */
-var speed = 20; /* The speed/duration of the effect in milliseconds */
-
-function typeWriter() {
-  if (i < txt.length) {
-    document.getElementById("indexquote").innerHTML += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }
-}

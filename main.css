@@ -50,8 +50,6 @@ h1 strong {
 	right: 0;
 	top: 0;
 	z-index: 55;
-	background-color: white;
-	border-radius: 0px 0px 0px 30px;
 	display:none;
 }
 
@@ -74,24 +72,167 @@ h1 strong {
 	color: #30CFD0;
 }
 
-#contactnav:hover {
+#menubar {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	z-index: 70;
+	font-size: 28px;
+	font-weight: 700;
+	color: #777;
+	transition-duration: 0.2s;
+}
+
+.bar11, .bar22 {
+	background-color: #777;
+	height: 3px;
+	width: 20px;
+	position: fixed;
+	z-index: 70;
+	transition-duration: 0.2s;
+}
+
+.bar11 {
+	top: 21px;
+	left: 110px;
+}
+
+.bar22 {
+	top: 33px;
+	left: 110px;
+}
+
+#menubar:hover {
+	background: linear-gradient(135deg, #30CFD0, #330867);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 	cursor: pointer;
 }
 
-#faqnav:hover {
+#menubar:hover .bar11 {
+	top: 23px;
+	background: linear-gradient(135deg, #30CFD0, #330867);
+}
+
+#menubar:hover .bar22 {
+	top: 31px;
+	background: linear-gradient(135deg, #30CFD0, #330867);
+}
+
+.sidebar {
+	height: 100vh;
+	width: 400px;
+	background-color: black;
+	position: fixed;
+	top: 0;
+	left: -400px;
+	padding: 70px 40px;
+	z-index: 99;
+	transition-duration: 0.3s;
+	opacity: 0.5;
+}
+
+.sidecancel {
+	position: fixed;
+	top: 20px;
+	left: -60px;
+	z-index: 99;
+	transition-duration: 0.3s;
+	font-size: 30px;
+	color: white;
+}
+
+.sidecancel:hover {
+	background: linear-gradient(135deg, #30CFD0, #330867);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 	cursor: pointer;
 }
 
+.sidebar a {
+	color: white;
+	font-weight: 700;
+	display: block;
+	transition-duration: 0.3s;
+}
+
+.sidebar a:hover {
+	background: linear-gradient(135deg, #30CFD0, #330867);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.sidebar .border-bot {
+	height: 3px;
+	background-color: white;
+	width: 10%;
+}
+
+#mainlinks {
+	padding-bottom: 10px;
+}
+
+#mainlinks a {
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+#seclinks {
+	padding: 20px 0px;
+}
+
+#seclinks a {
+	font-size: 24px;
+	margin-bottom: 17px;
+}
+
+.socialmedia {
+	position: fixed;
+	bottom: 50px;
+	left: -360px;
+	transition-duration: 0.3s;
+}
+
+.socialmedia a {
+	font-size: 40px;
+	display: inline;
+	margin: 0px 20px;
+}
+
+.socialmedia a i:hover {
+	background: linear-gradient(135deg, #30CFD0, #330867);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.sidemask {
+	height: 100vh;
+	width: 0%;
+	background-color: #444;
+	position: fixed;
+	overflow: hidden;
+	top: 0;
+	right: 0;
+	opacity: 0;
+	z-index: 70;
+	transition-duration: 0.05s;
+}
 /*Index*/
+
 #indexhead {
-	padding: 190px 10% 100px 10%;
+	padding: 110px 10% 150px 10%;
+	text-align: center;
+}
+
+#indeximg {
+	width: 150px;
+	margin-bottom: 20px;
 }
 
 #indexhead h1 {
-	font-size: 70px;
-	color: #444;
-	margin-bottom: 35px;
-	color: #555;
+	font-size: 79px;
+	color: #222;
+	margin-bottom: 25px;
 }
 
 #indexhead h1 strong {
@@ -102,11 +243,6 @@ h1 strong {
 	animation: Gradient 7s ease infinite;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-}
-
-#indexquote {
-	font-size: 29px;
-	color: #777;
 }
 
 #indexhead a {
@@ -125,8 +261,31 @@ h1 strong {
 	text-decoration: none;
 }
 
-#indexhead h3 {
-	margin-left: 75%;
+#indexhead a i {
+	transform: translateX(-80px);
+	opacity: 0;
+	transition-duration: 0.1s;
+}
+
+#indexhead a:hover i {
+	transform: translateX(0px);
+	opacity: 1;
+}
+
+#indexhead p {
+	font-size: 23px;
+	color: #555;
+	margin: 10px 0px;
+}
+
+#indexhead li {
+	font-size: 26px;
+	margin: 10px 0px;
+	color: #555;
+}
+
+#indexhead .row {
+	margin-bottom: 35px;
 }
 
 #bookasession {
@@ -135,6 +294,7 @@ h1 strong {
 	background-position: right;
 	border-radius: 30px;
 	transition-duration: 0.2s;
+	opacity: 0;
 }
 
 #bookasession a {
@@ -155,6 +315,7 @@ h1 strong {
 	position: relative;
 	z-index: 4;
 	transform: scale(1);
+	opacity: 0;
 }
 
 #indexlogout a {
@@ -167,17 +328,12 @@ h1 strong {
 }
 
 #info {
-	background: linear-gradient(135deg, #30CFD0, #212664, #330867);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 10s ease infinite;
-	-moz-animation: Gradient 10s ease infinite;
-	animation: Gradient 10s ease infinite;
-	transition-duration: 0.6s;
+	background: black;
 	overflow-y: hidden;
 	padding: 150px 10% 150px 10%;
 	color: white;
-	-webkit-clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
-  	clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
+	-webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
+  	clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
   	position: relative;
   	z-index: 2;
 }
@@ -185,28 +341,24 @@ h1 strong {
 #info h1 {
 	font-size: 45px;
 	padding-bottom: 15px;
+	background: linear-gradient(90deg, #30CFD0, #330867);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	width: 39%;
 }
 
-#info ol {
-	margin-left: 2%;
-}
-
-#info li {
-	font-size: 26px;
-	margin: 20px 0px;
-}
-
-#info .col-sm-4 {
-	padding: 0px 10px;
-}
-
-#info iframe {
-	width: 100%;
+#info .border-bot {
+	background: linear-gradient(135deg, #30CFD0, #330867);
 }
 
 .border-bot {
 	height: 2px;
 	width: 0;
+}
+
+#info p {
+	padding: 20px 0px;
+	font-size: 22px;
 }
 
 #contact {
@@ -1698,15 +1850,6 @@ h1 strong {
 		font-size: 40px;
 	}
 
-	#indexquote {
-		font-size: 19px;
-	}
-
-	#indexhead h3 {
-		margin-left: 30%;
-		font-size: 21px;
-	}
-
 	#indexhead a {
 		padding: 12px 30px;
 		font-size: 20px;
@@ -1723,14 +1866,6 @@ h1 strong {
 
 	#info h1 {
 		font-size: 34px;
-	}
-
-	#info ol {
-		margin-left: 7%;
-	}
-
-	#info li {
-		font-size: 18px;
 	}
 
 	#contact {
@@ -2208,6 +2343,10 @@ h1 strong {
 		background-color: white;
 		max-height: 30000px;
 		overflow: auto;
+	}
+
+	#menubar {
+		display: none;
 	}
 }
 
