@@ -125,7 +125,11 @@ h1 strong {
 .sidebar {
 	height: 100vh;
 	width: 400px;
-	background-color: black;
+	background: linear-gradient(135deg, #30CFD0, #330867);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 7s ease infinite;
+	-moz-animation: Gradient 7s ease infinite;
+	animation: Gradient 7s ease infinite;
 	position: fixed;
 	top: 0;
 	left: -400px;
@@ -142,9 +146,7 @@ h1 strong {
 	z-index: 99;
 	transition-duration: 0.3s;
 	font-size: 30px;
-	background: linear-gradient(160deg, #30CFD0, #330867);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	color: white;
 }
 
 .sidecancel:hover {
@@ -155,13 +157,12 @@ h1 strong {
 	color: white;
 	font-weight: 700;
 	display: block;
-	transition-duration: 0.3s;
+	transition-duration: 0.2s;
 }
 
 .sidebar a:hover {
-	background: linear-gradient(135deg, #30CFD0, #330867);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	transform: scale(1.02);
+	text-decoration: none;
 }
 
 .sidebar .border-bot {
@@ -296,12 +297,12 @@ h1 strong {
 	background-size: 200% 100%;
 	background-position: right;
 	border-radius: 30px;
-	font-weight: 700;
 	transition-duration: 0.2s;
 	opacity: 0;
 }
 
 #bookasession a {
+	font-weight: 700;
 	color: white;
 }
 
@@ -1779,7 +1780,7 @@ h1 strong {
 	    top: 5px;
 	    border-radius: 100%;
 	    background-color: white;
-	    z-index: 70;
+	    z-index: 99;
 	    padding: 13px 11px;
 	    transition-duration: 0.2s;
 	  }
@@ -1821,7 +1822,7 @@ h1 strong {
 	    top: 0;
 	    left: 0;
 	    width: 100%;
-	    z-index: 30;
+	    z-index: 88;
 	    display: none;
 	  }
 
