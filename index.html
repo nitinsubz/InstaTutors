@@ -70,9 +70,15 @@
 			<canvas id="nokey">
 			    Your Browser Don't Support Canvas, Please Download Chrome ^_^``
 			</canvas>
-			<h1 class="slideleft"><strong>Who</strong> are we?</h1>
-			<div class="border-bot length"></div>
-			<p>NITIN WRITE YOUR STUFF HERE</p>
+			<div id="infomask">
+			</div>
+			<div id="infotext">
+				<h1 class="slideleft"><strong>Who</strong> are we?</h1>
+				<p class="slideanim">InstaTutors is a platform created by students to help students who need tutoring connect with tutors, schedule tutoring sessions, and receive the help they need in all of their subjects.</p>
+				<p class="slideanim">InstaTutors gives the option between holding tutoring sessions in person, or over video call, which gives the possibility of connecting tutors from all over the world.</p>
+				<p class="slideanim" id="mission">Our mission is to provide better tutoring solutions to students all over the world, from any background.</p>
+			</div>
+		</div>
 		</div>
 		<div id="team">
 			<div id="software">
@@ -130,7 +136,6 @@
 		</div>
 		<div id="faq">
 			<h1 class="slideanim2">Frequently Asked Questions</h1>
-			<div class="border-bot length" style="background-color: white;"></div>
 			<div class="faqsec">
 				<div class="question slideanim" id="question1">
 					<p><i class="fas fa-arrow-right"></i>  Are all tutoring sessions free?</p>
@@ -222,6 +227,8 @@
 				<a onclick="window.open('termsandconditions.html')">Terms</a>
 			</div>
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+	<script src="particles.js">
+    </script>
 	<script src="firebase.js">
 	</script>
 	<script src="https://smtpjs.com/v2/smtp.js">
