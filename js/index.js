@@ -209,10 +209,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 					var date = snap.child("date").val();
 					var email = snap.child("email").val();
 					var subject = snap.child("subject").val();
+					var details = snap.child("details").val();
 					var time = snap.child("time").val();
 
 					if(date != null) {
-							$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4>" + "<h4>email: " + email + "</h4>");
+							$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>email: " + email + "</h4>");
 						}
 
 			});		    
@@ -249,6 +250,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 					var done = snap.child("done").val();
 					var email = snap.child("email").val();
 					var subject = snap.child("subject").val();
+					var details = snap.child("details").val();
 					var time = snap.child("time").val();
 					var tutor = snap.child("tutor").val();
 
@@ -260,7 +262,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 					}
 
 					if(date != null) {
-						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4>");
 					}
 
 				});
@@ -289,6 +291,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var done = snap.child("done").val();
 		var email = snap.child("email").val();
 		var subject = snap.child("subject").val();
+		var subject = snap.child("details").val();
 		var time = snap.child("time").val();
 		var tutor = snap.child("tutor").val();
 
@@ -311,7 +314,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 				}
 
 				if(date != null) {
-					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>tutor: " + tutor + "</h4>");
 				}
 		});
 
@@ -397,7 +400,8 @@ function takeSession() {
 		    email: email.slice(7),
 		    date: newdate,
 		    time: time,
-			subject: subject,	
+			subject: subject,
+			details: details,	
 		 });
 
 		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subjects:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
@@ -418,7 +422,6 @@ function cancel() {
 	var email = firebase.auth().currentUser.email;
 	var newemail = splitEmail(email);
 	var subject = event.currentTarget.parentNode.childNodes[7].innerHTML.slice(10);
-	console.log(subject);
 
 	if(input == email) {
 		var reason = prompt("What is your reason for canceling?");
@@ -430,7 +433,7 @@ function cancel() {
 		var content = "<h3 style=\"color: red\">Tutoring Session Canceled -</h3>  <p><strong>Date:</strong> " + newdate + "</p> <p><strong>Reason:</strong> " + reason + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p>"; 
 		Email.send("support@instatutors.org",
 			"tutors@instatutors.org",
-			"New Tutoring Request for " + subject,
+			"New Tutoring Session Requested for " + subject + " on " + newdate,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 		
@@ -549,7 +552,7 @@ function logout(){
 
 
 //save requests to firebase
-function writeRequest(email, date, time, subject, done, tutor) {
+function writeRequest(email, date, time, subject, details, done, tutor) {
 	var newEmail = splitEmail(email);
 	var newDate = splitDate(date);
 
@@ -559,7 +562,8 @@ function writeRequest(email, date, time, subject, done, tutor) {
 			time: time,
 			tutor: tutor,
 			done: "no",
-			subject: subject
+			subject: subject,
+			details: details
 		  });
 
 	firebase.database().ref('requests/' + newDate + newEmail).set({
@@ -568,7 +572,8 @@ function writeRequest(email, date, time, subject, done, tutor) {
 			time: time,
 			tutor: tutor,
 			done: "no",
-			subject: subject
+			subject: subject,
+			details: details
 		  });
 }
 
@@ -580,6 +585,7 @@ function validate() {
 	var time = $("#time").val();
 	var tutor = $("#tutor").val();
 	var subject = $("#subject").val();
+	var details = $("#details").val();
 	var missing = [];
 
 	var selectedDate = new Date(date);
@@ -600,9 +606,9 @@ function validate() {
 		$("#formerrors").html("Please enter the following: " + missing);
 		event.preventDefault();
 	} else {
-		writeRequest(email, date, time, subject, "no", tutor);
+		writeRequest(email, date, time, subject, details, "no", tutor);
 
-		var content = "<h3 style=\"color: #ae3dc6\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+		var content = "<h3 style=\"color: #ae3dc6\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 
 		var ref = firebase.database().ref('users');
 	//get uids of all tutors
@@ -624,7 +630,7 @@ function validate() {
 								console.log(snap.val());
 								Email.send("support@instatutors.org",
 											snap.val(),
-											"Tutoring Session Requested for " + splitDate(date),
+											"New Tutoring Session Requested for " + subject + " on " + splitDate(date),
 											content,
 											{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 							});
@@ -638,6 +644,7 @@ function validate() {
 		$("#tutor2").html("Tutor: " + tutor);
 		$("#time2").html("Time: " + time);
 		$("#subject2").html("Subject: " + subject);
+		$("#details2").html("Details: " + details);
 
 		$("#mainbody").css("display", "none");
 		$("#confirmedbody").fadeIn();
@@ -646,7 +653,7 @@ function validate() {
 		//send confirmation email to user
 		Email.send("support@instatutors.org",
 			email,
-			"Tutoring Session Requested for " + splitDate(date),
+			"Tutoring Session Requested for " + subject + " on " + splitDate(date),
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 			//527d49d6-dba7-4334-8775-1b8ccd9b3eeb 
