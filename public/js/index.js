@@ -944,13 +944,13 @@ $(document).ready(function() {
         $("#matthewcho").show();
 		$("#varsha").show();
 		$("#reedit").show();
-		$("#matthewsheh").hide();
+		$("#matthewsheh").show();
 		$("#sangita").show();
 		$("#conner").show();
 		$("#kyle").show();
 		$("#stuti").show();
 		$("#dan").hide();
-		$("#nitin").hide();
+		$("#nitin").show();
 		$("#sahana").show();
 		$("#keshav").show();
 		$("#chirag").show();
@@ -966,7 +966,7 @@ $(document).ready(function() {
         $("#matthewcho").show();
 		$("#varsha").hide();
 		$("#reedit").show();
-		$("#matthewsheh").hide();
+		$("#matthewsheh").show();
 		$("#sangita").hide();
 		$("#conner").hide();
 		$("#kyle").show();
@@ -1031,11 +1031,11 @@ $(document).ready(function() {
     	$("#filtertext").html("Writing");
         $("#matthewcho").hide();
 		$("#varsha").show();
-		$("#reedit").hide();
+		$("#reedit").show();
 		$("#matthewsheh").show();
 		$("#sangita").show();
 		$("#conner").hide();
-		$("#kyle").hide();
+		$("#kyle").show();
 		$("#stuti").show();
 		$("#dan").show();
 		$("#nitin").hide();
@@ -1053,7 +1053,7 @@ $(document).ready(function() {
     	$("#filtertext").html("History");
         $("#matthewcho").hide();
 		$("#varsha").show();
-		$("#reedit").hide();
+		$("#reedit").show();
 		$("#matthewsheh").show();
 		$("#sangita").hide();
 		$("#conner").hide();
@@ -1064,7 +1064,7 @@ $(document).ready(function() {
 		$("#sahana").hide();
 		$("#keshav").hide();
 		$("#chirag").hide();
-		$("#sophie").hide();
+		$("#sophie").show();
 		$("#rohit").hide();
 		$("#samyang").show();
 		$("#rukmini").show();
@@ -1073,13 +1073,13 @@ $(document).ready(function() {
 
     $("#webdev").click(function(event) {
     	$("#filtertext").html("Web Development");
-        $("#matthewcho").hide();
+        $("#matthewcho").show();
 		$("#varsha").hide();
 		$("#reedit").hide();
 		$("#matthewsheh").hide();
 		$("#sangita").hide();
 		$("#conner").hide();
-		$("#kyle").hide();
+		$("#kyle").show();
 		$("#stuti").hide();
 		$("#dan").hide();
 		$("#nitin").show();

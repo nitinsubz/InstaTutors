@@ -16,9 +16,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
 <body>
-		<div id="teamnavbar">
+		<div id="navbar" style="background-color: transparent;">
 			<div id="home" class="slideleft"><a href="index.html"><img src="images/logo.png"></a></div>
-			
+			<ul id="nav" class="slideright">
+			   	<li class="navig" id="bookasession"><a href="login.html">LOGIN/SIGNUP</a></li>
+			   	<li class="navig" id="indexlogout"><a onclick="logout()">LOGOUT</a></li>
+			</ul>
 		</div>
 		<!--<div id="container1" onclick="rotate(this)">
 			<div class="bar1">
@@ -31,49 +34,30 @@
 			<li class="navig2"><a href="service.html">Service</a></li>
 			<li class="navig2"><a href="videos.html">Videos</a></li>
 		</div>-->
-		
+		<div id="teamhead">
+			<h1 class="slideleft">Contact Us</h1>
+			<p class="slideup"></p>
+		</div>
 		<div id="teamheadimg">
 			<img src="images/teamhead.png">
 		</div>
-		
-		<div id="terms">
-            <h4 style="text-align: center;"> 404 PAGE NOT FOUND</h4>
-            <h3 style="text-align: center;">Oops! Looks like we couldn't find the page you were looking for.</h3>
-            <h3 style="text-align: center;">Please check to make sure the url you above is typed correctly.</h3>
-            <h3 style="text-align: center;">For any comments, questions or concerns, please contact us at: </h3> 
-            <br>
-            <h3 style="text-align: center;">support@instatutors.org</h3>
-
+		<div id="leadership" class="slideup">
+            <h4>Software Team</h4> <h5>Software@InstaTutors.org</h5>
+            <h6>Sam Yany (Leader), Nitin Subramanian, Reedit Shariar, Rohit Tanikella</h6>
+            
+            <br><br>
+            <h4>Marketing and Media Team</h4>
+            <h6>Stuti Upadhyay (Leader), Sahanna Prasanna</h6>
+            
+        </div> 
+       
+        <div id="footer">
+			<p>&#169; InstaTutors 2018.</a></p>
 		</div>
-        
-		<div id="footer">
-			<div class="row">
-				<div class="col-sm-6">
-					<img src="images/logo.png">
-				</div>
-				<div class="col-sm-2">
-					<h3>Donate</h3>
-					<a href="donate.html">Donate</a>
-				</div>
-				<div class="col-sm-2">
-					<h3>Contact</h3>
-					<a href="mailto:support@instatutors.org">Support</a>
-					<a href="mailto:support@instatutors.org">Report a Bug</a>
-				</div>
-				<div class="col-sm-2">
-					<h3>For Tutors</h3>
-					<a href="pdfs/tutorrequirements.pdf">Requirements</a>
-					<a href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply</a>
-					<a href="https://tutors.instatutors.org">Crash Course</a>
-				</div>
-			</div>
-		</div>
-		<div class="row" id="foot">
-				<span>&#169; InstaTutors 2018.</span>
-				<a onclick="window.open('termsandconditions.html')">Terms</a>
-			</div>
-
-	
-	
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+	<script src="firebase.js">
+	</script>
+	<script src="index.js">
+    </script>
 </body>
 </html>
