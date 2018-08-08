@@ -291,7 +291,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var done = snap.child("done").val();
 		var email = snap.child("email").val();
 		var subject = snap.child("subject").val();
-		var subject = snap.child("details").val();
+		var details = snap.child("details").val();
 		var time = snap.child("time").val();
 		var tutor = snap.child("tutor").val();
 
