@@ -970,7 +970,7 @@ $(document).ready(function() {
 		$("#sangita").hide();
 		$("#conner").hide();
 		$("#kyle").show();
-		$("#stuti").show();
+		$("#stuti").hide();
 		$("#dan").hide();
 		$("#nitin").show();
 		$("#sahana").hide();
@@ -1149,7 +1149,7 @@ $(document).ready(function() {
 		$("#stuti").show();
 		$("#dan").hide();
 		$("#nitin").hide();
-		$("#sahana").show();
+		$("#sahana").hide();
 		$("#keshav").hide();
 		$("#chirag").hide();
 		$("#sophie").hide();
