@@ -258,6 +258,7 @@ h1 strong {
 #indexhead a:hover {
 	background-position: left;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 #indexhead a i {
@@ -447,6 +448,34 @@ canvas {
 	color: #444;
 	padding: 10px 0px;
 	font-size: 40px;
+}
+
+#howitworks #getstarted {
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 230% 100%;
+	background-position: right;
+	font-weight: 700;
+	color: white;
+	padding: 15px 50px;
+	border-radius: 30px;
+	font-size: 26px;
+	transition-duration: 0.2s;
+}
+
+#howitworks #getstarted:hover {
+	background-position: left;
+	text-decoration: none;
+}
+
+#howitworks a i {
+	transform: translateX(-80px);
+	opacity: 0;
+	transition-duration: 0.1s;
+}
+
+#howitworks a:hover i {
+	transform: translateX(0px);
+	opacity: 1;
 }
 
 #contact {
@@ -1060,6 +1089,37 @@ canvas {
 	font-size: 16px;
 	float: right;
 	margin-right: 20px;
+}
+
+/*Donate */
+#donatebody {
+	padding: 100px 10% 400px 10%;
+	background: url('images/tutoring.jpg');
+	background-size: 100%;
+	position: relative;
+}
+
+#donatemask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(black, #330867);
+	opacity: 0.8;
+	z-index: 6;
+}
+
+#donateform {
+	position: absolute;
+	top: 100px;
+	left: 10%;
+	z-index: 15;
+}
+
+#donateform h1 {
+	font-size: 50px;
+	color: white;
 }
 
 /*Confirmed*/
@@ -1991,7 +2051,7 @@ canvas {
 
 	#phonenavlinks {
 	    background-color: white;
-	    padding: 60px 10px 30px 10px;
+	    padding: 20px 10px 30px 10px;
 	    position: fixed;
 	    top: 0;
 	    left: 0;
@@ -2030,7 +2090,7 @@ canvas {
 	}
 
 	#indexhead {
-		padding: 70px 10% 40px 10%;
+		padding: 70px 10% 100px 10%;
 	}
 
 	#indexhead h1 {
@@ -2052,7 +2112,7 @@ canvas {
 	}
 
 	#info {
-		padding: 550px 10% 200px 10%;
+		padding: 550px 10% 400px 10%;
 		color: white;
 	  	position: relative;
 	  	z-index: 2;
@@ -2590,6 +2650,58 @@ canvas {
 
 	#footer a:hover {
 		cursor: pointer;
+	}
+
+	#leadershead {
+		padding: 80px 10% 60px 10%;
+	}
+
+	#leadershead h1 {
+		font-size: 36px;
+	}
+
+	#leadershead h3 {
+		font-size: 24px;
+	}
+
+	#leadersbody {
+		background-color: #ddd;
+		padding-top: 50px;
+	}
+
+	#software {
+		border-radius: 20px;
+		margin-top: -100px;
+	}
+
+	#marketing {
+		border-radius: 20px 20px 0px 0px;
+	}
+
+	.leader img {
+		width: 80%;
+	}
+
+	#howitworks ol {
+		padding: 15px 4%;
+	}
+
+	#howitworks li {
+		font-size: 17px;
+		padding: 10px 0px;
+	}
+
+	#howitworks h1 {
+		font-size: 32px;
+	}
+
+	#howitworks #getstarted {
+		padding: 10px 25px;
+		font-size: 20px;
+	}
+
+	canvas {
+		transform: scale(0);
 	}
 }
 

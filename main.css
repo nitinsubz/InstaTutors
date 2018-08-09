@@ -1091,6 +1091,37 @@ canvas {
 	margin-right: 20px;
 }
 
+/*Donate */
+#donatebody {
+	padding: 100px 10% 400px 10%;
+	background: url('images/tutoring.jpg');
+	background-size: 100%;
+	position: relative;
+}
+
+#donatemask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(black, #330867);
+	opacity: 0.8;
+	z-index: 6;
+}
+
+#donateform {
+	position: absolute;
+	top: 100px;
+	left: 10%;
+	z-index: 15;
+}
+
+#donateform h1 {
+	font-size: 50px;
+	color: white;
+}
+
 /*Confirmed*/
 #confirmedbody {
 	padding: 100px 15%;
@@ -2667,6 +2698,10 @@ canvas {
 	#howitworks #getstarted {
 		padding: 10px 25px;
 		font-size: 20px;
+	}
+
+	canvas {
+		transform: scale(0);
 	}
 }
 
