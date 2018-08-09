@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<title>Book a Session</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,800" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="clockpicker.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="js/clockpicker.js"></script>
+<body>
+	<div id="menubar" onclick="opensidenav()">
+		MENU <div class="bar11"></div><div class="bar22"></div>
+	</div>
+	<div class="sidebar">
+		<div class="sidecancel" onclick="closesidenav()">X</div>
+		<div id="mainlinks">
+			<a href="index">HOME</a>
+			<a href="login" id="sidelogin">LOGIN or SIGNUP</a>
+		</div>
+		<div class="border-bot"></div>
+		<div id="seclinks">
+			<a href="team">Tutors</a>
+			<a href="donate">Donate</a>
+			<a href="leadership">Leadership</a>
+			<a href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply to Tutor</a>
+		</div>
+		<div class="socialmedia">
+			<a href=""><i class="fab fa-facebook-square"></i></a>
+			<a href=""><i class="fab fa-instagram"></i></a>
+		</div>
+	</div>
+	<div class="sidemask" onclick="closesidenav()">
+	</div>
+		<div id="navbar">
+			<ul id="nav" class="fader">
+			   <!--<li class="navig"><a href="donate.html">Donate</a></li>-->
+			   <a id="logout" onclick="logout()">Logout</a>
+			</ul>
+		</div>
+		<div class="create-div">
+		    <h3>Create an Account</h3>
+		    <input type="name" placeholder="Enter your Name..." id="createname" />
+		    <input type="email" placeholder="Enter a Valid Email Address..." id="createemail" />
+		    <input type="password" placeholder="Enter a Password..." id="createpassword" />
+		    <input type="password" placeholder="Confirm your Password..." id="confirmpassword" />
+		    <input type="name" placeholder="Enter a phone number (optional)..." id="createphone" />
+			<span id="termstext"><div class="col"><input type="checkbox" checked="checked" id="termscheck"></div> <div class="col" id="iagree">I agree to the <a onclick="window.open('termsandconditions');">Terms and Conditions</a></div>
+			</span>
+			<p id="errormessage2"></p>
+		
+		    <a onclick="createAccount()" id="create">Let's Go!</a>
+		 </div>
+
+		<div id="login_div" class="main-div">
+		    <h3>Log In</h3>
+		    <input type="email" placeholder="Email..." id="email_field" />
+		    <input type="password" placeholder="Password..." id="password_field" />
+		    <a onclick="openResetPass()">Forgot Password?</a>
+		    <p id="errormessage"></p>
+		    <button onclick="login()" id="login">Login to Account</button>
+		    <h4>Don't have an account? <a onclick="openCreate()">Create One Today!</a></h4>
+		 </div>
+
+		 <div id="reset_div">
+		 	<h3>Reset Your Password</h3>
+		 	<input type="email" placeholder="Email..." id="reset_email_field" />
+		 	<a onclick="resetPass()">Send Reset Email</a>
+		 	<a href="login">Log In</a>
+		 </div>
+
+		 <div id="email_div">
+		 	<h3 id="verifyemail">Please Verify Your Email Address: </h3>
+		 	<a onclick="sendVerification()">Send Verification Email</a>
+		 	<a href="login">Log In</a>
+		 </div>
+
+	<div id="confirmedbody">
+		<h1 id="bookedheader">Your tutoring request for DATE is confirmed. </strong><h1>
+		<h3 id="bookedinfo">A tutor will email you within 24 hours to confirm your session.</h3>
+		<h3 id="time2">Time: </h3>
+		<h3 id="tutor2">Tutor Request: </h3>
+		<h3 id="subject2">Subject: </h3>
+		<h3 id="details2" style="padding-bottom: 30px;">Details: </h3>
+<<<<<<< HEAD
+		<a href="login.html">Book Another Session <i class="fas fa-undo-alt"></i></a>
+=======
+		<a href="login">Book Another Session <i class="fas fa-undo-alt"></i></a>
+>>>>>>> ca6b3ff3b816793db17fa65e6fbf0acefe2af5ba
+	</div>
+
+	<div id="mainbody">
+		<div id="servicenav">
+			<button id="booknav" onclick="booktab()">Book A Session</button>
+			<button id="sessionsnav" onclick="sessionstab()">My Account</button>
+		</div>
+	    <div class="tab-content" id="myTabContent">
+			<div class="tab" id="booktab">
+				<div id="bookheader">
+					<h1 id="welcome">Welcome <strong></strong>!</h1>
+					<h3>Request A Session</h3>
+				</div>
+				<div id="bookform">
+					<form>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Subject(s):
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="subject" id="subject" placeholder="Use the dropdown to add subjects you need help in...">
+				   			<div class="dropdown">
+						      <button class="btn btn-default dropdown-toggle" type="button" id="subjectselector2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="subjecttext2">Subject </span> <i class="fas fa-caret-down"></i></button>
+						      <div class="dropdown-menu" id="subjectmenu" aria-labelledby="dropdownMenuButton">
+						        <a class="dropdown-item">Math</a>
+						        <a class="dropdown-item">Physics</a>
+						        <a class="dropdown-item">Biology</a>
+						        <a class="dropdown-item">Chemistry</a>
+						        <a class="dropdown-item">Writing</a>
+						        <a class="dropdown-item">History</a>
+						        <a class="dropdown-item">WebDev</a>
+						        <a class="dropdown-item">Java</a>
+						        <a class="dropdown-item">Python</a>
+						        <a class="dropdown-item">Business</a>
+						        <a class="dropdown-item">Spanish</a>
+						        <a class="dropdown-item">French</a>
+						        <a class="dropdown-item">Chinese</a>
+						      </div>
+						    </div>
+				   		</div>
+				   	</div>
+				   		<div class="row">
+						<div class="col-sm-3">
+				    		Details:
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="details" id="details" placeholder="Specifics about what you need help with, ex. Matrices in Pre-Calculus..."><br>
+				   		</div>
+				   	</div>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Date:
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="date" name="date" id="date" placeholder="Enter the date for when you would wish to be tutored..."><br>
+				   		</div>
+				   	</div>
+				   	<div class="row">
+						<div class="col-sm-3">
+				    		Time:
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<div class="input-group clockpicker">
+							    <input type="text" id="time" class="form-control" value="09:30">
+							    <span class="input-group-addon">
+							        <span class="glyphicon glyphicon-time"></span>
+							    </span>
+							</div>
+							<script>
+								   	$('.clockpicker').clockpicker();
+							</script>
+				   		</div>
+				   	</div>
+				   	<div class="row" id="tutorinput">
+						<div class="col-sm-3">
+				    		Tutor Request (optional):
+				    	</div>
+				    	<div class="col-sm-9">
+				   			<input type="text" name="tutor" id="tutor" placeholder="If you have a preferred tutor, enter their name here...">
+				   			<a id="viewtutors" onclick="viewTutors()">View Tutors</a>
+				   		</div>
+				   	</div>
+				   	<div class="scrolling-wrapper" id="tutorspace">
+					  
+					</div>
+				   	<p id="formerrors"></p>
+				   	<a id="submit" onclick="validate()">Request Session</a>
+				    </form>
+				</div>
+			</div>
+			<div id="sessionstab">
+				<div id="sessionsheader">
+					<h1>My Account</h1>
+					<h3 id="user">User: </h3>
+				</div>
+				<div class="row" id="account">
+					<div id="accountinfo" class="col-sm-6">
+						<h3>Change Password</h3>
+						<a id="resetPass2" onclick="resetPass2()">Send Reset Email</a>
+						<div id="tuteeaddsubjects">
+							<h3>Add Subjects</h3>
+							<p>Enter the subjects you need help in, and we can match you with the perfect tutor!</p>
+							<input type="text" name="newsubject" id="newsubject" placeholder=""><br>
+							<div class="dropdown">
+						      <button class="btn btn-default dropdown-toggle" type="button" id="subjectselector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="subjecttext">Subject </span> <i class="fas fa-caret-down"></i></button>
+						      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						        <a class="dropdown-item">Math</a>
+						        <a class="dropdown-item">Physics</a>
+						        <a class="dropdown-item">Biology</a>
+						        <a class="dropdown-item">Chemistry</a>
+						        <a class="dropdown-item">Writing</a>
+						        <a class="dropdown-item">History</a>
+						        <a class="dropdown-item">WebDev</a>
+						        <a class="dropdown-item">Java</a>
+						        <a class="dropdown-item">Python</a>
+						        <a class="dropdown-item">Business</a>
+						        <a class="dropdown-item">Spanish</a>
+						        <a class="dropdown-item">French</a>
+						        <a class="dropdown-item">Chinese</a>
+						      </div>
+						    </div>
+						    <div class="row">
+						    	<p id="subjectmessage"></p>
+							    <a onclick="addSubject()" id="addsubject">Add Subject</a>
+							</div>
+						</div>
+						<div id="tuteemysubjects">
+							<div class="row">
+								<div class="col-sm-7"><h3>My Subjects</h3></div>
+								<div class="col-sm-5"><a id="subjectdelete" onclick="deletesubjects()"><i class="fas fa-trash-alt"></i></a></div>
+							</div>
+							<div id="mysubjectsarea">
+							</div>
+							<a id="matchtutors" onclick="matchTutors()">Find Tutors</a>
+							<div id="mytutorsarea">
+								<div id="greatmatches">
+								</div>
+								<div id="goodmatches">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="sessionsbody" class="col-sm-6">
+						<h3>My Sessions</h3>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div id="footer">
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="images/logo.png">
+				</div>
+				<div class="col-sm-2">
+					<h3>Donate</h3>
+					<a href="donate">Donate</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>Contact</h3>
+					<a href="mailto:support@instatutors.org">Support</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>For Tutors</h3>
+					<a href="pdfs/tutorrequirements.pdf">Requirements</a>
+					<a href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply</a>
+					<a href="https://tutors.instatutors.org">Crash Course</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="foot">
+				<span>&#169; InstaTutors 2018.</span>
+				<a onclick="window.open('termsandconditions')">Terms</a>
+			</div>
+	</div>
+	<div id="tutorsessions">
+		<div id="tutornav">
+			<button id="booknav" onclick="allsessionstab()">See All Requests</button>
+			<button id="sessionsnav" onclick="tutorsessionstab()">My Account</button>
+		</div>
+		<div id="allsessions">
+			<div id="tutorsessionshead">
+				<h1 id="tutorwelcome">Welcome Tutor!</h1>
+			</div>
+			<div id="tutorsessionsbody">
+			</div>
+		</div>
+		<div id="tutormysessions">
+			<h1>My Account</h1>
+			<div id="tutoraccount" class="row">
+				<div id="tutoraccountinfo" class="col-sm-6">
+					<h3>Tutor:</h3>
+					<h4 id="tutoruser"></h4>
+					<h3>Change Password:</h3>
+					<a id="resetPass2" onclick="resetPass2()">Send Reset Email</a>
+					<div id="tutorsubjects">
+						<h3>My Subjects</h3>
+						<p>Contact Nitin or Sam if you would like to change your subjects.</p>
+						<div id="tutorsubjectsarea">
+						</div>
+					</div>
+				</div>
+				<div id="tutormysessionsbody" class="col-sm-6">
+					<h3>My Sessions</h3>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="images/logo.png">
+				</div>
+				<div class="col-sm-2">
+					<h3>Donate</h3>
+					<a href="donate">Donate</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>Contact</h3>
+					<a href="mailto:support@instatutors.org">Support</a>
+					<a href="mailto:support@instatutors.org">Report a Bug</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>For Tutors</h3>
+					<a href="pdfs/tutorrequirements.pdf">Requirements</a>
+					<a href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply</a>
+					<a href="https://tutors.instatutors.org">Crash Course</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="foot">
+				<span>&#169; InstaTutors 2018.</span>
+				<a onclick="window.open('termsandconditions')">Terms</a>
+			</div>
+	</div>
+
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+	<script src="js/firebase.js">
+	</script>
+	<script src="https://smtpjs.com/v2/smtp.js">
+	</script>
+	<script src="js/index.js">
+    </script>
+</body>
+</html>
+
