@@ -1991,7 +1991,7 @@ canvas {
 
 	#phonenavlinks {
 	    background-color: white;
-	    padding: 60px 10px 30px 10px;
+	    padding: 20px 10px 30px 10px;
 	    position: fixed;
 	    top: 0;
 	    left: 0;
@@ -2052,7 +2052,7 @@ canvas {
 	}
 
 	#info {
-		padding: 550px 10% 200px 10%;
+		padding: 550px 10% 400px 10%;
 		color: white;
 	  	position: relative;
 	  	z-index: 2;
@@ -2590,6 +2590,36 @@ canvas {
 
 	#footer a:hover {
 		cursor: pointer;
+	}
+
+	#leadershead {
+		padding: 80px 10% 60px 10%;
+	}
+
+	#leadershead h1 {
+		font-size: 36px;
+	}
+
+	#leadershead h3 {
+		font-size: 24px;
+	}
+
+	#leadersbody {
+		background-color: #ddd;
+		padding-top: 50px;
+	}
+
+	#software {
+		border-radius: 20px;
+		margin-top: -100px;
+	}
+
+	#marketing {
+		border-radius: 20px 20px 0px 0px;
+	}
+
+	.leader img {
+		width: 80%;
 	}
 }
 
