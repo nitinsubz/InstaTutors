@@ -2059,7 +2059,7 @@ canvas {
 	}
 
 	#indexhead {
-		padding: 70px 10% 40px 10%;
+		padding: 70px 10% 100px 10%;
 	}
 
 	#indexhead h1 {
@@ -2649,6 +2649,24 @@ canvas {
 
 	.leader img {
 		width: 80%;
+	}
+
+	#howitworks ol {
+		padding: 15px 4%;
+	}
+
+	#howitworks li {
+		font-size: 17px;
+		padding: 10px 0px;
+	}
+
+	#howitworks h1 {
+		font-size: 32px;
+	}
+
+	#howitworks #getstarted {
+		padding: 10px 25px;
+		font-size: 20px;
 	}
 }
 
