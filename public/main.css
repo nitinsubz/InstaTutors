@@ -2112,7 +2112,7 @@ canvas {
 	}
 
 	#info {
-		padding: 550px 10% 400px 10%;
+		padding: 550px 10% 260px 10%;
 		color: white;
 	  	position: relative;
 	  	z-index: 2;
@@ -2702,6 +2702,7 @@ canvas {
 
 	canvas {
 		transform: scale(0);
+		display: none;
 	}
 }
 
