@@ -23,14 +23,14 @@
 	<div class="sidebar">
 		<div class="sidecancel" onclick="closesidenav()">X</div>
 		<div id="mainlinks">
-			<a href="index.html">HOME</a>
-			<a href="login.html" id="sidelogin">LOGIN or SIGNUP</a>
+			<a href="index">HOME</a>
+			<a href="login" id="sidelogin">LOGIN or SIGNUP</a>
 		</div>
 		<div class="border-bot"></div>
 		<div id="seclinks">
-			<a href="team.html">Tutors</a>
-			<a href="donate.html">Donate</a>
-			<a href="leadership.html">Leadership</a>
+			<a href="team">Tutors</a>
+			<a href="donate">Donate</a>
+			<a href="leadership">Leadership</a>
 			<a href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply to Tutor</a>
 		</div>
 		<div class="socialmedia">
@@ -42,7 +42,7 @@
 	</div>
 		<div id="navbar">
 			<ul id="nav" class="slideright">
-			   	<li class="navig" id="bookasession"><a href="login.html">Login or Signup</a></li>
+			   	<li class="navig" id="bookasession"><a href="login">Login or Signup</a></li>
 			   	<li class="navig" id="indexlogout"><a onclick="logout()">Log Out</a></li>
 			</ul>
 		</div>
@@ -53,16 +53,16 @@
 			</div>
 		</div>
 		<div id="phonenavlinks">
-			<li class="navig2"><a href="team.html">Tutors</a></li>
-			<li class="navig2"><a href="leadership.html">Leadership</a></li>
-			<li class="navig2"><a href="donate.html">Donate</a></li>
-			<li class="navig2"><a href="login.html" id="login2">Login or Signup</a></li>
+			<li class="navig2"><a href="team">Tutors</a></li>
+			<li class="navig2"><a href="leadership">Leadership</a></li>
+			<li class="navig2"><a href="donate">Donate</a></li>
+			<li class="navig2"><a href="login" id="login2">Login or Signup</a></li>
 		</div>
 		<div id="indexhead">
 			<img src="images/logo.png" id="indeximg" class="slideup">
 			<h1 id="indextitle" class="slideleft">SIMPLIFYING <strong>TUTORING.</strong></h1>
 			<p class="slideup">Create an Account.  Request a Tutoring Session.  Get Tutored.</p>
-			<a href="login.html" class="slideup">Get Started <i class="fas fa-arrow-right"></i></a>
+			<a href="login" class="slideup">Get Started <i class="fas fa-arrow-right"></i></a>
 		</div>
 		<div id="info">
 			<canvas id="nokey">
@@ -76,8 +76,8 @@
 				<p class="slideanim">All InstaTutors tutoring sessions happen over video call, which gives the possibility of connecting students from all over the world.</p>
 				<p class="slideanim" id="mission">Our mission is to provide better tutoring solutions to students from any background, anywhere.</p>
 				<div class="row">
-					<div class="col-sm-6"><a class="slideanim" href="tutors.html">Meet Our Tutors <i class="fas fa-arrow-right"></i></a></div>
-					<div class="col-sm-6"><a class="slideanim" href="leadership.html">Meet Our Leaders <i class="fas fa-arrow-right"></i></a></div>
+					<div class="col-sm-6"><a class="slideanim" href="team">Meet Our Tutors <i class="fas fa-arrow-right"></i></a></div>
+					<div class="col-sm-6"><a class="slideanim" href="leadership">Meet Our Leaders <i class="fas fa-arrow-right"></i></a></div>
 				</div>
 			</div>
 			</div>
@@ -85,7 +85,12 @@
 		<div id="howitworks">
 			<h1 class="slideanim2">How it Works</h1>
 			<div class="border-bot length" style="background-color: #30CFD0;"></div>
-
+			<ol>
+				<li class="slideanim">Create an account, and verify your email.</li>
+				<li class="slideanim">Log in, and make a tutoring request.  Browse our tutors on our <a href="team">tutors</a> page, or use our "find tutors" feature.</li>
+				<li class="slideanim">You will be notified when a tutor accepts your request, and your tutor will email you shortly after.</li>
+				<li class="slideanim">Your tutor will send you a link to a private video chat room on appear.in.  Simply join when it comes time for your FREE tutoring session!</li>
+			</ol>
 		</div>
 		<div id="faq">
 			<h1 class="slideanim2">Frequently Asked Questions</h1>
@@ -111,14 +116,6 @@
 				</div>
 				<div class="answer slideanim" id="answer4">
 					<p>No, and if you do, it will overwrite the first request.</p>
-				</div>
-			</div>
-			<div class="faqsec">
-				<div class="question slideanim" id="question5">
-					<p><i class="fas fa-arrow-right"></i> How does the video chat work?</p>
-				</div>
-				<div class="answer slideanim" id="answer4">
-					<p>Your tutor will send you a private link for appear.in when they confirm your session.</a></p>
 				</div>
 			</div>
 		</div>
@@ -152,7 +149,7 @@
 				</div>
 				<div class="col-sm-2">
 					<h3>Donate</h3>
-					<a href="donate.html">Donate</a>
+					<a href="donate">Donate</a>
 				</div>
 				<div class="col-sm-2">
 					<h3>Contact</h3>
@@ -168,7 +165,7 @@
 		</div>
 		<div class="row" id="foot">
 				<span>&#169; InstaTutors 2018.</span>
-				<a onclick="window.open('termsandconditions.html')">Terms</a>
+				<a onclick="window.open('termsandconditions')">Terms</a>
 			</div>
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
 	<script src="js/particles.js">

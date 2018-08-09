@@ -8,6 +8,33 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "rewrites": [ {
+      "source": "/team",
+      "destination": "/team.html"
+    } , {
+      "source" : "/leadership",
+      "destination" : "/leadership.html"
+      
+    } , {
+      "source" : "/donate",
+      "destination" : "/donate.html"
+      
+    } , {
+      "source" : "/index",
+      "destination" : "/index.html"
+      
+    } , {
+      "source" : "/termsandconditions",
+      "destination" : "/termsandconditions.html"
+      
+    } , {
+      "source" : "/login",
+      "destination" : "/login.html"
+     
+    } , {
+      "source" : "/confirmed",
+      "destination" : "/confirmed.html"
+    } ]
   }
 }
