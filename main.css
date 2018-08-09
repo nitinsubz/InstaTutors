@@ -258,6 +258,7 @@ h1 strong {
 #indexhead a:hover {
 	background-position: left;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 #indexhead a i {
@@ -447,6 +448,34 @@ canvas {
 	color: #444;
 	padding: 10px 0px;
 	font-size: 40px;
+}
+
+#howitworks #getstarted {
+	background: linear-gradient(to right, #330867, #30CFD0);
+	background-size: 230% 100%;
+	background-position: right;
+	font-weight: 700;
+	color: white;
+	padding: 15px 50px;
+	border-radius: 30px;
+	font-size: 26px;
+	transition-duration: 0.2s;
+}
+
+#howitworks #getstarted:hover {
+	background-position: left;
+	text-decoration: none;
+}
+
+#howitworks a i {
+	transform: translateX(-80px);
+	opacity: 0;
+	transition-duration: 0.1s;
+}
+
+#howitworks a:hover i {
+	transform: translateX(0px);
+	opacity: 1;
 }
 
 #contact {

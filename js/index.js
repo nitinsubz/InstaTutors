@@ -108,6 +108,12 @@ $(document).ready(function() {
     return false;
       });
 
+    $("#indexhead a").click(function(event) {
+    event.preventDefault();
+    $("html, body").animate({ scrollTop: $("#howitworks").offset().top }, 800);
+    return false;
+      });
+
     $( "#tuteeaddsubjects .dropdown-item" ).each(function(index) {
 	    $(this).on("click", function(){
 	        // For the boolean value
