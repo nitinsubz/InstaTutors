@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Insta Tutors</title>
+<title>Confirmed</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -15,12 +15,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
-<body>
-		<div id="navbar" style="background-color: transparent;">
-			<div id="home" class="slideleft"><a href="index.html"><img src="images/logo.png"></a></div>
-			<ul id="nav" class="slideright">
-			   	<li class="navig" id="bookasession"><a href="login.html">LOGIN/SIGNUP</a></li>
-			   	<li class="navig" id="indexlogout"><a onclick="logout()">LOGOUT</a></li>
+    <script src="index.js">
+    </script>
+<body onload="loadConfirmed()">
+		<div id="navbar">
+			<ul id="nav" class="fader">
+				<li id="home"><a href="index"><img src="images/logo.png"></a></li>
+			   <!--<li class="navig"><a href="donate.html">Donate</a></li>-->
 			</ul>
 		</div>
 		<!--<div id="container1" onclick="rotate(this)">
@@ -34,30 +35,14 @@
 			<li class="navig2"><a href="service.html">Service</a></li>
 			<li class="navig2"><a href="videos.html">Videos</a></li>
 		</div>-->
-		<div id="teamhead">
-			<h1 class="slideleft">Contact Us</h1>
-			<p class="slideup"></p>
-		</div>
-		<div id="teamheadimg">
-			<img src="images/teamhead.png">
-		</div>
-		<div id="leadership" class="slideup">
-            <h4>Software Team</h4> <h5>Software@InstaTutors.org</h5>
-            <h6>Sam Yany (Leader), Nitin Subramanian, Reedit Shariar, Rohit Tanikella</h6>
-            
-            <br><br>
-            <h4>Marketing and Media Team</h4>
-            <h6>Stuti Upadhyay (Leader), Sahanna Prasanna</h6>
-            
-        </div> 
-       
-        <div id="footer">
-			<p>&#169; InstaTutors 2018.</a></p>
-		</div>
-	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-	<script src="firebase.js">
-	</script>
-	<script src="index.js">
-    </script>
+	<div id="confirmedbody">
+		<h1 id="bookedheader">Your tutoring request for DATE is confirmed. </strong><h1>
+		<h3 id="bookedinfo">A tutor will email you within 24 hours to confirm your session.</h3>
+		<h3 id="time2">Time: </h3>
+		<h3 id="location2">Location: </h3>
+		<h3 id="tutor2">Tutor Request: </h3>
+		<h3 id="subject2" style="padding-bottom: 30px;">Subject: </h3>
+		<a href="login">Book Another Session <i class="fas fa-undo-alt"></i></a>
+	</div>
 </body>
 </html>
