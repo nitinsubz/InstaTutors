@@ -10,7 +10,7 @@
       "**/node_modules/**"
     ],
     "rewrites": [ {
-      "source": "/team",
+      "source": "/tutors",
       "destination": "/team.html"
     } , {
       "source" : "/leadership",

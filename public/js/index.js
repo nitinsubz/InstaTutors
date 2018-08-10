@@ -114,6 +114,12 @@ $(document).ready(function() {
     return false;
       });
 
+    $("#contactlink9").click(function(event) {
+    event.preventDefault();
+    $("html, body").animate({ scrollTop: $("#contact").offset().top }, 300);
+    return false;
+      });
+
     $( "#tuteeaddsubjects .dropdown-item" ).each(function(index) {
 	    $(this).on("click", function(){
 	        // For the boolean value
@@ -598,8 +604,8 @@ function validate() {
    	var now = new Date();
 
 
-	if(date == "" || selectedDate < now) {
-		missing.push(" valid date, date cannot be in the past");
+	if(date == "" || selectedDate < now.setDate(now.getDate() + 4)) {
+		missing.push(" valid date, date must be at least 4 days ahead.");
 	}
 	if(time == "") {
 		missing.push(" time");

@@ -695,6 +695,11 @@ canvas {
 	color: #330867;
 }
 
+.leader h6 {
+	font-size: 18px;
+	color: #777;
+}
+
 #tutors {
 	padding: 70px 8% 30px 8%;
 	margin: 320px 8% 40px 8%;
