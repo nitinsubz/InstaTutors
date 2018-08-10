@@ -114,6 +114,12 @@ $(document).ready(function() {
     return false;
       });
 
+    $("#contactlink9").click(function(event) {
+    event.preventDefault();
+    $("html, body").animate({ scrollTop: $("#contact").offset().top }, 300);
+    return false;
+      });
+
     $( "#tuteeaddsubjects .dropdown-item" ).each(function(index) {
 	    $(this).on("click", function(){
 	        // For the boolean value

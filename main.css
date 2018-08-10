@@ -536,8 +536,15 @@ canvas {
 	border: 2px solid #30CFD0;
 }
 
+#msg:focus {
+	border: 2px solid #30CFD0;
+}
+
 #msg {
-	padding-bottom: 100px;
+	width: 100%;
+	border-radius: 10px;
+	outline: 0;
+	border: 1px solid #ccc;
 }
 
 #contact #submit {
@@ -565,6 +572,11 @@ canvas {
 
 .faqsec {
 	padding: 20px 0px;
+}
+
+.faqsec a {
+	color: #30CFD0;
+	text-decoration: none;
 }
 
 .question {
