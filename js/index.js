@@ -598,8 +598,8 @@ function validate() {
    	var now = new Date();
 
 
-	if(date == "" || selectedDate < now) {
-		missing.push(" valid date, date cannot be in the past");
+	if(date == "" || selectedDate < now.setDate(now.getDate() + 4)) {
+		missing.push(" valid date, date must be at least 4 days ahead.");
 	}
 	if(time == "") {
 		missing.push(" time");
