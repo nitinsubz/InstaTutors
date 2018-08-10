@@ -645,7 +645,7 @@ function validate() {
 
 		//send confirmation email to user
 		Email.send("support@instatutors.org",
-			email,
+			email + "," + firebase.auth().currentUser.email,
 			"Tutoring Session Requested for " + splitDate(date),
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
