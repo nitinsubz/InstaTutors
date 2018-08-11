@@ -223,9 +223,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 					var subject = snap.child("subject").val();
 					var details = snap.child("details").val();
 					var time = snap.child("time").val();
-					var mySessionsCount = snap.child("pastSessions").val();
-
-					console.log(snap.child("pastSessions").val());
 
 					var selectedDate = new Date(splitDate(splitDate(date)));
    					var now = new Date();
@@ -234,12 +231,32 @@ firebase.auth().onAuthStateChanged(function(user) {
 							$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>email: " + email + "</h4>");
 						} else {
 							if(date != null) {
-								$("#tutorpastsessionsbody").append("<div class=\"tutorreq lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>email: " + email + "</h4>");
-								firebase.database().ref('users/' + split).child('pastSessions').set(7);						
+								$("#tutorpastsessionsbody").append("<div class=\"tutorreq lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>email: " + email + "</h4>");				
 							}
 						}
 
-			});		    
+					//update previous sessions count
+					firebase.database().ref('users/' + split).on('value', function(snapshot) {
+						var returnArr = [];
+						snapshot.forEach(function(childSnapshot) {
+					        var date2 = childSnapshot.child("date").val();
+					        returnArr.push(date2);
+					    });
+						var newArr = [];
+					    for(var n=0; n<returnArr.length; n++) {
+					    	var selectedDate2;
+					    	if(returnArr[n] != null) {
+					        	selectedDate2 = new Date(splitDate(splitDate(returnArr[n])));
+					        }
+					        var now2 = new Date();
+					        if(returnArr[n] != null && selectedDate2 < now2) {
+					        	newArr.push(returnArr[n]);
+						    }
+					    }
+					    firebase.database().ref('users/' + split).child("pastSessions").set(newArr.length);
+					});
+
+					});	    
 
 			} else {
 				$("#mainbody").fadeIn();
@@ -292,17 +309,28 @@ firebase.auth().onAuthStateChanged(function(user) {
 						} else {
 							if(date != null) {
 								$("#pastsessionsbody").append("<div class=\"req lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4>");
-								var pastSessions = firebase.database().ref('users/' + split).child('pastSessions');
-
-								pastSessions.transaction(function(pastSessions) {
-									  if (pastSessions) {
-									    pastSessions = pastSessions + 1;
-									  }
-									  return pastSessions;
-									});
 							}
 						}
 
+					firebase.database().ref('users/' + split).on('value', function(snapshot) {
+						var returnArr = [];
+						snapshot.forEach(function(childSnapshot) {
+					        var date2 = childSnapshot.child("date").val();
+					        returnArr.push(date2);
+					    });
+						var newArr = [];
+					    for(var n=0; n<returnArr.length; n++) {
+					    	var selectedDate2;
+					    	if(returnArr[n] != null) {
+					        	selectedDate2 = new Date(splitDate(splitDate(returnArr[n])));
+					        }
+					        var now2 = new Date();
+					        if(returnArr[n] != null && selectedDate2 < now2) {
+					        	newArr.push(returnArr[n]);
+						    }
+					    }
+					    firebase.database().ref('users/' + split).child("pastSessions").set(newArr.length);
+					});
 				});
 			}
 		});
@@ -330,6 +358,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     var tutorReq = firebase.database().ref('requests');
 
+    var allReqs = "";
+
     tutorReq.on("child_added", snap => {
 		var date = snap.child("date").val();
 		var done = snap.child("done").val();
@@ -348,8 +378,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 				//check whether request's subjects overlap tutor's subjects
 				//if not, don't show request
 
-				console.log(overlap);
-
 				var display;
 				if(overlap == 0 || done == "yes") {
 					display = "none";
@@ -358,11 +386,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 				}
 
 				if(date != null) {
-					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>tutor: " + tutor + "</h4>");
+					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
 				}
 		});
-
 	});
+
+	$("#tutorsessionsbody").html(allReqs);
 
   } else {
     // No user is signed in.
@@ -377,6 +406,14 @@ firebase.auth().onAuthStateChanged(function(user) {
     
   }
 });
+
+function sessionsCount() {
+	var split = splitEmail(firebase.auth().currentUser.email);
+
+	firebase.database().ref('/users/' + split).child('pastSessions').once('value').then(function(snapshot) {
+	  firebase.database().ref('users/' + split).child('pastSessions').set(snapshot.val() + 1);
+	});
+}
 
 function sendVerification() {
 	var user = firebase.auth().currentUser;
