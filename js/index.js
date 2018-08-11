@@ -956,6 +956,8 @@ $(document).ready(function() {
 		$("#samyang").show();
 		$("#rukmini").show();
 		$("#rohun").show();
+		$("#alex").show();
+		$("#luigi").show();
     });
 
     $("#math").click(function(event) {
@@ -978,6 +980,8 @@ $(document).ready(function() {
 		$("#samyang").show();
 		$("#rukmini").show();
 		$("#rohun").show();
+		$("#alex").show();
+		$("#luigi").show();
     });
 
     $("#physics").click(function(event) {
@@ -1000,6 +1004,8 @@ $(document).ready(function() {
 		$("#samyang").show();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#bio").click(function(event) {
@@ -1022,6 +1028,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").show();
     });
 
     $("#chem").click(function(event) {
@@ -1044,6 +1052,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").show();
     });
 
     $("#writing").click(function(event) {
@@ -1066,6 +1076,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").show();
 		$("#rohun").hide();
+		$("#alex").show();
+		$("#luigi").show();
     });
 
     $("#history").click(function(event) {
@@ -1088,6 +1100,8 @@ $(document).ready(function() {
 		$("#samyang").show();
 		$("#rukmini").show();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#webdev").click(function(event) {
@@ -1110,6 +1124,8 @@ $(document).ready(function() {
 		$("#samyang").show();
 		$("#rukmini").hide();
 		$("#rohun").show();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#java").click(function(event) {
@@ -1132,6 +1148,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").show();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#python").click(function(event) {
@@ -1154,6 +1172,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#business").click(function(event) {
@@ -1176,6 +1196,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#spanish").click(function(event) {
@@ -1198,6 +1220,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
    $("#french").click(function(event) {
@@ -1220,5 +1244,7 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 });
