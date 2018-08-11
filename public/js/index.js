@@ -223,9 +223,20 @@ firebase.auth().onAuthStateChanged(function(user) {
 					var subject = snap.child("subject").val();
 					var details = snap.child("details").val();
 					var time = snap.child("time").val();
+					var mySessionsCount = snap.child("pastSessions").val();
 
-					if(date != null) {
+					console.log(snap.child("pastSessions").val());
+
+					var selectedDate = new Date(splitDate(splitDate(date)));
+   					var now = new Date();
+
+					if(now < selectedDate && date != null) {
 							$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>email: " + email + "</h4>");
+						} else {
+							if(date != null) {
+								$("#tutorpastsessionsbody").append("<div class=\"tutorreq lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>email: " + email + "</h4>");
+								firebase.database().ref('users/' + split).child('pastSessions').set(7);						
+							}
 						}
 
 			});		    
@@ -273,9 +284,24 @@ firebase.auth().onAuthStateChanged(function(user) {
 						color = "";
 					}
 
-					if(date != null) {
-						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4>");
-					}
+					var selectedDate = new Date(splitDate(splitDate(date)));
+   					var now = new Date();
+
+					if(now < selectedDate && date != null) {
+							$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4>");
+						} else {
+							if(date != null) {
+								$("#pastsessionsbody").append("<div class=\"req lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4>");
+								var pastSessions = firebase.database().ref('users/' + split).child('pastSessions');
+
+								pastSessions.transaction(function(pastSessions) {
+									  if (pastSessions) {
+									    pastSessions = pastSessions + 1;
+									  }
+									  return pastSessions;
+									});
+							}
+						}
 
 				});
 			}
@@ -290,6 +316,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 		$("#tutorwelcome").html("Welcome " + snap.val()+ "!");
 	});
 
+	var pastSessions = firebase.database().ref('users/' + split).child('pastSessions');
+
+	pastSessions.on('value', snap => {
+		$("#sessionscount").html(snap.val());
+		$("#tutorsessionscount").html(snap.val());
+	});
 
     if(user != null){
       $("#user").html("User: " + user.email + "");
@@ -491,7 +523,8 @@ function writeAccount(name, email, phone, stat) {
 			name: name,
 			phone: phone,
 		    email: email,
-		    stat: stat
+		    stat: stat,
+		    pastSessions: 0
 		 });
 }
 
@@ -956,6 +989,8 @@ $(document).ready(function() {
 		$("#samyang").show();
 		$("#rukmini").show();
 		$("#rohun").show();
+		$("#alex").show();
+		$("#luigi").show();
     });
 
     $("#math").click(function(event) {
@@ -978,6 +1013,8 @@ $(document).ready(function() {
 		$("#samyang").show();
 		$("#rukmini").show();
 		$("#rohun").show();
+		$("#alex").show();
+		$("#luigi").show();
     });
 
     $("#physics").click(function(event) {
@@ -1000,6 +1037,8 @@ $(document).ready(function() {
 		$("#samyang").show();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#bio").click(function(event) {
@@ -1022,6 +1061,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").show();
     });
 
     $("#chem").click(function(event) {
@@ -1044,6 +1085,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").show();
     });
 
     $("#writing").click(function(event) {
@@ -1066,6 +1109,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").show();
 		$("#rohun").hide();
+		$("#alex").show();
+		$("#luigi").show();
     });
 
     $("#history").click(function(event) {
@@ -1088,6 +1133,8 @@ $(document).ready(function() {
 		$("#samyang").show();
 		$("#rukmini").show();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#webdev").click(function(event) {
@@ -1110,6 +1157,8 @@ $(document).ready(function() {
 		$("#samyang").show();
 		$("#rukmini").hide();
 		$("#rohun").show();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#java").click(function(event) {
@@ -1132,6 +1181,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").show();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#python").click(function(event) {
@@ -1154,6 +1205,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#business").click(function(event) {
@@ -1176,6 +1229,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
     $("#spanish").click(function(event) {
@@ -1198,6 +1253,8 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 
    $("#french").click(function(event) {
@@ -1220,5 +1277,7 @@ $(document).ready(function() {
 		$("#samyang").hide();
 		$("#rukmini").hide();
 		$("#rohun").hide();
+		$("#alex").hide();
+		$("#luigi").hide();
     });
 });

@@ -1404,7 +1404,7 @@ canvas {
 
 #tutoraccount {
 	padding: 40px 3% 70px 3%;
-	margin: -70px 9% 0px 9%;
+	margin: -50px 9% 0px 9%;
 	background-color: white;
 	border-radius: 20px 20px 0px 0px;
 }
@@ -1436,14 +1436,18 @@ canvas {
 	line-height: 50px;
 }
 
-#tutormysessionsbody {
-	padding: 0px;
+#tutormysessionsbody, #tutorpastsessionsbody {
+	padding: 20px 0px 30px 0px;
+	max-height: 500px;
+	width: 100%;
+	margin-bottom: 20px;
+	overflow: auto;
 }
 
 .tutorreq {
 	padding: 30px 4%;
 	border-radius: 20px;
-	margin-bottom: 20px;
+	margin: 0px 5% 20px 5%;
 	background-color: white;
 	box-shadow: 5px 5px 20px #666;
 	transition-duration: 0.2s;
@@ -1461,6 +1465,16 @@ canvas {
 	background-color: #ddd;
 	cursor: pointer;
 	box-shadow: 10px 10px 40px #444;
+}
+
+#tutormysessionsbody .tutorreq:hover {
+	box-shadow: 0;
+	background-color: white;
+}
+
+#tutorpastsessionsbody .tutorreq:hover {
+	box-shadow: 0;
+	background-color: lightblue;
 }
 
 #logout {
@@ -1542,7 +1556,7 @@ canvas {
 	border-radius: 20px 20px 0px 0px;
 }
 
-#accountinfo h3 {
+#account h3 {
 	font-size: 30px;
 	color: #444;
 	padding-bottom: 20px;
@@ -1727,10 +1741,11 @@ canvas {
 	text-decoration: none;
 }
 
-#sessionsbody h3 {
-	font-size: 30px;
-	color: #444;
-	padding-bottom: 20px;
+#sessionsbody, #pastsessionsbody {
+	padding: 10px 0px 30px 0px;
+	max-height: 500px;
+	width: 100%;
+	overflow: auto;
 }
 
 #sessionsbody {
@@ -1739,10 +1754,27 @@ canvas {
 	overflow: auto;
 }
 
+#tuteesessionssec h3 {
+	float: left;
+}
+
+#sessionscount, #tutorsessionscount {
+	display: inline;
+	margin-top: 10px;
+	padding: 7px 20px 12px 20px; 
+	font-size: 23px;
+	float: right;
+	color: white;
+	background-color: #212664;
+	border-radius: 100%;
+	font-weight: 700;
+	display: none;
+}
+
 .req {
 	padding: 20px 4%;
+	margin: 0px 4% 20px 4%;
 	border-radius: 20px;
-	margin-bottom: 20px;
 	box-shadow: 5px 5px 20px #666;
 	position: relative;
 }
@@ -1770,6 +1802,10 @@ canvas {
 
 .green {
 	background-color: lightgreen;
+}
+
+.lightblue {
+	background-color: lightblue;
 }
 
 .green .cancel {
@@ -2441,13 +2477,14 @@ canvas {
 		font-size: 38px;
 	}
 
-	#tutormysessionsbody {
-		margin-top: -50px;
+	#tutormysessionsbody, #tutorpastsessionsbody {
+		margin-top: 0px;
 		padding: 0px 7% 50px 7%;
 	}
 
 	.tutorreq {
 		padding: 30px 7%;
+		margin: 0px 0px 20px 0px;
 	}
 
 	.tutorreq h2 {
@@ -2565,7 +2602,7 @@ canvas {
 		margin: -60px 6% 50px 6%;
 	}
 
-	#accountinfo h3 {
+	#account h3 {
 		font-size: 24px;
 	}
 
@@ -2720,6 +2757,27 @@ canvas {
 	canvas {
 		transform: scale(0);
 		display: none;
+	}
+
+	#tutoraccount {
+		padding: 20px 3% 40px 3%;
+	}
+
+	#tutoraccount h3 {
+		font-size: 24px;
+	}
+
+	#tutoruser {
+		font-size: 18px;
+	}
+
+	#tutorsubjects p {
+		font-size: 16px;
+	}
+
+	#tutorsubjects .label {
+		font-size: 16px;
+		line-height: 45px;
 	}
 }
 
