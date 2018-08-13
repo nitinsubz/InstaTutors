@@ -282,6 +282,19 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 					$("#mysubjectsarea").html(text);
 				});
+				$(window).on('load', function () {
+					$("#pastsessionsbody .req").each(function(){
+						console.log($(this).html());
+					});
+				});
+				/*var id = split + currentdate;
+
+				var starRef = firebase.database().ref('users/' + split + "/" + currentdate).child("stars");
+
+				starRef.on("value", snap => {
+					$("#" + id).html(snap.val() + " <i class=\"fas fa-star\"></i>");
+				});*/
+
 
 			    var reqRef = firebase.database().ref('users/' + split);
 		//date, time, location, tutor, done, subject
@@ -300,15 +313,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 					} else {
 						color = "";
 					}
-
-					var selectedDate = new Date(splitDate(splitDate(date)));
+					if(date != null) {
+						var selectedDate = new Date(splitDate(splitDate(date)));
+					}
    					var now = new Date();
 
 					if(now < selectedDate && date != null) {
-							$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4>");
+							$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
 						} else {
 							if(date != null) {
-								$("#pastsessionsbody").append("<div class=\"req lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4>");
+								$("#pastsessionsbody").append("<div class=\"req lightblue\"> <div class=\"star\" id=\"" + splitEmail(email) + date + "\"> <i onclick=\"openStar()\" class=\"fas fa-star\"></i> </div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
 							}
 						}
 
@@ -370,6 +384,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var tutor = snap.child("tutor").val();
 
 		var myUser = firebase.database().ref('users/' + split).child("subjects");
+
 		myUser.on("value", snap => {
 				var splitsubs = snap.val().split(",");
 				var reqsubs = subject.split(", ");
@@ -406,14 +421,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     
   }
 });
-
-function sessionsCount() {
-	var split = splitEmail(firebase.auth().currentUser.email);
-
-	firebase.database().ref('/users/' + split).child('pastSessions').once('value').then(function(snapshot) {
-	  firebase.database().ref('users/' + split).child('pastSessions').set(snapshot.val() + 1);
-	});
-}
 
 function sendVerification() {
 	var user = firebase.auth().currentUser;
@@ -522,6 +529,47 @@ function cancel() {
 	} else {
 		alert("wrong email. aborting.")
 	}
+}
+
+//update Star Count for tutors
+var currenttutor;
+var currentdate;
+
+function openStar() {
+	$("#starsmask").fadeIn();
+	$("#stars").fadeIn();
+	currenttutor = event.currentTarget.parentNode.parentNode.childNodes[11].innerHTML.slice(7);
+	currentdate = event.currentTarget.parentNode.parentNode.childNodes[3].innerHTML.slice(6);
+}
+
+function star(stars) {
+	var split = splitEmail(firebase.auth().currentUser.email);
+	var ref = firebase.database().ref('users');
+
+	alert("Thank you for rating " + currenttutor + " " + stars + " stars.");
+	$("#starsmask").fadeOut();
+	$("#stars").fadeOut();
+
+	firebase.database().ref('users/' + split + "/" + currentdate).child("stars").set(stars);
+
+	var tutoremail = "";
+	ref.orderByChild("name").equalTo(currenttutor).on("value", snap => {
+		var prevstars;
+		if(tutoremail == "") {
+			tutoremail += Object.keys(snap.val())[0];
+		} else {
+			tutoremail = "trash/" + Object.keys(snap.val())[0];
+		}
+		firebase.database().ref('users/' + tutoremail).child('totalStars').on("value", snap => {
+			prevstars = snap.val();
+		});
+		firebase.database().ref('users/' + tutoremail).child('totalStars').set(prevstars + stars);
+	});
+}
+
+function closeStars() {
+	$("#starsmask").fadeOut();
+	$("#stars").fadeOut();
 }
 
 function sessionstab() {
@@ -797,10 +845,8 @@ function matchTutors() {
 	});
 
 	tuteeSubArray = tuteeSubArray.split(",");
-	console.log(tuteeSubArray);
 
 	var tutordata;
-
 	var matchedtutors = "";
 	var goodtutors = "";
 
@@ -809,8 +855,6 @@ function matchTutors() {
 	ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
 	 	tutordata = snap.val();
 	 	var tutorids = Object.keys(snap.val());
-
-	 	console.log(tutorids);
 
 	 	for(var i=0; i<tutorids.length; i++) {
 	 		var tutorSub = firebase.database().ref('users/' + tutorids[i]).child("subjects");
@@ -842,7 +886,6 @@ function matchTutors() {
 				var subjects = snap.child("subjects").val().split(",");
 				var intersection = intersect(subjects, tuteeSubArray);
 
-				console.log(subjects);
 				var subjectLabels = "";
 				for(var k=0; k<intersection.length; k++) {
 					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
