@@ -353,10 +353,10 @@ firebase.auth().onAuthStateChanged(function(user) {
    					var now = new Date();
 
 					if(now < selectedDate && date != null) {
-							$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
+							$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>Time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
 						} else {
 							if(date != null) {
-								$("#pastsessionsbody").append("<div class=\"req lightblue\"> <div class=\"star\" id=\"" + splitEmail(email) + date + "\"> <i onclick=\"openStar()\" class=\"fas fa-star\"></i> </div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
+								$("#pastsessionsbody").append("<div class=\"req lightblue\"> <div class=\"star\" id=\"" + splitEmail(email) + date + "\"> <i onclick=\"openStar()\" class=\"fas fa-star\"></i> </div> <h2>Date: " + date + "</h2> " + "<h4>Time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
 							}
 						}
 
@@ -435,7 +435,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 				}
 
 				if(date != null) {
-					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
+					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>Time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
 				}
 		});
 	});
