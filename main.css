@@ -928,8 +928,28 @@ canvas {
 }
 
 #bookform .col-sm-9 #subject {
-	width: 76%;
+	width: 72%;
 	float: left;
+}
+
+#bookform .col-sm-9 #subjectclear {
+	float: left;
+	width: 4%;
+	text-align: center;
+	font-size: 23px;
+}
+
+#subjectfielderror {
+	text-align: center;
+	color: red;
+	font-size: 18px;
+	float: left;
+	margin-left: 3%;
+}
+
+#bookform .col-sm-9 #subjectclear:hover {
+	color: red;
+	cursor: pointer;
 }
 
 #bookform .col-sm-9 #time {
@@ -2667,7 +2687,12 @@ canvas {
 	}
 
 	#bookform .col-sm-9 #subject {
-		width: 100%;
+		width: 90%;
+		float: left;
+	}
+
+	#bookform .col-sm-9 #subjectclear {
+		width: 10%;
 		float: left;
 	}
 

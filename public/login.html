@@ -121,7 +121,7 @@
 				    		Subject(s):
 				    	</div>
 				    	<div class="col-sm-9">
-				   			<input type="text" name="subject" id="subject" placeholder="Use the dropdown to add subjects you need help in...">
+				   			<input type="text" name="subject" id="subject" placeholder="Use the dropdown to add subjects you need help in..." disabled><div class="clearinput" id="subjectclear">x</div>
 				   			<div class="dropdown">
 						      <button class="btn btn-default dropdown-toggle" type="button" id="subjectselector2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="subjecttext2">Subject </span> <i class="fas fa-caret-down"></i></button>
 						      <div class="dropdown-menu" id="subjectmenu" aria-labelledby="dropdownMenuButton">
@@ -141,6 +141,7 @@
 						      </div>
 						    </div>
 				   		</div>
+				   		<div id="subjectfielderror"></div>
 				   	</div>
 				   		<div class="row">
 						<div class="col-sm-3">
@@ -299,6 +300,8 @@
 				<div id="tutoraccountinfo" class="col-sm-6">
 					<h3>Tutor:</h3>
 					<h4 id="tutoruser"></h4>
+					<h3>My Rating</h3>
+					<h4 id="tutorrating"></h4>
 					<h3>Change Password:</h3>
 					<a id="resetPass2" onclick="resetPass2()">Send Reset Email</a>
 					<div id="tutorsubjects">

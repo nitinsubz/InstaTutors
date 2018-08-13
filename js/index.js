@@ -147,13 +147,23 @@ $(document).ready(function() {
 	$( "#subjectmenu .dropdown-item" ).each(function(index) {
 	    $(this).on("click", function(){
 	        // For the boolean value
-	        if($("#subject").val() == "") {
-	        	$("#subject").val(this.innerHTML.toLowerCase());
-	        } else {
-	        	$("#subject").val($("#subject").val() + ", " + this.innerHTML.toLowerCase()); 
-	        }
-	        $("#subjecttext2").html(this.innerHTML);
+		    if($("#subject").val().search(this.innerHTML.toLowerCase()) != -1) {
+		    	$("#subjectfielderror").html("You have " + this.innerHTML.toLowerCase() + " as a subject already");
+		    } else {
+		        if($("#subject").val() == "") {
+		        	$("#subject").val(this.innerHTML.toLowerCase());
+		        } else {
+		        	$("#subject").val($("#subject").val() + ", " + this.innerHTML.toLowerCase()); 
+		        }
+		        $("#subjecttext2").html(this.innerHTML);
+		        $("#subjectfielderror").html("");
+		    }
 	    });
+	});
+
+	$("#subjectclear").on("click", function(){
+		$("#subject").val('');
+		$("#subjectfielderror").html("");
 	});
 });
 
