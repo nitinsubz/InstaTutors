@@ -2,8 +2,6 @@ $(window).on('load', function () {
 	$("#navbar").show();
 });
 
-
-
 $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
@@ -282,18 +280,18 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 					$("#mysubjectsarea").html(text);
 				});
-				$(window).on('load', function () {
-					$("#pastsessionsbody .req").each(function(){
-						console.log($(this).html());
-					});
+				
+				firebase.database().ref('users/' + split).on('value', function(snapshot) {
+						var returnArr = [];
+						snapshot.forEach(function(childSnapshot) {
+					       	if(childSnapshot.child("stars").val()) {
+					       		var snapemail = splitEmail(childSnapshot.child("email").val());
+					       		var snapdate = childSnapshot.child("date").val();
+					       		var id = snapemail + snapdate;
+					       		$("#" + id).html(childSnapshot.child("stars").val() + " <i class=\"fas fa-star\"></i>");
+					       	}
+					    });
 				});
-				/*var id = split + currentdate;
-
-				var starRef = firebase.database().ref('users/' + split + "/" + currentdate).child("stars");
-
-				starRef.on("value", snap => {
-					$("#" + id).html(snap.val() + " <i class=\"fas fa-star\"></i>");
-				});*/
 
 
 			    var reqRef = firebase.database().ref('users/' + split);
