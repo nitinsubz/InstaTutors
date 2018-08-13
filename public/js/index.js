@@ -1,5 +1,16 @@
 $(window).on('load', function () {
 	$("#navbar").show();
+
+	$( "#stars .fas" ).each(function(index) {
+	    $(this).on("mouseout", function(){
+	        // For the boolean value
+	        $("#onestar").css("color", "#444");
+			$("#twostar").css("color", "#444");
+			$("#threestar").css("color", "#444");
+			$("#fourstar").css("color", "#444");
+			$("#fivestar").css("color", "#444");
+	    });
+	});
 });
 
 $(window).scroll(function() {
@@ -565,6 +576,36 @@ function star(stars) {
 	});
 }
 
+function hoverone() {
+	$("#onestar").css("color", "gold");
+}
+
+function hovertwo() {
+	$("#onestar").css("color", "gold");
+	$("#twostar").css("color", "gold");
+}
+
+function hoverthree() {
+	$("#onestar").css("color", "gold");
+	$("#twostar").css("color", "gold");
+	$("#threestar").css("color", "gold");
+}
+
+function hoverfour() {
+	$("#onestar").css("color", "gold");
+	$("#twostar").css("color", "gold");
+	$("#threestar").css("color", "gold");
+	$("#fourstar").css("color", "gold");
+}
+
+function hoverfive() {
+	$("#onestar").css("color", "gold");
+	$("#twostar").css("color", "gold");
+	$("#threestar").css("color", "gold");
+	$("#fourstar").css("color", "gold");
+	$("#fivestar").css("color", "gold");
+}
+
 function closeStars() {
 	$("#starsmask").fadeOut();
 	$("#stars").fadeOut();
@@ -1111,7 +1152,7 @@ $(document).ready(function() {
 		$("#keshav").hide();
 		$("#chirag").hide();
 		$("#sophie").show();
-		$("#rohit").show();
+		$("#rohit").hide();
 		$("#samyang").show();
 		$("#rukmini").hide();
 		$("#rohun").hide();

@@ -224,6 +224,17 @@ firebase.auth().onAuthStateChanged(function(user) {
 					$("#tutorsubjectsarea").html(text);
 				});
 
+				var tutorPastSess = firebase.database().ref('users/' + split).child("pastSessions");
+
+				tutorPastSess.on("value", snap => {
+					var pastSessions = snap.val();
+					if(pastSessions > 0) {
+						firebase.database().ref('users/' + split).child("totalStars").on("value", snap => {
+							$("#tutorrating").html((snap.val()/pastSessions).toFixed(2) + " <i class=\"fas fa-star\"></i>");
+						});
+					}
+				});
+
 			    var mySession = firebase.database().ref('users/' + split);
 
 				mySession.on("child_added", snap => {

@@ -1455,6 +1455,16 @@ canvas {
 	margin: -10px 0px 20px 0px;
 }
 
+#tutorrating {
+	font-size: 25px;
+	margin-left: 20px;
+	padding-bottom: 20px;
+}
+
+#tutorrating .fas {
+	color: gold;
+}
+
 #tutorsubjects {
 	padding: 20px 0px;
 }
@@ -2851,6 +2861,10 @@ canvas {
 
 	#tutoruser {
 		font-size: 18px;
+	}
+
+	#tutorrating {
+		font-size: 20px;
 	}
 
 	#tutorsubjects p {
