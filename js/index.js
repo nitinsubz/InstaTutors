@@ -11,6 +11,8 @@ $(window).on('load', function () {
 			$("#fivestar").css("color", "#444");
 	    });
 	});
+
+	$("#tutorbio").prop("readonly", true);
 });
 
 $(window).scroll(function() {
@@ -237,6 +239,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 					$("#tutorsubjectsarea").html(text);
 				});
+
+				var tutorbio = firebase.database().ref('users/' + split).child("bio");
+
+				tutorbio.on("value", snap => {
+					$("#tutorbio").html(snap.val());
+				});
+
 
 				var tutorPastSess = firebase.database().ref('users/' + split).child("pastSessions");
 
@@ -856,6 +865,31 @@ function validate() {
 	}
 }
 
+//let tutor edit their bios
+function editBio() {
+	$("#tutorbio").css("border", "2px solid #30CFD0");
+	$("#tutorbio").prop("readonly", false);
+	$("#submitBio").fadeIn("fast");
+}
+
+function submitBio() {
+	var content = $("#tutorbio").val();
+	var wordcount = content.split(" ").length;
+	if(wordcount < 100) {
+		$("#tutorbio").css("border", "1px solid #ccc");
+		$("#tutorbio").prop("readonly", true);
+		alert("Thank you for submitting your bio!");
+		$("#submitBio").fadeOut("fast");
+		var user = firebase.auth().currentUser;
+		var split = splitEmail(user.email);
+
+		firebase.database().ref('users/' + split).child("bio").set(content);
+	} else {
+		$("#bioerror").html("Please keep your bio under 100 words.");
+	}
+
+}
+
 //add subject to user's subjects
 function addSubject() {
 	var email = firebase.auth().currentUser.email;
@@ -947,6 +981,10 @@ function matchTutors() {
 			tutorRef.on("value", snap => {
 				var name = snap.child("name").val();
 				var email = snap.child("email").val();
+				var bio = snap.child("bio").val();
+				if(bio == null) {
+					bio = "";
+				}
 				var subjects = snap.child("subjects").val().split(",");
 				var intersection = intersect(subjects, tuteeSubArray);
 
@@ -955,7 +993,7 @@ function matchTutors() {
 					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
 				}
 
-				mytutors += "<div class=\"mytutor great\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+				mytutors += "<div class=\"mytutor great\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <p>" + bio + "</p> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
 			});
 		}
 
@@ -965,6 +1003,10 @@ function matchTutors() {
 			tutorRef.on("value", snap => {
 				var name = snap.child("name").val();
 				var email = snap.child("email").val();
+				var bio = snap.child("bio").val();
+				if(bio == null) {
+					bio = "";
+				}
 				var subjects = snap.child("subjects").val().split(",");
 				var intersection = intersect(subjects, tuteeSubArray);
 
@@ -973,7 +1015,7 @@ function matchTutors() {
 					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
 				}
 
-				mytutors += "<div class=\"mytutor good\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+				mytutors += "<div class=\"mytutor good\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <p>" + bio + "</p> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
 			});
 		}
 
@@ -1028,6 +1070,10 @@ function viewTutors() {
 			tutorRef.on("value", snap => {
 				var name = snap.child("name").val();
 				var email = snap.child("email").val();
+				var bio = snap.child("bio").val();
+				if(bio == null) {
+					bio = "";
+				}
 				var subjects = snap.child("subjects").val().split(",");
 				var intersection = intersect(subjects, tuteeSubArray);
 
@@ -1037,7 +1083,7 @@ function viewTutors() {
 					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
 				}
 
-				mytutors += "<div class=\"viewtutor great\" onclick=\"selectTutor()\"> <h2>" + name + "</h2> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+				mytutors += "<div class=\"viewtutor great\" onclick=\"selectTutor()\"> <h2>" + name + "</h2> <p>" + bio + "</p> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
 			});
 		}
 
@@ -1047,6 +1093,10 @@ function viewTutors() {
 			tutorRef.on("value", snap => {
 				var name = snap.child("name").val();
 				var email = snap.child("email").val();
+				var bio = snap.child("bio").val();
+				if(bio == null) {
+					bio = "";
+				}
 				var subjects = snap.child("subjects").val().split(",");
 				var intersection = intersect(subjects, tuteeSubArray);
 
@@ -1055,7 +1105,7 @@ function viewTutors() {
 					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
 				}
 
-				mytutors += "<div class=\"viewtutor good\" onclick=\"selectTutor()\"> <h2>" + name + "</h2> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+				mytutors += "<div class=\"viewtutor good\" onclick=\"selectTutor()\"> <h2>" + name + "</h2> <p>" + bio + "</p> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
 			});
 		}
 

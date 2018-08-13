@@ -302,14 +302,18 @@
 					<h4 id="tutoruser"></h4>
 					<h3>My Rating</h3>
 					<h4 id="tutorrating"></h4>
-					<h3>Change Password:</h3>
-					<a id="resetPass2" onclick="resetPass2()">Send Reset Email</a>
+					<h3>My Bio</h3><a id="editbio" onclick="editBio()"><i class="fas fa-edit"></i></a>
+					<textarea style="resize: none;" type="text" name="tutorbio" id="tutorbio"></textarea>
+					<a onclick="submitBio()" id="submitBio">Submit Bio</a>
+					<p id="bioerror"></p>
 					<div id="tutorsubjects">
 						<h3>My Subjects</h3>
 						<p>Contact Nitin or Sam if you would like to change your subjects.</p>
 						<div id="tutorsubjectsarea">
 						</div>
 					</div>
+					<h3>Change Password:</h3>
+					<a id="resetPass2" onclick="resetPass2()">Send Reset Email</a>
 				</div>
 				<div class="col-sm-6">
 					<h3>Upcoming Sessions</h3>

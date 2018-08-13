@@ -1027,7 +1027,17 @@ canvas {
 	display: inline-block;
 	padding-left: 30px;
 	padding: 20px 30px;
+	overflow-x: auto;
+	width: 450px;
 	transition-duration: 0.2s;
+	white-space: normal;
+	height: 390px;
+}
+
+.viewtutor p {
+	padding-top: 15px;
+	width: 100%;
+	font-size: 14px;
 }
 
 .viewtutor:hover {
@@ -1469,6 +1479,19 @@ canvas {
 	padding-bottom: 20px;
 }
 
+#editbio {
+	float: right;
+	margin-top: -70px;
+	font-size: 30px;
+	color: #444;
+	transition-duration: 0.2s;
+}
+
+#editbio:hover {
+	cursor: pointer;
+	color: #30CFD0;
+}
+
 #tutoruser {
 	font-size: 24px;
 	color: #30CFD0;
@@ -1483,6 +1506,31 @@ canvas {
 
 #tutorrating .fas {
 	color: gold;
+}
+
+#tutorbio {
+	width: 100%;
+	font-size: 18px;
+	height: 200px;
+	outline: 0;
+	border: 1px solid #ccc;
+	margin-bottom: 30px;
+}
+
+#bioerror {
+	font-size: 17px;
+	color: red;
+	margin-top: 20px;
+}
+
+#submitBio {
+	display: none;
+}
+
+#submitBio:hover {
+	background-position: left;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 #tutorsubjects {
@@ -1626,7 +1674,7 @@ canvas {
 	padding-bottom: 20px;
 }
 
-#resetPass2, #addsubject, #matchtutors {
+#resetPass2, #addsubject, #matchtutors, #submitBio {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 200% 100%;
 	background-position: right;
