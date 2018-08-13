@@ -147,8 +147,12 @@ $(document).ready(function() {
 	$( "#subjectmenu .dropdown-item" ).each(function(index) {
 	    $(this).on("click", function(){
 	        // For the boolean value
+	        var subjectslength = $("#subject").val().split(", ").length;
+
 		    if($("#subject").val().search(this.innerHTML.toLowerCase()) != -1) {
 		    	$("#subjectfielderror").html("You have " + this.innerHTML.toLowerCase() + " as a subject already");
+		    } else if(subjectslength == 3) {
+		    	$("#subjectfielderror").html("You can request up to 3 subjects per session.");
 		    } else {
 		        if($("#subject").val() == "") {
 		        	$("#subject").val(this.innerHTML.toLowerCase());
