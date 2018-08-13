@@ -142,7 +142,6 @@ $(document).ready(function() {
     //tutor filter function 
 	$( "#tutors .dropdown-item" ).each(function(index) {
 	    $(this).on("click", function(){
-	        // For the boolean value
 	        $("#tutors h4 strong").html(this.innerHTML);
 	        $("#filtertext").html(this.innerHTML);
 	        var subject = this.innerHTML.toLowerCase();
@@ -154,6 +153,26 @@ $(document).ready(function() {
 			  	$(this).show();
 			  }
 			});
+	    });
+	});
+
+	$( ".tutor" ).each(function(index) {
+	    $(this).on("click", function(){
+			var name = event.currentTarget.childNodes[3].innerHTML;
+			firebase.database().ref('users').orderByChild("name").equalTo(name).on("value", snap => {
+		 		var tutorids = Object.keys(snap.val())[0];
+		 		var tutorinfo = firebase.database().ref('users/' + tutorids);
+				tutorinfo.on('value', snap => {
+					var tutorname = snap.child("name").val();
+					var tutorsubjects = snap.child("subjects").val().split(",").join(", ");
+					var tutorbio = snap.child("bio").val();
+					$("#bioname").html(tutorname);
+					$("#biosubjects").html(tutorsubjects);
+					$("#biobio").html(tutorbio);
+				});
+		 	});
+		 	$("#biomask").fadeIn();
+			$("#biopopup").fadeIn();	        
 	    });
 	});
 
@@ -679,6 +698,11 @@ function tutorsessionstab() {
 function openCreate() {
 	$(".main-div").css("display", "none");
 	$(".create-div").fadeIn();
+}
+
+function fadebiomask() {
+	$("#biomask").fadeOut();
+	$("#biopopup").fadeOut();
 }
 
 //initialize database

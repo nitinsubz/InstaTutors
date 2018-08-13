@@ -645,7 +645,7 @@ canvas {
 
 #tutorapply {
 		position: fixed;
-		z-index: 99;
+		z-index: 91;
 		right: 5px;
 		top: 5px;
 		font-size: 24px;
@@ -664,6 +664,61 @@ canvas {
 	text-decoration: none;
 }
 
+#biomask {
+	background-color: #222;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	opacity: 0.8;
+	z-index: 95;
+	position: fixed;
+	display: none; 
+}
+
+#biopopup {
+	position: fixed;
+	z-index: 99;
+	top: 10%;
+	left: 0;
+	right: 0;
+	margin: 0px auto;
+	background-color: white;
+	padding: 70px 70px 90px 70px;
+	width: 60%;
+	display: none;
+	border-radius: 30px;
+}
+
+#bioname {
+	font-size: 45px;
+	color: #444;
+}
+
+#biosubjects {
+	font-size: 25px;
+	color: #30CFD0;
+}
+
+#biobio {
+	font-size: 18px;
+	color: #666;
+}
+
+#biox {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	font-size: 25px;
+	color: #555;
+}
+
+#biox:hover {
+	color: #30CFD0;
+	text-decoration: none;
+	cursor: pointer;
+}
+
 .col4 {
 	width: 33%;
 	padding: 10px 3%;
@@ -674,10 +729,21 @@ canvas {
 
 .tutor {
 	text-align: center;
+	transition-duration: 0.2s;
+}
+
+.tutor:hover {
+	cursor: pointer;
+}
+
+.tutor:hover img {
+	opacity: 0.8;
+	transform: scale(1.02);
 }
 
 .leader img, .tutor img {
 	width: 100%;
+	transition-duration: 0.2s;
 	border-radius: 100%;
 }
 
@@ -2947,6 +3013,36 @@ canvas {
 	#tutorsubjects .label {
 		font-size: 16px;
 		line-height: 45px;
+	}
+
+	#stars {
+		top: 5%;
+		width: 80%;
+	}
+
+	#stars h3 {
+		font-size: 20px;
+	}
+
+	#biopopup {
+		position: fixed;
+		z-index: 99;
+		top: 5%;
+		padding: 30px 4% 50px 4%;
+		width: 92%;
+		overflow-y: auto;
+	}
+
+	#bioname {
+		font-size: 28px;
+	}
+
+	#biosubjects {
+		font-size: 20px;
+	}
+
+	#biobio {
+		font-size: 15px;
 	}
 }
 
