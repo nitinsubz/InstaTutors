@@ -164,7 +164,11 @@ $(document).ready(function() {
 		 		var tutorinfo = firebase.database().ref('users/' + tutorids);
 				tutorinfo.on('value', snap => {
 					var tutorname = snap.child("name").val();
-					var tutorsubjects = snap.child("subjects").val().split(",").join(", ");
+					var tutorsubjects = snap.child("subjects").val().split(",");
+					for(var k=0; k<tutorsubjects.length; k++) {
+						tutorsubjects[k] = tutorsubjects[k].charAt(0).toUpperCase() + tutorsubjects[k].slice(1);
+					}
+					tutorsubjects = tutorsubjects.join(", ");
 					var tutorbio = snap.child("bio").val();
 					$("#bioname").html(tutorname);
 					$("#biosubjects").html(tutorsubjects);
