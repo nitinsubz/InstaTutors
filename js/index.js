@@ -849,7 +849,7 @@ function validate() {
    	var now = new Date();
 
 
-	if(date == "" || selectedDate < now.setDate(now.getDate() + 4)) {
+	if(date == "" || selectedDate < now.setDate(now.getDate() + 3)) {
 		missing.push(" valid date, date must be at least 4 days ahead.");
 	}
 	if(time == "") {
@@ -888,7 +888,7 @@ function validate() {
 								Email.send("support@instatutors.org",
 											snap.val(),
 											"New Tutoring Session Requested for " + subject + " on " + splitDate(date),
-											content,
+											content + "<p>Take this session <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
 											{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 							});
 						}
@@ -911,7 +911,7 @@ function validate() {
 		Email.send("support@instatutors.org",
 			email,
 			"Tutoring Session Requested for " + subject + " on " + splitDate(date),
-			content,
+			content + "<p>Check out your account <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 			//527d49d6-dba7-4334-8775-1b8ccd9b3eeb 
 
