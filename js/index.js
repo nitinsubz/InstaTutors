@@ -845,78 +845,94 @@ function validate() {
 	var details = $("#details").val();
 	var missing = [];
 
-	var selectedDate = new Date(date);
-   	var now = new Date();
+	firebase.database().ref('users/' + splitEmail(email)).on('value', function(snapshot) {
+		var sessionsCount = 0;
+		snapshot.forEach(function(childSnapshot) {
+			var date2 = new Date(childSnapshot.child("date").val());
+			var now = new Date();
+			if(date2 > now && date2 != null) {
+				sessionsCount++;
+			}		
+		});
+		console.log(sessionsCount);
+		if(sessionsCount > 4) {
+			$("#formerrors").css("color", "red");
+			$("#formerrors").html("You can only have 5 active requests at a time.");
+			event.preventDefault();
+		} else {
+			var selectedDate = new Date(date);
+		   	var now = new Date();
 
 
-	if(date == "" || selectedDate < now.setDate(now.getDate() + 3)) {
-		missing.push(" valid date, date must be at least 4 days ahead.");
-	}
-	if(time == "") {
-		missing.push(" time");
-	}
-	if(subject == "") {
-		missing.push(" subject");
-	}
-
-	if(missing != "") {
-		$("#formerrors").html("Please enter the following: " + missing);
-		event.preventDefault();
-	} else {
-		writeRequest(email, date, time, subject, details, "no", tutor);
-
-		var content = "<h3 style=\"color: #ae3dc6\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
-
-		var ref = firebase.database().ref('users');
-	//get uids of all tutors
-		ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
-	 		var tutorids = Object.keys(snap.val());
-	 		console.log(tutorids);
-	 		for(var i=0; i<tutorids.length; i++) {
-	 			var myUser = firebase.database().ref('users/' + tutorids[i]).child("subjects");
-				myUser.on("value", snap => {
-						var splitsubs = snap.val().split(",");
-						var reqsubs = subject.split(", ");
-
-						var overlap = intersect(splitsubs, reqsubs).length;
-						//check whether request's subjects overlap tutor's subjects
-						//if not, don't show request
-						if(overlap > 0) {
-							var tutoremail = firebase.database().ref('users/' + tutorids[i]).child("email");
-							tutoremail.on("value", snap => {
-								console.log(snap.val());
-								Email.send("support@instatutors.org",
-											snap.val(),
-											"New Tutoring Session Requested for " + subject + " on " + splitDate(date),
-											content + "<p>Take this session <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
-											{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
-							});
-						}
-
-				});
+			if(date == "" || selectedDate < now.setDate(now.getDate() + 3)) {
+				missing.push(" valid date (date must be at least 4 days ahead of today)");
 			}
-		 });
-		
-		$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
-		$("#tutor2").html("Tutor: " + tutor);
-		$("#time2").html("Time: " + time);
-		$("#subject2").html("Subject: " + subject);
-		$("#details2").html("Details: " + details);
+			if(time == "") {
+				missing.push(" time");
+			}
+			if(subject == "") {
+				missing.push(" subject");
+			}
+			if(missing != "") {
+				$("#formerrors").html("Please enter the following: " + missing);
+				event.preventDefault();
+			} else {
+				writeRequest(email, date, time, subject, details, "no", tutor);
 
-		$("#mainbody").css("display", "none");
-		$("#confirmedbody").fadeIn();
-		$("#logout").css("display", "none");
+				var content = "<h3 style=\"color: #ae3dc6\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 
-		//send confirmation email to user
-		Email.send("support@instatutors.org",
-			email,
-			"Tutoring Session Requested for " + subject + " on " + splitDate(date),
-			content + "<p>Check out your account <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
-			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
-			//527d49d6-dba7-4334-8775-1b8ccd9b3eeb 
+				var ref = firebase.database().ref('users');
+			//get uids of all tutors
+				ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
+			 		var tutorids = Object.keys(snap.val());
+			 		console.log(tutorids);
+			 		for(var i=0; i<tutorids.length; i++) {
+			 			var myUser = firebase.database().ref('users/' + tutorids[i]).child("subjects");
+						myUser.on("value", snap => {
+								var splitsubs = snap.val().split(",");
+								var reqsubs = subject.split(", ");
 
-		return true;
-	}
+								var overlap = intersect(splitsubs, reqsubs).length;
+								//check whether request's subjects overlap tutor's subjects
+								//if not, don't show request
+								if(overlap > 0) {
+									var tutoremail = firebase.database().ref('users/' + tutorids[i]).child("email");
+									tutoremail.on("value", snap => {
+										console.log(snap.val());
+										Email.send("support@instatutors.org",
+													snap.val(),
+													"New Tutoring Session Requested for " + subject + " on " + splitDate(date),
+													content + "<p>Take this session <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
+													{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+									});
+								}
+
+						});
+					}
+				 });
+				
+				$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
+				$("#tutor2").html("Tutor: " + tutor);
+				$("#time2").html("Time: " + time);
+				$("#subject2").html("Subject: " + subject);
+				$("#details2").html("Details: " + details);
+
+				$("#mainbody").css("display", "none");
+				$("#confirmedbody").fadeIn();
+				$("#logout").css("display", "none");
+
+				//send confirmation email to user
+				Email.send("support@instatutors.org",
+					email,
+					"Tutoring Session Requested for " + subject + " on " + splitDate(date),
+					content + "<p>Check out your account <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
+					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+					//527d49d6-dba7-4334-8775-1b8ccd9b3eeb 
+
+				return true;
+			}
+		}
+	});
 }
 
 //let tutor edit their bios
