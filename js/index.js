@@ -315,10 +315,10 @@ firebase.auth().onAuthStateChanged(function(user) {
    					var now = new Date();
 
 					if(now < selectedDate && date != null) {
-							$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>email: " + email + "</h4>");
+							$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4>");
 						} else {
 							if(date != null) {
-								$("#tutorpastsessionsbody").append("<div class=\"tutorreq lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>email: " + email + "</h4>");				
+								$("#tutorpastsessionsbody").append("<div class=\"tutorreq lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4>");				
 							}
 						}
 
@@ -406,10 +406,10 @@ firebase.auth().onAuthStateChanged(function(user) {
    					var now = new Date();
 
 					if(now < selectedDate && date != null) {
-							$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>Time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
+							$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>Time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
 						} else {
 							if(date != null) {
-								$("#pastsessionsbody").append("<div class=\"req lightblue\"> <div class=\"star\" id=\"" + splitEmail(email) + date + "\"> <i onclick=\"openStar()\" class=\"fas fa-star\"></i> </div> <h2>Date: " + date + "</h2> " + "<h4>Time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
+								$("#pastsessionsbody").append("<div class=\"req lightblue\"> <div class=\"star\" id=\"" + splitEmail(email) + date + "\"> <i onclick=\"openStar()\" class=\"fas fa-star\"></i> </div> <h2>Date: " + date + "</h2> " + "<h4>Time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
 							}
 						}
 
@@ -556,6 +556,7 @@ function takeSession() {
 	var time = event.currentTarget.childNodes[5].innerHTML.slice(6);
 	var subject = event.currentTarget.childNodes[7].innerHTML.slice(9);
 	var newemail = splitEmail(email.slice(7));
+	var details = event.currentTarget.childNodes[9].innerHTML.slice(9);
 	var r = confirm("Confirm that you can commit to tutoring this session?");
 	var yes = "yes";
 
@@ -586,7 +587,7 @@ function takeSession() {
 			"Confirmed: Tutoring Session on " + date,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
-		}	
+		}
 }
 
 //cancel Tutoring session (request)
