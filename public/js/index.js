@@ -112,7 +112,7 @@ function closesidenav() {
     $(".sidebar .border-bot").removeClass("lengthen");
 }
 
-$(document).ready(function() {
+$(document).ready(function(){
     $(".back2top").click(function(event) {
     event.preventDefault();
     $("html, body").animate({ scrollTop: 0 }, 800);
@@ -141,7 +141,7 @@ $(document).ready(function() {
 
     //tutor filter function 
 	$( "#tutors .dropdown-item" ).each(function(index) {
-	    $(this).on("click", function(){
+	    $(this).not("#all").on("click", function(){
 	        $("#tutors h4 strong").html(this.innerHTML);
 	        $("#filtertext").html(this.innerHTML);
 	        var subject = this.innerHTML.toLowerCase();
@@ -156,11 +156,21 @@ $(document).ready(function() {
 	    });
 	});
 
+	$("#all").on("click", function(){
+		$("#tutors h4 strong").html(this.innerHTML);
+	    $("#filtertext").html(this.innerHTML);
+		$( ".tutor" ).each(function(index) {
+			$(this).hide();
+			$(this).show();
+		});
+	});
+
 	$( ".tutor" ).each(function(index) {
 	    $(this).on("click", function(){
 			var name = event.currentTarget.childNodes[3].innerHTML;
-			firebase.database().ref('users').orderByChild("name").equalTo(name).on("value", snap => {
-		 		var tutorids = Object.keys(snap.val())[0];
+			firebase.database().ref('names/' + name).child('id').on("value", snap => {
+		 		var tutorids = snap.val();
+		 		console.log(tutorids);
 		 		var tutorinfo = firebase.database().ref('users/' + tutorids);
 				tutorinfo.on('value', snap => {
 					var tutorname = snap.child("name").val();
@@ -723,6 +733,10 @@ function writeAccount(name, email, phone, stat) {
 		    stat: stat,
 		    pastSessions: 0
 		 });
+
+		firebase.database().ref('users/' + name).set({
+			id: splitEmail(email)
+		});
 }
 
 
