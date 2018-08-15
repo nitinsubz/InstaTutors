@@ -905,7 +905,7 @@ function validatemsg() {
 		document.getElementById("contactForm").reset();
 
 		Email.send("inquiries@instatutors.org",
-			"tutors@instatutors.org",
+			"support@instatutors.org",
 			"New Message from " + name,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
