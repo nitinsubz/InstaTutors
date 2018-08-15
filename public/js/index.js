@@ -912,17 +912,17 @@ function validate() {
 				if(timing == "weekly") {
 						for(var i=0; i<numberofsessions; i++) {
 							var newdate = new Date(new Date(date).toString());
-							newdate = newdate.setDate(newdate.getDate() + 7*i);
-							newdate = new Date(newdate);
-							newdate = ('0' + (newdate.getMonth()+1)).slice(-2) + '-' + ('0' + newdate.getDate()).slice(-2) + '-' + newdate.getFullYear();
+							newdate = newdate.addDays(7*i);
+							newdate = newdate.setTimezoneOffset(-1500);
+							newdate = newdate.toString("MM-dd-yyyy");
 							dates.push(newdate);
 						} 
 				} else if(timing == "bi-weekly") {
 						for(var i=0; i<numberofsessions; i++) {
 							var newdate = new Date(new Date(date).toString());
-							newdate = newdate.setDate(newdate.getDate() + 14*i);
-							newdate = new Date(newdate);
-							newdate = ('0' + (newdate.getMonth()+1)).slice(-2) + '-' + ('0' + newdate.getDate()).slice(-2) + '-' + newdate.getFullYear();
+							newdate = newdate.addDays(14*i);
+							newdate = newdate.setTimezoneOffset(-1500);
+							newdate = newdate.toString("MM-dd-yyyy");
 							dates.push(newdate);
 						}
 				}
