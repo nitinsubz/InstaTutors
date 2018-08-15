@@ -600,7 +600,7 @@ function takeSession() {
 			email,
 			"Confirmed: Tutoring Session on " + date,
 			content,
-			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { alert("sent") }});
 		}
 }
 
@@ -625,7 +625,7 @@ function cancel() {
 			"tutors@instatutors.org",
 			"New Tutoring Session Requested for " + subject + " on " + newdate,
 			content,
-			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { alert("sent") }});
 		
 		alert("Tutoring session for " + newdate + " canceled.");
 	} else {
@@ -913,7 +913,7 @@ function validate() {
 						for(var i=0; i<numberofsessions; i++) {
 							var newdate = new Date(new Date(date).toString());
 							newdate = newdate.addDays(7*i);
-							newdate = newdate.setTimezoneOffset(-1500);
+							newdate = newdate.setTimezoneOffset(-1600);
 							newdate = newdate.toString("MM-dd-yyyy");
 							dates.push(newdate);
 						} 
@@ -921,7 +921,7 @@ function validate() {
 						for(var i=0; i<numberofsessions; i++) {
 							var newdate = new Date(new Date(date).toString());
 							newdate = newdate.addDays(14*i);
-							newdate = newdate.setTimezoneOffset(-1500);
+							newdate = newdate.setTimezoneOffset(-1600);
 							newdate = newdate.toString("MM-dd-yyyy");
 							dates.push(newdate);
 						}
@@ -1010,7 +1010,7 @@ function validate() {
 						$("#mainbody").css("display", "none");
 						$("#confirmedbody").fadeIn();
 						$("#logout").css("display", "none");
-
+						console.log(content);
 						//send confirmation email to user
 						Email.send("support@instatutors.org",
 							email,
