@@ -1,5 +1,5 @@
 $(window).on('load', function () {
-	$("#navbar"how();
+	$("#navbar").show();
 });
 
 
