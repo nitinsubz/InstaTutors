@@ -592,7 +592,7 @@ function takeSession() {
 			details: details,	
 		 });
 
-		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subjects:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
+		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + date + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subjects:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
 
 		Email.send("support@instatutors.org",
 			email,
