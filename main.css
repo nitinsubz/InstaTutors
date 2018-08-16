@@ -2435,6 +2435,10 @@ canvas {
 		font-size: 30px;
 	}
 
+	#infotext h1 {
+		width: 100%;
+	}
+
 	#infotext p {
 		padding: 10px 0px;
 		font-size: 17px;

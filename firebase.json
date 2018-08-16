@@ -21,6 +21,10 @@
       "destination" : "/donate.html"
       
     } , {
+      "source" : "/about",
+      "destination" : "/about.html"
+      
+    } , {
       "source" : "/index",
       "destination" : "/index.html"
       
