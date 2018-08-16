@@ -583,32 +583,57 @@ function takeSession() {
 
 	var split = splitEmail(firebase.auth().currentUser.email);
 
-	var userName = firebase.database().ref('users/' + split).child('name');
-
-	if(r == true) {
-		userName.on('value', snap => {
-			firebase.database().ref('requests/' + newdate + newemail).child("tutor").set(snap.val());
-			firebase.database().ref('users/' + newemail + "/" + newdate).child("tutor").set(snap.val());
+	firebase.database().ref('users/' + split).on('value', function(snapshot) {
+		var sessionsCount = 0;
+		var prevdates = [];
+		snapshot.forEach(function(childSnapshot) {
+			var date2 = new Date(childSnapshot.child("date").val());
+			var now = new Date();
+			if(date2 > now && date2 != null) {
+				sessionsCount++;
+				prevdates.push(childSnapshot.child("date").val());
+			}		
 		});
-		firebase.database().ref('requests/' + newdate + newemail).child("done").set(yes);
-		firebase.database().ref('users/' + newemail + "/" + newdate).child("done").set(yes);
-		alert("confirmed. ");
-		firebase.database().ref('users/' + split + "/" + newdate).set({
-		    email: email.slice(7),
-		    date: newdate,
-		    time: time,
-			subject: subject,
-			details: details,	
-		 });
+		console.log(prevdates.indexOf(newdate));
+		if(prevdates.indexOf(newdate) != -1 && r == true) {
+			alert("You cannot take more than one session in the same day.")
+		} else {
+			if(r == true) {
+				var userName = firebase.database().ref('users/' + split).child('name');
+				userName.on('value', snap => {
+					firebase.database().ref('requests/' + newdate + newemail).child("tutor").set(snap.val());
+					firebase.database().ref('users/' + newemail + "/" + newdate).child("tutor").set(snap.val());
+				});
+				firebase.database().ref('requests/' + newdate + newemail).child("done").set(yes);
+				firebase.database().ref('users/' + newemail + "/" + newdate).child("done").set(yes);
+				alert("confirmed. ");
+				firebase.database().ref('users/' + split + "/" + newdate).set({
+				    email: email.slice(7),
+				    date: newdate,
+				    time: time,
+					subject: subject,
+					details: details,	
+				 });
 
-		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + date + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subjects:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
+				var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + date + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subjects:</strong> " + subject + "</p>  <p><strong>Details</strong>" + details + "</p> <p>Your tutor will email you within 24 hours!</p>";
 
-		Email.send("support@instatutors.org",
-			email,
-			"Confirmed: Tutoring Session on " + date,
-			content,
-			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { alert("sent") }});
-		}
+				Email.send("support@instatutors.org",
+					email,
+					"Confirmed: Tutoring Session on " + date,
+					content,
+					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+
+				var content2 = "<h3><strong>Date:</strong> " + date + "</h3> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject(s):</strong> " + subject + "</p> <p><strong>Details</strong>" + details + "</p> <p>Make sure to email your tutee with the appropriate appear.in link, and set a reminder for yourself so you do not forget to show up for your session.  Good luck!</p>";
+
+				Email.send("support@instatutors.org",
+					firebase.auth().currentUser.email,
+					"Confirmed: Tutoring Session on " + date,
+					content2,
+					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+				}
+			}
+
+	});
 }
 
 //cancel Tutoring session (request)
@@ -632,7 +657,7 @@ function cancel() {
 			"tutors@instatutors.org",
 			"New Tutoring Session Requested for " + subject + " on " + newdate,
 			content,
-			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { alert("sent") }});
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
 		
 		alert("Tutoring session for " + newdate + " canceled.");
 	} else {
