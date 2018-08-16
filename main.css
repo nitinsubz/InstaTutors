@@ -681,6 +681,107 @@ canvas {
 	display: none;
 }
 
+/*Apply*/
+
+#applyhead {
+	padding: 110px 10% 80px 10%;
+	background-color: black;
+	color: white;
+}
+
+#applyhead h1 {
+	font-size: 50px;
+}
+
+#applyhead h1 strong {
+	color: #c9feff;
+}
+
+#applyhead h3 {
+	font-size: 25px;
+	padding: 10px;
+}
+
+#applybody {
+	background-color: #ddd;
+	margin: 0px;
+}
+
+#applyform {
+	margin: 0px 10% 0px 10%;
+	padding: 10px 5% 60px 5%;
+	background-color: white;
+	margin-top: -60px;
+	border-radius: 20px 20px 0px 0px;
+}
+
+#applyform h3 {
+	font-size: 26px;
+	color: #555;
+	padding-top: 30px;
+}
+
+#applyform .row {
+	padding: 20px 0px;
+	margin-left: 2%;
+	font-size: 20px;
+}
+
+#applyform .row input {
+	width: 50%;
+	margin-left: 2%;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	transition-duration: 0.2s;
+	outline: 0;
+}
+
+#applyform .row input:focus {
+	border-bottom: 2px solid #30CFD0;
+}
+
+#applyform .row p {
+	float: left;
+}
+
+#applysubjects {
+	width: 62%;
+	float: left;
+	margin-right: 1%;
+}
+
+#applysubjectclear {
+	margin: 0px 10px;
+	font-size: 23px;
+}
+
+#applyform .dropdown {
+	float: left;
+	display: inline;
+	margin-left: 66%;
+	margin-top: -30px;
+}
+
+#applysubjectclear:hover {
+	color: red;
+	cursor: pointer;
+}
+
+#applysubjectmenu .dropdown-item {
+	display: block;
+	padding: 5px 30px 5px 10px;
+	font-size: 18px;
+	color: #444;
+	transition-duration: 0.1s;
+}
+
+#applysubjectmenu .dropdown-item:hover {
+	cursor: pointer;
+	background-color: #eee;
+	text-decoration: none;
+}
+
+
 /*About */
 #abouthead {
 	position: absolute;

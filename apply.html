@@ -32,7 +32,7 @@
 			<a href="tutors">Tutors</a>
 			<a href="donate">Donate</a>
 			<a href="leadership">Leadership</a>
-			<a href="apply">Apply to Tutor</a>
+			<a href="https://goo.gl/forms/apPMHLYBfNFaTylg1">Apply to Tutor</a>
 		</div>
 		<div class="socialmedia">
 			<a href="https://www.facebook.com/instatutorsofficial/"><i class="fab fa-facebook-square"></i></a>
@@ -56,50 +56,48 @@
 			<li class="navig2"><a href="donate">Donate</a></li>
 			<li class="navig2"><a href="login" id="login2">Login or Signup</a></li>
 		</div>
-		<div id="abouthead">
-			<h3>ABOUT INSTATUTORS</h3>
-			<h1><strong>OUR MISSION</strong> is to provide better tutoring solutions to students from any background, anywhere.</h1>
+		<div id="applybody">
+		<div id="applyhead">
+			<h1><strong>APPLY</strong> To Become a Tutor!</h1>
+			<h3>Simply submit this form, and we will review your application and email you within 48 hours if your application has been accepted!</h3>
 		</div>
-		<div id="aboutheadimg">
-		</div>
-		<div id="aboutbody">
-			<h4>Our Story</h4>
-			<div class="border-bot length" style="background-color: #444;"></div>
-			<div class="row">
-				<div class="col-sm-9 slideup">
-					<i class="fas fa-calculator slideright"></i>
-					<p>In 2016, Nitin Subramanian along with a group of juniors from Monta Vista High School wanted to create a program that strived to help children in middle school who struggled with math. After consulting with administration, Path to Math was born, and after a lot of sessions, they quickly found out that everyone had other commitments and couldn’t find time to get the extra help. With that in mind, Nitin set out to find a solution to provide top quality tutoring to students anywhere, anytime.</p>
+			<div id="applyform">
+				<h3>Personal Information</h3>
+				<div class="row">
+					Name: <input type="name" placeholder="Enter your FULL name..." id="applyname" />
 				</div>
-				<div class="col-sm-3">
-					<i class="fas fa-calculator slideright" style="margin-top: 30px;"></i>
+				<div class="row">
+					Email: <input type="email" placeholder="Enter a Valid Email address..." id="applyemail" />
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-3">
-					<i class="fas fa-graduation-cap slideleft" style="margin-top: 30px;"></i>
+				<div class="row">
+					Grade: <input type="text" placeholder="Enter your grade..." id="applygrade" />
 				</div>
-				<div class="col-sm-9 slideup">
-					<i class="fas fa-graduation-cap slideleft"></i>
-					<p>In 2018, InstaTutors was founded on the belief that students around the world, from any background, deserve a quality, top-tier tutoring experience. We aim to spread knowledge and practical help to students who need it. We hope to grow our organization such that InstaTutors becomes a reliable source for help in all subjects, for students of all ages. </p>
+				<div class="row">
+					School: <input type="text" placeholder="Enter the high school you attend..." id="applyschool" />
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-9 slideanim">
-					<i class="fas fa-map-marker-alt"></i>
-					<p>InstaTutors currently has expanded their outreach team into four states, with over a dozen subjects offered to students. With over 25 qualified and motivated high school students, with a desire to change the world, InstaTutors is continuing to impact communities nationwide. </p>
+				<div class="row">
+					<p>Subjects: </p> <input type="text" name="subject" id="applysubjects" placeholder="Use the dropdown to add subjects you would like to tutor..." disabled>
+					<div class="clearinput" id="applysubjectclear">x</div>
+				   			<div class="dropdown">
+						      <button class="btn btn-default dropdown-toggle" type="button" id="subjectselector2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="subjecttext3">Subject </span> <i class="fas fa-caret-down"></i></button>
+						      <div class="dropdown-menu" id="applysubjectmenu" aria-labelledby="dropdownMenuButton">
+						        <a class="dropdown-item">Math</a>
+						        <a class="dropdown-item">Physics</a>
+						        <a class="dropdown-item">Biology</a>
+						        <a class="dropdown-item">Chemistry</a>
+						        <a class="dropdown-item">Writing</a>
+						        <a class="dropdown-item">History</a>
+						        <a class="dropdown-item">WebDev</a>
+						        <a class="dropdown-item">Java</a>
+						        <a class="dropdown-item">Python</a>
+						        <a class="dropdown-item">Business</a>
+						        <a class="dropdown-item">Spanish</a>
+						        <a class="dropdown-item">French</a>
+						        <a class="dropdown-item">Chinese</a>
+						      </div>
+						    </div>
 				</div>
-				<div class="col-sm-3 slideanim3">
-					<i class="fas fa-map-marker-alt"></i>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-3 slideanim2">
-					<i class="fas fa-globe"></i>
-				</div>
-				<div class="col-sm-9 slideanim">
-					<i class="fas fa-globe"></i>
-					<p>Just as Margaret Mead said, <i>“Never doubt that a small group of thoughtful, committed citizens can change the world; indeed, it's the only thing that ever has.”</i></p>
-				</div>
+				<h3>Supplemental Questions</h3>
 			</div>
 		</div>
 		<div id="footer">
@@ -114,6 +112,7 @@
 				<div class="col-sm-2">
 					<h3>Contact</h3>
 					<a href="mailto:support@instatutors.org">Support</a>
+					<a href="mailto:support@instatutors.org">Report a Bug</a>
 				</div>
 				<div class="col-sm-2">
 					<h3>For Tutors</h3>

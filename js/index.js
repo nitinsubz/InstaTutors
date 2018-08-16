@@ -237,6 +237,21 @@ $(document).ready(function(){
 	    });
 	});
 
+	$( "#applysubjectmenu .dropdown-item" ).each(function(index) {
+		$(this).on("click", function(){
+			if($("#applysubjects").val() == "") {
+			   $("#applysubjects").val(this.innerHTML);
+			} else {
+			    $("#applysubjects").val($("#applysubjects").val() + ", " + this.innerHTML); 
+			}
+			$("#subjecttext3").html(this.innerHTML);
+		});
+	});
+
+	$("#applysubjectclear").on("click", function(){
+		$("#applysubjects").val('');
+	});
+
 	$("#subjectclear").on("click", function(){
 		$("#subject").val('');
 		$("#subjectfielderror").html("");
@@ -596,7 +611,7 @@ function takeSession() {
 		});
 		console.log(prevdates.indexOf(newdate));
 		if(prevdates.indexOf(newdate) != -1 && r == true) {
-			alert("You cannot take more than one session in the same day.")
+			alert("You cannot take more than one session in the same day.");
 		} else {
 			if(r == true) {
 				var userName = firebase.database().ref('users/' + split).child('name');
