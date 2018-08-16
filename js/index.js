@@ -745,7 +745,7 @@ function writeAccount(name, email, phone, stat) {
 		    pastSessions: 0
 		 });
 
-		firebase.database().ref('users/' + name).set({
+		firebase.database().ref('names/' + name).set({
 			id: splitEmail(email)
 		});
 }

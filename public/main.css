@@ -511,6 +511,20 @@ canvas {
 	text-decoration: none;
 }
 
+#contactsocial .fab {
+	margin: 10px 20px;
+	color: #333; 
+	font-size: 50px;
+	transition-duration: 0.2s;
+}
+
+#contactsocial .fab:hover {
+	background: linear-gradient(to right, #30CFD0 0%, #330867 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-decoration: none;
+}
+
 #contact h3 {
 	font-size: 28px;
 }
@@ -1377,9 +1391,9 @@ canvas {
 
 /*Login*/
 .main-div, .create-div {
-  width: 30%;
+  width: 34%;
   margin: 0px auto;
-  margin-top: 90px;
+  margin-top: 70px;
   padding: 20px;
   display: none;
 }
