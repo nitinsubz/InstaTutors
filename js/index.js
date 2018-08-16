@@ -12,6 +12,8 @@ $(window).on('load', function () {
 	    });
 	});
 
+	$('[data-toggle="popover"]').popover();
+
 	$("#tutorbio").prop("readonly", true);
 });
 

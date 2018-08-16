@@ -29,6 +29,7 @@
 		</div>
 		<div class="border-bot"></div>
 		<div id="seclinks">
+			<a href="about">About Us</a>
 			<a href="tutors">Tutors</a>
 			<a href="donate">Donate</a>
 			<a href="leadership">Leadership</a>
@@ -118,7 +119,9 @@
 					<form>
 				   	<div class="row">
 						<div class="col-sm-3">
-				    		Subject(s):
+				    		Subject(s): <button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="You may add up to 3 different subjects per tutoring session, but keep in mind that each session is limited to 1.5 hours.">
+							 <i class="fas fa-info-circle"></i>
+							</button>
 				    	</div>
 				    	<div class="col-sm-9">
 				   			<input type="text" name="subject" id="subject" placeholder="Use the dropdown to add subjects you need help in..." disabled><div class="clearinput" id="subjectclear">x</div>
@@ -161,7 +164,9 @@
 				   	</div>
 				   	<div class="row" id="timingoptions">
 				   		<div class="col-sm-3">
-				   			Timing Options:
+				   			Timing Options: <button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="You can book multiple sessions at a time by selected the weekly/bi-weekly options.  Each session will be at the same time and for the same subjects.">
+							 <i class="fas fa-info-circle"></i>
+							</button>
 				   		</div>
 				   		<div class="col-sm-2">
 				   			<input type="radio" id="one-time" name="drone" checked />
@@ -206,7 +211,9 @@
 				   	</div>
 				   	<div class="row" id="tutorinput">
 						<div class="col-sm-3">
-				    		Tutor Request (optional):
+				    		Tutor Request (optional): <button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="We cannot guarantee that you get the tutor you request, but we will try our best to meet your request.">
+							 <i class="fas fa-info-circle"></i>
+							</button>
 				    	</div>
 				    	<div class="col-sm-9">
 				   			<input type="text" name="tutor" id="tutor" placeholder="If you have a preferred tutor, enter their name here...">
