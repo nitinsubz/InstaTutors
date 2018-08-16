@@ -429,7 +429,7 @@ function cancel() {
 
 		var content = "<h3 style=\"color: red\">Tutoring Session Canceled -</h3>  <p><strong>Date:</strong> " + newdate + "</p> <p><strong>Reason:</strong> " + reason + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p>"; 
 		Email.send("support@instatutors.org",
-			"support@instatutors.org",
+			"tutors@instatutors.org",
 			"New Tutoring Request for " + subject,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
@@ -905,7 +905,7 @@ function validatemsg() {
 		document.getElementById("contactForm").reset();
 
 		Email.send("inquiries@instatutors.org",
-			"tutors@instatutors.org",
+			"support@instatutors.org",
 			"New Message from " + name,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});

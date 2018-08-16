@@ -277,8 +277,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 				$(".main-div").css("display", "none");
 			    $("#logout").fadeIn();
 			    $(".create-div").css("display", "none");
-			    $("#indexlogout").fadeIn();
-			    $("#bookasession").css("display", "none");
+			    $("#bookasession a").html("See All Requests");
 			    $("#sidelogin").html("SEE ALL REQUESTS");
 			    $("#login2").html("See All Requests");
 			    $("#tutorsessions").fadeIn();
@@ -364,10 +363,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 			    $(".main-div").css("display", "none");
 			    $("#logout").fadeIn();
 			    $(".create-div").css("display", "none");
-			    $("#bookasession").css("display", "none");
+			    $("#bookasession a").html("Request a Session")
 			    $("#sidelogin").html("Request a Session");
 			    $("#login2").html("Request a Session");
-			    $("#indexlogout").fadeIn();
 
 			    var tuteeSubjects = firebase.database().ref('users/' + split).child("subjects");
 
@@ -515,9 +513,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     $(".main-div").fadeIn();
     $("#email_div").css("display", "none");
     $("#logout").css("display", "none");
-    $("#bookasession").css("display", "block");
     $("#sidelogin").html("LOGIN or SIGNUP");
-    $("#indexlogout").fadeOut();
     $("#tutorsessions").css("display", "none");
     
   }
