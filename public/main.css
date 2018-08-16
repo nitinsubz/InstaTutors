@@ -698,8 +698,6 @@ canvas {
 	width: 100%;
 	height: 400px;
 	background: linear-gradient(to right, black, #212664);
-	-webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
-	clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
 	opacity: 0.94;
 }
 
@@ -3244,12 +3242,6 @@ canvas {
 	}
 
 	#aboutheadimg {
-		z-index: 1;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 420px;
 		background: linear-gradient(to right, black, #212664);
 		-webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
 		clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
@@ -3271,7 +3263,7 @@ canvas {
 	}
 
 	#aboutbody {
-		margin-top: 400px;
+		margin-top: 380px;
 	}
 
 	#aboutbody h4 {
