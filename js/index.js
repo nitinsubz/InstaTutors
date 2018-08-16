@@ -67,6 +67,15 @@ $(window).scroll(function() {
     $("#teamheadimg").css({
     'margin-top' : winTop/1.13
     });
+    $("#contact").css({
+    	'background-position' : 20 + (winTop/60) + "%"
+    });
+    $("#howitworks").css({
+    	'background-position' :  10 + (winTop/60) + "%"
+    });
+    $("#aboutbody").css({
+    	'background-position' :  60 + (winTop/60) + "%"
+    });
 });
 
 

@@ -431,7 +431,9 @@ canvas {
 }
 
 #howitworks {
-	padding: 80px 10%;
+	padding: 80px 10% 110px 10%;
+	background: linear-gradient(84deg, white 50%, #eee 50%);
+	background-size: 160% 100%;
 }
 
 #howitworks ol {
@@ -493,7 +495,11 @@ canvas {
 }
 
 #contact {
-	padding: 70px 30% 70px 10%;
+	margin-top: -60px;
+	background: linear-gradient(-84deg, white 50%, #eee 50%);
+	background-size: 165% 100%;
+	background-position: 80%;
+	padding: 120px 30% 70px 10%;
 	color: #444;
 }
 
@@ -633,6 +639,7 @@ canvas {
 
 #faq {
 	padding: 130px 10% 130px 10%;
+	margin-top: -60px;
 	background: linear-gradient(135deg, #30CFD0, #212664, #330867);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 10s ease infinite;
@@ -671,6 +678,74 @@ canvas {
 }
 
 #plus {
+	display: none;
+}
+
+/*About */
+#abouthead {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 30;
+	padding: 100px 8% 80px 8%;
+}
+
+#aboutheadimg {
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 400px;
+	background: linear-gradient(to right, black, #212664);
+	-webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
+	clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
+	opacity: 0.94;
+}
+
+#abouthead h3 {
+	font-size: 23px;
+	color: #c9feff;
+}
+
+#abouthead h1 {
+	font-size: 50px;
+	color: white;
+}
+
+#abouthead h1 strong {
+	color: #c9feff;
+}
+
+#aboutbody {
+	background: linear-gradient(-84deg, white 50%, #eee 50%);
+	background-size: 160% 100%;
+	background-position: 60%;
+	margin-top: 380px;
+	padding: 60px 8% 110px 8%;
+}
+
+#aboutbody h4 {
+	font-size: 35px;
+	color: #444;
+	font-weight: 700;
+}
+
+#aboutbody p {
+	font-size: 20px;
+	padding: 40px 0px;
+	line-height: 40px;
+}
+
+#aboutbody .col-sm-3 .fas {
+	font-size: 140px;
+	color: #30CFD0;
+	text-align: center;
+	margin: auto;
+	display: block;
+}
+
+#aboutbody .col-sm-9 .fas {
 	display: none;
 }
 
@@ -2452,13 +2527,13 @@ canvas {
 
 	.navig2 {
 	    list-style-type: none;
-	    padding: 15px 0px;
+	    padding: 10px 0px;
 	    text-align: center;
 	  }
 
 	.navig2 a {
 		color: #330867;
-		font-size: 22px;
+		font-size: 18px;
 		text-decoration: none;
 		transition-duration: 0.2s;
 		}
@@ -2536,7 +2611,7 @@ canvas {
 	}
 
 	#contact {
-		padding: 40px 10%;
+		padding: 80px 10% 40px 10%;
 	}
 
 	#contact h1 {
@@ -2568,8 +2643,8 @@ canvas {
 
 	#faq {
 		padding: 70px 10%;
-		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 94%);
-	  	clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 94%);
+		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
+	  	clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
 	}
 
 	#faq h1 {
@@ -3162,6 +3237,67 @@ canvas {
 
 	#howitworks iframe, #howitworks #tutorialvideo {
 		height: 250px;
+	}
+
+	#abouthead {
+		padding: 60px 8% 80px 8%;
+	}
+
+	#aboutheadimg {
+		z-index: 1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 420px;
+		background: linear-gradient(to right, black, #212664);
+		-webkit-clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
+		clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 94%);
+		opacity: 0.94;
+	}
+
+	#abouthead h3 {
+		font-size: 18px;
+		color: #c9feff;
+	}
+
+	#abouthead h1 {
+		font-size: 32px;
+		color: white;
+	}
+
+	#abouthead h1 strong {
+		color: #c9feff;
+	}
+
+	#aboutbody {
+		margin-top: 400px;
+	}
+
+	#aboutbody h4 {
+		font-size: 28px;
+	}
+
+	#aboutbody p {
+		font-size: 16px;
+		padding: 25px 0px;
+		line-height: 34px;
+	}
+
+	#aboutbody .row {
+		padding-top: 20px;
+	}
+
+	#aboutbody .col-sm-3 .fas {
+		display: none;
+	}
+
+	#aboutbody .col-sm-9 .fas {
+		font-size: 100px;
+		color: #30CFD0;
+		text-align: center;
+		margin: 20px auto;
+		display: block;
 	}
 }
 
