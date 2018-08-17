@@ -697,6 +697,10 @@ canvas {
 	color: #c9feff;
 }
 
+#applyhead h3 a {
+	color: #c9feff;
+}
+
 #applyhead h3 {
 	font-size: 25px;
 	padding: 10px;
