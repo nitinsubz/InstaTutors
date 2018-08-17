@@ -630,7 +630,7 @@ function takeSession() {
 					details: details,	
 				 });
 
-				var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + date + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subjects:</strong> " + subject + "</p>  <p><strong>Details</strong>" + details + "</p> <p>Your tutor will email you within 24 hours!</p>";
+				var content = "<h3 style=\"color: #30CFD0\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + date + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subjects:</strong> " + subject + "</p>  <p><strong>Details</strong>" + details + "</p> <p>Your tutor will email you within 24 hours!</p>";
 
 				Email.send("support@instatutors.org",
 					email,
@@ -666,13 +666,35 @@ function cancel() {
 		firebase.database().ref('users/' + newemail + "/" + newdate).remove();
 		firebase.database().ref('requests/' + newdate + newemail).remove();
 		firebase.database().ref('users/' + newemail + "/" + newdate).remove();
+		
+		var ref = firebase.database().ref('users');
+					//get uids of all tutors
+						ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
+					 		var tutorids = Object.keys(snap.val());
+					 		for(var i=0; i<tutorids.length; i++) {
+					 			var myUser = firebase.database().ref('users/' + tutorids[i]).child("subjects");
+								myUser.on("value", snap => {
+										var splitsubs = snap.val().split(",");
+										var reqsubs = subject.split(", ");
 
-		var content = "<h3 style=\"color: red\">Tutoring Session Canceled -</h3>  <p><strong>Date:</strong> " + newdate + "</p> <p><strong>Reason:</strong> " + reason + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p>"; 
-		Email.send("support@instatutors.org",
-			"tutors@instatutors.org",
-			"New Tutoring Session Requested for " + subject + " on " + newdate,
-			content,
-			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+										var overlap = intersect(splitsubs, reqsubs).length;
+										//check whether request's subjects overlap tutor's subjects
+										//if not, don't show request
+										if(overlap > 0) {
+											var tutoremail = firebase.database().ref('users/' + tutorids[i]).child("email");
+											var content = "<h3 style=\"color: red\">Tutoring Session Canceled -</h3>  <p><strong>Date:</strong> " + newdate + "</p> <p><strong>Reason:</strong> " + reason + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p>"; 
+											tutoremail.on("value", snap => {
+												Email.send("support@instatutors.org",
+													"tutors@instatutors.org",
+													"New Tutoring Session Requested for " + subject + " on " + newdate,
+													content,
+													{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+												});
+										}
+
+								});
+							}
+						 });
 		
 		alert("Tutoring session for " + newdate + " canceled.");
 	} else {
@@ -995,7 +1017,7 @@ function validate() {
 							}
 						}
 						console.log(polishdates);
-						content = "<h3 style=\"color: #ae3dc6\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+						content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 						$("#bookedheader").html("Your tutoring requests for " + polishdates + " are logged.");
 						date = polishdates;
 
@@ -1009,13 +1031,13 @@ function validate() {
 								polishdates += dates[p];
 							}
 						}
-						content = "<h3 style=\"color: #ae3dc6\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+						content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 						$("#bookedheader").html("Your tutoring requests for " + polishdates + " are logged.");
 						date = polishdates;
 
 					} else {
 						writeRequest(email, date, time, subject, details, "no", tutor);
-						content = "<h3 style=\"color: #ae3dc6\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+						content = "<h3 style=\"color: #30CFD0\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 						date = splitDate(date);
 						$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
 					}
@@ -1369,7 +1391,7 @@ function submitApplication() {
 	} else {
 		$("#applyerrors").css("color", "green");
 		$("#applyerrors").html("Thank you for submitting!  We will get back to you within 48 hours.");
-		var content = "<h3>New Tutor Application</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>Email:</strong> " + email + "</p> <p><strong>School + Grade:</strong> " + school + ", " + grade + "</p> <p><strong>Subject(s):</strong> " + subjects + "<p><strong> 1. Why do you want to tutor for InstaTutors? </strong></p> <p>" + q1 + "</p> <p><strong>What qualifies you to tutor for InstaTutors? </strong></p> <p> " + q2 + "</p> <p><strong> Describe your most significant academic experience. </strong></p> <p>" + q3 + "</p> <p><strong>What does \"volunteering\" mean to you?</strong></p> <p> " + q4 + "</p>";
+		var content = "<h3 color=\"#30CFD0\">New Tutor Application</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>Email:</strong> " + email + "</p> <p><strong>School + Grade:</strong> " + school + ", " + grade + "</p> <p><strong>Subject(s):</strong> " + subjects + "<p><strong> 1. Why do you want to tutor for InstaTutors? </strong></p> <p>" + q1 + "</p> <p><strong>What qualifies you to tutor for InstaTutors? </strong></p> <p> " + q2 + "</p> <p><strong> Describe your most significant academic experience. </strong></p> <p>" + q3 + "</p> <p><strong>What does \"volunteering\" mean to you?</strong></p> <p> " + q4 + "</p>";
 		Email.send("support@instatutors.org",
 			"instatutorsteam@gmail.com",
 			"New Tutor Application from " + name,
@@ -1400,7 +1422,7 @@ function validatemsg() {
 	} else {
 		$("#formStatus").css("color", "green");
 		$("#formStatus").html("Message Sent!  We will try to get back to you within 24 hours.");
-		var content = "<h3>New Message</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>email:</strong> " + email + "</p> <p><strong>Message:</strong> " + message + "</p>"; 
+		var content = "<h3 color=\"#30CFD0\">New Message</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>email:</strong> " + email + "</p> <p><strong>Message:</strong> " + message + "</p>"; 
 		document.getElementById("contactForm").reset();
 
 		Email.send("inquiries@instatutors.org",
