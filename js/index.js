@@ -593,8 +593,6 @@ function takeSession() {
 	var subject = event.currentTarget.childNodes[7].innerHTML.slice(9);
 	var newemail = splitEmail(email.slice(7));
 	var details = event.currentTarget.childNodes[9].innerHTML.slice(9);
-	var r = confirm("Confirm that you can commit to tutoring this session?");
-	var yes = "yes";
 
 	var split = splitEmail(firebase.auth().currentUser.email);
 
@@ -610,9 +608,11 @@ function takeSession() {
 			}		
 		});
 		console.log(prevdates.indexOf(newdate));
-		if(prevdates.indexOf(newdate) != -1 && r == true) {
+		if(prevdates.indexOf(newdate) != -1) {
 			alert("You cannot take more than one session in the same day.");
 		} else {
+			var r = confirm("Confirm that you can commit to tutoring this session?");
+			var yes = "yes";
 			if(r == true) {
 				var userName = firebase.database().ref('users/' + split).child('name');
 				userName.on('value', snap => {
