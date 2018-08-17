@@ -879,7 +879,8 @@ canvas {
 
 #mainbody {
 	display: none;
-	background-color: #ddd;
+	background: linear-gradient(60deg, #eee 50%, #bbb 50%);
+	background-attachment: fixed;
 }
 
 #bookheader {
@@ -887,8 +888,11 @@ canvas {
 	padding: 130px 10% 110px 10%;
 	text-align: center;
 	color: white;
-	background-color: #330867;
+	background: linear-gradient(60deg, #222 50%, #458789 50%);
+	background-size: 120%;
+	background-position: left;
 	overflow-y: hidden;
+	background-attachment: fixed;
 }
 
 /*Team*/
