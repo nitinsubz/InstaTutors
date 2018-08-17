@@ -681,6 +681,130 @@ canvas {
 	display: none;
 }
 
+/*Apply*/
+
+#applyhead {
+	padding: 110px 10% 80px 10%;
+	background: linear-gradient(-54deg, black 50%, #333 50%);
+	color: white;
+}
+
+#applyhead h1 {
+	font-size: 50px;
+}
+
+#applyhead h1 strong {
+	color: #c9feff;
+}
+
+#applyhead h3 {
+	font-size: 25px;
+	padding: 10px;
+}
+
+#applybody {
+	background: linear-gradient(36deg, #999 50%, #eee 50%);
+	margin: 0px;
+}
+
+#applyform {
+	margin: 0px 10% 0px 10%;
+	padding: 10px 5% 60px 5%;
+	background-color: white;
+	margin-top: -60px;
+	border-radius: 20px 20px 0px 0px;
+}
+
+#applyform h3 {
+	font-size: 26px;
+	color: #555;
+	padding-top: 30px;
+}
+
+#applyform .row {
+	padding: 20px 0px;
+	margin-left: 2%;
+	font-size: 20px;
+}
+
+#applyform .row input {
+	width: 90%;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	transition-duration: 0.2s;
+	outline: 0;
+}
+
+#applyform .row input:focus {
+	border-bottom: 2px solid #30CFD0;
+}
+
+#applyform .row p {
+	float: left;
+}
+
+#applyform .row #applysubjects {
+	width: 68%;
+	float: left;
+	margin-right: 1%;
+}
+
+#applysubjectclear {
+	margin: 0px 1%;
+	font-size: 23px;
+}
+
+#applyform .dropdown {
+	float: left;
+	display: inline;
+	margin-left: 72%;
+	width: 18%;
+	margin-top: -30px;
+}
+
+#applysubjectclear:hover {
+	color: red;
+	cursor: pointer;
+}
+
+#applysubjectmenu .dropdown-item {
+	display: block;
+	padding: 5px 30px 5px 10px;
+	font-size: 18px;
+	color: #444;
+	transition-duration: 0.1s;
+}
+
+#applysubjectmenu .dropdown-item:hover {
+	cursor: pointer;
+	background-color: #eee;
+	text-decoration: none;
+}
+
+#applyform textarea {
+	width: 90%;
+	border: 1px solid #ccc;
+	outline: 0;
+	height: 120px;
+	border-radius: 5px;
+}
+
+#applyform textarea:focus {
+	border: 2px solid #30CFD0;
+}
+
+#applyerrors {
+	font-size: 20px;
+}
+
+.row #submitapp {
+	margin: 0px 0px;
+}
+
+#submitapp:hover {
+	background-position: left;
+}
+
 /*About */
 #abouthead {
 	position: absolute;
@@ -1303,7 +1427,7 @@ canvas {
 	font-size: 18px;
 }
 
-#submit {
+#submit, #submitapp {
 	font-weight: 700;
 	padding: 13px 60px;
 	font-size: 23px;
@@ -2639,6 +2763,12 @@ canvas {
 		width: 100%;
 	}
 
+	#submitapp {
+		margin: 0px 0px;
+		width: 80%;
+		font-size: 18px;
+	}
+
 	#faq {
 		padding: 70px 10%;
 		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
@@ -3291,6 +3421,64 @@ canvas {
 		margin: 20px auto;
 		display: block;
 	}
+
+	#applyhead {
+		padding: 80px 8% 60px 8%;
+	}
+
+	#applyhead h1 {
+		font-size: 30px;
+	}
+
+	#applyhead h3 {
+		font-size: 20px;
+		line-height: 35px;
+	}
+
+	#applyform {
+		margin: -50px 6% 0px 6%;
+		padding: 10px 8% 60px 8%;
+	}
+
+	#applyform h3 {
+		font-size: 22px;
+	}
+
+	#applyform .row {
+		padding: 10px 0px;
+		margin-left: 0%;
+		font-size: 18px;
+	}
+
+	#applyform .row input {
+		width: 100%;
+	}
+
+	#applyform .row #applysubjects {
+		width: 90%;
+		margin-right: 0%;
+	}
+
+	#applyform .dropdown {
+		float: left;
+		display: inline;
+		margin-left: 0%;
+		width: 50%;
+		margin-top: 10px;
+	}
+
+	#applysubjectmenu .dropdown-item {
+		font-size: 16px;
+	}
+
+	#applyform textarea {
+		width: 100%;
+	}
+
+	#applyerrors {
+		font-size: 16px;
+	}
+
 }
 
 

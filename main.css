@@ -685,7 +685,7 @@ canvas {
 
 #applyhead {
 	padding: 110px 10% 80px 10%;
-	background-color: black;
+	background: linear-gradient(-54deg, black 50%, #333 50%);
 	color: white;
 }
 
@@ -703,7 +703,7 @@ canvas {
 }
 
 #applybody {
-	background-color: #ddd;
+	background: linear-gradient(36deg, #999 50%, #eee 50%);
 	margin: 0px;
 }
 
@@ -728,8 +728,7 @@ canvas {
 }
 
 #applyform .row input {
-	width: 50%;
-	margin-left: 2%;
+	width: 90%;
 	border: 0;
 	border-bottom: 1px solid #ccc;
 	transition-duration: 0.2s;
@@ -744,21 +743,22 @@ canvas {
 	float: left;
 }
 
-#applysubjects {
-	width: 62%;
+#applyform .row #applysubjects {
+	width: 68%;
 	float: left;
 	margin-right: 1%;
 }
 
 #applysubjectclear {
-	margin: 0px 10px;
+	margin: 0px 1%;
 	font-size: 23px;
 }
 
 #applyform .dropdown {
 	float: left;
 	display: inline;
-	margin-left: 66%;
+	margin-left: 72%;
+	width: 18%;
 	margin-top: -30px;
 }
 
@@ -781,6 +781,29 @@ canvas {
 	text-decoration: none;
 }
 
+#applyform textarea {
+	width: 90%;
+	border: 1px solid #ccc;
+	outline: 0;
+	height: 120px;
+	border-radius: 5px;
+}
+
+#applyform textarea:focus {
+	border: 2px solid #30CFD0;
+}
+
+#applyerrors {
+	font-size: 20px;
+}
+
+.row #submitapp {
+	margin: 0px 0px;
+}
+
+#submitapp:hover {
+	background-position: left;
+}
 
 /*About */
 #abouthead {
@@ -1404,7 +1427,7 @@ canvas {
 	font-size: 18px;
 }
 
-#submit {
+#submit, #submitapp {
 	font-weight: 700;
 	padding: 13px 60px;
 	font-size: 23px;
@@ -2740,6 +2763,12 @@ canvas {
 		width: 100%;
 	}
 
+	#submitapp {
+		margin: 0px 0px;
+		width: 80%;
+		font-size: 18px;
+	}
+
 	#faq {
 		padding: 70px 10%;
 		-webkit-clip-path: polygon(0 3%, 100% 0, 100% 100%, 0 97%);
@@ -3392,6 +3421,64 @@ canvas {
 		margin: 20px auto;
 		display: block;
 	}
+
+	#applyhead {
+		padding: 80px 8% 60px 8%;
+	}
+
+	#applyhead h1 {
+		font-size: 30px;
+	}
+
+	#applyhead h3 {
+		font-size: 20px;
+		line-height: 35px;
+	}
+
+	#applyform {
+		margin: -50px 6% 0px 6%;
+		padding: 10px 8% 60px 8%;
+	}
+
+	#applyform h3 {
+		font-size: 22px;
+	}
+
+	#applyform .row {
+		padding: 10px 0px;
+		margin-left: 0%;
+		font-size: 18px;
+	}
+
+	#applyform .row input {
+		width: 100%;
+	}
+
+	#applyform .row #applysubjects {
+		width: 90%;
+		margin-right: 0%;
+	}
+
+	#applyform .dropdown {
+		float: left;
+		display: inline;
+		margin-left: 0%;
+		width: 50%;
+		margin-top: 10px;
+	}
+
+	#applysubjectmenu .dropdown-item {
+		font-size: 16px;
+	}
+
+	#applyform textarea {
+		width: 100%;
+	}
+
+	#applyerrors {
+		font-size: 16px;
+	}
+
 }
 
 

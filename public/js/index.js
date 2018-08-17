@@ -1332,6 +1332,52 @@ function selectTutor() {
 	$("#formerrors").html("Selected " + name + " as a tutor.");
 }
 
+function submitApplication() {
+	var name = $("#applyname").val();
+	var email = $("#applyemail").val();
+	var grade = $("#applygrade").val();
+	var school = $("#applyschool").val();
+	var subjects = $("#applysubjects").val();
+	var q1 = $("#applyq1").val();
+	var q2 = $("#applyq2").val();
+	var q3 = $("#applyq3").val();
+	var q4 = $("#applyq4").val();
+	var validemail = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	var missing = [];
+	console.log(name + email + grade + school + subjects);
+	if(name == "") {
+		missing.push("name");
+	}
+	if(email.search(validemail) == -1) {
+		missing.push(" valid email");
+	}
+	if(grade == "") {
+		missing.push(" your grade");
+	}
+	if(school == "") {
+		missing.push(" your school");
+	}
+	if(subjects == "") {
+		missing.push(" your subjects");
+	}
+	if(q1 == "" || q2 == "" || q3 == "" || q4 == "") {
+		missing.push(" responses to one or more supplemental questions");
+	}
+	if(missing != "") {
+		$("#applyerrors").css("color", "red");
+		$("#applyerrors").html("You are missing : " + missing + ".");
+	} else {
+		$("#applyerrors").css("color", "green");
+		$("#applyerrors").html("Thank you for submitting!  We will get back to you within 48 hours.");
+		var content = "<h3>New Tutor Application</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>Email:</strong> " + email + "</p> <p><strong>School + Grade:</strong> " + school + ", " + grade + "</p> <p><strong>Subject(s):</strong> " + subjects + "<p><strong> 1. Why do you want to tutor for InstaTutors? </strong></p> <p>" + q1 + "</p> <p><strong>What qualifies you to tutor for InstaTutors? </strong></p> <p> " + q2 + "</p> <p><strong> Describe your most significant academic experience. </strong></p> <p>" + q3 + "</p> <p><strong>What does \"volunteering\" mean to you?</strong></p> <p> " + q4 + "</p>";
+		Email.send("support@instatutors.org",
+			"instatutorsteam@gmail.com",
+			"New Tutor Application from " + name,
+			content,
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+	}
+}
+
 //validate message on homepage
 function validatemsg() {
 	var name = $("#msgname").val();
