@@ -543,7 +543,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     $(".main-div").fadeIn();
     $("#email_div").css("display", "none");
     $("#logout").css("display", "none");
-    $("#sidelogin").html("LOGIN or SIGNUP");
+    $("#sidelogin").html("LOGIN");
     $("#tutorsessions").css("display", "none");
     
   }
