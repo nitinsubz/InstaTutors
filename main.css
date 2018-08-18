@@ -2707,7 +2707,7 @@ canvas {
 	}
 
 	#info {
-		padding: 550px 10% 230px 10%;
+		padding: 530px 10% 210px 10%;
 		color: white;
 	  	position: relative;
 	  	z-index: 2;
@@ -2715,6 +2715,10 @@ canvas {
 
 	#info h1 {
 		font-size: 30px;
+	}
+
+	#infotext {
+		top: 80px;
 	}
 
 	#infotext h1 {
