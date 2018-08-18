@@ -645,7 +645,7 @@ function validate() {
 
 		//send confirmation email to user
 		Email.send("support@instatutors.org",
-			email + "," + firebase.auth().currentUser.email,
+			email,
 			"Tutoring Session Requested for " + splitDate(date),
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
@@ -905,7 +905,7 @@ function validatemsg() {
 		document.getElementById("contactForm").reset();
 
 		Email.send("inquiries@instatutors.org",
-			"support@instatutors.org",
+			"tutors@instatutors.org",
 			"New Message from " + name,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});

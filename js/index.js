@@ -273,30 +273,35 @@ function splitDate(date) {
 	return(newdate[1] + "-" + newdate[2] + "-" + newdate[0]); 
 }
 
+var provider = new firebase.auth.GoogleAuthProvider();
+
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
     // User is signed in.
 
     var user = firebase.auth().currentUser;
 
-    $("#verifyemail").html("Please Verify Your Email Address: <i>" + user.email + "</i>");
-
    	var split = splitEmail(user.email);
 
-   	var email_verified = user.emailVerified;
-   	console.log(email_verified);
+   	var reference = firebase.database().ref("users/" + split);
+   	reference.once('value', snap => {
+	   	var value = snap.child("email").val();
+	   	console.log(value);
+	   	if(value == null) {
+	   		firebase.database().ref('users/' + split).set({
+				name: user.displayName,
+			    email: user.email,
+			    stat: "tutee",
+			    pastSessions: 0
+			 });
 
+			firebase.database().ref('names/' + user.displayName).set({
+				id: splitEmail(user.email)
+			});
+	   	}
+	});
 
-   	if(email_verified == false) {
-
-   		$("#email_div").fadeIn();
-   		$(".main-div").css("display", "none");
-   		$("#logout").css("display", "none");
-
-   	} else {
-   		$("#email_div").css("display", "none");
-
-	   	var isTutor = firebase.database().ref('users/' + split).child('stat');
+   	var isTutor = firebase.database().ref('users/' + split).child('stat');
 
 		isTutor.on('value', snap => {
 			if(snap.val() == "tutor") {
@@ -473,7 +478,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 				});
 			}
 		});
-	}
 
 
     var userName = firebase.database().ref('users/' + split).child('name');
@@ -807,12 +811,11 @@ function fadebiomask() {
 var database = firebase.database();
 
 //send account data to firebase
-function writeAccount(name, email, phone, stat) {
+function writeAccount(name, email, stat) {
 	var split = splitEmail(email);
 
 		firebase.database().ref('users/' + split).set({
 			name: name,
-			phone: phone,
 		    email: email,
 		    stat: stat,
 		    pastSessions: 0
@@ -825,7 +828,7 @@ function writeAccount(name, email, phone, stat) {
 
 
 //create new account
-function createAccount() {
+/*function createAccount() {
 	var newName = $("#createname").val();
 	var newEmail = $("#createemail").val();
 	var newPhone = $("#createphone").val();
@@ -857,11 +860,52 @@ function createAccount() {
 	} else {
 		$("#errormessage2").html("Please make sure your passwords match.");
 	}
-}
+}*/
 
 //login + logout
 function login() {
-	var userEmail = $("#email_field").val();
+	firebase.auth().signInWithRedirect(provider);
+	firebase.auth().getRedirectResult().then(function(result) {
+	  if (result.credential) {
+	    // This gives you a Google Access Token. You can use it to access the Google API.
+	    var token = result.credential.accessToken;
+	    // ...
+	  }
+	  // The signed-in user info.
+	  var user = result.user;
+	}).catch(function(error) {
+	  // Handle Errors here.
+	  var errorCode = error.code;
+	  var errorMessage = error.message;
+	  // The email of the user's account used.
+	  var email = error.email;
+	  // The firebase.auth.AuthCredential type that was used.
+	  var credential = error.credential;
+	  // ...
+	});
+
+	/*var profile = googleUser.getBasicProfile();
+	var split = splitEmail(profile.getEmail());
+
+	console.log(split);
+	var ref = firebase.database().ref("users/" + split);
+	ref.once("value").then(function(snapshot) {
+	   	var email = snapshot.child("email").val();
+	    if(hasName == false) {
+	    	firebase.database().ref("users/" + split).child("name").set(profile.getName());	
+	    }
+	    if(hasEmail == false) {
+	    	firebase.database().ref("users/" + split).child("email").set(profile.getEmail());	
+	    }
+	    if(hasStat == false) {
+	    	firebase.database().ref("users/" + split).child("stat").set("tutee");	
+	    }
+	    if(hasSessions == false) {
+	    	firebase.database().ref("users/" + split).child("pastSessions").set(0);	
+	    }
+	  });*/
+
+	/*var userEmail = $("#email_field").val();
 	var userPass = $("#password_field").val();
 	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
 	    // Handle Errors here.
@@ -876,7 +920,7 @@ function login() {
 
 	if(firebase.auth().currentUser.emailVerified == false) {
 		$("#email_div").fadeIn();
-	}
+	}*/
 }
 
 function logout(){
@@ -886,8 +930,8 @@ function logout(){
 	  // An error happened.
 	  event.preventDefault();
 	});
-	$("#errormessage").html("");
-	$("#errormessage2").html("");
+	//$("#errormessage").html("");
+	//$("#errormessage2").html("");
 }
 
 
@@ -1397,6 +1441,15 @@ function submitApplication() {
 			"New Tutor Application from " + name,
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+		$("#applyname").val("");
+		$("#applyemail").val("");
+		$("#applygrade").val("");
+		$("#applyschool").val("");
+		$("#applysubjects").val("");
+		$("#applyq1").val("");
+		$("#applyq2").val("");
+		$("#applyq3").val("");
+		$("#applyq4").val("");
 	}
 }
 

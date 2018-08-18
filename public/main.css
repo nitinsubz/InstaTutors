@@ -1680,6 +1680,42 @@ canvas {
   display: none;
 }
 
+.google-button {
+  height: 45px;
+  border-width: 0;
+  background: white;
+  color: #737373;
+  margin: auto;
+  padding: 0px 10px;
+  display: block;
+  border-radius: 5px;
+  white-space: nowrap;
+  box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
+  transition-duration: 0.15s;
+  padding: 0;
+}
+
+.google-button:hover {
+	background: #eee;
+}
+    
+.google-button__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px 0 10px 10px;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+}
+
+.google-button__text {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 24px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .main-div {
 	margin-top: 160px;
 }
@@ -2056,7 +2092,7 @@ canvas {
 	padding-bottom: 20px;
 }
 
-#resetPass2, #addsubject, #matchtutors, #submitBio {
+#addsubject, #matchtutors, #submitBio {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 200% 100%;
 	background-position: right;
@@ -2067,16 +2103,6 @@ canvas {
 	font-size: 22px;
 	color: white;
 	font-weight: 500;
-}
-
-#resetPass2:hover {
-	text-decoration: none;
-	cursor: pointer;
-	background-position: left;
-}
-
-#tuteeaddsubjects {
-	padding-top: 25px;
 }
 
 #tuteeaddsubjects p {
