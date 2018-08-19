@@ -20,27 +20,6 @@
     <link rel="stylesheet" href="main.css">
     <script src="js/clockpicker.js"></script>
 <body>
-	<script>
-	  window.fbAsyncInit = function() {
-	    FB.init({
-	      appId      : '299458663939677',
-	      cookie     : true,
-	      xfbml      : true,
-	      version    : 'v3.1'
-	    });
-	      
-	    FB.AppEvents.logPageView();   
-	      
-	  };
-
-	  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "https://connect.facebook.net/en_US/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
-	</script>
 	<div id="menubar" onclick="opensidenav()">
 		MENU <div class="bar11"></div><div class="bar22"></div>
 	</div>
@@ -71,8 +50,8 @@
 			   <a id="logout" onclick="logout()">Logout</a>
 			</ul>
 		</div>
-		<!--<div class="create-div">
-		    <h3>Create an Account</h3>
+		<div class="create-div">
+		    <a href="login" id="backtologin"></a><h3>Create an Account</h3>
 		    <input type="name" placeholder="Enter your FULL name..." id="createname" />
 		    <input type="email" placeholder="Enter a Valid Email address..." id="createemail" />
 		    <input type="password" placeholder="Enter a Password..." id="createpassword" />
@@ -83,14 +62,15 @@
 			<p id="errormessage2"></p>
 		
 		    <a onclick="createAccount()" id="create">Let's Go!</a>
-		 </div>-->
+		 </div>
 		 <img src="images/loading.gif" id="loading">
 
-		 <div id="fberrordiv">
+		 <!--<div id="fberrordiv">
 		 	<h3>Facebook Log-in Error:</h3>
 		 	<p>Please log in with a Facebook account that has an email address attached to it.  Try logging in with another Facebook account, a Google account, or contact us at <a href="mailto:support@instatutors.org">support@instatutors.org</a> for help.</p>
-		 	<a id="tryagain" href="login.html">Try Again</a>
-		 </div>
+		 	<a id="tryagain" href="login">Try Again</a>
+		 </div>-->
+
 		 <div id="stars">
 		 	<h3>How many stars do you rate your tutoring session?</h3>
 		 	<i class="fas fa-star" id="onestar" onclick="star(1)" onmouseover="hoverone()"></i>
@@ -103,24 +83,22 @@
 		 </div>
 		<div id="login_div" class="main-div">
 		    <h3>Log In</h3>
-		    <!--<input type="email" placeholder="Email..." id="email_field" />
+		    <input type="email" placeholder="Email..." id="email_field" />
 		    <input type="password" placeholder="Password..." id="password_field" />
 		    <a onclick="openResetPass()">Forgot Password?</a>
-		    <p id="errormessage"></p>-->
-		    <button type="button" class="google-button" onclick="login()">
+		    <p id="errormessage"></p>
+		    <a id="login" onclick="login()">Log In</a>
+		    <h4>Don't have an account? <a onclick="openCreate()">Create One Today!</a></h4>
+		    <p id="loginor">OR</p>
+		    <button type="button" class="google-button" onclick="googlelogin()">
 			  <span class="google-button__icon">
 			    <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg"><path d="M125.9 10.2c40.2-13.9 85.3-13.6 125.3 1.1 22.2 8.2 42.5 21 59.9 37.1-5.8 6.3-12.1 12.2-18.1 18.3l-34.2 34.2c-11.3-10.8-25.1-19-40.1-23.6-17.6-5.3-36.6-6.1-54.6-2.2-21 4.5-40.5 15.5-55.6 30.9-12.2 12.3-21.4 27.5-27 43.9-20.3-15.8-40.6-31.5-61-47.3 21.5-43 60.1-76.9 105.4-92.4z" id="Shape" fill="#EA4335"/><path d="M20.6 102.4c20.3 15.8 40.6 31.5 61 47.3-8 23.3-8 49.2 0 72.4-20.3 15.8-40.6 31.6-60.9 47.3C1.9 232.7-3.8 189.6 4.4 149.2c3.3-16.2 8.7-32 16.2-46.8z" id="Shape" fill="#FBBC05"/><path d="M361.7 151.1c5.8 32.7 4.5 66.8-4.7 98.8-8.5 29.3-24.6 56.5-47.1 77.2l-59.1-45.9c19.5-13.1 33.3-34.3 37.2-57.5H186.6c.1-24.2.1-48.4.1-72.6h175z" id="Shape" fill="#4285F4"/><path d="M81.4 222.2c7.8 22.9 22.8 43.2 42.6 57.1 12.4 8.7 26.6 14.9 41.4 17.9 14.6 3 29.7 2.6 44.4.1 14.6-2.6 28.7-7.9 41-16.2l59.1 45.9c-21.3 19.7-48 33.1-76.2 39.6-31.2 7.1-64.2 7.3-95.2-1-24.6-6.5-47.7-18.2-67.6-34.1-20.9-16.6-38.3-38-50.4-62 20.3-15.7 40.6-31.5 60.9-47.3z" fill="#34A853"/></svg>
 			  </span>
 			  <span class="google-button__text">Sign in with Google</span>
 			</button>
-			<button id="fbButton" onclick="fblogin()">
-			 	<i class="fab fa-facebook-f"></i>
-			  	Log in with Facebook
-			</button>
-		    <!--<h4>Don't have an account? <a onclick="openCreate()">Create One Today!</a></h4>-->
 		 </div>
 
-		 <!--<div id="reset_div">
+		 <div id="reset_div">
 		 	<h3>Reset Your Password</h3>
 		 	<input type="email" placeholder="Email..." id="reset_email_field" />
 		 	<a onclick="resetPass()">Send Reset Email</a>
@@ -131,7 +109,7 @@
 		 	<h3 id="verifyemail">Please Verify Your Email Address: </h3>
 		 	<a onclick="sendVerification()">Send Verification Email</a>
 		 	<a href="login">Log In</a>
-		 </div>-->
+		 </div>
 
 	<div id="confirmedbody">
 		<h1 id="bookedheader">Your tutoring request for DATE is confirmed. </strong><h1>

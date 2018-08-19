@@ -1684,12 +1684,13 @@ canvas {
 }
 
 .google-button {
-  height: 45px;
+  height: 52px;
   border-width: 0;
   background: white;
   color: #737373;
   margin: auto;
   padding: 0px 10px;
+  width: 100%;
   display: block;
   border-radius: 5px;
   white-space: nowrap;
@@ -1719,7 +1720,17 @@ canvas {
   font-weight: bold;
 }
 
-#fbButton {
+#loading {
+	width: 30%;
+	position: fixed;
+	top: 20%;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	transition-duration: 0.2s;
+}
+
+/*#fbButton {
 	background-color: #3B5998;
 	color: white;
 	padding: 8px 14px;
@@ -1728,16 +1739,6 @@ canvas {
 	display: none;
 	font-size: 18px;
 	box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
-	transition-duration: 0.2s;
-}
-
-#loading {
-	width: 30%;
-	position: fixed;
-	top: 20%;
-	margin: 0 auto;
-	left: 0;
-	right: 0;
 	transition-duration: 0.2s;
 }
 
@@ -1785,11 +1786,11 @@ canvas {
 #fberrordiv #tryagain:hover {
 	background-position: left;
 	text-decoration: none;
-}
+}*/
 
 
 .main-div {
-	margin-top: 160px;
+	margin-top: 100px;
 }
 
 .main-div h3, .create-div h3 {
@@ -1830,6 +1831,12 @@ canvas {
 	color: #30CFD0;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+#loginor {
+	font-size: 25px;
+	text-align: center;
+	margin: 15px 0px;
 }
 
 #terms {
@@ -1895,7 +1902,7 @@ canvas {
   background-size: 200% 100%;
   background-position: right;
   border-radius: 30px;
-  padding: 15px;
+  padding: 12px;
   display: block;
   font-size: 22px;
   width: 100%;
@@ -2522,7 +2529,7 @@ canvas {
 
 #reset_div a {
 	font-size: 22px;
-	padding: 15px 0px;
+	padding: 12px 0px;
 	display: block;
 	margin: 20px auto;
 	color: white;
