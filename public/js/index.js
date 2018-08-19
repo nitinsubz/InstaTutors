@@ -274,6 +274,7 @@ function splitDate(date) {
 }
 
 var provider = new firebase.auth.GoogleAuthProvider();
+var provider2 = new firebase.auth.FacebookAuthProvider();
 
 firebase.auth().onAuthStateChanged(function(user) {
 	if (user) {
@@ -282,6 +283,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     var user = firebase.auth().currentUser;
 
    	var split = splitEmail(user.email);
+
+   	console.log(user.email);
 
    	var reference = firebase.database().ref("users/" + split);
    	reference.once('value', snap => {
@@ -921,6 +924,33 @@ function login() {
 	if(firebase.auth().currentUser.emailVerified == false) {
 		$("#email_div").fadeIn();
 	}*/
+}
+
+function fblogin() {
+	firebase.auth().signInWithRedirect(provider2);
+	firebase.auth().getRedirectResult().then(function(result) {
+	  if (result.credential) {
+	    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+	    var token = result.credential.accessToken;
+	    // ...
+	  }
+	  // The signed-in user info.
+	  	if(result.user.email != null) {
+			var user = result.user;
+		} else {
+			logout();
+			console.log("logged out");
+		}
+	}).catch(function(error) {
+	  // Handle Errors here.
+	  var errorCode = error.code;
+	  var errorMessage = error.message;
+	  // The email of the user's account used.
+	  var email = error.email;
+	  // The firebase.auth.AuthCredential type that was used.
+	  var credential = error.credential;
+	  // ...
+	});
 }
 
 function logout(){

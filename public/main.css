@@ -1504,7 +1504,9 @@ canvas {
 }
 
 #foot {
-	padding: 6px 10%;
+	width: 100%;
+	padding: 6px 0px;
+	margin: 0;
 	background-color: #222;
 }
 
@@ -1512,6 +1514,7 @@ canvas {
 	font-size: 16px;
 	color: #ddd;
 	float: right;
+	margin-right: 20px;
 }
 
 #foot a {
@@ -1715,6 +1718,30 @@ canvas {
   font-size: 18px;
   font-weight: bold;
 }
+
+#fbButton {
+	background-color: #3B5998;
+	color: white;
+	padding: 8px 14px;
+	border-radius: 5px;
+	margin: 10px auto;
+	display: block;
+	font-size: 18px;
+	box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
+	transition-duration: 0.2s;
+	display: none;
+}
+
+#fbButton .fab {
+	font-size: 24px;
+	margin: 0px 5px;
+}
+
+#fbButton:hover {
+	background-color: #6885c0;
+}
+
+
 
 .main-div {
 	margin-top: 160px;
