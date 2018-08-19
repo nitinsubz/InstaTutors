@@ -282,27 +282,38 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     var user = firebase.auth().currentUser;
 
-   	var split = splitEmail(user.email);
+    if(user.email != null) {
+	   	var split = splitEmail(user.email);
+	   	console.log(user.email);
+	   	var reference = firebase.database().ref("users/" + split);
+	   	reference.once('value', snap => {
+		   	var value = snap.child("email").val();
+		   	console.log(value);
+		   	if(value == null) {
+		   		firebase.database().ref('users/' + split).set({
+					name: user.displayName,
+				    email: user.email,
+				    stat: "tutee",
+				    pastSessions: 0
+				 });
 
-   	console.log(user.email);
-
-   	var reference = firebase.database().ref("users/" + split);
-   	reference.once('value', snap => {
-	   	var value = snap.child("email").val();
-	   	console.log(value);
-	   	if(value == null) {
-	   		firebase.database().ref('users/' + split).set({
-				name: user.displayName,
-			    email: user.email,
-			    stat: "tutee",
-			    pastSessions: 0
-			 });
-
-			firebase.database().ref('names/' + user.displayName).set({
-				id: splitEmail(user.email)
-			});
-	   	}
-	});
+				firebase.database().ref('names/' + user.displayName).set({
+					id: splitEmail(user.email)
+				});
+		   	}
+		});
+		$("#fberrordiv").hide();
+	} else {
+		user.delete();
+		$("#fberrordiv").show();
+		console.log("deleted");
+		$(".main-div").css("transform", "scale(0)");
+		$("#mainbody").css("transform", "scale(0)");
+	    $("#email_div").css("display", "none");
+	    $("#logout").css("transform", "scale(0)");
+	    $("#sidelogin").html("LOGIN");
+	    $("#tutorsessions").css("transform", "scale(0)");
+	}
 
    	var isTutor = firebase.database().ref('users/' + split).child('stat');
 
@@ -935,12 +946,8 @@ function fblogin() {
 	    // ...
 	  }
 	  // The signed-in user info.
-	  	if(result.user.email != null) {
-			var user = result.user;
-		} else {
-			logout();
-			console.log("logged out");
-		}
+		var user = result.user;
+		console.log(user.email);
 	}).catch(function(error) {
 	  // Handle Errors here.
 	  var errorCode = error.code;
@@ -949,6 +956,7 @@ function fblogin() {
 	  var email = error.email;
 	  // The firebase.auth.AuthCredential type that was used.
 	  var credential = error.credential;
+	  console.log(errorMessage);
 	  // ...
 	});
 }
