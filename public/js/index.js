@@ -15,6 +15,9 @@ $(window).on('load', function () {
 	$('[data-toggle="popover"]').popover();
 
 	$("#tutorbio").prop("readonly", true);
+
+	$("#loading").css("opacity", "0");
+	$("#loading").css("top", "-500px");
 });
 
 $(window).scroll(function() {
@@ -273,6 +276,18 @@ function splitDate(date) {
 	return(newdate[1] + "-" + newdate[2] + "-" + newdate[0]); 
 }
 
+function convertMilitary(time) {
+	var arr = time.split(":");
+	var hours = arr[0];
+	var minutes = arr[1];
+	var ampm = "AM";
+	if(hours > 12) {
+		hours = hours - 12;
+		ampm = "PM";
+	}
+	return(hours + ":" + minutes + " " + ampm);
+}
+
 var provider = new firebase.auth.GoogleAuthProvider();
 var provider2 = new firebase.auth.FacebookAuthProvider();
 
@@ -367,7 +382,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 					var email = snap.child("email").val();
 					var subject = snap.child("subject").val();
 					var details = snap.child("details").val();
-					var time = snap.child("time").val();
+					var time = convertMilitary(snap.child("time").val());
 
 					var selectedDate = new Date(splitDate(splitDate(date)));
    					var now = new Date();
@@ -448,7 +463,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 					var email = snap.child("email").val();
 					var subject = snap.child("subject").val();
 					var details = snap.child("details").val();
-					var time = snap.child("time").val();
+					var time = convertMilitary(snap.child("time").val());
 					var tutor = snap.child("tutor").val();
 
 					var color;
@@ -523,7 +538,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var email = snap.child("email").val();
 		var subject = snap.child("subject").val();
 		var details = snap.child("details").val();
-		var time = snap.child("time").val();
+		var time = convertMilitary(snap.child("time").val());
 		var tutor = snap.child("tutor").val();
 
 		var myUser = firebase.database().ref('users/' + split).child("subjects");
@@ -1113,13 +1128,13 @@ function validate() {
 								polishdates += dates[p];
 							}
 						}
-						content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+						content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + convertMilitary(time) + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 						$("#bookedheader").html("Your tutoring requests for " + polishdates + " are logged.");
 						date = polishdates;
 
 					} else {
 						writeRequest(email, date, time, subject, details, "no", tutor);
-						content = "<h3 style=\"color: #30CFD0\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+						content = "<h3 style=\"color: #30CFD0\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + convertMilitary(time) + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 						date = splitDate(date);
 						$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
 					}
@@ -1154,7 +1169,7 @@ function validate() {
 						 });
 						
 						$("#tutor2").html("Tutor: " + tutor);
-						$("#time2").html("Time: " + time);
+						$("#time2").html("Time: " + convertMilitary(time));
 						$("#subject2").html("Subject: " + subject);
 						$("#details2").html("Details: " + details);
 

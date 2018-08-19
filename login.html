@@ -84,6 +84,8 @@
 		
 		    <a onclick="createAccount()" id="create">Let's Go!</a>
 		 </div>-->
+		 <img src="images/loading.gif" id="loading">
+
 		 <div id="fberrordiv">
 		 	<h3>Facebook Log-in Error:</h3>
 		 	<p>Please log in with a Facebook account that has an email address attached to it.  Try logging in with another Facebook account, a Google account, or contact us at <a href="mailto:support@instatutors.org">support@instatutors.org</a> for help.</p>
@@ -235,15 +237,7 @@
 				    		Time (PST):
 				    	</div>
 				    	<div class="col-sm-9">
-				   			<div class="input-group clockpicker">
-							    <input type="text" id="time" class="form-control" value="09:30">
-							    <span class="input-group-addon">
-							        <span class="glyphicon glyphicon-time"></span>
-							    </span>
-							</div>
-							<script>
-								   	$('.clockpicker').clockpicker();
-							</script>
+				   			<input type="time" id="time" class="form-control" value="16:30">
 				   		</div>
 				   	</div>
 				   	<div class="row" id="tutorinput">

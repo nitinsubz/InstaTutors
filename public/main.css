@@ -1725,9 +1725,19 @@ canvas {
 	padding: 8px 14px;
 	border-radius: 5px;
 	margin: 10px auto;
-	display: block;
+	display: none;
 	font-size: 18px;
 	box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.05);
+	transition-duration: 0.2s;
+}
+
+#loading {
+	width: 30%;
+	position: fixed;
+	top: 20%;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
 	transition-duration: 0.2s;
 }
 
@@ -3116,7 +3126,7 @@ canvas {
 	}
 
 	#tutormysessions h1 {
-		background-color: #ae3dc6;
+		background-color: #212664;
 		padding: 100px 7% 70px 7%;
 		font-size: 38px;
 	}
