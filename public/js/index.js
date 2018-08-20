@@ -296,38 +296,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     var user = firebase.auth().currentUser;
     var split = splitEmail(user.email);
-    /*if(user.email != null) {
-	   	var split = splitEmail(user.email);
-	   	console.log(user.email);
-	   	var reference = firebase.database().ref("users/" + split);
-	   	reference.once('value', snap => {
-		   	var value = snap.child("email").val();
-		   	console.log(value);
-		   	if(value == null) {
-		   		firebase.database().ref('users/' + split).set({
-					name: user.displayName,
-				    email: user.email,
-				    stat: "tutee",
-				    pastSessions: 0
-				 });
-
-				firebase.database().ref('names/' + user.displayName).set({
-					id: splitEmail(user.email)
-				});
-		   	}
-		});
-		$("#fberrordiv").hide();
-	} else {
-		user.delete();
-		$("#fberrordiv").show();
-		console.log("deleted");
-		$(".main-div").css("transform", "scale(0)");
-		$("#mainbody").css("transform", "scale(0)");
-	    $("#email_div").css("display", "none");
-	    $("#logout").css("transform", "scale(0)");
-	    $("#sidelogin").html("LOGIN");
-	    $("#tutorsessions").css("transform", "scale(0)");
-	}*/
+    var ref = firebase.database().ref('users');
+    ref.once('value', function (snapshot) {
+    if (!snapshot.hasChild(split)) {
+	        writeAccount(user.displayName, user.email, null, "tutee");
+	    }
+	});
 
 	if(user.emailVerified == false) {
 		$("#email_div").fadeIn();
@@ -846,13 +820,14 @@ function fadebiomask() {
 var database = firebase.database();
 
 //send account data to firebase
-function writeAccount(name, email, stat) {
+function writeAccount(name, email, phone, stat) {
 	var split = splitEmail(email);
 
 		firebase.database().ref('users/' + split).set({
 			name: name,
 		    email: email,
 		    stat: stat,
+		    phone: phone,
 		    pastSessions: 0
 		 });
 
