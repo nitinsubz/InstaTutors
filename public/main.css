@@ -3614,6 +3614,39 @@ canvas {
 		font-size: 20px;
 	}
 
+	#donateform a {
+		margin: 30px 0px;
+	}
+
+	#paypal, #gofundme {
+		padding: 10px 20px;
+		transition-duration: 0.2s;
+	}
+
+	#paypal:hover {
+		background-color: #eda63c;
+	}
+
+	#paypal {
+		background-color: gold;
+	}
+
+	#gofundme:hover {
+		background-color: #ccc;
+	}
+
+	#gofundme {
+		background-color: #eee;
+	}
+
+	#paypal img, #gofundme img {
+		width: 70px;
+	}
+
+	#donatebody {
+		background-size: 250%;
+	}
+
 }
 
 

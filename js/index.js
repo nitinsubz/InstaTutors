@@ -18,6 +18,16 @@ $(window).on('load', function () {
 
 	$("#loading").css("opacity", "0");
 	$("#loading").css("top", "-500px");
+
+	/*firebase.database().ref('users').on('value', function(snapshot) {
+							snapshot.forEach(function(childSnapshot) {
+								var split = splitEmail(childSnapshot.child("email").val());
+								var name = childSnapshot.child("name").val();
+								if(name != null) {
+									firebase.database().ref('names/' + name).child("id").set(split);
+								}
+							});
+	});*/
 });
 
 $(window).scroll(function() {
@@ -305,6 +315,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 	if(user.emailVerified == false) {
 		$("#email_div").fadeIn();
+		$("#verifyemail").html("Please Verify Your Email Address: " + user.email);
 		$(".main-div").css("display", "none");
 	} else {
 	   	var isTutor = firebase.database().ref('users/' + split).child('stat');
@@ -831,9 +842,11 @@ function writeAccount(name, email, phone, stat) {
 		    pastSessions: 0
 		 });
 
-		firebase.database().ref('names/' + name).set({
-			id: splitEmail(email)
-		});
+		if(name != null) {
+			firebase.database().ref('names/' + name).set({
+				id: splitEmail(email)
+			});
+		}
 }
 
 
@@ -847,8 +860,8 @@ function createAccount() {
 	var stat = "tutee";
 
 	if(newPass == confirmPass && newPass != "" && newEmail != "") {
-		if($("#termscheck").checked == false) {
-			$("#errormessage2").html("Please agree to the terms and conditions.");
+		if(newName == "") {
+			$("#errormessage2").html("Please enter your name.");
 		} else {
 			firebase.auth().createUserWithEmailAndPassword(newEmail, newPass).catch(function(error) {
 			event.preventDefault();
@@ -886,10 +899,6 @@ function login() {
 
 	    // ...
 	  });
-
-	if(firebase.auth().currentUser.emailVerified == false) {
-		$("#email_div").fadeIn();
-	}
 }
 
 function googlelogin() {
