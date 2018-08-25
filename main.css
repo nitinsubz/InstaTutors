@@ -888,7 +888,7 @@ canvas {
 	padding: 130px 10% 110px 10%;
 	text-align: center;
 	color: white;
-	background: linear-gradient(60deg, #222 50%, #458789 50%);
+	background: linear-gradient(60deg, #222 50%, #212664 50%);
 	background-size: 120%;
 	background-position: left;
 	overflow-y: hidden;
@@ -2086,6 +2086,75 @@ canvas {
 	background-color: lightblue;
 }
 
+#servicenav {
+	background: linear-gradient(30deg, #30CFD0, #212333);
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	font-size: 30px;
+	color: white;
+	z-index: 60;
+	padding: 10px 20px;
+	border-radius: 60px;
+	transition-duration: 0.4s;
+}
+
+#servicenav:hover {
+	top: -280px;
+	right: -250px;
+	padding: 280px;
+	border-radius: 100%;
+}
+
+#servicenav:hover i {
+	transition-duration: 0.3s;
+}
+
+#servicenav:hover i {
+	opacity: 0;
+}
+
+#booknav, #questionnav, #sessionsnav, #servicelogout {
+	position: fixed;
+	z-index: 0;
+	color: white;
+	background-color: transparent;
+	border: 0;
+	font-size: 25px;
+	top: -100px;
+	opacity: 0;
+	right: -50px;
+	transition-duration: 0.4s;
+}
+
+#servicenav:hover #booknav {
+	right: 100px;
+	top: 25px;
+	opacity: 1;
+	z-index: 99;
+}
+
+#servicenav:hover #questionnav {
+	right: 80px;
+	top: 90px;
+	opacity: 1;
+	z-index: 99;
+}
+
+#servicenav:hover #sessionsnav {
+	right: 60px;
+	top: 155px;
+	opacity: 1;
+	z-index: 99;
+}
+
+#servicenav:hover #servicelogout {
+	right: 35px;
+	top: 210px;
+	opacity: 1;
+	z-index: 99;
+}
+
 #logout {
 	position: fixed;
 	top: 0;
@@ -2106,14 +2175,14 @@ canvas {
 	text-decoration: none;
 }
 
-#servicenav, #tutornav {
+#tutornav {
 	position: fixed;
 	z-index: 89;
 	right: 160px;
 	margin: 0px;
 }
 
-#servicenav button, #tutornav button {
+#tutornav button {
 	padding: 15px 40px;
 	margin: 0px;
 	border: 0;
@@ -2122,25 +2191,93 @@ canvas {
 	color: #333;
 	transition-duration: 0.2s;
 }
-
-#servicenav button:hover {
-	background-color: #30CFD0; 
-	color: white;
-	cursor: pointer;
-}
-
 #tutornav button:hover {
 	background-color: #30CFD0;
 	color: white;
 	cursor: pointer;
 }
 
-#booknav {
-	border-radius: 0px 0px 0px 20px;
+#tutorbooknav {
+	border-radius: 0px 0px 0px 30px;
 }
 
-#sessionstab {
+#sessionstab, #questiontab {
 	display: none;
+}
+
+#questionheader {
+	padding: 130px 10% 80px 10%;
+	background: linear-gradient(45deg, #212664, black);
+	text-align: center;
+	color: white;
+}
+
+#questionheader h1 {
+	font-size: 60px;
+}
+
+#questionheader h3 {
+	font-size: 30px;
+}
+
+#questionbody {
+	margin: -60px 10% 0px 10%;
+	padding: 50px 5%;
+	background-color: white;
+	border-radius: 20px 20px 0px 0px;
+}
+
+#questionbody h3 {
+	font-size: 30px;
+}
+
+#questionbody p {
+	font-size: 20px;
+	color: #666;
+	padding: 10px 0px;
+}
+
+#question {
+	border: 1px solid #ccc;
+	margin: 10px 0px;
+	height: 200px;
+	width: 90%;
+	outline: 0;
+}
+
+.question {
+	border-radius: 30px;
+	padding: 30px;
+	background-color: #eee;
+	margin: 30px 0px;
+}
+
+.question h4 {
+	font-size: 22px;
+}
+
+#questionerrors {
+	font-size: 18px;
+	padding: 10px 0px;
+}
+
+#submitquestion {
+	background: linear-gradient(to right, #30CFD0, #212664);
+	background-size: 200% 100%;
+	background-position: left;
+	border-radius: 30px;
+	padding: 15px 40px;
+	color: white;
+	font-size: 24px;
+	transition-duration: 0.2s;
+}
+
+#submitquestion:hover {
+	background-position: right;
+}
+
+#myquestions {
+	padding: 40px 0px;
 }
 
 #sessionsheader {
@@ -3017,27 +3154,79 @@ canvas {
 		border-radius: 0px 0px 0px 20px;
 	}
 
-	#servicenav button, #tutornav button {
+	#tutornav button {
 		padding: 12px 15px;
 		font-size: 17px;
 		background-color: #eee;
 	}
 
-	#booknav {
-		position: fixed;
+	#servicenav {
+		background: #eee;
 		bottom: 0;
-		width: 55%;
+		top: 80%;
+		border-radius: 0;
+		width: 100%;
+		right: 0;
 		left: 0;
-		margin: 0;
-		border-radius: 0px;
 	}
 
-	#sessionsnav {
-		position: fixed;
+	#servicenav i {
+		display: none;
+	}
+
+	#servicenav:hover {
+		background: #eee;
 		bottom: 0;
+		border-radius: 0;
+		width: 100%;
 		right: 0;
-		width: 45%;
-		margin: 0;
+		left: 0;
+		top: 80%;
+		padding: 0;
+	}
+
+	#booknav, #questionnav, #sessionsnav, #servicelogout {
+		position: fixed;
+		color: #333;
+		font-size: 18px;
+		width: 50%;
+		right: 0;
+		float: left;
+		bottom: 0;
+		left: 0;
+		padding: 0;
+		z-index: 99;
+		opacity: 1;
+	}
+
+	#booknav, #questionnav {
+		top: 75%;
+	}
+
+	#questionnav, #servicelogout {
+		left: 50%;
+	}
+
+	#sessionsnav, #servicelogout {
+		top: 90%;
+	}
+
+	#servicenav:hover #booknav {
+		top: 75%;
+	}
+
+	#servicenav:hover #questionnav {
+		top: 75%;
+		left: 50%;
+	}
+
+	#servicenav:hover #sessionsnav {
+		top: 90%;
+	}
+
+	#servicenav:hover #servicelogout {
+		top: 90%;
+		left: 50%;
 	}
 
 	#bookform {

@@ -411,7 +411,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 					$("#email_div").css("display", "none");
 					$("#mainbody").fadeIn();
 				    $(".main-div").css("display", "none");
-				    $("#logout").fadeIn();
 				    $(".create-div").css("display", "none");
 				    $("#bookasession a").html("Request a Session")
 				    $("#sidelogin").html("Request a Session");
@@ -444,6 +443,23 @@ firebase.auth().onAuthStateChanged(function(user) {
 						    });
 					});
 
+					var questionRef = firebase.database().ref('questions');
+
+					questionRef.on("child_added", snap => {
+						var email = snap.child("askid").val();
+						var question = snap.child("question").val();
+						var time = convertMilitary(snap.child("time").val());
+						var answer = snap.child("answer").val();
+						if(answer != "") {
+							color = " green";
+							answer = "<h4>Answer: " + answer + "</h4> <h4>Tutor: " + tutor + "</h4>";
+						} else {
+							color = "";
+						}
+						if(email == user.email) {
+							$("#myquestions").append("<div class=\"question" + color + "\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4>" + answer + "</div>");
+						}
+					});
 
 				    var reqRef = firebase.database().ref('users/' + split);
 			//date, time, location, tutor, done, subject
@@ -594,6 +610,53 @@ function resetPass() {
 	  alert(error.message);
 	  console.log(error);
 	});
+}
+
+function submitquestion() {
+	var question = $("#question").val();
+	var date = new Date();
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	var split = splitEmail(firebase.auth().currentUser.email);
+	if(minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	var time = hours + ":" + minutes;
+
+	var newhours = hours;
+	var ampm = "AM";
+	if(hours > 12) {
+		newhours = hours - 12;
+		ampm = "PM";
+	}
+	var newtime = newhours + ":" + minutes + " " + ampm;
+
+	if(question != "") {
+		$("#questionerrors").css("color", "green");
+		$("#questionerrors").html("Thank you for your question!  We will get back to you ASAP.");
+		firebase.database().ref('questions/' + split + time).set({
+			time: time,
+			answer: "",
+			tutor: "",
+			askid: firebase.auth().currentUser.email,
+			question: question
+		 });
+		var content = "<h3>New Question</h3> <p><strong>Question: </strong>" + question + "</p> <p><strong>Time: </strong>" + newtime + "</p> <p>You can answer this question <a href=\"https://www.instatutors.org/login\">here</a>.";
+		Email.send("support@instatutors.org",
+					firebase.auth().currentUser.email,
+					"New Question Submitted at " + newtime,
+					content,
+					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+
+		Email.send("support@instatutors.org",
+					"support@instatutors.org",
+					"New Question Submitted at " + newtime,
+					content,
+					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+	} else {
+		$("#questionerrors").css("color", "red");
+		$("#questionerrors").html("Please enter a question.");
+	}
 }
 
 //Same thing, but from the account
@@ -799,12 +862,20 @@ function closeStars() {
 
 function sessionstab() {
 	$("#sessionstab").fadeIn();
-	 $("#booktab").css("display", "none");
+	 $("#booktab").hide();
+	 $("#questiontab").hide();
+}
+
+function questiontab() {
+	$("#questiontab").fadeIn();
+	 $("#booktab").hide();
+	 $("#sessionstab").hide();
 }
 
 function booktab() {
 	$("#booktab").fadeIn();
-	 $("#sessionstab").css("display", "none");
+	 $("#questiontab").hide();
+	 $("#sessionstab").hide();
 }
 
 function allsessionstab() {

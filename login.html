@@ -50,6 +50,21 @@
 			   <a id="logout" onclick="logout()">Logout</a>
 			</ul>
 		</div>
+		<div class="slideright" id="container1" onclick="rotate(this)">
+			<div class="bar1">
+			</div>
+			<div class="bar2">
+			</div>
+		</div>
+		<div id="phonenavlinks">
+			<li class="navig2"><a href="index">Home</a></li>
+			<li class="navig2"><a href="about">About Us</a></li>
+			<li class="navig2"><a href="tutors">Tutors</a></li>
+			<li class="navig2"><a href="leadership">Leadership</a></li>
+			<li class="navig2"><a href="donate">Donate</a></li>
+			<li class="navig2"><a href="login" id="login2">Login or Signup</a></li>
+		</div>
+
 		<div class="create-div">
 		    <a href="login" id="backtologin"></a><h3>Create an Account</h3>
 		    <input type="name" placeholder="Enter your FULL name..." id="createname" />
@@ -123,8 +138,11 @@
 
 	<div id="mainbody">
 		<div id="servicenav">
+			<i class="fas fa-angle-double-left"></i>
 			<button id="booknav" onclick="booktab()">Book A Session</button>
+			<button id="questionnav" onclick="questiontab()">Ask A Question</button>
 			<button id="sessionsnav" onclick="sessionstab()">My Account</button>
+			<button id="servicelogout" onclick="logout()">Logout</button>
 		</div>
 	    <div class="tab-content" id="myTabContent">
 			<div class="tab" id="booktab">
@@ -237,6 +255,26 @@
 				    </form>
 				</div>
 			</div>
+
+			<div id="questiontab">
+				<div id="questionheader">
+					<h1>Need Help Fast?</h1>
+					<h3>Send a question anonymously, and we guarantee a 2 Hour Response from a qualified tutor!</h3>
+				</div>
+				<div id="questionbody">
+					<div id="questionform">
+						<h3>Enter Your Question</h3>
+						<p>Try to be as detailed as possible.  Feel free to include links to webpages or online pdfs.
+						<textarea style="resize: none;" type="text" name="question" id="question"></textarea>
+						<p id="questionerrors"></p>
+						<button id="submitquestion" onclick="submitquestion()">Submit Question</button>
+					</div>
+					<div id="myquestions">
+						<h3>My Questions</h3>
+					</div>
+				</div>
+			</div>
+
 			<div id="sessionstab">
 				<div id="sessionsheader">
 					<h1>My Account</h1>
@@ -327,8 +365,8 @@
 	</div>
 	<div id="tutorsessions">
 		<div id="tutornav">
-			<button id="booknav" onclick="allsessionstab()">See All Requests</button>
-			<button id="sessionsnav" onclick="tutorsessionstab()">My Account</button>
+			<button id="tutorbooknav" onclick="allsessionstab()">See All Requests</button>
+			<button id="tutorsessionsnav" onclick="tutorsessionstab()">My Account</button>
 		</div>
 		<div id="allsessions">
 			<div id="tutorsessionshead">
