@@ -461,12 +461,14 @@ firebase.auth().onAuthStateChanged(function(user) {
 						}
 					});
 
-				    var reqRef = firebase.database().ref('users/' + split);
+				    var reqRef = firebase.database().ref('requests');
 			//date, time, location, tutor, done, subject
 					reqRef.on("child_added", snap => {
+						var email = snap.child("email").val();
+
+						if(email == user.email) {
 						var date = snap.child("date").val();
 						var done = snap.child("done").val();
-						var email = snap.child("email").val();
 						var subject = snap.child("subject").val();
 						var details = snap.child("details").val();
 						var time = convertMilitary(snap.child("time").val());
@@ -510,6 +512,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						    }
 						    firebase.database().ref('users/' + split).child("pastSessions").set(newArr.length);
 						});
+						}
 					});
 				}
 			});
