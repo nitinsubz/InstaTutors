@@ -883,12 +883,20 @@ function booktab() {
 
 function allsessionstab() {
 	$("#allsessions").fadeIn();
-	 $("#tutormysessions").css("display", "none");
+	 $("#tutormysessions").hide();
+	 $("#tutorallquestions").hide();
 }
 
 function tutorsessionstab() {
 	$("#tutormysessions").fadeIn();
-	 $("#allsessions").css("display", "none");
+	 $("#allsessions").hide();
+	 $("#tutorallquestions").hide();
+}
+
+function allquestionstab() {
+	$("#tutorallquestions").fadeIn();
+	$("#allsessions").hide();
+	 $("#tutormysessions").hide();
 }
 
 function openCreate() {

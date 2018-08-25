@@ -44,12 +44,6 @@
 	</div>
 	<div class="sidemask" onclick="closesidenav()">
 	</div>
-		<div id="navbar">
-			<ul id="nav" class="fader">
-			   <!--<li class="navig"><a href="donate.html">Donate</a></li>-->
-			   <a id="logout" onclick="logout()">Logout</a>
-			</ul>
-		</div>
 		<div class="slideright" id="container1" onclick="rotate(this)">
 			<div class="bar1">
 			</div>
@@ -139,7 +133,7 @@
 	<div id="mainbody">
 		<div id="servicenav">
 			<i class="fas fa-angle-double-left"></i>
-			<button id="booknav" onclick="booktab()">Book A Session</button>
+			<button id="booknav" onclick="booktab()">Request A Session</button>
 			<button id="questionnav" onclick="questiontab()">Ask A Question</button>
 			<button id="sessionsnav" onclick="sessionstab()">My Account</button>
 			<button id="servicelogout" onclick="logout()">Logout</button>
@@ -365,14 +359,24 @@
 	</div>
 	<div id="tutorsessions">
 		<div id="tutornav">
-			<button id="tutorbooknav" onclick="allsessionstab()">See All Requests</button>
-			<button id="tutorsessionsnav" onclick="tutorsessionstab()">My Account</button>
+			<i class="fas fa-angle-double-left"></i>
+			<button id="tutorbooknav" onclick="allsessionstab()">All Requests</button>
+			<button id="tutorquestionsnav" onclick="allquestionstab()">All Questions</button>
+			<button id="tutorsessionsnav" onclick="tutorsessionstab()">My Account</button> <button id="tutorlogout" onclick="logout()">Logout</button>
 		</div>
 		<div id="allsessions">
 			<div id="tutorsessionshead">
 				<h1 id="tutorwelcome">Welcome Tutor!</h1>
 			</div>
 			<div id="tutorsessionsbody">
+			</div>
+		</div>
+		<div id="tutorallquestions">
+			<div id="tutorquestionhead">
+				<h1>All Questions</h1>
+				<h3>If you are able to answer a question, please do so.  If not, do not attempt to answer a question you cannot answer.</h3>
+			</div>
+			<div id="tutorquestionbodybody">
 			</div>
 		</div>
 		<div id="tutormysessions">
