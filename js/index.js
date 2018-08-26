@@ -650,6 +650,7 @@ function submitquestion() {
 	var newtime = newhours + ":" + minutes + " " + ampm;
 
 	if(question != "") {
+		$("#question").val("");
 		$("#questionerrors").css("color", "green");
 		$("#questionerrors").html("Thank you for your question!  We will get back to you ASAP.");
 		firebase.database().ref('questions/' + split + time).set({
@@ -667,7 +668,7 @@ function submitquestion() {
 					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
 
 		Email.send("support@instatutors.org",
-					"support@instatutors.org",
+					"tutors@instatutors.org",
 					"New Question Submitted at " + newtime,
 					content,
 					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
