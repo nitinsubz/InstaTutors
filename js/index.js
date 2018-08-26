@@ -734,7 +734,7 @@ function takeSession() {
 
 	var split = splitEmail(firebase.auth().currentUser.email);
 
-	firebase.database().ref('users/' + split).on('value', function(snapshot) {
+	firebase.database().ref('users/' + split).once('value', function(snapshot) {
 		var sessionsCount = 0;
 		var prevdates = [];
 		snapshot.forEach(function(childSnapshot) {
