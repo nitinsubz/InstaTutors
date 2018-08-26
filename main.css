@@ -1936,7 +1936,7 @@ canvas {
 
 #tutorsessionshead {
 	padding: 140px 10% 90px 10%;
-	background: #330867;
+	background: linear-gradient(to left, #212664, #330867);
 	color: white;
 }
 
@@ -1957,6 +1957,29 @@ canvas {
 
 #tutorallquestions {
 	display: none;
+	background-color: #ddd;
+}
+
+#tutorquestionhead {
+	padding: 120px 10% 90px 10%;
+	background: linear-gradient(to right, #212664, #330867);
+	text-align: center;
+	color: white;
+}
+
+#tutorquestionhead h1 {
+	font-size: 60px;
+}
+
+#tutorquestionhead h3 {
+	font-size: 30px;
+}
+
+#tutorquestionbody {
+	padding: 10px 3% 50px 3%;
+	margin: -50px 10% 0px 10%;
+	background-color: white;
+	border-radius: 30px 30px 0px 0px;
 }
 
 #tutormysessions h1 {
@@ -2280,14 +2303,14 @@ canvas {
 	outline: 0;
 }
 
-.question {
+.tuteequestion, .tutorquestion {
 	border-radius: 30px;
 	padding: 30px;
 	background-color: #eee;
 	margin: 30px 0px;
 }
 
-.question h4 {
+.tuteequestion h4, .tutorquestion h4 {
 	font-size: 22px;
 }
 
@@ -3919,7 +3942,7 @@ canvas {
 		width: 100%;
 	}
 
-	.question h4 {
+	.tuteequestion h4 {
 		font-size: 18px;
 	}
 

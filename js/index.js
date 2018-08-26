@@ -352,6 +352,22 @@ firebase.auth().onAuthStateChanged(function(user) {
 						$("#tutorbio").html(snap.val());
 					});
 
+					var questionRef = firebase.database().ref('questions');
+
+						questionRef.on("child_added", snap => {
+							var email = snap.child("askid").val();
+							var question = snap.child("question").val();
+							var time = convertMilitary(snap.child("time").val());
+							var answer = snap.child("answer").val();
+							if(answer != "") {
+								color = " green";
+								answer = "<h4>Answer: " + answer + "</h4> <h4>Tutor: " + tutor + "</h4>";
+							} else {
+								color = "";
+							}
+							$("#tutorquestionbody").append("<div class=\"tutorquestion" + color + "\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4>" + answer + "</div>");
+						});
+
 
 					var tutorPastSess = firebase.database().ref('users/' + split).child("pastSessions");
 
@@ -383,6 +399,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 									$("#tutorpastsessionsbody").append("<div class=\"tutorreq lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4>");				
 								}
 							}
+
 
 						//update previous sessions count
 						firebase.database().ref('users/' + split).on('value', function(snapshot) {
@@ -456,6 +473,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						} else {
 							color = "";
 						}
+						$("#tutorquestionbody").append("<div class=\"question" + color + "\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4>" + answer + "</div>");
 						if(email == user.email) {
 							$("#myquestions").append("<div class=\"question" + color + "\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4>" + answer + "</div>");
 						}
