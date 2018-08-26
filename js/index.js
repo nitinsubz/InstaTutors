@@ -365,13 +365,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 						});
 
 
-					var tutorPastSess = firebase.database().ref('users/' + split).child("pastSessions");
+					var tutorRatedSess = firebase.database().ref('users/' + split).child("ratedSessions");
 
-					tutorPastSess.on("value", snap => {
-						var pastSessions = snap.val();
-						if(pastSessions > 0) {
+					tutorRatedSess.on("value", snap => {
+						var ratedSessions = snap.val();
+						if(ratedSessions > 0) {
 							firebase.database().ref('users/' + split).child("totalStars").on("value", snap => {
-								$("#tutorrating").html((snap.val()/pastSessions).toFixed(2) + " <i class=\"fas fa-star\"></i>");
+								$("#tutorrating").html((snap.val()/ratedSessions).toFixed(2) + " <i class=\"fas fa-star\"></i>");
 							});
 						}
 					});
@@ -443,18 +443,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 						$("#mysubjectsarea").html(text);
 					});
-					
-					firebase.database().ref('users/' + split).on('value', function(snapshot) {
-							var returnArr = [];
-							snapshot.forEach(function(childSnapshot) {
-						       	if(childSnapshot.child("stars").val()) {
-						       		var snapemail = splitEmail(childSnapshot.child("email").val());
-						       		var snapdate = childSnapshot.child("date").val();
-						       		var id = snapemail + snapdate;
-						       		$("#" + id).html(childSnapshot.child("stars").val() + " <i class=\"fas fa-star\"></i>");
-						       	}
-						    });
-					});
 
 					var questionRef = firebase.database().ref('questions');
 
@@ -471,7 +459,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 							color = "";
 						}
 						if(email == user.email) {
-							$("#myquestions").append("<div class=\"question" + color + "\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4>" + answer + "</div>");
+							$("#myquestions").append("<div class=\"tuteequestion" + color + "\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4>" + answer + "</div>");
 						}
 					});
 
@@ -504,7 +492,18 @@ firebase.auth().onAuthStateChanged(function(user) {
 								$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>Time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
 							} else {
 								if(date != null) {
-									$("#pastsessionsbody").append("<div class=\"req lightblue\"> <div class=\"star\" id=\"" + splitEmail(email) + date + "\"> <i onclick=\"openStar()\" class=\"fas fa-star\"></i> </div> <h2>Date: " + date + "</h2> " + "<h4>Time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
+									var tuteeRef2 = firebase.database().ref('users/' + splitEmail(email) + "/" + date);
+
+									tuteeRef2.once("value", snap => {
+										var stars;
+										console.log(snap.val());
+										if(snap.hasChild("stars")) {
+											stars = snap.child("stars").val() + " <i class=\"fas fa-star\"></i>";
+										} else {
+											stars = "<i onclick=\"openStar()\" class=\"fas fa-star\"></i>";
+										}
+										$("#pastsessionsbody").append("<div class=\"req lightblue\"> <div class=\"star\">" + stars + "</div> <h2>Date: " + date + "</h2> " + "<h4>Time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
+									});
 								}
 							}
 
@@ -865,16 +864,28 @@ function star(stars) {
 	var tutoremail = "";
 	ref.orderByChild("name").equalTo(currenttutor).on("value", snap => {
 		var prevstars;
+		var ratedsessions;
 		if(tutoremail == "") {
 			tutoremail += Object.keys(snap.val())[0];
 		} else {
 			tutoremail = "trash/" + Object.keys(snap.val())[0];
 		}
-		firebase.database().ref('users/' + tutoremail).child('totalStars').on("value", snap => {
+		var tutorRef = firebase.database().ref('users/' + tutoremail);
+		tutorRef.child('totalStars').once("value", snap => {
 			prevstars = snap.val();
 		});
-		firebase.database().ref('users/' + tutoremail).child('totalStars').set(prevstars + stars);
+		tutorRef.once("value", snap => {
+			if(!snap.hasChild("ratedSessions")) {
+				ratedSessions = 0;
+			} else {
+				ratedSessions = snap.child("ratedSessions").val();
+			}
+			console.log(ratedSessions);
+		});
+		tutorRef.child('ratedSessions').set(ratedSessions + 1);
+		tutorRef.child('totalStars').set(prevstars + stars);
 	});
+	setTimeout("location.reload(true);",1000);
 }
 
 function hoverone() {
