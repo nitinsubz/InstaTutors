@@ -123,6 +123,15 @@ h1 strong {
 	top: 41px;
 }
 
+#versionnumber {
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	font-size: 20px;
+	z-index: 99;
+	color: #777;
+}
+
 .sidebar {
 	height: 100vh;
 	width: 400px;
@@ -888,7 +897,7 @@ canvas {
 	padding: 130px 10% 110px 10%;
 	text-align: center;
 	color: white;
-	background: linear-gradient(60deg, #222 50%, #458789 50%);
+	background: linear-gradient(60deg, #222 50%, #212664 50%);
 	background-size: 120%;
 	background-position: left;
 	overflow-y: hidden;
@@ -1936,7 +1945,7 @@ canvas {
 
 #tutorsessionshead {
 	padding: 140px 10% 90px 10%;
-	background: #330867;
+	background: linear-gradient(to left, #212664, #330867);
 	color: white;
 }
 
@@ -1953,6 +1962,33 @@ canvas {
 #tutormysessions {
 	background-color: #ddd;
 	display: none;
+}
+
+#tutorallquestions {
+	display: none;
+	background-color: #ddd;
+}
+
+#tutorquestionhead {
+	padding: 120px 10% 90px 10%;
+	background: linear-gradient(to right, #212664, #330867);
+	text-align: center;
+	color: white;
+}
+
+#tutorquestionhead h1 {
+	font-size: 60px;
+}
+
+#tutorquestionhead h3 {
+	font-size: 30px;
+}
+
+#tutorquestionbody {
+	padding: 10px 3% 50px 3%;
+	margin: -50px 10% 0px 10%;
+	background-color: white;
+	border-radius: 30px 30px 0px 0px;
 }
 
 #tutormysessions h1 {
@@ -2086,61 +2122,268 @@ canvas {
 	background-color: lightblue;
 }
 
-#logout {
+#servicenav {
+	background: linear-gradient(30deg, #30CFD0, #212333);
 	position: fixed;
-	top: 0;
-	right: 0;
-	background: linear-gradient(to right, #30CFD0, #212664);
-	background-size: 200% 100%;
-	background-position: right;
-	padding: 15px 40px;
+	top: 10px;
+	right: 10px;
+	font-size: 30px;
 	color: white;
-	font-size: 24px;
-	transition-duration: 0.2s;
-	display: none;
+	z-index: 60;
+	padding: 10px 20px;
+	border-radius: 60px;
+	transition-duration: 0.4s;
 }
 
-#logout:hover {
-	cursor: pointer;
-	background-position: left;
-	text-decoration: none;
+#servicenav:hover {
+	top: -280px;
+	right: -250px;
+	padding: 280px;
+	border-radius: 100%;
 }
 
-#servicenav, #tutornav {
-	position: fixed;
-	z-index: 89;
-	right: 160px;
-	margin: 0px;
+#servicenav:hover i {
+	transition-duration: 0.3s;
 }
 
-#servicenav button, #tutornav button {
-	padding: 15px 40px;
-	margin: 0px;
-	border: 0;
-	font-size: 24px;
-	background-color: #eee;
-	color: #333;
-	transition-duration: 0.2s;
+#servicenav:hover i {
+	opacity: 0;
 }
 
 #servicenav button:hover {
-	background-color: #30CFD0; 
+	transform: scale(1.1);
+}
+
+#booknav, #questionnav, #sessionsnav, #servicelogout {
+	position: fixed;
+	z-index: 0;
 	color: white;
-	cursor: pointer;
+	background-color: transparent;
+	border: 0;
+	font-size: 25px;
+	top: -100px;
+	opacity: 0;
+	right: -50px;
+	transition-duration: 0.4s;
+}
+
+#servicenav:hover #booknav {
+	right: 90px;
+	top: 25px;
+	opacity: 1;
+	z-index: 99;
+}
+
+#servicenav:hover #questionnav {
+	right: 80px;
+	top: 90px;
+	opacity: 1;
+	z-index: 99;
+}
+
+#servicenav:hover #sessionsnav {
+	right: 60px;
+	top: 155px;
+	opacity: 1;
+	z-index: 99;
+}
+
+#servicenav:hover #servicelogout {
+	right: 35px;
+	top: 210px;
+	opacity: 1;
+	z-index: 99;
+}
+
+#tutornav {
+	background: linear-gradient(30deg, #30CFD0, #212333);
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	font-size: 30px;
+	color: white;
+	z-index: 60;
+	padding: 10px 20px;
+	border-radius: 60px;
+	transition-duration: 0.4s;
+}
+
+#tutornav:hover {
+	top: -280px;
+	right: -250px;
+	padding: 280px;
+	border-radius: 100%;
+}
+
+#tutornav:hover i {
+	transition-duration: 0.3s;
+}
+
+#tutornav:hover i {
+	opacity: 0;
 }
 
 #tutornav button:hover {
-	background-color: #30CFD0;
+	transform: scale(1.1);
+}
+
+#tutorbooknav, #tutorquestionsnav, #tutorsessionsnav, #tutorlogout {
+	position: fixed;
+	z-index: 0;
 	color: white;
-	cursor: pointer;
+	background-color: transparent;
+	border: 0;
+	font-size: 25px;
+	top: -100px;
+	opacity: 0;
+	right: -50px;
+	transition-duration: 0.4s;
 }
 
-#booknav {
-	border-radius: 0px 0px 0px 20px;
+#tutornav:hover #tutorbooknav {
+	right: 120px;
+	top: 25px;
+	opacity: 1;
+	z-index: 99;
 }
 
-#sessionstab {
+#tutornav:hover #tutorquestionsnav {
+	right: 100px;
+	top: 90px;
+	opacity: 1;
+	z-index: 99;
+}
+
+#tutornav:hover #tutorsessionsnav {
+	right: 70px;
+	top: 155px;
+	opacity: 1;
+	z-index: 99;
+}
+
+#tutornav:hover #tutorlogout {
+	right: 40px;
+	top: 210px;
+	opacity: 1;
+	z-index: 99;
+}
+
+#sessionstab, #questiontab {
 	display: none;
+}
+
+#questionheader {
+	padding: 130px 10% 80px 10%;
+	background: linear-gradient(45deg, #212664, black);
+	text-align: center;
+	color: white;
+}
+
+#questionheader h1 {
+	font-size: 60px;
+}
+
+#questionheader h3 {
+	font-size: 30px;
+}
+
+#questionbody {
+	margin: -60px 10% 0px 10%;
+	padding: 50px 5%;
+	background-color: white;
+	border-radius: 20px 20px 0px 0px;
+}
+
+#questionbody h3 {
+	font-size: 30px;
+}
+
+#questionbody p {
+	font-size: 20px;
+	color: #666;
+	padding: 10px 0px;
+}
+
+#question {
+	border: 1px solid #ccc;
+	margin: 10px 0px;
+	height: 200px;
+	width: 90%;
+	outline: 0;
+}
+
+#questionemail {
+	transform: scale(0);
+	height: 0;
+}
+
+.tutorquestion textarea {
+	width: 100%;
+	margin: 10px 0px;
+	border: 1px solid #ccc;
+	outline: 0;
+	height: 40px;
+	transition-duration: 0.2s;
+	font-size: 18px;
+}
+
+.tutorquestion textarea:focus {
+	border: 1px solid #30CFD0;
+	height: 120px;
+}
+
+.answerquestion {
+	border: 1px solid #444;
+	color: #444;
+	padding: 10px 20px;
+	font-size: 20px;
+	border-radius: 20px;
+	background-color: transparent;
+	transition-duration: 0.2s;
+}
+
+.answerquestion:hover {
+	color: white;
+	background-color: #444;
+}
+
+#question:focus {
+	outline: 1px solid #30CFD0;
+}
+
+.tuteequestion, .tutorquestion {
+	border-radius: 30px;
+	padding: 30px;
+	background-color: #eee;
+	margin: 30px 0px;
+}
+
+.tuteequestion h4, .tutorquestion h4 {
+	font-size: 22px;
+}
+
+#questionerrors {
+	font-size: 18px;
+	padding: 10px 0px;
+}
+
+#submitquestion {
+	background: linear-gradient(to right, #30CFD0, #212664);
+	background-size: 200% 100%;
+	background-position: left;
+	border-radius: 30px;
+	padding: 15px 40px;
+	color: white;
+	font-size: 24px;
+	transition-duration: 0.2s;
+}
+
+#submitquestion:hover {
+	background-position: right;
+}
+
+#myquestions {
+	padding: 40px 0px;
 }
 
 #sessionsheader {
@@ -3017,27 +3260,102 @@ canvas {
 		border-radius: 0px 0px 0px 20px;
 	}
 
-	#servicenav button, #tutornav button {
-		padding: 12px 15px;
-		font-size: 17px;
-		background-color: #eee;
-	}
-
-	#booknav {
-		position: fixed;
+	#servicenav, #tutornav {
+		background: #eee;
 		bottom: 0;
-		width: 55%;
-		left: 0;
-		margin: 0;
-		border-radius: 0px;
-	}
-
-	#sessionsnav {
-		position: fixed;
-		bottom: 0;
+		top: 80%;
+		border-radius: 0;
+		width: 100%;
 		right: 0;
-		width: 45%;
-		margin: 0;
+		left: 0;
+	}
+
+	#servicenav i, #tutornav i {
+		display: none;
+	}
+
+	#servicenav:hover {
+		background: #eee;
+		bottom: 0;
+		border-radius: 0;
+		width: 100%;
+		right: 0;
+		left: 0;
+		top: 80%;
+		padding: 0;
+	}
+
+	#tutornav:hover {
+		background: #eee;
+		bottom: 0;
+		border-radius: 0;
+		width: 100%;
+		right: 0;
+		left: 0;
+		top: 80%;
+		padding: 0;
+	}
+
+	#booknav, #questionnav, #sessionsnav, #servicelogout, #tutorbooknav, #tutorquestionsnav, #tutorsessionsnav, #tutorlogout {
+		position: fixed;
+		color: #333;
+		font-size: 18px;
+		width: 50%;
+		right: 0;
+		float: left;
+		bottom: 0;
+		left: 0;
+		padding: 0;
+		z-index: 99;
+		opacity: 1;
+	}
+
+	#booknav, #questionnav, #tutorbooknav, #tutorquestionsnav {
+		top: 75%;
+	}
+
+	#questionnav, #servicelogout, #tutorquestionsnav, #tutorlogout {
+		left: 50%;
+	}
+
+	#sessionsnav, #servicelogout, #tutorlogout, #tutorsessionsnav {
+		top: 90%;
+	}
+
+	#servicenav:hover #booknav {
+		top: 75%;
+	}
+
+	#servicenav:hover #questionnav {
+		top: 75%;
+		left: 50%;
+	}
+
+	#servicenav:hover #sessionsnav {
+		top: 90%;
+	}
+
+	#servicenav:hover #servicelogout {
+		top: 90%;
+		left: 50%;
+	}
+
+	#tutornav:hover #tutorbooknav {
+		top: 75%;
+	}
+
+	#tutornav:hover #tutorquestionsnav {
+		top: 75%;
+		left: 50%;
+	}
+
+	#tutornav:hover #tutorsessionsnav {
+		top: 90%;
+	}
+
+	#tutornav:hover #tutorlogout {
+		top: 90%;
+		left: 50%;
 	}
 
 	#bookform {
@@ -3645,6 +3963,44 @@ canvas {
 
 	#donatebody {
 		background-size: 250%;
+	}
+
+	#questionheader {
+		padding: 100px 8% 70px 8%;
+	}
+
+	#questionheader h1 {
+		font-size: 40px;
+	}
+
+	#questionheader h3 {
+		font-size: 24px;
+	}
+
+	#questionbody {
+		margin: -50px 5% 0px 5%;
+		padding: 30px 5%;
+	}
+
+	#questionbody h3 {
+		font-size: 24px;
+	}
+
+	#question {
+		width: 100%;
+	}
+
+	.tuteequestion h4 {
+		font-size: 18px;
+	}
+
+	#questionerrors {
+		font-size: 16px;
+	}
+
+	#submitquestion {
+		padding: 15px 20px;
+		font-size: 20px;
 	}
 
 }

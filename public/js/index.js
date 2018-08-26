@@ -352,6 +352,18 @@ firebase.auth().onAuthStateChanged(function(user) {
 						$("#tutorbio").html(snap.val());
 					});
 
+					var questionRef = firebase.database().ref('questions');
+
+						questionRef.on("child_added", snap => {
+							var email = snap.child("askid").val();
+							var question = snap.child("question").val();
+							var time = convertMilitary(snap.child("time").val());
+							var answer = snap.child("answer").val();
+							if(answer == "") {
+								$("#tutorquestionbody").append("<div class=\"tutorquestion\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4> <h4 id=\"questionemail\">" + email + "</h4> <textarea style=\"resize: none;\" type=\"text\"></textarea><button class=\"answerquestion\" onclick=\"answerQuestion()\">Answer this Question</button></div>");
+							}
+						});
+
 
 					var tutorPastSess = firebase.database().ref('users/' + split).child("pastSessions");
 
@@ -384,6 +396,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 								}
 							}
 
+
 						//update previous sessions count
 						firebase.database().ref('users/' + split).on('value', function(snapshot) {
 							var returnArr = [];
@@ -398,7 +411,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						        	selectedDate2 = new Date(splitDate(splitDate(returnArr[n])));
 						        }
 						        var now2 = new Date();
-						        if(returnArr[n] != null && selectedDate2 < now2) {
+						        if(returnArr[n] != null && selectedDate2 < now2.setTimezoneOffset(-1600)) {
 						        	newArr.push(returnArr[n]);
 							    }
 						    }
@@ -411,7 +424,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 					$("#email_div").css("display", "none");
 					$("#mainbody").fadeIn();
 				    $(".main-div").css("display", "none");
-				    $("#logout").fadeIn();
 				    $(".create-div").css("display", "none");
 				    $("#bookasession a").html("Request a Session")
 				    $("#sidelogin").html("Request a Session");
@@ -444,13 +456,34 @@ firebase.auth().onAuthStateChanged(function(user) {
 						    });
 					});
 
+					var questionRef = firebase.database().ref('questions');
 
-				    var reqRef = firebase.database().ref('users/' + split);
+					questionRef.on("child_added", snap => {
+						var email = snap.child("askid").val();
+						var question = snap.child("question").val();
+						var time = convertMilitary(snap.child("time").val());
+						var answer = snap.child("answer").val();
+						var tutor = snap.child("tutor").val();
+						if(answer != "") {
+							color = " green";
+							answer = "<h4>Answer: " + answer + "</h4> <h4>Tutor: " + tutor + "</h4>";
+						} else {
+							color = "";
+						}
+						if(email == user.email) {
+							$("#myquestions").append("<div class=\"question" + color + "\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4>" + answer + "</div>");
+						}
+					});
+
+				    var reqRef = firebase.database().ref('requests');
+			
 			//date, time, location, tutor, done, subject
 					reqRef.on("child_added", snap => {
+						var email = snap.child("email").val();
+
+						if(email == user.email) {
 						var date = snap.child("date").val();
 						var done = snap.child("done").val();
-						var email = snap.child("email").val();
 						var subject = snap.child("subject").val();
 						var details = snap.child("details").val();
 						var time = convertMilitary(snap.child("time").val());
@@ -494,6 +527,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						    }
 						    firebase.database().ref('users/' + split).child("pastSessions").set(newArr.length);
 						});
+						}
 					});
 				}
 			});
@@ -550,7 +584,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 				}
 
 				if(date != null) {
-					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>Time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
+					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>Time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
 				}
 		});
 	});
@@ -596,6 +630,53 @@ function resetPass() {
 	});
 }
 
+function submitquestion() {
+	var question = $("#question").val();
+	var date = new Date();
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	var split = splitEmail(firebase.auth().currentUser.email);
+	if(minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	var time = hours + ":" + minutes;
+
+	var newhours = hours;
+	var ampm = "AM";
+	if(hours > 12) {
+		newhours = hours - 12;
+		ampm = "PM";
+	}
+	var newtime = newhours + ":" + minutes + " " + ampm;
+
+	if(question != "") {
+		$("#questionerrors").css("color", "green");
+		$("#questionerrors").html("Thank you for your question!  We will get back to you ASAP.");
+		firebase.database().ref('questions/' + split + time).set({
+			time: time,
+			answer: "",
+			tutor: "",
+			askid: firebase.auth().currentUser.email,
+			question: question
+		 });
+		var content = "<h3>New Question</h3> <p><strong>Question: </strong>" + question + "</p> <p><strong>Time: </strong>" + newtime + "</p> <p>You can answer this question <a href=\"https://www.instatutors.org/login\">here</a>.";
+		Email.send("support@instatutors.org",
+					firebase.auth().currentUser.email,
+					"New Question Submitted at " + newtime,
+					content,
+					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+
+		Email.send("support@instatutors.org",
+					"support@instatutors.org",
+					"New Question Submitted at " + newtime,
+					content,
+					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+	} else {
+		$("#questionerrors").css("color", "red");
+		$("#questionerrors").html("Please enter a question.");
+	}
+}
+
 //Same thing, but from the account
 function resetPass2() {
 	var emailAddress = firebase.auth().currentUser.email;
@@ -606,6 +687,39 @@ function resetPass2() {
 	  alert(error.message);
 	  console.log(error);
 	});
+}
+
+function answerQuestion() {
+	var time = event.currentTarget.parentNode.childNodes[3].innerHTML.slice(6);
+	time = time.split(" ");
+	var splittime = time[0].split(":");
+	var hours = splittime[0];
+	var minutes = splittime[1];
+	if(time[1] == "PM") {
+		hours = parseInt(hours) + 12;
+	}
+	var question = event.currentTarget.parentNode.childNodes[1].innerHTML.slice(10);
+	var email = event.currentTarget.parentNode.childNodes[5].innerHTML;
+	var newtime = hours + ":" + minutes;
+	var answer = event.currentTarget.parentNode.childNodes[7].value;
+	if(answer != "" || length < 10) {
+		var length = answer.split(" ").length;
+		if(length < 10) {
+			alert("Please enter an answer greater than 10 words.");	
+		} else {
+			firebase.database().ref('questions/' + splitEmail(email) + newtime).child("answer").set(answer);
+			firebase.database().ref('questions/' + splitEmail(email) + newtime).child("tutor").set(firebase.auth().currentUser.email);
+			var content = "<h3>Question Has Been Answered</h3> <p><strong>Question: </strong>" + question + "</p> <p><strong>Answer: </strong>" + answer + "</p>.";
+			Email.send("support@instatutors.org",
+					email,
+					"Your Question has been Answered",
+					content,
+					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+			alert("Thank you for your answer!  Be prepared to answer follow up questions.");
+		}
+	} else {
+		alert("Please enter an answer greater than 10 words.");
+	}
 }
 
 //for Tutors to claim a session
@@ -620,7 +734,7 @@ function takeSession() {
 
 	var split = splitEmail(firebase.auth().currentUser.email);
 
-	firebase.database().ref('users/' + split).on('value', function(snapshot) {
+	firebase.database().ref('users/' + split).once('value', function(snapshot) {
 		var sessionsCount = 0;
 		var prevdates = [];
 		snapshot.forEach(function(childSnapshot) {
@@ -799,22 +913,38 @@ function closeStars() {
 
 function sessionstab() {
 	$("#sessionstab").fadeIn();
-	 $("#booktab").css("display", "none");
+	 $("#booktab").hide();
+	 $("#questiontab").hide();
+}
+
+function questiontab() {
+	$("#questiontab").fadeIn();
+	 $("#booktab").hide();
+	 $("#sessionstab").hide();
 }
 
 function booktab() {
 	$("#booktab").fadeIn();
-	 $("#sessionstab").css("display", "none");
+	 $("#questiontab").hide();
+	 $("#sessionstab").hide();
 }
 
 function allsessionstab() {
 	$("#allsessions").fadeIn();
-	 $("#tutormysessions").css("display", "none");
+	 $("#tutormysessions").hide();
+	 $("#tutorallquestions").hide();
 }
 
 function tutorsessionstab() {
 	$("#tutormysessions").fadeIn();
-	 $("#allsessions").css("display", "none");
+	 $("#allsessions").hide();
+	 $("#tutorallquestions").hide();
+}
+
+function allquestionstab() {
+	$("#tutorallquestions").fadeIn();
+	$("#allsessions").hide();
+	 $("#tutormysessions").hide();
 }
 
 function openCreate() {
