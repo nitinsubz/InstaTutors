@@ -359,13 +359,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 							var question = snap.child("question").val();
 							var time = convertMilitary(snap.child("time").val());
 							var answer = snap.child("answer").val();
-							if(answer != "") {
-								color = " green";
-								answer = "<h4>Answer: " + answer + "</h4> <h4>Tutor: " + tutor + "</h4>";
-							} else {
-								color = "";
+							if(answer == "") {
+								$("#tutorquestionbody").append("<div class=\"tutorquestion\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4> <h4 id=\"questionemail\">" + email + "</h4> <textarea style=\"resize: none;\" type=\"text\"></textarea><button class=\"answerquestion\" onclick=\"answerQuestion()\">Answer this Question</button></div>");
 							}
-							$("#tutorquestionbody").append("<div class=\"tutorquestion" + color + "\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4>" + answer + "</div>");
 						});
 
 
@@ -415,7 +411,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						        	selectedDate2 = new Date(splitDate(splitDate(returnArr[n])));
 						        }
 						        var now2 = new Date();
-						        if(returnArr[n] != null && selectedDate2 < now2) {
+						        if(returnArr[n] != null && selectedDate2 < now2.setTimezoneOffset(-1600)) {
 						        	newArr.push(returnArr[n]);
 							    }
 						    }
@@ -467,19 +463,20 @@ firebase.auth().onAuthStateChanged(function(user) {
 						var question = snap.child("question").val();
 						var time = convertMilitary(snap.child("time").val());
 						var answer = snap.child("answer").val();
+						var tutor = snap.child("tutor").val();
 						if(answer != "") {
 							color = " green";
 							answer = "<h4>Answer: " + answer + "</h4> <h4>Tutor: " + tutor + "</h4>";
 						} else {
 							color = "";
 						}
-						$("#tutorquestionbody").append("<div class=\"question" + color + "\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4>" + answer + "</div>");
 						if(email == user.email) {
 							$("#myquestions").append("<div class=\"question" + color + "\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4>" + answer + "</div>");
 						}
 					});
 
 				    var reqRef = firebase.database().ref('requests');
+			
 			//date, time, location, tutor, done, subject
 					reqRef.on("child_added", snap => {
 						var email = snap.child("email").val();
@@ -587,7 +584,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 				}
 
 				if(date != null) {
-					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>Time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>tutor: " + tutor + "</h4> </div>");
+					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>Time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
 				}
 		});
 	});
@@ -690,6 +687,39 @@ function resetPass2() {
 	  alert(error.message);
 	  console.log(error);
 	});
+}
+
+function answerQuestion() {
+	var time = event.currentTarget.parentNode.childNodes[3].innerHTML.slice(6);
+	time = time.split(" ");
+	var splittime = time[0].split(":");
+	var hours = splittime[0];
+	var minutes = splittime[1];
+	if(time[1] == "PM") {
+		hours = parseInt(hours) + 12;
+	}
+	var question = event.currentTarget.parentNode.childNodes[1].innerHTML.slice(10);
+	var email = event.currentTarget.parentNode.childNodes[5].innerHTML;
+	var newtime = hours + ":" + minutes;
+	var answer = event.currentTarget.parentNode.childNodes[7].value;
+	if(answer != "" || length < 10) {
+		var length = answer.split(" ").length;
+		if(length < 10) {
+			alert("Please enter an answer greater than 10 words.");	
+		} else {
+			firebase.database().ref('questions/' + splitEmail(email) + newtime).child("answer").set(answer);
+			firebase.database().ref('questions/' + splitEmail(email) + newtime).child("tutor").set(firebase.auth().currentUser.email);
+			var content = "<h3>Question Has Been Answered</h3> <p><strong>Question: </strong>" + question + "</p> <p><strong>Answer: </strong>" + answer + "</p>.";
+			Email.send("support@instatutors.org",
+					email,
+					"Your Question has been Answered",
+					content,
+					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
+			alert("Thank you for your answer!  Be prepared to answer follow up questions.");
+		}
+	} else {
+		alert("Please enter an answer greater than 10 words.");
+	}
 }
 
 //for Tutors to claim a session
