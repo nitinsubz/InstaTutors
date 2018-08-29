@@ -425,7 +425,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 					$("#mainbody").fadeIn();
 				    $(".main-div").css("display", "none");
 				    $(".create-div").css("display", "none");
-				    $("#bookasession a").html("Request a Session")
+				    $("#bookasession a").html("Request a Session");
 				    $("#sidelogin").html("Request a Session");
 				    $("#login2").html("Request a Session");
 
@@ -442,6 +442,22 @@ firebase.auth().onAuthStateChanged(function(user) {
 						}
 
 						$("#mysubjectsarea").html(text);
+					});
+
+					var sessionsCount = firebase.database().ref('users/' + split).child("pastSessions");
+
+					sessionsCount.on("value", snap => {
+						var sessions = snap.val();
+						if(sessions >= 0 && sessions < 10) {
+							$("#bronzeaward").show();
+							firebase.database().ref('users/' + split).child("awardstatus").set("bronze");
+						} else if (sessions >= 10 && sessions < 20) {
+							$("#silveraward").show();
+							firebase.database().ref('users/' + split).child("awardstatus").set("silver");
+						} else {
+							$("#goldaward").show();
+							firebase.database().ref('users/' + split).child("awardstatus").set("gold");
+						}
 					});
 
 					var questionRef = firebase.database().ref('questions');
@@ -787,6 +803,7 @@ function takeSession() {
 			}
 
 	});
+	setTimeout("location.reload(true);",500);
 }
 
 //cancel Tutoring session (request)
@@ -835,6 +852,7 @@ function cancel() {
 						 });
 		
 		alert("Tutoring session for " + newdate + " canceled.");
+		setTimeout("location.reload(true);",500);
 	} else {
 		alert("wrong email. aborting.")
 	}
@@ -885,7 +903,7 @@ function star(stars) {
 		tutorRef.child('ratedSessions').set(ratedSessions + 1);
 		tutorRef.child('totalStars').set(prevstars + stars);
 	});
-	setTimeout("location.reload(true);",1000);
+	setTimeout("location.reload(true);",500);
 }
 
 function hoverone() {
@@ -1139,144 +1157,159 @@ function validate() {
 				prevdates.push(childSnapshot.child("date").val());
 			}		
 		});
+
 		console.log(prevdates);
-		if(numberofsessions + sessionsCount > 5) {
-			$("#formerrors").css("color", "red");
-			$("#formerrors").html("You can only have 5 active requests at a time.");
-			event.preventDefault();
-		} else {
-			var selectedDate = new Date(date);
-		   	var now = new Date();
-
-
-			if(date == "" || selectedDate < now.setDate(now.getDate() + 3)) {
-				missing.push(" valid date (date must be at least 4 days ahead of today)");
+		firebase.database().ref('users/' + splitEmail(email)).child("awardstatus").on('value', function(snapshot) {
+			var maxSess;
+			var daysInAdvance;
+			if(snapshot.val() == "bronze") {
+				maxSess = 5;
+				daysInAdvance = 4;
+			} else if(snapshot.val() == "silver") {
+				maxSess = 8;
+				daysInAdvance = 3;
+			} else {
+				maxSess = 10;
+				daysInAdvance = 2;
 			}
-			if(time == "") {
-				missing.push(" time");
-			}
-			if(subject == "") {
-				missing.push(" subject");
-			}
-			if(missing != "") {
-				$("#formerros").css("color", "red");
-				$("#formerrors").html("Please enter the following: " + missing);
+			if(numberofsessions + sessionsCount > maxSess) {
+				$("#formerrors").css("color", "red");
+				$("#formerrors").html("You can only have " + maxSess + " active requests at a time.");
 				event.preventDefault();
 			} else {
-				var dates = [];
-				if(timing == "weekly") {
-						for(var i=0; i<numberofsessions; i++) {
-							var newdate = new Date(new Date(date).toString());
-							newdate = newdate.addDays(7*i);
-							newdate = newdate.setTimezoneOffset(-1600);
-							newdate = newdate.toString("MM-dd-yyyy");
-							dates.push(newdate);
-						} 
-				} else if(timing == "bi-weekly") {
-						for(var i=0; i<numberofsessions; i++) {
-							var newdate = new Date(new Date(date).toString());
-							newdate = newdate.addDays(14*i);
-							newdate = newdate.setTimezoneOffset(-1600);
-							newdate = newdate.toString("MM-dd-yyyy");
-							dates.push(newdate);
-						}
+				var selectedDate = new Date(date);
+			   	var now = new Date();
+
+
+				if(date == "" || selectedDate < now.setDate(now.getDate() + daysInAdvance - 1)) {
+					missing.push(" valid date (date must be at least " + daysInAdvance + " days ahead of today)");
 				}
-				if(intersect(prevdates, dates).length > 0 || prevdates.indexOf(splitDate(date)) != -1) {
-					if(timing == "bi-weekly" || timing == "weekly") {
-						console.log(intersect(prevdates, dates).length);
-						$("#formerrors").html("You already have sessions booked on the following dates: " + intersect(prevdates, dates));
-					} else {
-						var dateindex = prevdates.indexOf(splitDate(date));
-						$("#formerrors").html("You already have a session booked on the following date: " + prevdates[dateindex]);
-					}
+				if(time == "") {
+					missing.push(" time");
+				}
+				if(subject == "") {
+					missing.push(" subject");
+				}
+				if(missing != "") {
+					$("#formerros").css("color", "red");
+					$("#formerrors").html("Please enter the following: " + missing);
+					event.preventDefault();
 				} else {
-					var content;
+					var dates = [];
 					if(timing == "weekly") {
-						var polishdates = "";
-						for(var p=0; p<dates.length; p++) {
-							console.log(dates[p]);
-							writeRequest(email, splitDate(splitDate(dates[p])), time, subject, details, "no", tutor);
-							if(p>0) {
-								polishdates += (", " + dates[p]);
-							} else {
-								polishdates += dates[p];
-							}
-						}
-						console.log(polishdates);
-						content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
-						$("#bookedheader").html("Your tutoring requests for " + polishdates + " are logged.");
-						date = polishdates;
-
+							for(var i=0; i<numberofsessions; i++) {
+								var newdate = new Date(new Date(date).toString());
+								newdate = newdate.addDays(7*i);
+								newdate = newdate.setTimezoneOffset(-1600);
+								newdate = newdate.toString("MM-dd-yyyy");
+								dates.push(newdate);
+							} 
 					} else if(timing == "bi-weekly") {
-						var polishdates = "";
-						for(var p=0; p<dates.length; p++) {
-							writeRequest(email, splitDate(splitDate(dates[p])), time, subject, details, "no", tutor);
-							if(p>0) {
-								polishdates += (", " + dates[p]);
-							} else {
-								polishdates += dates[p];
+							for(var i=0; i<numberofsessions; i++) {
+								var newdate = new Date(new Date(date).toString());
+								newdate = newdate.addDays(14*i);
+								newdate = newdate.setTimezoneOffset(-1600);
+								newdate = newdate.toString("MM-dd-yyyy");
+								dates.push(newdate);
 							}
-						}
-						content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + convertMilitary(time) + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
-						$("#bookedheader").html("Your tutoring requests for " + polishdates + " are logged.");
-						date = polishdates;
-
-					} else {
-						writeRequest(email, date, time, subject, details, "no", tutor);
-						content = "<h3 style=\"color: #30CFD0\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + convertMilitary(time) + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
-						date = splitDate(date);
-						$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
 					}
-
-
-					var ref = firebase.database().ref('users');
-					//get uids of all tutors
-						ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
-					 		var tutorids = Object.keys(snap.val());
-					 		for(var i=0; i<tutorids.length; i++) {
-					 			var myUser = firebase.database().ref('users/' + tutorids[i]).child("subjects");
-								myUser.on("value", snap => {
-										var splitsubs = snap.val().split(",");
-										var reqsubs = subject.split(", ");
-
-										var overlap = intersect(splitsubs, reqsubs).length;
-										//check whether request's subjects overlap tutor's subjects
-										//if not, don't show request
-										if(overlap > 0) {
-											var tutoremail = firebase.database().ref('users/' + tutorids[i]).child("email");
-											tutoremail.on("value", snap => {
-												Email.send("support@instatutors.org",
-															snap.val(),
-															"New Tutoring Session Requested for " + subject + " on " + date,
-															content + "<p>Take this session <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
-															{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
-											});
-										}
-
-								});
+					if(intersect(prevdates, dates).length > 0 || prevdates.indexOf(splitDate(date)) != -1) {
+						if(timing == "bi-weekly" || timing == "weekly") {
+							console.log(intersect(prevdates, dates).length);
+							$("#formerrors").html("You already have sessions booked on the following dates: " + intersect(prevdates, dates));
+						} else {
+							var dateindex = prevdates.indexOf(splitDate(date));
+							$("#formerrors").html("You already have a session booked on the following date: " + prevdates[dateindex]);
+						}
+					} else {
+						var content;
+						if(timing == "weekly") {
+							var polishdates = "";
+							for(var p=0; p<dates.length; p++) {
+								console.log(dates[p]);
+								writeRequest(email, splitDate(splitDate(dates[p])), time, subject, details, "no", tutor);
+								if(p>0) {
+									polishdates += (", " + dates[p]);
+								} else {
+									polishdates += dates[p];
+								}
 							}
-						 });
-						
-						$("#tutor2").html("Tutor: " + tutor);
-						$("#time2").html("Time: " + convertMilitary(time));
-						$("#subject2").html("Subject: " + subject);
-						$("#details2").html("Details: " + details);
+							console.log(polishdates);
+							content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+							$("#bookedheader").html("Your tutoring requests for " + polishdates + " are logged.");
+							date = polishdates;
 
-						$("#mainbody").css("display", "none");
-						$("#confirmedbody").fadeIn();
-						$("#logout").css("display", "none");
-						console.log(content);
-						//send confirmation email to user
-						Email.send("support@instatutors.org",
-							email,
-							"New Tutoring Session(s) Requested for " + subject + " on " + date,
-							content + "<p>Check out your account <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
-							{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+						} else if(timing == "bi-weekly") {
+							var polishdates = "";
+							for(var p=0; p<dates.length; p++) {
+								writeRequest(email, splitDate(splitDate(dates[p])), time, subject, details, "no", tutor);
+								if(p>0) {
+									polishdates += (", " + dates[p]);
+								} else {
+									polishdates += dates[p];
+								}
+							}
+							content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + convertMilitary(time) + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+							$("#bookedheader").html("Your tutoring requests for " + polishdates + " are logged.");
+							date = polishdates;
 
-						return true;
+						} else {
+							writeRequest(email, date, time, subject, details, "no", tutor);
+							content = "<h3 style=\"color: #30CFD0\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + convertMilitary(time) + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+							date = splitDate(date);
+							$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
+						}
+
+
+						var ref = firebase.database().ref('users');
+						//get uids of all tutors
+							ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
+						 		var tutorids = Object.keys(snap.val());
+						 		for(var i=0; i<tutorids.length; i++) {
+						 			var myUser = firebase.database().ref('users/' + tutorids[i]).child("subjects");
+									myUser.on("value", snap => {
+											var splitsubs = snap.val().split(",");
+											var reqsubs = subject.split(", ");
+
+											var overlap = intersect(splitsubs, reqsubs).length;
+											//check whether request's subjects overlap tutor's subjects
+											//if not, don't show request
+											if(overlap > 0) {
+												var tutoremail = firebase.database().ref('users/' + tutorids[i]).child("email");
+												tutoremail.on("value", snap => {
+													Email.send("support@instatutors.org",
+																snap.val(),
+																"New Tutoring Session Requested for " + subject + " on " + date,
+																content + "<p>Take this session <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
+																{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+												});
+											}
+
+									});
+								}
+							 });
+							
+							$("#tutor2").html("Tutor: " + tutor);
+							$("#time2").html("Time: " + convertMilitary(time));
+							$("#subject2").html("Subject: " + subject);
+							$("#details2").html("Details: " + details);
+
+							$("#mainbody").css("display", "none");
+							$("#confirmedbody").fadeIn();
+							$("#logout").css("display", "none");
+							console.log(content);
+							//send confirmation email to user
+							Email.send("support@instatutors.org",
+								email,
+								"New Tutoring Session(s) Requested for " + subject + " on " + date,
+								content + "<p>Check out your account <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
+								{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+
+							return true;
+					}
 				}
 			}
-		}
+		});
 	});
 }
 
