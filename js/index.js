@@ -74,6 +74,7 @@ $(window).scroll(function() {
     });
   });
 
+//parallax scrolling
  $(window).scroll(function() {
     var winTop = $(window).scrollTop();
 
@@ -91,7 +92,7 @@ $(window).scroll(function() {
     });
 });
 
-
+//helper function for finding intersection of 2 arrays
 function intersect(a, b) {
     var d = {};
     var results = [];
@@ -204,6 +205,7 @@ $(document).ready(function(){
 		});
 	});
 
+	//updates tutor bio in modal
 	$( ".tutor" ).each(function(index) {
 	    $(this).on("click", function(){
 			var name = event.currentTarget.childNodes[3].innerHTML;
@@ -229,6 +231,7 @@ $(document).ready(function(){
 	    });
 	});
 
+	//adds subject to book form
 	$( "#subjectmenu .dropdown-item" ).each(function(index) {
 	    $(this).on("click", function(){
 	        // For the boolean value
@@ -250,6 +253,7 @@ $(document).ready(function(){
 	    });
 	});
 
+	//adds subjects to application form
 	$( "#applysubjectmenu .dropdown-item" ).each(function(index) {
 		$(this).on("click", function(){
 			if($("#applysubjects").val() == "") {
@@ -271,7 +275,7 @@ $(document).ready(function(){
 	});
 });
 
-//split functions for syntax
+//helper split functions for syntax
 function splitEmail(email) {
 	str = email.split("@");
 	var res1 = str[0].replace(/\./g, "");
@@ -286,6 +290,7 @@ function splitDate(date) {
 	return(newdate[1] + "-" + newdate[2] + "-" + newdate[0]); 
 }
 
+//converts military time to AMPM time
 function convertMilitary(time) {
 	var arr = time.split(":");
 	var hours = arr[0];
@@ -333,6 +338,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 				    var tutorSubjects = firebase.database().ref('users/' + split).child("subjects");
 
+				    //adds tutor subjects to 'my account'
 					tutorSubjects.on("value", snap => {
 						var subjects = snap.val();
 						var splitsubs = subjects.split(",");
@@ -346,6 +352,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						$("#tutorsubjectsarea").html(text);
 					});
 
+					//updates tutor bio in 'my account'
 					var tutorbio = firebase.database().ref('users/' + split).child("bio");
 
 					tutorbio.on("value", snap => {
@@ -364,7 +371,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 							}
 						});
 
-
+					//adds tutor rating to 'my account', divides totalStars by rated sessions
 					var tutorRatedSess = firebase.database().ref('users/' + split).child("ratedSessions");
 
 					tutorRatedSess.on("value", snap => {
@@ -378,6 +385,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 				    var mySession = firebase.database().ref('users/' + split);
 
+				    //defines event for when new request accepted by tutor
 					mySession.on("child_added", snap => {
 						var date = snap.child("date").val();
 						var email = snap.child("email").val();
@@ -431,6 +439,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 				    var tuteeSubjects = firebase.database().ref('users/' + split).child("subjects");
 
+				    //when tutee adds a subject to profile
 					tuteeSubjects.on("value", snap => {
 						var subjects = snap.val();
 						var splitsubs = subjects.split(",");
@@ -446,6 +455,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 					var sessionsCount = firebase.database().ref('users/' + split).child("pastSessions");
 
+					//bronze, silver gold awards
 					sessionsCount.on("value", snap => {
 						var sessions = snap.val();
 						if(sessions >= 0 && sessions < 10) {
@@ -460,6 +470,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						}
 					});
 
+					//when question is added, add to question queue
 					var questionRef = firebase.database().ref('questions');
 
 					questionRef.on("child_added", snap => {
@@ -481,7 +492,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 				    var reqRef = firebase.database().ref('requests');
 			
-			//date, time, location, tutor, done, subject
+					//when new tutoring request made, add to upcoming sessions
 					reqRef.on("child_added", snap => {
 						var email = snap.child("email").val();
 
@@ -618,6 +629,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+//send verification email to user
 function sendVerification() {
 	var user = firebase.auth().currentUser;
 
@@ -645,6 +657,7 @@ function resetPass() {
 	});
 }
 
+//submits question to tutors (2 hour response)
 function submitquestion() {
 	var question = $("#question").val();
 	var date = new Date();
@@ -705,6 +718,7 @@ function resetPass2() {
 	});
 }
 
+//for tutors to answer question
 function answerQuestion() {
 	var time = event.currentTarget.parentNode.childNodes[3].innerHTML.slice(6);
 	time = time.split(" ");
@@ -1146,7 +1160,7 @@ function validate() {
 
 	var missing = [];
 
-	firebase.database().ref('users/' + splitEmail(email)).on('value', function(snapshot) {
+	firebase.database().ref('users/' + splitEmail(email)).once('value', function(snapshot) {
 		var sessionsCount = 0;
 		var prevdates = [];
 		snapshot.forEach(function(childSnapshot) {
@@ -1158,8 +1172,7 @@ function validate() {
 			}		
 		});
 
-		console.log(prevdates);
-		firebase.database().ref('users/' + splitEmail(email)).child("awardstatus").on('value', function(snapshot) {
+		firebase.database().ref('users/' + splitEmail(email)).child("awardstatus").once('value', function(snapshot) {
 			var maxSess;
 			var daysInAdvance;
 			if(snapshot.val() == "bronze") {
@@ -1263,7 +1276,7 @@ function validate() {
 
 						var ref = firebase.database().ref('users');
 						//get uids of all tutors
-							ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
+							ref.orderByChild("stat").equalTo("tutor").once("value", snap => {
 						 		var tutorids = Object.keys(snap.val());
 						 		for(var i=0; i<tutorids.length; i++) {
 						 			var myUser = firebase.database().ref('users/' + tutorids[i]).child("subjects");
@@ -1289,6 +1302,22 @@ function validate() {
 								}
 							 });
 							
+
+							var subjectarr = subject.split(", ");
+							firebase.database().ref('users/' + splitEmail(email)).once('value', function(snapshot) {
+								if(snapshot.hasChild("subjects") == false) {
+									firebase.database().ref('users/' + splitEmail(email)).child("subjects").set(subjectarr.join(","));
+								} else {
+									var value = snapshot.child("subjects").val();
+									for(var i=0; i<subjectarr.length; i++) {
+										if(value.search(subjectarr[i]) == -1) {
+											value+= "," + subjectarr[i];
+										}
+									}
+									firebase.database().ref('users/' + splitEmail(email)).child("subjects").set(value);
+								}
+							});
+
 							$("#tutor2").html("Tutor: " + tutor);
 							$("#time2").html("Time: " + convertMilitary(time));
 							$("#subject2").html("Subject: " + subject);
