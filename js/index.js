@@ -470,6 +470,30 @@ firebase.auth().onAuthStateChanged(function(user) {
 						}
 					});
 
+					//achievements
+					$("#noob").show();
+					firebase.database().ref('users/' + split).on('value', function(snapshot) {
+						var prevdates = [];
+						var dates = [];
+						snapshot.forEach(function(childSnapshot) {
+							var date2 = new Date(childSnapshot.child("date").val());
+							var now = new Date();
+							if(date2 > now && date2 != null) {
+								prevdates.push(date2);
+							}
+							if(date2 != null && date2 != "Wed Dec 31 1969 16:00:00 GMT-0800 (Pacific Standard Time)") {
+								dates.push(date2);
+							}		
+						});
+						var prevSessionsCount = prevdates.length;
+						var sessionsCount = dates.length;
+
+						if(sessionsCount > 0) {
+							$("#oncer").show();
+						}
+
+					});
+
 					//when question is added, add to question queue
 					var questionRef = firebase.database().ref('questions');
 

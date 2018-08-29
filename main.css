@@ -2455,6 +2455,7 @@ canvas {
 	height: 160px;
 	padding: 10px;
 	transition-duration: 0.2s;
+	display: none;
 }
 
 .achievement:hover {
