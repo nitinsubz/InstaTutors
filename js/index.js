@@ -391,7 +391,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						var email = snap.child("email").val();
 						var subject = snap.child("subject").val();
 						var details = snap.child("details").val();
-						var time = convertMilitary(snap.child("time").val());
+						var time = snap.child("time").val();
 
 						var selectedDate = new Date(splitDate(splitDate(date)));
 	   					var now = new Date();
@@ -1130,6 +1130,7 @@ function logout(){
 	});
 	//$("#errormessage").html("");
 	//$("#errormessage2").html("");
+	setTimeout("location.reload(true);",20);
 }
 
 

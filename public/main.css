@@ -2427,6 +2427,41 @@ canvas {
 	font-weight: 500;
 }
 
+#tuteeaward {
+	padding-bottom: 30px;
+}
+
+#tuteeaward button, #tuteeachievements button {
+	border: 0;
+	background-color: transparent;
+	outline: 0;
+}
+
+.award {
+	width: 160px;
+	transition-duration: 0.2s;
+	display: none;
+}
+
+.award:hover {
+	transform: scale(1.05);
+}
+
+#tuteeachievements {
+	padding: 20px 0px;
+}
+
+.achievement {
+	height: 160px;
+	padding: 10px;
+	transition-duration: 0.2s;
+	display: none;
+}
+
+.achievement:hover {
+	transform: scale(1.05);
+}
+
 #tuteeaddsubjects p {
 	font-size: 16px;
 	color: #330867;
