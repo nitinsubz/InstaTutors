@@ -227,22 +227,32 @@ h1 strong {
 /*Index*/
 
 #indexhead {
-	padding: 120px 10% 200px 10%;
+	padding: 120px 8% 0px 8%;
 	text-align: center;
+	height: 100vh;
+}
+
+#indexcol1 {
+	width: 55%;
+}
+
+#testimonials {
+	width: 45%;
 }
 
 #indeximg {
-	width: 150px;
+	width: 400px;
+	transition-duration: 0.2s;
 	margin-bottom: 20px;
 }
 
 #indexhead h1 {
-	font-size: 85px;
+	font-size: 50px;
 	color: #222;
-	margin-bottom: 25px;
+	margin-bottom: 30px;
 }
 
-#indexhead h1 strong {
+#indexhead h1 {
 	background: linear-gradient(135deg, #30CFD0, #330867);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 7s ease infinite;
@@ -253,6 +263,7 @@ h1 strong {
 }
 
 #indexhead a {
+	display: none;
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 230% 100%;
 	background-position: right;
@@ -260,7 +271,7 @@ h1 strong {
 	color: white;
 	padding: 15px 50px;
 	border-radius: 30px;
-	font-size: 26px;
+	font-size: 24px;
 	transition-duration: 0.2s;
 }
 
@@ -268,6 +279,10 @@ h1 strong {
 	background-position: left;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+#indexhead .wrap {
+	padding-right: 10px;
 }
 
 #indexhead a i {
@@ -286,6 +301,7 @@ h1 strong {
 	color: #555;
 	margin: 10px 0px;
 	padding-bottom: 30px;
+	display: none;
 }
 
 #indexhead li {
@@ -338,6 +354,7 @@ h1 strong {
 }
 
 #info {
+	width: 100%;
 	background: linear-gradient(black, #333);
 	overflow-y: hidden;
 	padding: 120px 10% 480px 10%;
@@ -3069,15 +3086,16 @@ canvas {
 
 	#indexhead {
 		padding: 70px 10% 100px 10%;
+		height: 150vh;
 	}
 
 	#indexhead h1 {
-		font-size: 35px;
+		font-size: 32px;
 		margin-bottom: 25px;
 	}
 
 	#indexhead h1 strong {
-		font-size: 40px;
+		font-size: 32px;
 	}
 
 	#indexhead p {
@@ -4036,6 +4054,10 @@ canvas {
 	#submitquestion {
 		padding: 15px 20px;
 		font-size: 20px;
+	}
+
+	#indeximg {
+		width: 200px;
 	}
 
 }
