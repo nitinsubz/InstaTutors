@@ -1,0 +1,46 @@
+[debug] [2018-09-05T18:16:35.347Z] ----------------------------------------------------------------------
+[debug] [2018-09-05T18:16:35.349Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-09-05T18:16:35.350Z] CLI Version:   3.19.3
+[debug] [2018-09-05T18:16:35.350Z] Platform:      darwin
+[debug] [2018-09-05T18:16:35.350Z] Node Version:  v8.11.2
+[debug] [2018-09-05T18:16:35.352Z] Time:          Wed Sep 05 2018 11:16:35 GMT-0700 (PDT)
+[debug] [2018-09-05T18:16:35.353Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-05T18:16:35.382Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-05T18:16:35.382Z] > authorizing via signed-in user
+[debug] [2018-09-05T18:16:35.385Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-09-05T18:16:35.386Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/ItvxZNFuOnruhGgPZGtzTZEjNk9wULjDT5uCE5t6TT8',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Wed Sep 05 2018 11:16:35 GMT-0700 (PDT)
+[debug] [2018-09-05T18:16:35.538Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-05T18:16:35.561Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/insta-tutors  
+  
+ Wed Sep 05 2018 11:16:35 GMT-0700 (PDT)
+[debug] [2018-09-05T18:16:35.841Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-05T18:16:35.842Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/insta-tutors/tokens  
+  
+ Wed Sep 05 2018 11:16:35 GMT-0700 (PDT)
+[debug] [2018-09-05T18:16:36.130Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'insta-tutors'...
+[info] 
+[info] i  deploying database, hosting
+[info] i  database: checking rules syntax...
+[debug] [2018-09-05T18:16:39.509Z] >>> HTTP REQUEST PUT https://insta-tutors.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+} 
+ Wed Sep 05 2018 11:16:39 GMT-0700 (PDT)
+[debug] [2018-09-05T18:16:39.828Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database insta-tutors is valid
+[info] i  hosting: preparing public directory for upload...
+[debug] [2018-09-05T18:16:41.089Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/insta-tutors/uploads/-LLewpdp8Kr6E2wyauY7?fileCount=73&message=  
+  
+ Wed Sep 05 2018 11:16:41 GMT-0700 (PDT)

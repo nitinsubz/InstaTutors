@@ -1,1 +1,1205 @@
-var _0x43ad=['block','LOGIN\x20or\x20SIGNUP','fadeOut','currentUser','sendEmailVerification','then','Email\x20verification\x20sent!\x20\x20Check\x20your\x20inbox\x20in\x202-3\x20minutes,\x20and\x20follow\x20the\x20instructions\x20in\x20the\x20email.','catch','Error:\x20','message','#reset_email_field','sendPasswordResetEmail','Reset\x20email\x20sent!\x20\x20Please\x20check\x20your\x20inbox\x20and\x20follow\x20the\x20instructions\x20in\x20the\x20email.','currentTarget','childNodes','slice','Confirm\x20that\x20you\x20can\x20commit\x20to\x20tutoring\x20this\x20session?','requests/','set','<h3\x20style=\x22color:\x20#ae3dc6\x22>Tutor\x20Contact:\x20','</h3>\x20<p><strong>Date:</strong>\x20','</p>\x20<p><strong>Time:</strong>\x20','</p>\x20<p><strong>Subjects:</strong>\x20','</p>\x20<p>Your\x20tutor\x20will\x20email\x20you\x20within\x2024\x20hours!</p>','send','Confirmed:\x20Tutoring\x20Session\x20on\x20','527d49d6-dba7-4334-8775-1b8ccd9b3eeb','parentNode','What\x20is\x20your\x20reason\x20for\x20canceling?','remove','<h3\x20style=\x22color:\x20red\x22>Tutoring\x20Session\x20Canceled\x20-</h3>\x20\x20<p><strong>Date:</strong>\x20','</p>\x20<p><strong>Tutee\x20Contact:</strong>\x20','</p>','support@instatutors.org','tutors@instatutors.org','Tutoring\x20session\x20for\x20','wrong\x20email.\x20aborting.','#booktab','#tutormysessions','#allsessions','#createname','#createemail','#createphone','#createpassword','#confirmpassword','tutee','#termscheck','checked','#errormessage2','Please\x20agree\x20to\x20the\x20terms\x20and\x20conditions.','preventDefault','code','signInWithEmailAndPassword','Please\x20make\x20sure\x20your\x20passwords\x20match.','#email_field','#password_field','#errormessage','signOut','#date','#time','#tutor','\x20valid\x20date,\x20date\x20cannot\x20be\x20in\x20the\x20past','#formerrors','Please\x20enter\x20the\x20following:\x20','</p>\x20<p><strong>Subject:</strong>\x20','</p>\x20<p><strong>Tutor:</strong>\x20','users','orderByChild','equalTo','Tutoring\x20Session\x20Requested\x20for\x20','#bookedheader','\x20is\x20logged.','Tutor:\x20','#time2','#subject2','Subject:\x20','#confirmedbody','color','green','#subjectmessage','\x20added\x20as\x20a\x20subject!','update','search','You\x20already\x20have\x20','red','Deleting\x20all\x20subjects.','<div\x20class=\x22mytutor\x20great\x22>\x20<h2>','</h2>\x20<h4>Tutor\x20Contact:\x20<a>','</a></h4>\x20<h4>Subjects\x20in\x20common:</h4>\x20','</div>','<div\x20class=\x22mytutor\x20good\x22>\x20<h2>','#mytutorsarea','keys','<div\x20class=\x22viewtutor\x20great\x22\x20onclick=\x22selectTutor()\x22>\x20<h2>','<div\x20class=\x22viewtutor\x20good\x22\x20onclick=\x22selectTutor()\x22>\x20<h2>','</h2>\x20<h4>Subjects\x20in\x20common:</h4>\x20','#tutorspace','<p>No\x20tutors\x20found.\x20\x20Sorry.</p>','#444','Selected\x20','\x20as\x20a\x20tutor.','#msgemail','#msg','\x20valid\x20email','\x20your\x20message','#formStatus','Message\x20Sent!\x20\x20We\x20will\x20try\x20to\x20get\x20back\x20to\x20you\x20within\x2024\x20hours.','<h3>New\x20Message</h3>\x20<p><strong>Name:</strong>\x20','</p>\x20<p><strong>Message:</strong>\x20','getElementById','contactForm','reset','inquiries@instatutors.org','#all','#filtertext','All','#matthewcho','#varsha','#reedit','#matthewsheh','#sangita','#stuti','#nitin','#sahana','#keshav','#chirag','#sophie','#rohit','#samyang','#rukmini','#rohun','#math','#conner','#kyle','#dan','hide','#physics','Physics','#bio','Biology','#chem','Chemistry','Writing','History','Web\x20Development','#java','Java','#python','#spanish','Spanish','#french','French','load','#navbar','show','scroll','.slideanim','each','offset','top','scrollTop','addClass','slideup','.slideanim2','slideleft','.slideanim3','slideright','.length','lengthen','#teamheadimg','css','length','push','classList','change','#phonenavlinks','.sidebar','left','0px','opacity','.sidecancel','40px','width','100%','.sidemask','0.8','.sidebar\x20a','.sidebar\x20.border-bot','0.5','-400px','.socialmedia','-360px','removeClass','ready','.back2top','click','animate','#tuteeaddsubjects\x20.dropdown-item','#newsubject','val','innerHTML','toLowerCase','#subjecttext','#tutors\x20.dropdown-item','#tutors\x20h4\x20strong','html','#subjectmenu\x20.dropdown-item','#subject','#subjecttext2','replace','split','onAuthStateChanged','auth','#verifyemail','Please\x20Verify\x20Your\x20Email\x20Address:\x20<i>','</i>','email','emailVerified','log','#email_div','fadeIn','display','none','#logout','database','ref','users/','child','stat','value','.main-div','.create-div','#indexlogout','#sidelogin','See\x20All\x20Requests','#tutorsessions','subjects','<h5\x20class=\x22label\x20','</h5>\x20','#tutorsubjectsarea','child_added','date','subject','time','#tutormysessionsbody','append','<div\x20class=\x22tutorreq\x22>\x20<h2>Date:\x20','</h2>\x20','<h4>time:\x20','</h4>\x20<h4>Subjects:\x20','</h4>','<h4>email:\x20','#mainbody','#bookasession','Request\x20a\x20Session','#login2','#mysubjectsarea','done','tutor','yes','\x20green','</h4>\x20</h4>','<h4>Subjects:\x20','<h4>tutor:\x20','name','#welcome','Welcome\x20','#tutorwelcome','#user','User:\x20','#tutoruser','requests','#tutorsessionsbody','<div\x20class=\x22tutorreq\x22\x20style=\x22display:\x20','<h4>Date:\x20','</h4>\x20'];(function(_0x87f375,_0x444099){var _0x338a45=function(_0x260bc8){while(--_0x260bc8){_0x87f375['push'](_0x87f375['shift']());}};_0x338a45(++_0x444099);}(_0x43ad,0x98));var _0x131a=function(_0x37e4ec,_0x28174a){_0x37e4ec=_0x37e4ec-0x0;var _0x13ae90=_0x43ad[_0x37e4ec];return _0x13ae90;};$(window)['on'](_0x131a('0x0'),function(){$(_0x131a('0x1'))[_0x131a('0x2')]();});$(window)[_0x131a('0x3')](function(){$(_0x131a('0x4'))[_0x131a('0x5')](function(){var _0x98e077=$(this)[_0x131a('0x6')]()[_0x131a('0x7')];var _0x14a707=$(window)[_0x131a('0x8')]();if(_0x98e077<=_0x14a707+0x258){$(this)[_0x131a('0x9')](_0x131a('0xa'));}});});$(window)[_0x131a('0x3')](function(){$(_0x131a('0xb'))['each'](function(){var _0x1fda16=$(this)[_0x131a('0x6')]()[_0x131a('0x7')];var _0x4ada8b=$(window)[_0x131a('0x8')]();if(_0x1fda16<=_0x4ada8b+0x258){$(this)[_0x131a('0x9')](_0x131a('0xc'));}});});$(window)[_0x131a('0x3')](function(){$(_0x131a('0xd'))[_0x131a('0x5')](function(){var _0x591fcf=$(this)[_0x131a('0x6')]()['top'];var _0x257876=$(window)[_0x131a('0x8')]();if(_0x591fcf<=_0x257876+0x258){$(this)[_0x131a('0x9')](_0x131a('0xe'));}});});$(window)['scroll'](function(){$(_0x131a('0xf'))['each'](function(){var _0x208c77=$(this)[_0x131a('0x6')]()[_0x131a('0x7')];var _0x587df0=$(window)[_0x131a('0x8')]();if(_0x208c77<=_0x587df0+0x258){$(this)[_0x131a('0x9')](_0x131a('0x10'));}});});$(window)['scroll'](function(){var _0x49c054=$(window)[_0x131a('0x8')]();$(_0x131a('0x11'))[_0x131a('0x12')]({'margin-top':_0x49c054/1.13});});function intersect(_0xd86bc8,_0x554818){var _0x45a387={};var _0x88dd8c=[];for(var _0x5676e3=0x0;_0x5676e3<_0x554818[_0x131a('0x13')];_0x5676e3++){_0x45a387[_0x554818[_0x5676e3]]=!![];}for(var _0x26e81b=0x0;_0x26e81b<_0xd86bc8[_0x131a('0x13')];_0x26e81b++){if(_0x45a387[_0xd86bc8[_0x26e81b]])_0x88dd8c[_0x131a('0x14')](_0xd86bc8[_0x26e81b]);}return _0x88dd8c;}function rotate(_0x59a302){_0x59a302[_0x131a('0x15')]['toggle'](_0x131a('0x16'));$(_0x131a('0x17'))['slideToggle']('fast');}function opensidenav(){$(_0x131a('0x18'))[_0x131a('0x12')](_0x131a('0x19'),_0x131a('0x1a'));$(_0x131a('0x18'))[_0x131a('0x12')](_0x131a('0x1b'),'1');$(_0x131a('0x1c'))[_0x131a('0x12')](_0x131a('0x19'),'340px');$('.socialmedia')[_0x131a('0x12')](_0x131a('0x19'),_0x131a('0x1d'));$('.sidemask')[_0x131a('0x12')](_0x131a('0x1e'),_0x131a('0x1f'));$(_0x131a('0x20'))[_0x131a('0x12')]('opacity',_0x131a('0x21'));$(_0x131a('0x22'))[_0x131a('0x5')](function(){$(this)[_0x131a('0x9')](_0x131a('0xc'));});$(_0x131a('0x23'))[_0x131a('0x9')](_0x131a('0x10'));}function closesidenav(){$(_0x131a('0x18'))[_0x131a('0x12')](_0x131a('0x1b'),_0x131a('0x24'));$('.sidebar')['css'](_0x131a('0x19'),_0x131a('0x25'));$(_0x131a('0x1c'))[_0x131a('0x12')](_0x131a('0x19'),'-60px');$(_0x131a('0x26'))[_0x131a('0x12')](_0x131a('0x19'),_0x131a('0x27'));$(_0x131a('0x20'))[_0x131a('0x12')]('width','0');$(_0x131a('0x20'))[_0x131a('0x12')](_0x131a('0x1b'),'0');$('.sidebar\x20a')[_0x131a('0x5')](function(){$(this)[_0x131a('0x28')](_0x131a('0xc'));});$('.sidebar\x20.border-bot')['removeClass'](_0x131a('0x10'));}$(document)[_0x131a('0x29')](function(){$(_0x131a('0x2a'))[_0x131a('0x2b')](function(_0x2aaa14){_0x2aaa14['preventDefault']();$('html,\x20body')[_0x131a('0x2c')]({'scrollTop':0x0},0x320);return![];});$(_0x131a('0x2d'))[_0x131a('0x5')](function(_0x302315){$(this)['on'](_0x131a('0x2b'),function(){$(_0x131a('0x2e'))[_0x131a('0x2f')](this[_0x131a('0x30')][_0x131a('0x31')]());$(_0x131a('0x32'))['html'](this[_0x131a('0x30')]);});});$(_0x131a('0x33'))[_0x131a('0x5')](function(_0x130f2c){$(this)['on'](_0x131a('0x2b'),function(){$(_0x131a('0x34'))[_0x131a('0x35')](this['innerHTML']);});});$(_0x131a('0x36'))[_0x131a('0x5')](function(_0x451393){$(this)['on']('click',function(){if($(_0x131a('0x37'))[_0x131a('0x2f')]()==''){$(_0x131a('0x37'))[_0x131a('0x2f')](this[_0x131a('0x30')][_0x131a('0x31')]());}else{$(_0x131a('0x37'))[_0x131a('0x2f')]($(_0x131a('0x37'))[_0x131a('0x2f')]()+',\x20'+this[_0x131a('0x30')]['toLowerCase']());}$(_0x131a('0x38'))[_0x131a('0x35')](this[_0x131a('0x30')]);});});});function splitEmail(_0x1fc8be){str=_0x1fc8be['split']('@');var _0x2b4159=str[0x0][_0x131a('0x39')](/\./g,'');var _0x2ac4c4=str[0x1][_0x131a('0x3a')]('.');res=(_0x2b4159+_0x2ac4c4[0x0])['toLowerCase']();return res;}function splitDate(_0x4be8e3){var _0x47ab40=_0x4be8e3[_0x131a('0x3a')]('-');return _0x47ab40[0x1]+'-'+_0x47ab40[0x2]+'-'+_0x47ab40[0x0];}firebase['auth']()[_0x131a('0x3b')](function(_0x393158){if(_0x393158){var _0x393158=firebase[_0x131a('0x3c')]()['currentUser'];$(_0x131a('0x3d'))['html'](_0x131a('0x3e')+_0x393158['email']+_0x131a('0x3f'));var _0xeb9c92=splitEmail(_0x393158[_0x131a('0x40')]);var _0x4f7e32=_0x393158[_0x131a('0x41')];console[_0x131a('0x42')](_0x4f7e32);if(_0x4f7e32==![]){$(_0x131a('0x43'))[_0x131a('0x44')]();$('.main-div')['css'](_0x131a('0x45'),_0x131a('0x46'));$(_0x131a('0x47'))[_0x131a('0x12')](_0x131a('0x45'),'none');}else{$('#email_div')[_0x131a('0x12')](_0x131a('0x45'),'none');var _0x11b3f5=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0xeb9c92)[_0x131a('0x4b')](_0x131a('0x4c'));_0x11b3f5['on'](_0x131a('0x4d'),_0x459493=>{if(_0x459493[_0x131a('0x2f')]()=='tutor'){$(_0x131a('0x4e'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x46'));$(_0x131a('0x47'))['fadeIn']();$(_0x131a('0x4f'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x46'));$(_0x131a('0x50'))[_0x131a('0x44')]();$('#bookasession')['css'](_0x131a('0x45'),_0x131a('0x46'));$(_0x131a('0x51'))[_0x131a('0x35')]('SEE\x20ALL\x20REQUESTS');$('#login2')[_0x131a('0x35')](_0x131a('0x52'));$(_0x131a('0x53'))[_0x131a('0x44')]();var _0x8f3e=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0xeb9c92)[_0x131a('0x4b')](_0x131a('0x54'));_0x8f3e['on'](_0x131a('0x4d'),_0x459493=>{var _0x2c48c7=_0x459493[_0x131a('0x2f')]();var _0x3a67dd=_0x2c48c7[_0x131a('0x3a')](',');var _0x4429a5='';for(var _0x37fd1f=0x0;_0x37fd1f<_0x3a67dd['length'];_0x37fd1f++){var _0x117dd6=_0x3a67dd[_0x37fd1f][_0x131a('0x31')]();_0x4429a5+=_0x131a('0x55')+_0x117dd6+'\x22>'+_0x3a67dd[_0x37fd1f]+_0x131a('0x56');}$(_0x131a('0x57'))[_0x131a('0x35')](_0x4429a5);});var _0x52b1cd=firebase[_0x131a('0x48')]()[_0x131a('0x49')]('users/'+_0xeb9c92);_0x52b1cd['on'](_0x131a('0x58'),_0x459493=>{var _0x51a7f4=_0x459493[_0x131a('0x4b')](_0x131a('0x59'))[_0x131a('0x2f')]();var _0x485287=_0x459493['child'](_0x131a('0x40'))[_0x131a('0x2f')]();var _0x53da16=_0x459493[_0x131a('0x4b')](_0x131a('0x5a'))[_0x131a('0x2f')]();var _0x2572dd=_0x459493[_0x131a('0x4b')](_0x131a('0x5b'))[_0x131a('0x2f')]();if(_0x51a7f4!=null){$(_0x131a('0x5c'))[_0x131a('0x5d')](_0x131a('0x5e')+_0x51a7f4+_0x131a('0x5f')+_0x131a('0x60')+_0x2572dd+_0x131a('0x61')+_0x53da16+_0x131a('0x62')+_0x131a('0x63')+_0x485287+_0x131a('0x62'));}});}else{$(_0x131a('0x64'))[_0x131a('0x44')]();$(_0x131a('0x4e'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x46'));$(_0x131a('0x47'))[_0x131a('0x44')]();$(_0x131a('0x4f'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x46'));$(_0x131a('0x65'))[_0x131a('0x12')](_0x131a('0x45'),'none');$(_0x131a('0x51'))[_0x131a('0x35')](_0x131a('0x66'));$(_0x131a('0x67'))['html']('Request\x20a\x20Session');$('#indexlogout')[_0x131a('0x44')]();var _0x6cf3a=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0xeb9c92)[_0x131a('0x4b')]('subjects');_0x6cf3a['on']('value',_0x459493=>{var _0x2c8587=_0x459493[_0x131a('0x2f')]();var _0x249653=_0x2c8587['split'](',');var _0x2fe744='';for(var _0x3e52c9=0x0;_0x3e52c9<_0x249653['length'];_0x3e52c9++){var _0x4c42de=_0x249653[_0x3e52c9][_0x131a('0x31')]();_0x2fe744+=_0x131a('0x55')+_0x4c42de+'\x22>'+_0x249653[_0x3e52c9]+'</h5>\x20';}$(_0x131a('0x68'))[_0x131a('0x35')](_0x2fe744);});var _0x11dcb2=firebase[_0x131a('0x48')]()[_0x131a('0x49')]('users/'+_0xeb9c92);_0x11dcb2['on'](_0x131a('0x58'),_0x459493=>{var _0x3d7f41=_0x459493[_0x131a('0x4b')](_0x131a('0x59'))['val']();var _0x371d44=_0x459493[_0x131a('0x4b')](_0x131a('0x69'))['val']();var _0x1ec107=_0x459493['child'](_0x131a('0x40'))['val']();var _0x2ad4f4=_0x459493[_0x131a('0x4b')](_0x131a('0x5a'))[_0x131a('0x2f')]();var _0x2f3646=_0x459493[_0x131a('0x4b')](_0x131a('0x5b'))[_0x131a('0x2f')]();var _0x12dd7e=_0x459493[_0x131a('0x4b')](_0x131a('0x6a'))[_0x131a('0x2f')]();var _0x5bce32;if(_0x371d44==_0x131a('0x6b')){_0x5bce32=_0x131a('0x6c');}else{_0x5bce32='';}if(_0x3d7f41!=null){$('#sessionsbody')[_0x131a('0x5d')]('<div\x20class=\x22req'+_0x5bce32+'\x22>\x20<div\x20class=\x22cancel\x22\x20onclick=\x22cancel()\x22><i\x20class=\x22fas\x20fa-times\x22></i></div>\x20<h2>Date:\x20'+_0x3d7f41+_0x131a('0x5f')+_0x131a('0x60')+_0x2f3646+_0x131a('0x6d')+_0x131a('0x6e')+_0x2ad4f4+_0x131a('0x62')+_0x131a('0x6f')+_0x12dd7e+_0x131a('0x62'));}});}});}var _0x34fdd0=firebase['database']()[_0x131a('0x49')](_0x131a('0x4a')+_0xeb9c92)[_0x131a('0x4b')](_0x131a('0x70'));_0x34fdd0['on']('value',_0x26bd1a=>{$(_0x131a('0x71'))[_0x131a('0x35')](_0x131a('0x72')+_0x26bd1a['val']()+'!');$(_0x131a('0x73'))[_0x131a('0x35')](_0x131a('0x72')+_0x26bd1a[_0x131a('0x2f')]()+'!');});if(_0x393158!=null){$(_0x131a('0x74'))[_0x131a('0x35')](_0x131a('0x75')+_0x393158[_0x131a('0x40')]+'');$(_0x131a('0x76'))[_0x131a('0x35')](_0x393158[_0x131a('0x40')]);}var _0x10d0c4=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x77'));_0x10d0c4['on'](_0x131a('0x58'),_0x54f4cd=>{var _0x14f6f7=_0x54f4cd[_0x131a('0x4b')](_0x131a('0x59'))[_0x131a('0x2f')]();var _0x4db6e2=_0x54f4cd[_0x131a('0x4b')](_0x131a('0x69'))['val']();var _0x5df07e=_0x54f4cd[_0x131a('0x4b')]('email')[_0x131a('0x2f')]();var _0x2793e3=_0x54f4cd['child'](_0x131a('0x5a'))[_0x131a('0x2f')]();var _0x6cb0c2=_0x54f4cd[_0x131a('0x4b')](_0x131a('0x5b'))[_0x131a('0x2f')]();var _0x1e3dbe=_0x54f4cd[_0x131a('0x4b')](_0x131a('0x6a'))[_0x131a('0x2f')]();var _0xbeeaa2=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0xeb9c92)[_0x131a('0x4b')](_0x131a('0x54'));_0xbeeaa2['on'](_0x131a('0x4d'),_0x54f4cd=>{var _0x413d5e=_0x54f4cd['val']()[_0x131a('0x3a')](',');var _0x1279ad=_0x2793e3[_0x131a('0x3a')](',\x20');var _0x5e17a7=intersect(_0x413d5e,_0x1279ad)[_0x131a('0x13')];console[_0x131a('0x42')](_0x5e17a7);var _0x55ac30;if(_0x5e17a7==0x0||_0x4db6e2==_0x131a('0x6b')){_0x55ac30=_0x131a('0x46');}else{_0x55ac30='block';}if(_0x14f6f7!=null){$(_0x131a('0x78'))['append'](_0x131a('0x79')+_0x55ac30+'\x22\x20onclick=\x22takeSession()\x22>\x20<h2>Email:\x20'+_0x5df07e+_0x131a('0x5f')+_0x131a('0x7a')+_0x14f6f7+_0x131a('0x7b')+_0x131a('0x60')+_0x6cb0c2+_0x131a('0x61')+_0x2793e3+_0x131a('0x62')+_0x131a('0x6f')+_0x1e3dbe+_0x131a('0x62'));}});});}else{$(_0x131a('0x64'))[_0x131a('0x12')](_0x131a('0x45'),'none');$('.main-div')[_0x131a('0x44')]();$(_0x131a('0x43'))[_0x131a('0x12')](_0x131a('0x45'),'none');$('#logout')[_0x131a('0x12')](_0x131a('0x45'),'none');$(_0x131a('0x65'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x7c'));$(_0x131a('0x51'))['html'](_0x131a('0x7d'));$('#indexlogout')[_0x131a('0x7e')]();$(_0x131a('0x53'))[_0x131a('0x12')](_0x131a('0x45'),'none');}});function sendVerification(){var _0x51af70=firebase[_0x131a('0x3c')]()[_0x131a('0x7f')];_0x51af70[_0x131a('0x80')]()[_0x131a('0x81')](function(){alert(_0x131a('0x82'));})[_0x131a('0x83')](function(_0x57db73){alert(_0x131a('0x84')+_0x57db73[_0x131a('0x85')]);});}function openResetPass(){$(_0x131a('0x4e'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x46'));$('#reset_div')[_0x131a('0x44')]();}function resetPass(){var _0x4eb006=$(_0x131a('0x86'))['val']();firebase[_0x131a('0x3c')]()[_0x131a('0x87')](_0x4eb006)[_0x131a('0x81')](function(){alert(_0x131a('0x88'));})[_0x131a('0x83')](function(_0x1da491){alert(_0x1da491[_0x131a('0x85')]);console[_0x131a('0x42')](_0x1da491);});}function resetPass2(){var _0x3070ea=firebase[_0x131a('0x3c')]()[_0x131a('0x7f')][_0x131a('0x40')];firebase[_0x131a('0x3c')]()[_0x131a('0x87')](_0x3070ea)[_0x131a('0x81')](function(){alert(_0x131a('0x88'));})[_0x131a('0x83')](function(_0x296457){alert(_0x296457[_0x131a('0x85')]);console[_0x131a('0x42')](_0x296457);});}function takeSession(){var _0x5d5458=event[_0x131a('0x89')][_0x131a('0x8a')][0x3][_0x131a('0x30')];var _0x4f86e8=_0x5d5458[_0x131a('0x8b')](0x6);var _0x13456c=event[_0x131a('0x89')][_0x131a('0x8a')][0x1][_0x131a('0x30')];var _0x5bb184=event[_0x131a('0x89')]['childNodes'][0x5]['innerHTML'][_0x131a('0x8b')](0x6);var _0x577ff7=event[_0x131a('0x89')][_0x131a('0x8a')][0x7][_0x131a('0x30')][_0x131a('0x8b')](0x9);var _0x3ee574=splitEmail(_0x13456c[_0x131a('0x8b')](0x7));var _0x1c0b7e=confirm(_0x131a('0x8c'));var _0x232d52=_0x131a('0x6b');var _0x48ba8d=splitEmail(firebase[_0x131a('0x3c')]()['currentUser'][_0x131a('0x40')]);var _0xa50c2a=firebase[_0x131a('0x48')]()[_0x131a('0x49')]('users/'+_0x48ba8d)[_0x131a('0x4b')](_0x131a('0x70'));if(_0x1c0b7e==!![]){_0xa50c2a['on'](_0x131a('0x4d'),_0x325d69=>{firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x8d')+_0x4f86e8+_0x3ee574)['child'](_0x131a('0x6a'))[_0x131a('0x8e')](_0x325d69[_0x131a('0x2f')]());firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0x3ee574+'/'+_0x4f86e8)[_0x131a('0x4b')](_0x131a('0x6a'))[_0x131a('0x8e')](_0x325d69['val']());});firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x8d')+_0x4f86e8+_0x3ee574)['child'](_0x131a('0x69'))[_0x131a('0x8e')](_0x232d52);firebase[_0x131a('0x48')]()['ref'](_0x131a('0x4a')+_0x3ee574+'/'+_0x4f86e8)['child'](_0x131a('0x69'))[_0x131a('0x8e')](_0x232d52);alert('confirmed.\x20');firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0x48ba8d+'/'+_0x4f86e8)[_0x131a('0x8e')]({'email':_0x13456c[_0x131a('0x8b')](0x7),'date':_0x4f86e8,'time':_0x5bb184,'subject':_0x577ff7});var _0x5b3167=_0x131a('0x8f')+firebase['auth']()[_0x131a('0x7f')][_0x131a('0x40')]+_0x131a('0x90')+splitDate(_0x5d5458)+_0x131a('0x91')+_0x5bb184+_0x131a('0x92')+_0x577ff7+_0x131a('0x93');Email[_0x131a('0x94')]('support@instatutors.org',_0x13456c,_0x131a('0x95')+_0x5d5458,_0x5b3167,{'token':_0x131a('0x96')});}}function cancel(){var _0x1a3715=prompt('To\x20cancel\x20a\x20session,\x20please\x20input\x20your\x20email.');var _0x473e2f=event[_0x131a('0x89')][_0x131a('0x97')][_0x131a('0x8a')][0x3][_0x131a('0x30')];var _0x250ba9=_0x473e2f[_0x131a('0x8b')](0x6);var _0x3bd174=firebase[_0x131a('0x3c')]()[_0x131a('0x7f')]['email'];var _0x269745=splitEmail(_0x3bd174);var _0x1a9d69=event[_0x131a('0x89')][_0x131a('0x97')][_0x131a('0x8a')][0x7][_0x131a('0x30')][_0x131a('0x8b')](0xa);console['log'](_0x1a9d69);if(_0x1a3715==_0x3bd174){var _0xf004b5=prompt(_0x131a('0x98'));firebase[_0x131a('0x48')]()['ref']('requests/'+_0x250ba9+_0x269745)[_0x131a('0x99')]();firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0x269745+'/'+_0x250ba9)['remove']();firebase['database']()[_0x131a('0x49')]('requests/'+_0x250ba9+_0x269745)[_0x131a('0x99')]();firebase[_0x131a('0x48')]()['ref'](_0x131a('0x4a')+_0x269745+'/'+_0x250ba9)[_0x131a('0x99')]();var _0x523a3f=_0x131a('0x9a')+_0x250ba9+'</p>\x20<p><strong>Reason:</strong>\x20'+_0xf004b5+_0x131a('0x9b')+_0x3bd174+_0x131a('0x9c');Email[_0x131a('0x94')](_0x131a('0x9d'),_0x131a('0x9e'),'New\x20Tutoring\x20Request\x20for\x20'+_0x1a9d69,_0x523a3f,{'token':_0x131a('0x96')});alert(_0x131a('0x9f')+_0x250ba9+'\x20canceled.');}else{alert(_0x131a('0xa0'));}}function sessionstab(){$('#sessionstab')[_0x131a('0x44')]();$(_0x131a('0xa1'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x46'));}function booktab(){$(_0x131a('0xa1'))[_0x131a('0x44')]();$('#sessionstab')['css'](_0x131a('0x45'),'none');}function allsessionstab(){$('#allsessions')[_0x131a('0x44')]();$('#tutormysessions')['css'](_0x131a('0x45'),_0x131a('0x46'));}function tutorsessionstab(){$(_0x131a('0xa2'))[_0x131a('0x44')]();$(_0x131a('0xa3'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x46'));}function openCreate(){$(_0x131a('0x4e'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x46'));$(_0x131a('0x4f'))[_0x131a('0x44')]();}var database=firebase[_0x131a('0x48')]();function writeAccount(_0x4dc659,_0x5af6c8,_0x33969b,_0x41947c){var _0x533e94=splitEmail(_0x5af6c8);firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0x533e94)[_0x131a('0x8e')]({'name':_0x4dc659,'phone':_0x33969b,'email':_0x5af6c8,'stat':_0x41947c});}function createAccount(){var _0x21edbe=$(_0x131a('0xa4'))[_0x131a('0x2f')]();var _0xe81e37=$(_0x131a('0xa5'))[_0x131a('0x2f')]();var _0x184015=$(_0x131a('0xa6'))[_0x131a('0x2f')]();var _0x231d42=$(_0x131a('0xa7'))[_0x131a('0x2f')]();var _0x4b372c=$(_0x131a('0xa8'))['val']();var _0x4055f9=_0x131a('0xa9');if(_0x231d42==_0x4b372c&&_0x231d42!=''&&_0xe81e37!=''){if($(_0x131a('0xaa'))[_0x131a('0xab')]==![]){$(_0x131a('0xac'))[_0x131a('0x35')](_0x131a('0xad'));}else{firebase['auth']()['createUserWithEmailAndPassword'](_0xe81e37,_0x231d42)[_0x131a('0x83')](function(_0x451ffe){event[_0x131a('0xae')]();var _0x4abea2=_0x451ffe[_0x131a('0xaf')];var _0x4fdca2=_0x451ffe[_0x131a('0x85')];$(_0x131a('0xac'))[_0x131a('0x35')]('Error\x20:\x20'+_0x4fdca2);});firebase['auth']()[_0x131a('0xb0')](_0xe81e37,_0x231d42);writeAccount(_0x21edbe,_0xe81e37,_0x184015,_0x4055f9);$(_0x131a('0x4f'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x46'));$(_0x131a('0x43'))[_0x131a('0x44')]();sendVerification();}}else{$('#errormessage2')[_0x131a('0x35')](_0x131a('0xb1'));}}function login(){var _0x107b58=$(_0x131a('0xb2'))[_0x131a('0x2f')]();var _0x26a28e=$(_0x131a('0xb3'))[_0x131a('0x2f')]();firebase[_0x131a('0x3c')]()[_0x131a('0xb0')](_0x107b58,_0x26a28e)[_0x131a('0x83')](function(_0x3807bc){event[_0x131a('0xae')]();var _0x345db3=_0x3807bc[_0x131a('0xaf')];var _0x340421=_0x3807bc[_0x131a('0x85')];$(_0x131a('0xb4'))[_0x131a('0x35')]('Error\x20:\x20'+_0x340421);});if(firebase[_0x131a('0x3c')]()[_0x131a('0x7f')][_0x131a('0x41')]==![]){$('#email_div')[_0x131a('0x44')]();}}function logout(){firebase[_0x131a('0x3c')]()[_0x131a('0xb5')]()[_0x131a('0x81')](function(){})[_0x131a('0x83')](function(_0x380fd3){event['preventDefault']();});$('#errormessage')[_0x131a('0x35')]('');$(_0x131a('0xac'))[_0x131a('0x35')]('');}function writeRequest(_0x3eb2a7,_0x3c9b41,_0x34f18b,_0x555172,_0x6ae9a7,_0x284633){var _0x5e13be=splitEmail(_0x3eb2a7);var _0x55869e=splitDate(_0x3c9b41);firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0x5e13be+'/'+_0x55869e)[_0x131a('0x8e')]({'email':_0x3eb2a7,'date':_0x55869e,'time':_0x34f18b,'tutor':_0x284633,'done':'no','subject':_0x555172});firebase[_0x131a('0x48')]()[_0x131a('0x49')]('requests/'+_0x55869e+_0x5e13be)[_0x131a('0x8e')]({'email':_0x3eb2a7,'date':_0x55869e,'time':_0x34f18b,'tutor':_0x284633,'done':'no','subject':_0x555172});}function validate(){var _0x1064a3=firebase[_0x131a('0x3c')]()[_0x131a('0x7f')][_0x131a('0x40')];var _0x3c57f7=$(_0x131a('0xb6'))['val']();var _0x41f534=$(_0x131a('0xb7'))[_0x131a('0x2f')]();var _0x249d14=$(_0x131a('0xb8'))['val']();var _0x56137c=$(_0x131a('0x37'))[_0x131a('0x2f')]();var _0x36e30b=[];var _0xf94c65=new Date(_0x3c57f7);var _0xa7aeb6=new Date();if(_0x3c57f7==''||_0xf94c65<_0xa7aeb6){_0x36e30b['push'](_0x131a('0xb9'));}if(_0x41f534==''){_0x36e30b[_0x131a('0x14')]('\x20time');}if(_0x56137c==''){_0x36e30b[_0x131a('0x14')]('\x20subject');}if(_0x36e30b!=''){$(_0x131a('0xba'))[_0x131a('0x35')](_0x131a('0xbb')+_0x36e30b);event[_0x131a('0xae')]();}else{writeRequest(_0x1064a3,_0x3c57f7,_0x41f534,_0x56137c,'no',_0x249d14);var _0x1a7b1f='<h3\x20style=\x22color:\x20#ae3dc6\x22>New\x20Tutoring\x20Session\x20-</h3>\x20\x20<p><strong>Date:</strong>\x20'+splitDate(_0x3c57f7)+_0x131a('0x91')+_0x41f534+_0x131a('0xbc')+_0x56137c+_0x131a('0x9b')+_0x1064a3+_0x131a('0xbd')+_0x249d14+_0x131a('0x9c');var _0x4f721d=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0xbe'));_0x4f721d[_0x131a('0xbf')]('stat')[_0x131a('0xc0')](_0x131a('0x6a'))['on'](_0x131a('0x4d'),_0x3bdce3=>{var _0x46f749=Object['keys'](_0x3bdce3[_0x131a('0x2f')]());console[_0x131a('0x42')](_0x46f749);for(var _0xaba87f=0x0;_0xaba87f<_0x46f749[_0x131a('0x13')];_0xaba87f++){var _0x44dc2e=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0x46f749[_0xaba87f])[_0x131a('0x4b')](_0x131a('0x54'));_0x44dc2e['on'](_0x131a('0x4d'),_0x3bdce3=>{var _0x4ab9a3=_0x3bdce3[_0x131a('0x2f')]()['split'](',');var _0x3078c7=_0x56137c[_0x131a('0x3a')](',\x20');var _0x327b71=intersect(_0x4ab9a3,_0x3078c7)['length'];if(_0x327b71>0x0){var _0x5b9ae3=firebase[_0x131a('0x48')]()[_0x131a('0x49')]('users/'+_0x46f749[_0xaba87f])['child'](_0x131a('0x40'));_0x5b9ae3['on']('value',_0x3bdce3=>{console[_0x131a('0x42')](_0x3bdce3[_0x131a('0x2f')]());Email[_0x131a('0x94')](_0x131a('0x9d'),_0x3bdce3[_0x131a('0x2f')](),_0x131a('0xc1')+splitDate(_0x3c57f7),_0x1a7b1f,{'token':_0x131a('0x96')});});}});}});$(_0x131a('0xc2'))[_0x131a('0x35')]('Your\x20tutoring\x20request\x20for\x20'+_0x3c57f7+_0x131a('0xc3'));$('#tutor2')[_0x131a('0x35')](_0x131a('0xc4')+_0x249d14);$(_0x131a('0xc5'))[_0x131a('0x35')]('Time:\x20'+_0x41f534);$(_0x131a('0xc6'))[_0x131a('0x35')](_0x131a('0xc7')+_0x56137c);$(_0x131a('0x64'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x46'));$(_0x131a('0xc8'))[_0x131a('0x44')]();$(_0x131a('0x47'))[_0x131a('0x12')](_0x131a('0x45'),_0x131a('0x46'));Email[_0x131a('0x94')](_0x131a('0x9d'),_0x1064a3,'Tutoring\x20Session\x20Requested\x20for\x20'+splitDate(_0x3c57f7),_0x1a7b1f,{'token':_0x131a('0x96')});return!![];}}function addSubject(){var _0x4094a0=firebase[_0x131a('0x3c')]()['currentUser'][_0x131a('0x40')];var _0xdfa58f=$(_0x131a('0x2e'))['val']();var _0x9e9b74=splitEmail(_0x4094a0);var _0x50bb74=firebase['database']()[_0x131a('0x49')]('users/'+_0x9e9b74)[_0x131a('0x4b')]('subjects');var _0x4295b;_0x50bb74['on'](_0x131a('0x4d'),_0x31dcd4=>{_0x4295b=_0x31dcd4[_0x131a('0x2f')]();});if(_0xdfa58f!=''){if(_0x4295b==null){$('#subjectmessage')['css'](_0x131a('0xc9'),_0x131a('0xca'));$(_0x131a('0xcb'))[_0x131a('0x35')](_0xdfa58f+_0x131a('0xcc'));firebase['database']()[_0x131a('0x49')](_0x131a('0x4a')+_0x9e9b74)[_0x131a('0xcd')]({'subjects':_0xdfa58f['toLowerCase']()+','+_0x4295b});}else if(_0x4295b[_0x131a('0xce')](_0xdfa58f)===-0x1){$(_0x131a('0xcb'))[_0x131a('0x12')](_0x131a('0xc9'),_0x131a('0xca'));$(_0x131a('0xcb'))['html'](_0xdfa58f+_0x131a('0xcc'));firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0x9e9b74)[_0x131a('0xcd')]({'subjects':_0xdfa58f[_0x131a('0x31')]()+','+_0x4295b});}else{$(_0x131a('0xcb'))[_0x131a('0x12')](_0x131a('0xc9'),'red');$(_0x131a('0xcb'))[_0x131a('0x35')](_0x131a('0xcf')+_0xdfa58f+'\x20as\x20a\x20subject!');}}else{$(_0x131a('0xcb'))[_0x131a('0x12')](_0x131a('0xc9'),_0x131a('0xd0'));$(_0x131a('0xcb'))[_0x131a('0x35')]('Please\x20enter\x20a\x20subject.');}}function deletesubjects(){alert(_0x131a('0xd1'));var _0x2e3e27=firebase[_0x131a('0x3c')]()[_0x131a('0x7f')][_0x131a('0x40')];var _0x3c93e3=splitEmail(_0x2e3e27);firebase[_0x131a('0x48')]()['ref'](_0x131a('0x4a')+_0x3c93e3)[_0x131a('0xcd')]({'subjects':''});}function matchTutors(){var _0x5a36e7=firebase[_0x131a('0x3c')]()[_0x131a('0x7f')];var _0x3fa138=splitEmail(_0x5a36e7[_0x131a('0x40')]);var _0x5756e7=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0x3fa138)[_0x131a('0x4b')](_0x131a('0x54'));var _0x510bb7='';_0x5756e7['on']('value',_0x49965b=>{_0x510bb7=_0x49965b['val']();});_0x510bb7=_0x510bb7[_0x131a('0x3a')](',');console['log'](_0x510bb7);var _0x4f0b8f;var _0x481bcb='';var _0x59c276='';var _0x3dcb30=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0xbe'));_0x3dcb30[_0x131a('0xbf')](_0x131a('0x4c'))[_0x131a('0xc0')](_0x131a('0x6a'))['on']('value',_0x35c74d=>{_0x4f0b8f=_0x35c74d[_0x131a('0x2f')]();var _0x711697=Object['keys'](_0x35c74d[_0x131a('0x2f')]());console[_0x131a('0x42')](_0x711697);for(var _0x1db2ae=0x0;_0x1db2ae<_0x711697[_0x131a('0x13')];_0x1db2ae++){var _0x2c5992=firebase[_0x131a('0x48')]()[_0x131a('0x49')]('users/'+_0x711697[_0x1db2ae])[_0x131a('0x4b')](_0x131a('0x54'));_0x2c5992['on'](_0x131a('0x4d'),_0x35c74d=>{var _0x1683e0=_0x35c74d[_0x131a('0x2f')]()['split'](',');var _0x36f27e=intersect(_0x510bb7,_0x1683e0);if(_0x36f27e[_0x131a('0x13')]>0x1){_0x481bcb+=_0x711697[_0x1db2ae]+',';}else if(_0x36f27e[_0x131a('0x13')]==0x1){_0x59c276+=_0x711697[_0x1db2ae]+',';}});}var _0x246e26='';var _0xf1ca36=_0x481bcb[_0x131a('0x3a')](',');var _0x1afb28=_0x59c276[_0x131a('0x3a')](',');for(var _0x1db2ae=0x0;_0x1db2ae<_0xf1ca36[_0x131a('0x13')];_0x1db2ae++){var _0xa04a29=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0xf1ca36[_0x1db2ae]);_0xa04a29['on'](_0x131a('0x4d'),_0x35c74d=>{var _0x1ee669=_0x35c74d[_0x131a('0x4b')]('name')[_0x131a('0x2f')]();var _0x302370=_0x35c74d[_0x131a('0x4b')](_0x131a('0x40'))[_0x131a('0x2f')]();var _0xd7ac5c=_0x35c74d[_0x131a('0x4b')](_0x131a('0x54'))[_0x131a('0x2f')]()[_0x131a('0x3a')](',');var _0x4f13bf=intersect(_0xd7ac5c,_0x510bb7);console[_0x131a('0x42')](_0xd7ac5c);var _0x39df75='';for(var _0x10b439=0x0;_0x10b439<_0x4f13bf[_0x131a('0x13')];_0x10b439++){_0x39df75+=_0x131a('0x55')+_0x4f13bf[_0x10b439]+'\x22>'+_0x4f13bf[_0x10b439]+_0x131a('0x56');}_0x246e26+=_0x131a('0xd2')+_0x1ee669+_0x131a('0xd3')+_0x302370+_0x131a('0xd4')+_0x39df75+_0x131a('0xd5');});}for(var _0x1db2ae=0x0;_0x1db2ae<_0x1afb28[_0x131a('0x13')];_0x1db2ae++){var _0xa04a29=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0x4a')+_0x1afb28[_0x1db2ae]);_0xa04a29['on']('value',_0x35c74d=>{var _0x396c9e=_0x35c74d[_0x131a('0x4b')](_0x131a('0x70'))[_0x131a('0x2f')]();var _0x23b82d=_0x35c74d[_0x131a('0x4b')]('email')['val']();var _0x2c9d6b=_0x35c74d[_0x131a('0x4b')](_0x131a('0x54'))[_0x131a('0x2f')]()[_0x131a('0x3a')](',');var _0x50f54b=intersect(_0x2c9d6b,_0x510bb7);var _0x1600cd='';for(var _0x5bdb00=0x0;_0x5bdb00<_0x50f54b[_0x131a('0x13')];_0x5bdb00++){_0x1600cd+=_0x131a('0x55')+_0x50f54b[_0x5bdb00]+'\x22>'+_0x50f54b[_0x5bdb00]+_0x131a('0x56');}_0x246e26+=_0x131a('0xd6')+_0x396c9e+_0x131a('0xd3')+_0x23b82d+_0x131a('0xd4')+_0x1600cd+_0x131a('0xd5');});}if(_0x246e26==''){$(_0x131a('0xd7'))[_0x131a('0x35')]('<p>No\x20tutors\x20found.\x20\x20Sorry.</p>');}else{$('#mytutorsarea')[_0x131a('0x35')](_0x246e26);}});}function viewTutors(){var _0x1add67=$(_0x131a('0x37'))['val']()[_0x131a('0x3a')](',\x20');console['log'](_0x1add67);var _0x25045d;var _0x12c8fb='';var _0x54f060='';var _0x461c29=firebase[_0x131a('0x48')]()[_0x131a('0x49')](_0x131a('0xbe'));_0x461c29['orderByChild'](_0x131a('0x4c'))[_0x131a('0xc0')](_0x131a('0x6a'))['on'](_0x131a('0x4d'),_0x23b1c9=>{_0x25045d=_0x23b1c9[_0x131a('0x2f')]();var _0x4ac02d=Object[_0x131a('0xd8')](_0x23b1c9[_0x131a('0x2f')]());for(var _0x4370fd=0x0;_0x4370fd<_0x4ac02d[_0x131a('0x13')];_0x4370fd++){var _0x2c1645=firebase[_0x131a('0x48')]()['ref'](_0x131a('0x4a')+_0x4ac02d[_0x4370fd])[_0x131a('0x4b')]('subjects');_0x2c1645['on'](_0x131a('0x4d'),_0x23b1c9=>{var _0x124192=_0x23b1c9[_0x131a('0x2f')]()[_0x131a('0x3a')](',');var _0x25e764=intersect(_0x1add67,_0x124192);if(_0x25e764['length']>0x1){_0x12c8fb+=_0x4ac02d[_0x4370fd]+',';}else if(_0x25e764[_0x131a('0x13')]==0x1){_0x54f060+=_0x4ac02d[_0x4370fd]+',';}});}var _0xdd7657='';var _0x4447b8=_0x12c8fb[_0x131a('0x3a')](',');var _0x30c0b6=_0x54f060[_0x131a('0x3a')](',');for(var _0x4370fd=0x0;_0x4370fd<_0x4447b8['length'];_0x4370fd++){var _0x59efac=firebase[_0x131a('0x48')]()['ref'](_0x131a('0x4a')+_0x4447b8[_0x4370fd]);_0x59efac['on'](_0x131a('0x4d'),_0x23b1c9=>{var _0x5228dc=_0x23b1c9['child'](_0x131a('0x70'))[_0x131a('0x2f')]();var _0x1dfda2=_0x23b1c9[_0x131a('0x4b')](_0x131a('0x40'))[_0x131a('0x2f')]();var _0x251f6e=_0x23b1c9[_0x131a('0x4b')](_0x131a('0x54'))['val']()[_0x131a('0x3a')](',');var _0x278a16=intersect(_0x251f6e,_0x1add67);console[_0x131a('0x42')](_0x251f6e);var _0x3237b2='';for(var _0xd8df1f=0x0;_0xd8df1f<_0x278a16[_0x131a('0x13')];_0xd8df1f++){_0x3237b2+=_0x131a('0x55')+_0x278a16[_0xd8df1f]+'\x22>'+_0x278a16[_0xd8df1f]+_0x131a('0x56');}_0xdd7657+=_0x131a('0xd9')+_0x5228dc+'</h2>\x20<h4>Subjects\x20in\x20common:</h4>\x20'+_0x3237b2+_0x131a('0xd5');});}for(var _0x4370fd=0x0;_0x4370fd<_0x30c0b6[_0x131a('0x13')];_0x4370fd++){var _0x59efac=firebase[_0x131a('0x48')]()['ref']('users/'+_0x30c0b6[_0x4370fd]);_0x59efac['on'](_0x131a('0x4d'),_0x23b1c9=>{var _0x236ebc=_0x23b1c9[_0x131a('0x4b')](_0x131a('0x70'))[_0x131a('0x2f')]();var _0x2a68a0=_0x23b1c9['child'](_0x131a('0x40'))[_0x131a('0x2f')]();var _0x3c9781=_0x23b1c9[_0x131a('0x4b')](_0x131a('0x54'))[_0x131a('0x2f')]()[_0x131a('0x3a')](',');var _0x3672e0=intersect(_0x3c9781,_0x1add67);var _0x11ac70='';for(var _0x567c81=0x0;_0x567c81<_0x3672e0[_0x131a('0x13')];_0x567c81++){_0x11ac70+='<h5\x20class=\x22label\x20'+_0x3672e0[_0x567c81]+'\x22>'+_0x3672e0[_0x567c81]+'</h5>\x20';}_0xdd7657+=_0x131a('0xda')+_0x236ebc+_0x131a('0xdb')+_0x11ac70+'</div>';});}if(_0xdd7657==''){$(_0x131a('0xdc'))[_0x131a('0x35')](_0x131a('0xdd'));}else{$(_0x131a('0xdc'))[_0x131a('0x35')](_0xdd7657);}});}function selectTutor(){var _0x4210b4=event[_0x131a('0x89')][_0x131a('0x8a')][0x1][_0x131a('0x30')];$(_0x131a('0xb8'))['val'](_0x4210b4);$(_0x131a('0xba'))[_0x131a('0x12')](_0x131a('0xc9'),_0x131a('0xde'));$(_0x131a('0xba'))[_0x131a('0x35')](_0x131a('0xdf')+_0x4210b4+_0x131a('0xe0'));}function validatemsg(){var _0x2576e8=$('#msgname')[_0x131a('0x2f')]();var _0xa01009=$(_0x131a('0xe1'))[_0x131a('0x2f')]();var _0x41e28c=$(_0x131a('0xe2'))[_0x131a('0x2f')]();var _0x41b4c0=/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;var _0x538f58=[];if(_0x2576e8==''){_0x538f58[_0x131a('0x14')](_0x131a('0x70'));}if(_0xa01009[_0x131a('0xce')](_0x41b4c0)==-0x1){_0x538f58[_0x131a('0x14')](_0x131a('0xe3'));}if(_0x41e28c==''){_0x538f58[_0x131a('0x14')](_0x131a('0xe4'));}if(_0x538f58!=''){$(_0x131a('0xe5'))[_0x131a('0x12')](_0x131a('0xc9'),_0x131a('0xd0'));$(_0x131a('0xe5'))[_0x131a('0x35')]('Please\x20enter\x20the\x20following:\x20'+_0x538f58+'.');}else{$(_0x131a('0xe5'))[_0x131a('0x12')]('color',_0x131a('0xca'));$(_0x131a('0xe5'))[_0x131a('0x35')](_0x131a('0xe6'));var _0x28a2b3=_0x131a('0xe7')+_0x2576e8+'</p>\x20<p><strong>email:</strong>\x20'+_0xa01009+_0x131a('0xe8')+_0x41e28c+_0x131a('0x9c');document[_0x131a('0xe9')](_0x131a('0xea'))[_0x131a('0xeb')]();Email['send'](_0x131a('0xec'),_0x131a('0x9e'),'New\x20Message\x20from\x20'+_0x2576e8,_0x28a2b3,{'token':_0x131a('0x96')});}}$(document)[_0x131a('0x29')](function(){$(_0x131a('0xed'))[_0x131a('0x2b')](function(_0x5f48af){$(_0x131a('0xee'))[_0x131a('0x35')](_0x131a('0xef'));$(_0x131a('0xf0'))[_0x131a('0x2')]();$(_0x131a('0xf1'))[_0x131a('0x2')]();$(_0x131a('0xf2'))[_0x131a('0x2')]();$(_0x131a('0xf3'))[_0x131a('0x2')]();$(_0x131a('0xf4'))[_0x131a('0x2')]();$('#conner')[_0x131a('0x2')]();$('#kyle')[_0x131a('0x2')]();$(_0x131a('0xf5'))[_0x131a('0x2')]();$('#dan')[_0x131a('0x2')]();$(_0x131a('0xf6'))[_0x131a('0x2')]();$(_0x131a('0xf7'))[_0x131a('0x2')]();$(_0x131a('0xf8'))[_0x131a('0x2')]();$(_0x131a('0xf9'))[_0x131a('0x2')]();$(_0x131a('0xfa'))[_0x131a('0x2')]();$(_0x131a('0xfb'))[_0x131a('0x2')]();$(_0x131a('0xfc'))[_0x131a('0x2')]();$(_0x131a('0xfd'))[_0x131a('0x2')]();$(_0x131a('0xfe'))[_0x131a('0x2')]();});$(_0x131a('0xff'))['click'](function(_0xaa87f9){$(_0x131a('0xee'))[_0x131a('0x35')]('Math');$(_0x131a('0xf0'))[_0x131a('0x2')]();$(_0x131a('0xf1'))[_0x131a('0x2')]();$(_0x131a('0xf2'))[_0x131a('0x2')]();$(_0x131a('0xf3'))[_0x131a('0x2')]();$(_0x131a('0xf4'))[_0x131a('0x2')]();$(_0x131a('0x100'))[_0x131a('0x2')]();$(_0x131a('0x101'))[_0x131a('0x2')]();$('#stuti')[_0x131a('0x2')]();$(_0x131a('0x102'))[_0x131a('0x103')]();$(_0x131a('0xf6'))[_0x131a('0x2')]();$(_0x131a('0xf7'))[_0x131a('0x2')]();$(_0x131a('0xf8'))[_0x131a('0x2')]();$('#chirag')[_0x131a('0x2')]();$('#sophie')[_0x131a('0x2')]();$(_0x131a('0xfb'))[_0x131a('0x2')]();$(_0x131a('0xfc'))['show']();$('#rukmini')[_0x131a('0x2')]();$(_0x131a('0xfe'))[_0x131a('0x2')]();});$(_0x131a('0x104'))[_0x131a('0x2b')](function(_0x12765a){$(_0x131a('0xee'))[_0x131a('0x35')](_0x131a('0x105'));$(_0x131a('0xf0'))['show']();$(_0x131a('0xf1'))[_0x131a('0x103')]();$('#reedit')[_0x131a('0x2')]();$(_0x131a('0xf3'))[_0x131a('0x2')]();$('#sangita')[_0x131a('0x103')]();$(_0x131a('0x100'))['hide']();$(_0x131a('0x101'))[_0x131a('0x2')]();$(_0x131a('0xf5'))[_0x131a('0x2')]();$('#dan')[_0x131a('0x103')]();$(_0x131a('0xf6'))[_0x131a('0x2')]();$(_0x131a('0xf7'))[_0x131a('0x103')]();$('#keshav')[_0x131a('0x103')]();$(_0x131a('0xf9'))[_0x131a('0x103')]();$(_0x131a('0xfa'))[_0x131a('0x2')]();$('#rohit')[_0x131a('0x2')]();$(_0x131a('0xfc'))[_0x131a('0x2')]();$(_0x131a('0xfd'))[_0x131a('0x103')]();$(_0x131a('0xfe'))[_0x131a('0x103')]();});$(_0x131a('0x106'))[_0x131a('0x2b')](function(_0x5428fa){$(_0x131a('0xee'))[_0x131a('0x35')](_0x131a('0x107'));$('#matthewcho')[_0x131a('0x103')]();$('#varsha')[_0x131a('0x2')]();$(_0x131a('0xf2'))[_0x131a('0x103')]();$(_0x131a('0xf3'))[_0x131a('0x103')]();$(_0x131a('0xf4'))[_0x131a('0x2')]();$('#conner')[_0x131a('0x103')]();$('#kyle')[_0x131a('0x103')]();$(_0x131a('0xf5'))[_0x131a('0x2')]();$(_0x131a('0x102'))[_0x131a('0x103')]();$(_0x131a('0xf6'))[_0x131a('0x103')]();$(_0x131a('0xf7'))[_0x131a('0x2')]();$(_0x131a('0xf8'))[_0x131a('0x103')]();$(_0x131a('0xf9'))[_0x131a('0x103')]();$('#sophie')[_0x131a('0x2')]();$('#rohit')[_0x131a('0x103')]();$(_0x131a('0xfc'))[_0x131a('0x103')]();$(_0x131a('0xfd'))[_0x131a('0x103')]();$(_0x131a('0xfe'))['hide']();});$(_0x131a('0x108'))[_0x131a('0x2b')](function(_0x573192){$(_0x131a('0xee'))[_0x131a('0x35')](_0x131a('0x109'));$('#matthewcho')[_0x131a('0x103')]();$(_0x131a('0xf1'))[_0x131a('0x2')]();$(_0x131a('0xf2'))['hide']();$(_0x131a('0xf3'))[_0x131a('0x103')]();$(_0x131a('0xf4'))[_0x131a('0x2')]();$(_0x131a('0x100'))[_0x131a('0x2')]();$(_0x131a('0x101'))[_0x131a('0x103')]();$(_0x131a('0xf5'))['hide']();$(_0x131a('0x102'))[_0x131a('0x2')]();$(_0x131a('0xf6'))[_0x131a('0x103')]();$('#sahana')['show']();$(_0x131a('0xf8'))[_0x131a('0x2')]();$(_0x131a('0xf9'))[_0x131a('0x2')]();$(_0x131a('0xfa'))[_0x131a('0x103')]();$(_0x131a('0xfb'))['hide']();$(_0x131a('0xfc'))[_0x131a('0x103')]();$(_0x131a('0xfd'))[_0x131a('0x103')]();$('#rohun')[_0x131a('0x103')]();});$('#writing')[_0x131a('0x2b')](function(_0x5b01c1){$(_0x131a('0xee'))[_0x131a('0x35')](_0x131a('0x10a'));$(_0x131a('0xf0'))[_0x131a('0x103')]();$('#varsha')[_0x131a('0x2')]();$(_0x131a('0xf2'))[_0x131a('0x2')]();$(_0x131a('0xf3'))[_0x131a('0x2')]();$(_0x131a('0xf4'))[_0x131a('0x2')]();$(_0x131a('0x100'))[_0x131a('0x103')]();$(_0x131a('0x101'))[_0x131a('0x2')]();$(_0x131a('0xf5'))[_0x131a('0x2')]();$(_0x131a('0x102'))[_0x131a('0x2')]();$(_0x131a('0xf6'))[_0x131a('0x103')]();$(_0x131a('0xf7'))[_0x131a('0x103')]();$(_0x131a('0xf8'))[_0x131a('0x103')]();$(_0x131a('0xf9'))[_0x131a('0x103')]();$(_0x131a('0xfa'))[_0x131a('0x2')]();$(_0x131a('0xfb'))[_0x131a('0x103')]();$(_0x131a('0xfc'))[_0x131a('0x103')]();$('#rukmini')[_0x131a('0x2')]();$('#rohun')[_0x131a('0x103')]();});$('#history')[_0x131a('0x2b')](function(_0x32e927){$(_0x131a('0xee'))[_0x131a('0x35')](_0x131a('0x10b'));$(_0x131a('0xf0'))[_0x131a('0x103')]();$(_0x131a('0xf1'))[_0x131a('0x2')]();$(_0x131a('0xf2'))['show']();$(_0x131a('0xf3'))[_0x131a('0x2')]();$('#sangita')[_0x131a('0x103')]();$('#conner')[_0x131a('0x103')]();$(_0x131a('0x101'))[_0x131a('0x2')]();$(_0x131a('0xf5'))['hide']();$(_0x131a('0x102'))[_0x131a('0x2')]();$('#nitin')[_0x131a('0x103')]();$('#sahana')['hide']();$(_0x131a('0xf8'))['hide']();$(_0x131a('0xf9'))[_0x131a('0x103')]();$(_0x131a('0xfa'))[_0x131a('0x2')]();$(_0x131a('0xfb'))['hide']();$(_0x131a('0xfc'))[_0x131a('0x2')]();$(_0x131a('0xfd'))[_0x131a('0x2')]();$(_0x131a('0xfe'))[_0x131a('0x103')]();});$('#webdev')[_0x131a('0x2b')](function(_0x5a2ffc){$(_0x131a('0xee'))[_0x131a('0x35')](_0x131a('0x10c'));$('#matthewcho')[_0x131a('0x2')]();$(_0x131a('0xf1'))['hide']();$(_0x131a('0xf2'))[_0x131a('0x103')]();$(_0x131a('0xf3'))['hide']();$(_0x131a('0xf4'))[_0x131a('0x103')]();$(_0x131a('0x100'))[_0x131a('0x103')]();$(_0x131a('0x101'))['show']();$(_0x131a('0xf5'))['hide']();$(_0x131a('0x102'))[_0x131a('0x103')]();$(_0x131a('0xf6'))[_0x131a('0x2')]();$('#sahana')[_0x131a('0x103')]();$(_0x131a('0xf8'))[_0x131a('0x103')]();$(_0x131a('0xf9'))['hide']();$('#sophie')[_0x131a('0x103')]();$(_0x131a('0xfb'))[_0x131a('0x103')]();$(_0x131a('0xfc'))[_0x131a('0x2')]();$('#rukmini')[_0x131a('0x103')]();$('#rohun')[_0x131a('0x2')]();});$(_0x131a('0x10d'))[_0x131a('0x2b')](function(_0x27826d){$(_0x131a('0xee'))[_0x131a('0x35')](_0x131a('0x10e'));$('#matthewcho')[_0x131a('0x2')]();$(_0x131a('0xf1'))[_0x131a('0x103')]();$(_0x131a('0xf2'))[_0x131a('0x2')]();$(_0x131a('0xf3'))['hide']();$(_0x131a('0xf4'))[_0x131a('0x103')]();$(_0x131a('0x100'))[_0x131a('0x2')]();$(_0x131a('0x101'))['show']();$(_0x131a('0xf5'))[_0x131a('0x103')]();$(_0x131a('0x102'))['hide']();$('#nitin')[_0x131a('0x2')]();$(_0x131a('0xf7'))[_0x131a('0x103')]();$(_0x131a('0xf8'))['hide']();$('#chirag')[_0x131a('0x2')]();$(_0x131a('0xfa'))[_0x131a('0x103')]();$(_0x131a('0xfb'))[_0x131a('0x2')]();$('#samyang')[_0x131a('0x103')]();$(_0x131a('0xfd'))[_0x131a('0x103')]();$('#rohun')[_0x131a('0x2')]();});$(_0x131a('0x10f'))[_0x131a('0x2b')](function(_0x1e4866){$(_0x131a('0xee'))[_0x131a('0x35')]('Python');$(_0x131a('0xf0'))['show']();$(_0x131a('0xf1'))[_0x131a('0x103')]();$(_0x131a('0xf2'))[_0x131a('0x2')]();$(_0x131a('0xf3'))[_0x131a('0x103')]();$(_0x131a('0xf4'))['hide']();$('#conner')[_0x131a('0x103')]();$(_0x131a('0x101'))[_0x131a('0x103')]();$('#stuti')[_0x131a('0x103')]();$(_0x131a('0x102'))[_0x131a('0x103')]();$(_0x131a('0xf6'))[_0x131a('0x103')]();$(_0x131a('0xf7'))[_0x131a('0x103')]();$('#keshav')[_0x131a('0x103')]();$(_0x131a('0xf9'))[_0x131a('0x103')]();$(_0x131a('0xfa'))[_0x131a('0x103')]();$(_0x131a('0xfb'))[_0x131a('0x2')]();$(_0x131a('0xfc'))[_0x131a('0x103')]();$(_0x131a('0xfd'))[_0x131a('0x103')]();$(_0x131a('0xfe'))[_0x131a('0x103')]();});$('#business')[_0x131a('0x2b')](function(_0x4dfe6f){$(_0x131a('0xee'))['html']('Business');$(_0x131a('0xf0'))[_0x131a('0x103')]();$('#varsha')[_0x131a('0x103')]();$(_0x131a('0xf2'))[_0x131a('0x103')]();$('#matthewsheh')['hide']();$(_0x131a('0xf4'))['hide']();$(_0x131a('0x100'))[_0x131a('0x103')]();$(_0x131a('0x101'))[_0x131a('0x103')]();$(_0x131a('0xf5'))['show']();$(_0x131a('0x102'))['hide']();$(_0x131a('0xf6'))[_0x131a('0x103')]();$(_0x131a('0xf7'))[_0x131a('0x2')]();$(_0x131a('0xf8'))['hide']();$('#chirag')[_0x131a('0x103')]();$(_0x131a('0xfa'))[_0x131a('0x103')]();$('#rohit')[_0x131a('0x103')]();$(_0x131a('0xfc'))[_0x131a('0x103')]();$(_0x131a('0xfd'))[_0x131a('0x103')]();$(_0x131a('0xfe'))[_0x131a('0x103')]();});$(_0x131a('0x110'))[_0x131a('0x2b')](function(_0x857b7f){$(_0x131a('0xee'))[_0x131a('0x35')](_0x131a('0x111'));$(_0x131a('0xf0'))[_0x131a('0x2')]();$(_0x131a('0xf1'))[_0x131a('0x103')]();$(_0x131a('0xf2'))[_0x131a('0x103')]();$(_0x131a('0xf3'))[_0x131a('0x103')]();$(_0x131a('0xf4'))[_0x131a('0x103')]();$('#conner')[_0x131a('0x103')]();$('#kyle')[_0x131a('0x103')]();$(_0x131a('0xf5'))[_0x131a('0x103')]();$(_0x131a('0x102'))['hide']();$(_0x131a('0xf6'))[_0x131a('0x2')]();$(_0x131a('0xf7'))['show']();$(_0x131a('0xf8'))[_0x131a('0x103')]();$(_0x131a('0xf9'))['hide']();$(_0x131a('0xfa'))[_0x131a('0x103')]();$('#rohit')[_0x131a('0x2')]();$(_0x131a('0xfc'))[_0x131a('0x103')]();$('#rukmini')[_0x131a('0x103')]();$('#rohun')[_0x131a('0x103')]();});$(_0x131a('0x112'))[_0x131a('0x2b')](function(_0x1ab978){$(_0x131a('0xee'))['html'](_0x131a('0x113'));$(_0x131a('0xf0'))['hide']();$(_0x131a('0xf1'))['hide']();$('#reedit')[_0x131a('0x103')]();$(_0x131a('0xf3'))[_0x131a('0x103')]();$(_0x131a('0xf4'))[_0x131a('0x103')]();$(_0x131a('0x100'))[_0x131a('0x103')]();$(_0x131a('0x101'))[_0x131a('0x103')]();$(_0x131a('0xf5'))[_0x131a('0x103')]();$(_0x131a('0x102'))[_0x131a('0x2')]();$(_0x131a('0xf6'))['hide']();$(_0x131a('0xf7'))[_0x131a('0x103')]();$(_0x131a('0xf8'))[_0x131a('0x103')]();$(_0x131a('0xf9'))[_0x131a('0x103')]();$(_0x131a('0xfa'))['hide']();$(_0x131a('0xfb'))[_0x131a('0x103')]();$('#samyang')[_0x131a('0x103')]();$(_0x131a('0xfd'))['hide']();$(_0x131a('0xfe'))['hide']();});});
+$(window).on('load', function () {
+	$("#navbar").show();
+});
+
+
+
+$(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos <= winTop + 600) {
+          $(this).addClass("slideup");
+        }
+    });
+  });
+
+ $(window).scroll(function() {
+    $(".slideanim2").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos <= winTop + 600) {
+          $(this).addClass("slideleft");
+        }
+    });
+  });
+
+ $(window).scroll(function() {
+    $(".slideanim3").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos <= winTop + 600) {
+          $(this).addClass("slideright");
+        }
+    });
+  });
+
+  $(window).scroll(function() {
+    $(".length").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos <= winTop + 600) {
+          $(this).addClass("lengthen");
+        }
+    });
+  });
+
+ $(window).scroll(function() {
+    var winTop = $(window).scrollTop();
+
+    $("#teamheadimg").css({
+    'margin-top' : winTop/1.13
+    });
+});
+
+
+function intersect(a, b) {
+    var d = {};
+    var results = [];
+    for (var i = 0; i < b.length; i++) {
+        d[b[i]] = true;
+    }
+    for (var j = 0; j < a.length; j++) {
+        if (d[a[j]]) 
+            results.push(a[j]);
+    }
+    return results;
+}
+
+ function rotate(x) {
+    x.classList.toggle("change");
+    $("#phonenavlinks").slideToggle("fast");
+}
+
+function opensidenav() {
+    $(".sidebar").css("left", "0px");
+    $(".sidebar").css("opacity", "1");
+    $(".sidecancel").css("left", "340px");
+    $(".socialmedia").css("left", "40px");
+    $(".sidemask").css("width", "100%");
+    $(".sidemask").css("opacity", "0.8");
+    $(".sidebar a").each(function(){
+          $(this).addClass("slideleft");
+    });
+    $(".sidebar .border-bot").addClass("lengthen");
+}
+
+function closesidenav() {
+	$(".sidebar").css("opacity", "0.5");
+	$(".sidebar").css("left", "-400px");
+    $(".sidecancel").css("left", "-60px");
+    $(".socialmedia").css("left", "-360px");
+    $(".sidemask").css("width", "0");
+    $(".sidemask").css("opacity", "0");
+    $(".sidebar a").each(function(){
+          $(this).removeClass("slideleft");
+    });
+    $(".sidebar .border-bot").removeClass("lengthen");
+}
+
+$(document).ready(function() {
+    $(".back2top").click(function(event) {
+    event.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, 800);
+    return false;
+      });
+
+    $( "#tuteeaddsubjects .dropdown-item" ).each(function(index) {
+	    $(this).on("click", function(){
+	        // For the boolean value
+	        $("#newsubject").val(this.innerHTML.toLowerCase()); 
+	        $("#subjecttext").html(this.innerHTML);
+	    });
+	});
+
+	$( "#tutors .dropdown-item" ).each(function(index) {
+	    $(this).on("click", function(){
+	        // For the boolean value
+	        $("#tutors h4 strong").html(this.innerHTML);
+	    });
+	});
+
+	$( "#subjectmenu .dropdown-item" ).each(function(index) {
+	    $(this).on("click", function(){
+	        // For the boolean value
+	        if($("#subject").val() == "") {
+	        	$("#subject").val(this.innerHTML.toLowerCase());
+	        } else {
+	        	$("#subject").val($("#subject").val() + ", " + this.innerHTML.toLowerCase()); 
+	        }
+	        $("#subjecttext2").html(this.innerHTML);
+	    });
+	});
+});
+
+
+//split functions for syntax
+function splitEmail(email) {
+	str = email.split("@");
+	var res1 = str[0].replace(/\./g, "");
+	var res2 = str[1].split(".");
+
+	res = (res1 + res2[0]).toLowerCase();
+	return(res);
+}
+
+function splitDate(date) {
+	var newdate = date.split("-");
+	return(newdate[1] + "-" + newdate[2] + "-" + newdate[0]); 
+}
+
+firebase.auth().onAuthStateChanged(function(user) {
+	if (user) {
+    // User is signed in.
+
+    var user = firebase.auth().currentUser;
+
+    $("#verifyemail").html("Please Verify Your Email Address: <i>" + user.email + "</i>");
+
+   	var split = splitEmail(user.email);
+
+   	var email_verified = user.emailVerified;
+   	console.log(email_verified);
+
+
+   	if(email_verified == false) {
+
+   		$("#email_div").fadeIn();
+   		$(".main-div").css("display", "none");
+   		$("#logout").css("display", "none");
+
+   	} else {
+   		$("#email_div").css("display", "none");
+
+	   	var isTutor = firebase.database().ref('users/' + split).child('stat');
+
+		isTutor.on('value', snap => {
+			if(snap.val() == "tutor") {
+				$(".main-div").css("display", "none");
+			    $("#logout").fadeIn();
+			    $(".create-div").css("display", "none");
+			    $("#indexlogout").fadeIn();
+			    $("#bookasession").css("display", "none");
+			    $("#sidelogin").html("SEE ALL REQUESTS");
+			    $("#login2").html("See All Requests");
+			    $("#tutorsessions").fadeIn();
+
+			    var tutorSubjects = firebase.database().ref('users/' + split).child("subjects");
+
+				tutorSubjects.on("value", snap => {
+					var subjects = snap.val();
+					var splitsubs = subjects.split(",");
+					var text = "";
+					for(var i=0; i<splitsubs.length; i++) {
+						var sub = splitsubs[i].toLowerCase();
+
+						text += "<h5 class=\"label " + sub + "\">" + splitsubs[i] + "</h5> ";
+					}
+
+					$("#tutorsubjectsarea").html(text);
+				});
+
+			    var mySession = firebase.database().ref('users/' + split);
+
+				mySession.on("child_added", snap => {
+					var date = snap.child("date").val();
+					var email = snap.child("email").val();
+					var subject = snap.child("subject").val();
+					var time = snap.child("time").val();
+
+					if(date != null) {
+							$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4>" + "<h4>email: " + email + "</h4>");
+						}
+
+			});		    
+
+			} else {
+				$("#mainbody").fadeIn();
+			    $(".main-div").css("display", "none");
+			    $("#logout").fadeIn();
+			    $(".create-div").css("display", "none");
+			    $("#bookasession").css("display", "none");
+			    $("#sidelogin").html("Request a Session");
+			    $("#login2").html("Request a Session");
+			    $("#indexlogout").fadeIn();
+
+			    var tuteeSubjects = firebase.database().ref('users/' + split).child("subjects");
+
+				tuteeSubjects.on("value", snap => {
+					var subjects = snap.val();
+					var splitsubs = subjects.split(",");
+					var text = "";
+					for(var i=0; i<splitsubs.length; i++) {
+						var sub = splitsubs[i].toLowerCase();
+
+						text += "<h5 class=\"label " + sub + "\">" + splitsubs[i] + "</h5> ";
+					}
+
+					$("#mysubjectsarea").html(text);
+				});
+
+			    var reqRef = firebase.database().ref('users/' + split);
+		//date, time, location, tutor, done, subject
+				reqRef.on("child_added", snap => {
+					var date = snap.child("date").val();
+					var done = snap.child("done").val();
+					var email = snap.child("email").val();
+					var subject = snap.child("subject").val();
+					var time = snap.child("time").val();
+					var tutor = snap.child("tutor").val();
+
+					var color;
+					if(done == "yes") {
+						color = " green";
+					} else {
+						color = "";
+					}
+
+					if(date != null) {
+						$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+					}
+
+				});
+			}
+		});
+	}
+
+
+    var userName = firebase.database().ref('users/' + split).child('name');
+
+	userName.on('value', snap => {
+		$("#welcome").html("Welcome " + snap.val()+ "!");
+		$("#tutorwelcome").html("Welcome " + snap.val()+ "!");
+	});
+
+
+    if(user != null){
+      $("#user").html("User: " + user.email + "");
+      $("#tutoruser").html(user.email);
+    }
+
+    var tutorReq = firebase.database().ref('requests');
+
+    tutorReq.on("child_added", snap => {
+		var date = snap.child("date").val();
+		var done = snap.child("done").val();
+		var email = snap.child("email").val();
+		var subject = snap.child("subject").val();
+		var time = snap.child("time").val();
+		var tutor = snap.child("tutor").val();
+
+		var myUser = firebase.database().ref('users/' + split).child("subjects");
+		myUser.on("value", snap => {
+				var splitsubs = snap.val().split(",");
+				var reqsubs = subject.split(", ");
+
+				var overlap = intersect(splitsubs, reqsubs).length;
+				//check whether request's subjects overlap tutor's subjects
+				//if not, don't show request
+
+				console.log(overlap);
+
+				var display;
+				if(overlap == 0 || done == "yes") {
+					display = "none";
+				} else {
+					display = "block";
+				}
+
+				if(date != null) {
+					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4>" + "<h4>tutor: " + tutor + "</h4>");
+				}
+		});
+
+	});
+
+  } else {
+    // No user is signed in.
+    $("#mainbody").css("display", "none");
+    $(".main-div").fadeIn();
+    $("#email_div").css("display", "none");
+    $("#logout").css("display", "none");
+    $("#bookasession").css("display", "block");
+    $("#sidelogin").html("LOGIN or SIGNUP");
+    $("#indexlogout").fadeOut();
+    $("#tutorsessions").css("display", "none");
+    
+  }
+});
+
+function sendVerification() {
+	var user = firebase.auth().currentUser;
+
+	user.sendEmailVerification().then(function() {
+	  alert("Email verification sent!  Check your inbox in 2-3 minutes, and follow the instructions in the email.")
+	}).catch(function(error) {
+	  alert("Error: " + error.message);
+	});
+}
+
+function openResetPass() {
+	$(".main-div").css("display", "none");
+	$("#reset_div").fadeIn();
+}
+
+//reset Password
+function resetPass() {
+	var emailAddress = $("#reset_email_field").val();
+
+	firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
+	  alert("Reset email sent!  Please check your inbox and follow the instructions in the email.")
+	}).catch(function(error) {
+	  alert(error.message);
+	  console.log(error);
+	});
+}
+
+//Same thing, but from the account
+function resetPass2() {
+	var emailAddress = firebase.auth().currentUser.email;
+
+	firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
+	  alert("Reset email sent!  Please check your inbox and follow the instructions in the email.")
+	}).catch(function(error) {
+	  alert(error.message);
+	  console.log(error);
+	});
+}
+
+//for Tutors to claim a session
+function takeSession() {
+	var date = event.currentTarget.childNodes[3].innerHTML;
+	var newdate = date.slice(6);
+	var email = event.currentTarget.childNodes[1].innerHTML;
+	var time = event.currentTarget.childNodes[5].innerHTML.slice(6);
+	var subject = event.currentTarget.childNodes[7].innerHTML.slice(9);
+	var newemail = splitEmail(email.slice(7));
+	var r = confirm("Confirm that you can commit to tutoring this session?");
+	var yes = "yes";
+
+	var split = splitEmail(firebase.auth().currentUser.email);
+
+	var userName = firebase.database().ref('users/' + split).child('name');
+
+	if(r == true) {
+		userName.on('value', snap => {
+			firebase.database().ref('requests/' + newdate + newemail).child("tutor").set(snap.val());
+			firebase.database().ref('users/' + newemail + "/" + newdate).child("tutor").set(snap.val());
+		});
+		firebase.database().ref('requests/' + newdate + newemail).child("done").set(yes);
+		firebase.database().ref('users/' + newemail + "/" + newdate).child("done").set(yes);
+		alert("confirmed. ");
+		firebase.database().ref('users/' + split + "/" + newdate).set({
+		    email: email.slice(7),
+		    date: newdate,
+		    time: time,
+			subject: subject,	
+		 });
+
+		var content = "<h3 style=\"color: #ae3dc6\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subjects:</strong> " + subject + "</p> <p>Your tutor will email you within 24 hours!</p>";
+
+		Email.send("support@instatutors.org",
+			email,
+			"Confirmed: Tutoring Session on " + date,
+			content,
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+		}	
+}
+
+//cancel Tutoring session (request)
+function cancel() {
+	var input = prompt("To cancel a session, please input your email.");
+	var date = event.currentTarget.parentNode.childNodes[3].innerHTML;
+	var newdate = date.slice(6);
+	var email = firebase.auth().currentUser.email;
+	var newemail = splitEmail(email);
+	var subject = event.currentTarget.parentNode.childNodes[7].innerHTML.slice(10);
+	console.log(subject);
+
+	if(input == email) {
+		var reason = prompt("What is your reason for canceling?");
+		firebase.database().ref('requests/' + newdate + newemail).remove();
+		firebase.database().ref('users/' + newemail + "/" + newdate).remove();
+		firebase.database().ref('requests/' + newdate + newemail).remove();
+		firebase.database().ref('users/' + newemail + "/" + newdate).remove();
+
+		var content = "<h3 style=\"color: red\">Tutoring Session Canceled -</h3>  <p><strong>Date:</strong> " + newdate + "</p> <p><strong>Reason:</strong> " + reason + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p>"; 
+		Email.send("support@instatutors.org",
+			"tutors@instatutors.org",
+			"New Tutoring Request for " + subject,
+			content,
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+		
+		alert("Tutoring session for " + newdate + " canceled.");
+	} else {
+		alert("wrong email. aborting.")
+	}
+}
+
+function sessionstab() {
+	$("#sessionstab").fadeIn();
+	 $("#booktab").css("display", "none");
+}
+
+function booktab() {
+	$("#booktab").fadeIn();
+	 $("#sessionstab").css("display", "none");
+}
+
+function allsessionstab() {
+	$("#allsessions").fadeIn();
+	 $("#tutormysessions").css("display", "none");
+}
+
+function tutorsessionstab() {
+	$("#tutormysessions").fadeIn();
+	 $("#allsessions").css("display", "none");
+}
+
+function openCreate() {
+	$(".main-div").css("display", "none");
+	$(".create-div").fadeIn();
+}
+
+//initialize database
+var database = firebase.database();
+
+//send account data to firebase
+function writeAccount(name, email, phone, stat) {
+	var split = splitEmail(email);
+
+		firebase.database().ref('users/' + split).set({
+			name: name,
+			phone: phone,
+		    email: email,
+		    stat: stat
+		 });
+}
+
+
+//create new account
+function createAccount() {
+	var newName = $("#createname").val();
+	var newEmail = $("#createemail").val();
+	var newPhone = $("#createphone").val();
+	var newPass = $("#createpassword").val();
+	var confirmPass = $("#confirmpassword").val();
+	var stat = "tutee";
+
+	if(newPass == confirmPass && newPass != "" && newEmail != "") {
+		if($("#termscheck").checked == false) {
+			$("#errormessage2").html("Please agree to the terms and conditions.");
+		} else {
+			firebase.auth().createUserWithEmailAndPassword(newEmail, newPass).catch(function(error) {
+			event.preventDefault();
+			  var errorCode = error.code;
+			  var errorMessage = error.message;
+			  $("#errormessage2").html("Error : " + errorMessage);
+			});
+
+			firebase.auth().signInWithEmailAndPassword(newEmail, newPass);
+
+			writeAccount(newName, newEmail, newPhone, stat);
+
+			$(".create-div").css("display", "none");
+			$("#email_div").fadeIn();
+
+			sendVerification();
+		}
+
+	} else {
+		$("#errormessage2").html("Please make sure your passwords match.");
+	}
+}
+
+//login + logout
+function login() {
+	var userEmail = $("#email_field").val();
+	var userPass = $("#password_field").val();
+	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+	    // Handle Errors here.
+	    event.preventDefault();
+	    var errorCode = error.code;
+	    var errorMessage = error.message;
+
+	    $("#errormessage").html("Error : " + errorMessage);
+
+	    // ...
+	  });
+
+	if(firebase.auth().currentUser.emailVerified == false) {
+		$("#email_div").fadeIn();
+	}
+}
+
+function logout(){
+  firebase.auth().signOut().then(function() {
+	  // Sign-out successful.
+	}).catch(function(error) {
+	  // An error happened.
+	  event.preventDefault();
+	});
+	$("#errormessage").html("");
+	$("#errormessage2").html("");
+}
+
+
+//save requests to firebase
+function writeRequest(email, date, time, subject, done, tutor) {
+	var newEmail = splitEmail(email);
+	var newDate = splitDate(date);
+
+	firebase.database().ref('users/' + newEmail + "/" + newDate).set({
+			email: email,
+			date: newDate,
+			time: time,
+			tutor: tutor,
+			done: "no",
+			subject: subject
+		  });
+
+	firebase.database().ref('requests/' + newDate + newEmail).set({
+			email: email,
+			date: newDate,
+			time: time,
+			tutor: tutor,
+			done: "no",
+			subject: subject
+		  });
+}
+
+
+//on tutoring request submit -> pushes form data to firebase
+function validate() {
+	var email = firebase.auth().currentUser.email;
+	var date = $("#date").val();
+	var time = $("#time").val();
+	var tutor = $("#tutor").val();
+	var subject = $("#subject").val();
+	var missing = [];
+
+	var selectedDate = new Date(date);
+   	var now = new Date();
+
+
+	if(date == "" || selectedDate < now) {
+		missing.push(" valid date, date cannot be in the past");
+	}
+	if(time == "") {
+		missing.push(" time");
+	}
+	if(subject == "") {
+		missing.push(" subject");
+	}
+
+	if(missing != "") {
+		$("#formerrors").html("Please enter the following: " + missing);
+		event.preventDefault();
+	} else {
+		writeRequest(email, date, time, subject, "no", tutor);
+
+		var content = "<h3 style=\"color: #ae3dc6\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+
+		var ref = firebase.database().ref('users');
+	//get uids of all tutors
+		ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
+	 		var tutorids = Object.keys(snap.val());
+	 		console.log(tutorids);
+	 		for(var i=0; i<tutorids.length; i++) {
+	 			var myUser = firebase.database().ref('users/' + tutorids[i]).child("subjects");
+				myUser.on("value", snap => {
+						var splitsubs = snap.val().split(",");
+						var reqsubs = subject.split(", ");
+
+						var overlap = intersect(splitsubs, reqsubs).length;
+						//check whether request's subjects overlap tutor's subjects
+						//if not, don't show request
+						if(overlap > 0) {
+							var tutoremail = firebase.database().ref('users/' + tutorids[i]).child("email");
+							tutoremail.on("value", snap => {
+								console.log(snap.val());
+								Email.send("support@instatutors.org",
+											snap.val(),
+											"Tutoring Session Requested for " + splitDate(date),
+											content,
+											{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+							});
+						}
+
+				});
+			}
+		 });
+		
+		$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
+		$("#tutor2").html("Tutor: " + tutor);
+		$("#time2").html("Time: " + time);
+		$("#subject2").html("Subject: " + subject);
+
+		$("#mainbody").css("display", "none");
+		$("#confirmedbody").fadeIn();
+		$("#logout").css("display", "none");
+
+		//send confirmation email to user
+		Email.send("support@instatutors.org",
+			email,
+			"Tutoring Session Requested for " + splitDate(date),
+			content,
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+			//527d49d6-dba7-4334-8775-1b8ccd9b3eeb 
+
+		return true;
+	}
+}
+
+//add subject to user's subjects
+function addSubject() {
+	var email = firebase.auth().currentUser.email;
+	var subject = $("#newsubject").val();
+	var newEmail = splitEmail(email);
+
+	var tuteeSubjects = firebase.database().ref('users/' + newEmail).child("subjects");
+
+	var currentSubjects;
+
+	tuteeSubjects.on("value", snap => {
+		currentSubjects = snap.val();
+	});
+
+	if(subject != "") {
+		if(currentSubjects == null) {
+			$("#subjectmessage").css("color", "green");
+			$("#subjectmessage").html(subject + " added as a subject!");
+			firebase.database().ref('users/' + newEmail).update({ subjects: subject.toLowerCase() + "," + currentSubjects});
+		} else if (currentSubjects.search(subject) === -1) {
+			$("#subjectmessage").css("color", "green");
+			$("#subjectmessage").html(subject + " added as a subject!");
+			firebase.database().ref('users/' + newEmail).update({ subjects: subject.toLowerCase() + "," + currentSubjects});
+		} else {
+			$("#subjectmessage").css("color", "red");
+			$("#subjectmessage").html("You already have " + subject + " as a subject!");
+		}
+	} else {
+		$("#subjectmessage").css("color", "red");
+		$("#subjectmessage").html("Please enter a subject.")
+	}
+}
+
+//delete all subjects from user's subjects
+function deletesubjects() {
+	alert("Deleting all subjects.");
+	var email = firebase.auth().currentUser.email;
+	var newEmail = splitEmail(email);
+	firebase.database().ref('users/' + newEmail).update({ subjects: ""});
+}
+
+//find a tutor
+function matchTutors() {
+	var user = firebase.auth().currentUser;
+	var split = splitEmail(user.email);
+	var tuteeSubjects = firebase.database().ref('users/' + split).child("subjects");
+	var tuteeSubArray = "";
+
+	tuteeSubjects.on("value", snap => {
+		tuteeSubArray = snap.val();
+	});
+
+	tuteeSubArray = tuteeSubArray.split(",");
+	console.log(tuteeSubArray);
+
+	var tutordata;
+
+	var matchedtutors = "";
+	var goodtutors = "";
+
+	var ref = firebase.database().ref('users');
+	//get uids of all tutors
+	ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
+	 	tutordata = snap.val();
+	 	var tutorids = Object.keys(snap.val());
+
+	 	console.log(tutorids);
+
+	 	for(var i=0; i<tutorids.length; i++) {
+	 		var tutorSub = firebase.database().ref('users/' + tutorids[i]).child("subjects");
+
+	 		//determine overlap between user subjects & tutor subjects
+	 		tutorSub.on("value", snap => {
+	 			var tutorSubArray = snap.val().split(",");
+	 			var inCommon = intersect(tuteeSubArray, tutorSubArray);
+
+	 			if(inCommon.length > 1) {
+	 				matchedtutors += tutorids[i] + ",";
+	 			} else if (inCommon.length == 1) {
+	 				goodtutors += tutorids[i] + ",";
+	 			}
+	 		});
+	 	}
+
+	 	var mytutors = "";
+
+	 	var matches = matchedtutors.split(",");
+	 	var good = goodtutors.split(",");
+
+	 	//add tutors to "great matches"
+		for(var i=0; i<matches.length; i++) {
+			var tutorRef = firebase.database().ref('users/' + matches[i]);
+			tutorRef.on("value", snap => {
+				var name = snap.child("name").val();
+				var email = snap.child("email").val();
+				var subjects = snap.child("subjects").val().split(",");
+				var intersection = intersect(subjects, tuteeSubArray);
+
+				console.log(subjects);
+				var subjectLabels = "";
+				for(var k=0; k<intersection.length; k++) {
+					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
+				}
+
+				mytutors += "<div class=\"mytutor great\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+			});
+		}
+
+		//add tutors to "good matches"
+		for(var i=0; i<good.length; i++) {
+			var tutorRef = firebase.database().ref('users/' + good[i]);
+			tutorRef.on("value", snap => {
+				var name = snap.child("name").val();
+				var email = snap.child("email").val();
+				var subjects = snap.child("subjects").val().split(",");
+				var intersection = intersect(subjects, tuteeSubArray);
+
+				var subjectLabels = "";
+				for(var k=0; k<intersection.length; k++) {
+					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
+				}
+
+				mytutors += "<div class=\"mytutor good\"> <h2>" + name + "</h2> <h4>Tutor Contact: <a>" + email + "</a></h4> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+			});
+		}
+
+		//add DOM elements to matched tutors
+		if(mytutors == "") {
+			$("#mytutorsarea").html("<p>No tutors found.  Sorry.</p>");
+		} else {
+			$("#mytutorsarea").html(mytutors);
+		}
+	});
+}
+
+function viewTutors() {
+	var tuteeSubArray = $("#subject").val().split(", ");
+	console.log(tuteeSubArray);
+
+	var tutordata;
+
+	var matchedtutors = "";
+	var goodtutors = "";
+
+	var ref = firebase.database().ref('users');
+	//get uids of all tutors
+	ref.orderByChild("stat").equalTo("tutor").on("value", snap => {
+	 	tutordata = snap.val();
+	 	var tutorids = Object.keys(snap.val());
+
+	 	for(var i=0; i<tutorids.length; i++) {
+	 		var tutorSub = firebase.database().ref('users/' + tutorids[i]).child("subjects");
+
+	 		//determine overlap between user subjects & tutor subjects
+	 		tutorSub.on("value", snap => {
+	 			var tutorSubArray = snap.val().split(",");
+	 			var inCommon = intersect(tuteeSubArray, tutorSubArray);
+
+	 			if(inCommon.length > 1) {
+	 				matchedtutors += tutorids[i] + ",";
+	 			} else if (inCommon.length == 1) {
+	 				goodtutors += tutorids[i] + ",";
+	 			}
+	 		});
+	 	}
+
+	 	var mytutors = "";
+
+	 	var matches = matchedtutors.split(",");
+	 	var good = goodtutors.split(",");
+
+	 	//add tutors to "great matches"
+		for(var i=0; i<matches.length; i++) {
+			var tutorRef = firebase.database().ref('users/' + matches[i]);
+			tutorRef.on("value", snap => {
+				var name = snap.child("name").val();
+				var email = snap.child("email").val();
+				var subjects = snap.child("subjects").val().split(",");
+				var intersection = intersect(subjects, tuteeSubArray);
+
+				console.log(subjects);
+				var subjectLabels = "";
+				for(var k=0; k<intersection.length; k++) {
+					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
+				}
+
+				mytutors += "<div class=\"viewtutor great\" onclick=\"selectTutor()\"> <h2>" + name + "</h2> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+			});
+		}
+
+		//add tutors to "good matches"
+		for(var i=0; i<good.length; i++) {
+			var tutorRef = firebase.database().ref('users/' + good[i]);
+			tutorRef.on("value", snap => {
+				var name = snap.child("name").val();
+				var email = snap.child("email").val();
+				var subjects = snap.child("subjects").val().split(",");
+				var intersection = intersect(subjects, tuteeSubArray);
+
+				var subjectLabels = "";
+				for(var k=0; k<intersection.length; k++) {
+					subjectLabels += "<h5 class=\"label " + intersection[k] + "\">" + intersection[k] + "</h5> ";
+				}
+
+				mytutors += "<div class=\"viewtutor good\" onclick=\"selectTutor()\"> <h2>" + name + "</h2> <h4>Subjects in common:</h4> " + subjectLabels + "</div>"; 		
+			});
+		}
+
+		//add DOM elements to matched tutors
+		if(mytutors == "") {
+			$("#tutorspace").html("<p>No tutors found.  Sorry.</p>");
+		} else {
+			$("#tutorspace").html(mytutors);
+		}
+	});
+}
+
+function selectTutor() {
+	var name = event.currentTarget.childNodes[1].innerHTML;
+	$("#tutor").val(name);
+	$("#formerrors").css("color", "#444");
+	$("#formerrors").html("Selected " + name + " as a tutor.");
+}
+
+//validate message on homepage
+function validatemsg() {
+	var name = $("#msgname").val();
+	var email = $("#msgemail").val();
+	var message = $("#msg").val();
+	var validemail = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	var missing = [];
+	if(name == "") {
+		missing.push("name");
+	}
+	if(email.search(validemail) == -1) {
+		missing.push(" valid email");
+	}
+	if(message == "") {
+		missing.push(" your message");
+	}
+	if(missing != "") {
+		$("#formStatus").css("color", "red");
+		$("#formStatus").html("Please enter the following: " + missing + ".");
+	} else {
+		$("#formStatus").css("color", "green");
+		$("#formStatus").html("Message Sent!  We will try to get back to you within 24 hours.");
+		var content = "<h3>New Message</h3> <p><strong>Name:</strong> " + name + "</p> <p><strong>email:</strong> " + email + "</p> <p><strong>Message:</strong> " + message + "</p>"; 
+		document.getElementById("contactForm").reset();
+
+		Email.send("inquiries@instatutors.org",
+			"tutors@instatutors.org",
+			"New Message from " + name,
+			content,
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+	}
+}
+
+
+//filter function 
+
+//TO DO: make this dynamic
+$(document).ready(function() {
+    $("#all").click(function(event) {
+    	$("#filtertext").html("All");
+        $("#matthewcho").show();
+		$("#varsha").show();
+		$("#reedit").show();
+		$("#matthewsheh").show();
+		$("#sangita").show();
+		$("#conner").show();
+		$("#kyle").show();
+		$("#stuti").show();
+		$("#dan").show();
+		$("#nitin").show();
+		$("#sahana").show();
+		$("#keshav").show();
+		$("#chirag").show();
+		$("#sophie").show();
+		$("#rohit").show();
+		$("#samyang").show();
+		$("#rukmini").show();
+		$("#rohun").show();
+    });
+
+    $("#math").click(function(event) {
+    	$("#filtertext").html("Math");
+        $("#matthewcho").show();
+		$("#varsha").show();
+		$("#reedit").show();
+		$("#matthewsheh").show();
+		$("#sangita").show();
+		$("#conner").show();
+		$("#kyle").show();
+		$("#stuti").show();
+		$("#dan").hide();
+		$("#nitin").show();
+		$("#sahana").show();
+		$("#keshav").show();
+		$("#chirag").show();
+		$("#sophie").show();
+		$("#rohit").show();
+		$("#samyang").show();
+		$("#rukmini").show();
+		$("#rohun").show();
+    });
+
+    $("#physics").click(function(event) {
+    	$("#filtertext").html("Physics");
+        $("#matthewcho").show();
+		$("#varsha").hide();
+		$("#reedit").show();
+		$("#matthewsheh").show();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").show();
+		$("#stuti").show();
+		$("#dan").hide();
+		$("#nitin").show();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").show();
+		$("#rohit").show();
+		$("#samyang").show();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+    $("#bio").click(function(event) {
+    	$("#filtertext").html("Biology");
+        $("#matthewcho").hide();
+		$("#varsha").show();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").show();
+		$("#conner").hide();
+		$("#kyle").hide();
+		$("#stuti").show();
+		$("#dan").hide();
+		$("#nitin").hide();
+		$("#sahana").show();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").show();
+		$("#rohit").hide();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+    $("#chem").click(function(event) {
+    	$("#filtertext").html("Chemistry");
+        $("#matthewcho").hide();
+		$("#varsha").show();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").show();
+		$("#conner").show();
+		$("#kyle").hide();
+		$("#stuti").hide();
+		$("#dan").show();
+		$("#nitin").hide();
+		$("#sahana").show();
+		$("#keshav").show();
+		$("#chirag").show();
+		$("#sophie").hide();
+		$("#rohit").hide();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+    $("#writing").click(function(event) {
+    	$("#filtertext").html("Writing");
+        $("#matthewcho").hide();
+		$("#varsha").show();
+		$("#reedit").show();
+		$("#matthewsheh").show();
+		$("#sangita").show();
+		$("#conner").hide();
+		$("#kyle").show();
+		$("#stuti").show();
+		$("#dan").show();
+		$("#nitin").hide();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").show();
+		$("#rohit").hide();
+		$("#samyang").hide();
+		$("#rukmini").show();
+		$("#rohun").hide();
+    });
+
+    $("#history").click(function(event) {
+    	$("#filtertext").html("History");
+        $("#matthewcho").hide();
+		$("#varsha").show();
+		$("#reedit").show();
+		$("#matthewsheh").show();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").show();
+		$("#stuti").hide();
+		$("#dan").show();
+		$("#nitin").hide();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").show();
+		$("#rohit").hide();
+		$("#samyang").show();
+		$("#rukmini").show();
+		$("#rohun").hide();
+    });
+
+    $("#webdev").click(function(event) {
+    	$("#filtertext").html("Web Development");
+        $("#matthewcho").show();
+		$("#varsha").hide();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").show();
+		$("#stuti").hide();
+		$("#dan").hide();
+		$("#nitin").show();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").hide();
+		$("#rohit").hide();
+		$("#samyang").show();
+		$("#rukmini").hide();
+		$("#rohun").show();
+    });
+
+    $("#java").click(function(event) {
+    	$("#filtertext").html("Java");
+        $("#matthewcho").show();
+		$("#varsha").hide();
+		$("#reedit").show();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
+		$("#conner").show();
+		$("#kyle").show();
+		$("#stuti").hide();
+		$("#dan").hide();
+		$("#nitin").show();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").show();
+		$("#sophie").hide();
+		$("#rohit").show();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").show();
+    });
+
+    $("#python").click(function(event) {
+    	$("#filtertext").html("Python");
+        $("#matthewcho").show();
+		$("#varsha").hide();
+		$("#reedit").show();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").hide();
+		$("#stuti").hide();
+		$("#dan").hide();
+		$("#nitin").hide();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").hide();
+		$("#rohit").show();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+    $("#business").click(function(event) {
+    	$("#filtertext").html("Business");
+        $("#matthewcho").hide();
+		$("#varsha").hide();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").hide();
+		$("#stuti").show();
+		$("#dan").hide();
+		$("#nitin").hide();
+		$("#sahana").show();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").hide();
+		$("#rohit").hide();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+    $("#spanish").click(function(event) {
+    	$("#filtertext").html("Spanish");
+        $("#matthewcho").show();
+		$("#varsha").hide();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").hide();
+		$("#stuti").hide();
+		$("#dan").hide();
+		$("#nitin").show();
+		$("#sahana").show();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").hide();
+		$("#rohit").show();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+
+   $("#french").click(function(event) {
+    	$("#filtertext").html("French");
+        $("#matthewcho").hide();
+		$("#varsha").hide();
+		$("#reedit").hide();
+		$("#matthewsheh").hide();
+		$("#sangita").hide();
+		$("#conner").hide();
+		$("#kyle").hide();
+		$("#stuti").hide();
+		$("#dan").show();
+		$("#nitin").hide();
+		$("#sahana").hide();
+		$("#keshav").hide();
+		$("#chirag").hide();
+		$("#sophie").hide();
+		$("#rohit").hide();
+		$("#samyang").hide();
+		$("#rukmini").hide();
+		$("#rohun").hide();
+    });
+});

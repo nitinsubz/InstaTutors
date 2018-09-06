@@ -3,7 +3,7 @@ $(window).on('load', function () {
 
 	setTimeout("$(\"#indeximg\").css(\"width\", \"170px\")",100);
 	setTimeout("$(\"#indexhead p\").slideDown(\"fast\")",4000);
-	setTimeout("$(\"#indexhead a\").fadeIn(\"fast\")",4000);
+	setTimeout("$(\"#indexhead a\").slideDown(\"fast\")",4000);
 
 	$( "#stars .fas" ).each(function(index) {
 	    $(this).on("mouseout", function(){
@@ -57,7 +57,7 @@ var TxtType = function(el, toRotate, period) {
         this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
         var that = this;
-        var delta = 70 - Math.random() * 70;
+        var delta = 50 - Math.random() * 50;
 
         if (this.isDeleting) { delta /= 2; }
 
@@ -453,15 +453,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 						var subject = snap.child("subject").val();
 						var details = snap.child("details").val();
 						var time = snap.child("time").val();
+						var name = snap.child("name").val();
 
 						var selectedDate = new Date(splitDate(splitDate(date)));
 	   					var now = new Date();
 
 						if(now < selectedDate && date != null) {
-								$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4>");
+								$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Name: " + name + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4>");
 							} else {
 								if(date != null) {
-									$("#tutorpastsessionsbody").append("<div class=\"tutorreq lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4>");				
+									$("#tutorpastsessionsbody").append("<div class=\"tutorreq lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Name: " + name + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4>");				
 								}
 							}
 
@@ -695,7 +696,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 				}
 
 				if(date != null) {
-					$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>Time: " + time + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
+					firebase.database().ref('users/' + splitEmail(email)).child("name").once("value", snap => {
+						$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>Time: " + time + "</h4> <h4>Name: " + snap.val() + "</h4><h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
+
+					});
 				}
 		});
 	});
@@ -843,9 +847,10 @@ function takeSession() {
 	var newdate = date.slice(6);
 	var email = event.currentTarget.childNodes[1].innerHTML;
 	var time = event.currentTarget.childNodes[5].innerHTML.slice(6);
-	var subject = event.currentTarget.childNodes[7].innerHTML.slice(9);
+	var name = event.currentTarget.childNodes[7].innerHTML.slice(6);
+	var subject = event.currentTarget.childNodes[8].innerHTML.slice(10);
 	var newemail = splitEmail(email.slice(7));
-	var details = event.currentTarget.childNodes[9].innerHTML.slice(9);
+	var details = event.currentTarget.childNodes[10].innerHTML.slice(9);
 
 	var split = splitEmail(firebase.auth().currentUser.email);
 
@@ -879,6 +884,7 @@ function takeSession() {
 				    email: email.slice(7),
 				    date: newdate,
 				    time: time,
+				    name: name,
 					subject: subject,
 					details: details,	
 				 });
