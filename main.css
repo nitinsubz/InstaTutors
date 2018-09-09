@@ -260,7 +260,7 @@ h1 strong {
 }
 
 #indexhead h1 {
-	font-size: 50px;
+	font-size: 70px;
 	color: #222;
 	margin-bottom: 30px;
 }
@@ -276,6 +276,24 @@ h1 strong {
 }
 
 #indexhead a {
+	margin: 0px 10px;
+}
+
+#gplaybutton {
+	display: none;
+}
+
+#gplaybutton img {
+	margin-top: -5px;
+	height: 60px;
+	transition-duration: 0.2s;
+}
+
+#gplaybutton img:hover {
+	opacity: 0.9;
+}
+
+#headlink {
 	display: none;
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 230% 100%;
@@ -289,7 +307,7 @@ h1 strong {
 	font-family: Gilroy-ExtraBold;
 }
 
-#indexhead a:hover {
+#headlink:hover {
 	background-position: left;
 	text-decoration: none;
 	cursor: pointer;
@@ -299,13 +317,13 @@ h1 strong {
 	padding-right: 10px;
 }
 
-#indexhead a i {
+#headlink i {
 	transform: translateX(-80px);
 	opacity: 0;
 	transition-duration: 0.1s;
 }
 
-#indexhead a:hover i {
+#headlink:hover i {
 	transform: translateX(0px);
 	opacity: 1;
 }
@@ -467,8 +485,42 @@ canvas {
 	opacity: 0.4;
 }
 
-#mission p {
-	font-size: 30px;
+#testimonials {
+	padding: 60px 0%;
+	width: 100%;
+	text-align: center;
+	color: white;
+	background: linear-gradient(to right, #330867, #30CFD0);
+}
+
+#testimonials h1 {
+	font-size: 45px;
+}
+
+#testimonials .carousel {
+	width: 100%;
+}
+
+.carousel .item h3 {
+	font-size: 35px;
+	padding: 50px 10% 70px 10%;
+}
+
+.carousel-indicators {
+	position: absolute;
+	bottom: 0;
+}
+
+.carousel-indicators li {
+	width: 20px;
+	transition-duration: 0.2s;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none;
+    transition-duration: 0.2s;
+    font-size: 35px;
+    top: 30%;
 }
 
 #howitworks {
@@ -1197,6 +1249,16 @@ canvas {
 .chinese {
 	border: 2px solid #ff4f3b;
 	color: #ff4f3b;
+}
+
+.sat {
+	border: 2px solid #3d474b;
+	color: #3d474b;
+}
+
+.act {
+	border: 2px solid #b85456;
+	color: #b85456;
 }
 
 .back2top {
@@ -3106,11 +3168,11 @@ canvas {
 
 	#indexhead {
 		padding: 70px 10% 100px 10%;
-		height: 150vh;
+		height: 125vh;
 	}
 
 	#indexhead h1 {
-		font-size: 32px;
+		font-size: 35px;
 		margin-bottom: 25px;
 	}
 
@@ -3118,17 +3180,26 @@ canvas {
 		font-size: 32px;
 	}
 
+	#indexhead a {
+		display: block;
+		margin: 20px 0px;
+	}
+
+	#gplaybutton img {
+		height: 50px;
+	}
+
 	#indexhead p {
 		font-size: 18px;
 	}
 
-	#indexhead a {
+	#headlink {
 		padding: 12px 30px;
 		font-size: 20px;
 	}
 
 	#info {
-		padding: 530px 10% 210px 10%;
+		padding: 530px 10% 150px 10%;
 		color: white;
 	  	position: relative;
 	  	z-index: 2;
@@ -3791,6 +3862,23 @@ canvas {
 
 	.leader img {
 		width: 80%;
+	}
+
+	#testimonials {
+		padding: 80px 7%;
+	}
+
+	#testimonials h1 {
+		font-size: 30px;
+	}
+
+	.carousel .item h3 {
+		font-size: 20px;
+		padding: 20px 15% 40px 15%;
+	}
+
+	.carousel-control.left, .carousel-control.right {
+	    font-size: 25px;
 	}
 
 	#howitworks ol {

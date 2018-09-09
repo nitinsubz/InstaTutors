@@ -2,8 +2,9 @@ $(window).on('load', function () {
 	$("#navbar").show();
 
 	setTimeout("$(\"#indeximg\").css(\"width\", \"170px\")",100);
-	setTimeout("$(\"#indexhead p\").slideDown(\"fast\")",4000);
-	setTimeout("$(\"#indexhead a\").slideDown(\"fast\")",4000);
+	setTimeout("$(\"#indexhead p\").slideDown(\"fast\")",1500);
+	setTimeout("$(\"#gplaybutton\").slideDown(\"fast\")",1500);
+	setTimeout("$(\"#headlink\").slideDown(\"fast\")",1500);
 
 	$( "#stars .fas" ).each(function(index) {
 	    $(this).on("mouseout", function(){
@@ -57,7 +58,7 @@ var TxtType = function(el, toRotate, period) {
         this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
 
         var that = this;
-        var delta = 50 - Math.random() * 50;
+        var delta = 15;
 
         if (this.isDeleting) { delta /= 2; }
 
@@ -205,7 +206,7 @@ $(document).ready(function(){
     return false;
       });
 
-    $("#indexhead a").click(function(event) {
+    $("#headlink").click(function(event) {
     event.preventDefault();
     $("html, body").animate({ scrollTop: $("#howitworks").offset().top }, 800);
     return false;
@@ -270,21 +271,24 @@ $(document).ready(function(){
 	$( ".tutor" ).each(function(index) {
 	    $(this).on("click", function(){
 			var name = event.currentTarget.childNodes[3].innerHTML;
-			firebase.database().ref('names/' + name).child('id').on("value", snap => {
-		 		var tutorids = snap.val();
-		 		console.log(tutorids);
-		 		var tutorinfo = firebase.database().ref('users/' + tutorids);
-				tutorinfo.on('value', snap => {
-					var tutorname = snap.child("name").val();
-					var tutorsubjects = snap.child("subjects").val().split(",");
-					for(var k=0; k<tutorsubjects.length; k++) {
-						tutorsubjects[k] = tutorsubjects[k].charAt(0).toUpperCase() + tutorsubjects[k].slice(1);
+			firebase.database().ref('users').on("value", snap => {
+				snap.forEach(function(childSnapshot) {
+					if(childSnapshot.child("name").val() == name) {
+				 		var tutorids = childSnapshot.key;
+				 		var tutorinfo = firebase.database().ref('users/' + tutorids);
+						tutorinfo.on('value', snap => {
+							var tutorname = snap.child("name").val();
+							var tutorsubjects = snap.child("subjects").val().split(",");
+							for(var k=0; k<tutorsubjects.length; k++) {
+								tutorsubjects[k] = tutorsubjects[k].charAt(0).toUpperCase() + tutorsubjects[k].slice(1);
+							}
+							tutorsubjects = tutorsubjects.join(", ");
+							var tutorbio = snap.child("bio").val();
+							$("#bioname").html(tutorname);
+							$("#biosubjects").html(tutorsubjects);
+							$("#biobio").html(tutorbio);
+						});
 					}
-					tutorsubjects = tutorsubjects.join(", ");
-					var tutorbio = snap.child("bio").val();
-					$("#bioname").html(tutorname);
-					$("#biosubjects").html(tutorsubjects);
-					$("#biobio").html(tutorbio);
 				});
 		 	});
 		 	$("#biomask").fadeIn();
@@ -458,7 +462,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						var selectedDate = new Date(splitDate(splitDate(date)));
 	   					var now = new Date();
 
-						if(now < selectedDate && date != null) {
+						if(now.setTimezoneOffset(1600) < selectedDate && date != null) {
 								$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Name: " + name + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4>");
 							} else {
 								if(date != null) {
@@ -540,7 +544,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						snapshot.forEach(function(childSnapshot) {
 							var date2 = new Date(childSnapshot.child("date").val());
 							var now = new Date();
-							if(date2 > now && date2 != null) {
+							if(now.setTimezoneOffset(1600) < date2 && date2 != null) {
 								prevdates.push(date2);
 							}
 							if(date2 != null && date2 != "Wed Dec 31 1969 16:00:00 GMT-0800 (Pacific Standard Time)") {
@@ -601,7 +605,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						}
 	   					var now = new Date();
 
-						if(now < selectedDate && date != null) {
+						if(now.setTimezoneOffset(1600) < selectedDate && date != null) {
 								$("#sessionsbody").append("<div class=\"req" + color + "\"> <div class=\"cancel\" onclick=\"cancel()\"><i class=\"fas fa-times\"></i></div> <h2>Date: " + date + "</h2> " + "<h4>Time: " + time + "</h4> </h4>" + "<h4>Subjects: " + subject + "</h4> <h4>Details: "+ details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
 							} else {
 								if(date != null) {
@@ -835,6 +839,7 @@ function answerQuestion() {
 					content,
 					{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
 			alert("Thank you for your answer!  Be prepared to answer follow up questions.");
+			setTimeout("location.reload(true);",100);
 		}
 	} else {
 		alert("Please enter an answer greater than 10 words.");
@@ -908,7 +913,7 @@ function takeSession() {
 			}
 
 	});
-	setTimeout("location.reload(true);",500);
+	setTimeout("location.reload(true);",100);
 }
 
 //cancel Tutoring session (request)
@@ -1114,7 +1119,7 @@ function writeAccount(name, email, phone, stat) {
 		 });
 
 		if(name != null) {
-			firebase.database().ref('names/' + name).set({
+			firebase.database().ref('names/' + splitEmail(email)).set({
 				id: splitEmail(email)
 			});
 		}
@@ -1300,6 +1305,9 @@ function validate() {
 				}
 				if(subject == "") {
 					missing.push(" subject");
+				}
+				if(details == "") {
+					missing.push(" details");
 				}
 				if(missing != "") {
 					$("#formerros").css("color", "red");
