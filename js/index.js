@@ -2,9 +2,10 @@ $(window).on('load', function () {
 	$("#navbar").show();
 
 	setTimeout("$(\"#indeximg\").css(\"width\", \"170px\")",100);
-	setTimeout("$(\"#indexhead p\").slideDown(\"fast\")",1500);
-	setTimeout("$(\"#gplaybutton\").slideDown(\"fast\")",1500);
-	setTimeout("$(\"#headlink\").slideDown(\"fast\")",1500);
+	setTimeout("$(\"#indexhead p\").slideDown(\"fast\")",1000);
+	setTimeout("$(\"#gplaybutton\").slideDown(\"fast\")",1000);
+	setTimeout("$(\"#headlink\").slideDown(\"fast\")",1000);
+	setTimeout("$(\"#indexquestions\").slideDown(\"fast\")",100);
 
 	$( "#stars .fas" ).each(function(index) {
 	    $(this).on("mouseout", function(){
@@ -16,6 +17,8 @@ $(window).on('load', function () {
 			$("#fivestar").css("color", "#444");
 	    });
 	});
+
+	$(".sidecancel").html("&times;");
 
 	$('[data-toggle="popover"]').popover();
 
@@ -338,6 +341,27 @@ $(document).ready(function(){
 		$("#subject").val('');
 		$("#subjectfielderror").html("");
 	});
+
+	var questionRef = firebase.database().ref('questions');
+
+	questionRef.on("child_added", snap => {
+		var question = snap.child("question").val();
+		var answer = snap.child("answer").val();
+		if(answer != "" && snap.hasChild("featured")) {
+			$(".container .slider ul").append("<li class=\"qa\"> <div class=\"indexq\"> Student: <span>" + question + " </span></div> <div class=\"indexa\"> Tutor: " + answer + "</div></li>");
+			$(".container .slider ol").append("<li></li>");
+		}
+		$( ".slider ol li:first-child" ).addClass("active");
+
+		$(".slider ol li").on("click", function() {
+			console.log("clicked");
+		    $(this).addClass("active").siblings("li").removeClass("active");
+		    $(".slider ul").animate({
+		        top: -$(".slider").height() * $(this).index()
+		    }, 500);
+		});
+	});
+
 });
 
 //helper split functions for syntax
@@ -392,6 +416,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 			isTutor.on('value', snap => {
 				if(snap.val() == "tutor") {
+					$("#info_div").css("display", "none");
 					$("#email_div").css("display", "none");
 					$(".main-div").css("display", "none");
 				    $("#logout").fadeIn();
@@ -400,6 +425,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 				    $("#sidelogin").html("SEE ALL REQUESTS");
 				    $("#login2").html("See All Requests");
 				    $("#tutorsessions").fadeIn();
+
+				 	setTimeout("sortSessions()", 100);
 
 				    var tutorSubjects = firebase.database().ref('users/' + split).child("subjects");
 
@@ -432,7 +459,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 							var time = convertMilitary(snap.child("time").val());
 							var answer = snap.child("answer").val();
 							if(answer == "") {
-								$("#tutorquestionbody").append("<div class=\"tutorquestion\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4> <h4 id=\"questionemail\">" + email + "</h4> <textarea style=\"resize: none;\" type=\"text\"></textarea><button class=\"answerquestion\" onclick=\"answerQuestion()\">Answer this Question</button></div>");
+								$("#tutorquestionbody").append("<div class=\"tutorquestion\"> <h4>Question: " + question + "</h4> <h4>Time: " + time + "</h4> <h4 id=\"questionemail\">" + email + "</h4> <textarea style=\"resize: none\" type=\"text\"></textarea><button class=\"answerquestion\" onclick=\"answerQuestion()\">Answer this Question</button></div>");
 							}
 						});
 
@@ -485,7 +512,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 						        	selectedDate2 = new Date(splitDate(splitDate(returnArr[n])));
 						        }
 						        var now2 = new Date();
-						        if(returnArr[n] != null && selectedDate2 < now2.setTimezoneOffset(-1600)) {
+						        if(returnArr[n] != null && selectedDate2 < now2.setTimezoneOffset(1600)) {
 						        	newArr.push(returnArr[n]);
 							    }
 						    }
@@ -495,8 +522,21 @@ firebase.auth().onAuthStateChanged(function(user) {
 						});	    
 
 				} else {
+					var accountInfo = firebase.database().ref('users/' + split);
+					accountInfo.on("value", snap => {
+						if(!snap.hasChild("verified")) {
+							$("#info_div").fadeIn();
+							$("#mainbody").hide();
+						} else {
+							$("#info_div").hide();
+							$("#mainbody").fadeIn();
+							$("#myname i").html(snap.child("name").val());
+							$("#mygrade i").html(snap.child("grade").val());
+							$("#myschool i").html(snap.child("school").val());
+							$("#myparentemail i").html(snap.child("parentemail").val());
+						}
+					});
 					$("#email_div").css("display", "none");
-					$("#mainbody").fadeIn();
 				    $(".main-div").css("display", "none");
 				    $(".create-div").css("display", "none");
 				    $("#bookasession a").html("Request a Session");
@@ -679,6 +719,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 		var email = snap.child("email").val();
 		var subject = snap.child("subject").val();
 		var details = snap.child("details").val();
+		var key = snap.key;
 		var time = convertMilitary(snap.child("time").val());
 		var tutor = snap.child("tutor").val();
 
@@ -694,21 +735,18 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 				var display;
 				if(overlap == 0 || done == "yes") {
-					display = "none";
+					display = "green";
 				} else {
-					display = "block";
+					display = "red";
 				}
 
 				if(date != null) {
 					firebase.database().ref('users/' + splitEmail(email)).child("name").once("value", snap => {
-						$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: " + display + "\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>Time: " + time + "</h4> <h4>Name: " + snap.val() + "</h4><h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
-
+						$("#tutorsessionsbody").append("<div class=\"tutorreq\" id=\"" + key + "\" style=\"color: " + display + "; display: none\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>Time: " + time + "</h4> <h4>Name: " + snap.val() + "</h4><h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
 					});
 				}
 		});
 	});
-
-	$("#tutorsessionsbody").html(allReqs);
 
   } else {
     // No user is signed in.
@@ -733,6 +771,25 @@ function sendVerification() {
 	});
 }
 
+function sortSessions() {
+	var ids = [];
+	var html = [];
+	$( ".tutorreq" ).each(function(index) {
+		if($(this).css('color') == "rgb(255, 0, 0)") {
+			ids.push($(this).attr('id'));
+		}
+	});
+	ids.sort();
+	for(var j=0; j<ids.length; j++) {
+		html.push($("#" + ids[j]).html());
+	}
+	for(var i=0; i<ids.length; i++) {
+		$("#tutorsessionsbody").append("<div class=\"tutorreq\" onclick=\"takeSession()\" style=\"display: block\" id=\"" + ids[i] + "\">" + html[i] + "</div>");
+	}
+	console.log(html);
+	console.log(ids);
+}
+
 function openResetPass() {
 	$(".main-div").css("display", "none");
 	$("#reset_div").fadeIn();
@@ -753,6 +810,7 @@ function resetPass() {
 //submits question to tutors (2 hour response)
 function submitquestion() {
 	var question = $("#question").val();
+	console.log(question);
 	var date = new Date();
 	var hours = date.getHours();
 	var minutes = date.getMinutes();
@@ -799,6 +857,38 @@ function submitquestion() {
 	}
 }
 
+//enter account info 
+function submitinfo() {
+	var split = splitEmail(firebase.auth().currentUser.email);
+	var grade = $("#grade_field").val();
+	var school = $("#school_field").val();
+	var parentemail = $("#parentemail_field").val();
+	var city = $("#city_field").val();
+	var validemail = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	var missing = [];
+	if(parseInt(grade) < 4 || parseInt(grade) > 12) {
+		missing.push("Your grade (must be between 4th and 12th grade)");
+	}
+	if(parentemail.search(validemail) == -1) {
+		missing.push(" valid email");
+	}
+	if(school == "") {
+		missing.push(" your school");
+	}
+	if(city == "") {
+		missing.push(" your city of residence");
+	}
+	if(missing.length >0) {
+		$("#infoerrors").html("Please fill out the following: " + missing);
+	} else {
+		firebase.database().ref('users/' + split).child("verified").set("yes");
+		firebase.database().ref('users/' + split).child("grade").set(grade);
+		firebase.database().ref('users/' + split).child("school").set(school);
+		firebase.database().ref('users/' + split).child("parentemail").set(parentemail);
+		firebase.database().ref('users/' + split).child("city").set(city);
+	}
+}
+
 //Same thing, but from the account
 function resetPass2() {
 	var emailAddress = firebase.auth().currentUser.email;
@@ -832,7 +922,7 @@ function answerQuestion() {
 		} else {
 			firebase.database().ref('questions/' + splitEmail(email) + newtime).child("answer").set(answer);
 			firebase.database().ref('questions/' + splitEmail(email) + newtime).child("tutor").set(firebase.auth().currentUser.email);
-			var content = "<h3>Question Has Been Answered</h3> <p><strong>Question: </strong>" + question + "</p> <p><strong>Answer: </strong>" + answer + "</p>.";
+			var content = "<h3>Question Has Been Answered</h3> <p><strong>Question: </strong>" + question + "</p> <p><strong>Answer: </strong>" + answer + "</p> <p>You can request more help at <a href=\"https://www.instatutors.org\">instatutors.org</a></p>.";
 			Email.send("support@instatutors.org",
 					email,
 					"Your Question has been Answered",
@@ -1280,13 +1370,13 @@ function validate() {
 			var daysInAdvance;
 			if(snapshot.val() == "bronze") {
 				maxSess = 5;
-				daysInAdvance = 4;
+				daysInAdvance = 2;
 			} else if(snapshot.val() == "silver") {
 				maxSess = 8;
-				daysInAdvance = 3;
+				daysInAdvance = 1;
 			} else {
 				maxSess = 10;
-				daysInAdvance = 2;
+				daysInAdvance = 0;
 			}
 			if(numberofsessions + sessionsCount > maxSess) {
 				$("#formerrors").css("color", "red");
@@ -1720,7 +1810,6 @@ function submitApplication() {
 	var q4 = $("#applyq4").val();
 	var validemail = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 	var missing = [];
-	console.log(name + email + grade + school + subjects);
 	if(name == "") {
 		missing.push("name");
 	}
@@ -1795,4 +1884,8 @@ function validatemsg() {
 			content,
 			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
 	}
+}
+
+function input(str) {
+  $("#question").val($("#question").val() + str);
 }

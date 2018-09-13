@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html>
-<title>Login</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<link rel="icon" href="images/logo.png">
-<meta name="google-signin-client_id" content="624098741421-m0iktcim9gitao0pq918btek7f8cuqii.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,800" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="icon" href="images/logo.png">
+	<meta name="google-signin-client_id" content="624098741421-m0iktcim9gitao0pq918btek7f8cuqii.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   	<script src="http://mathquill.com/lib/mathquill.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
-    <link rel="stylesheet" href="clockpicker.css">
     <link rel="stylesheet" href="main.css">
-    <script src="js/clockpicker.js"></script>
 <body>
 	<div id="menubar" onclick="opensidenav()">
 		MENU <div class="bar11"></div><div class="bar22"></div>
@@ -118,6 +113,20 @@
 		 	<h3 id="verifyemail">Please Verify Your Email Address: </h3>
 		 	<a onclick="sendVerification()">Send Verification Email</a>
 		 	<a href="login">Log In</a>
+		 </div>
+
+		 <div id="info_div">
+		 	<h3>Let's Get to Know You</h3>
+		 	<p>School:</p>
+		 	<input type="text" placeholder="The school you attend..." id="school_field" />
+		 	<p>Grade Level:</p>
+		 	<input type="text" placeholder="Your grade level..." id="grade_field" />
+		 	<p>Parent Email:</p>
+		 	<input type="email" placeholder="Enter your parent email..." id="parentemail_field">
+		 	<p>City:</p>
+		 	<input type="text" placeholder="Enter your city of residence..." id="city_field">
+		 	<p id="infoerrors"></p>
+		 	<a id="submitinfo" onclick="submitinfo()">Submit Info</a>
 		 </div>
 
 	<div id="confirmedbody">
@@ -262,6 +271,16 @@
 						<h3>Enter Your Question</h3>
 						<p>Try to be as detailed as possible.  Feel free to include links to webpages or online pdfs.
 						<textarea style="resize: none;" type="text" name="question" id="question"></textarea>
+						<div id="keyboard">
+						  <div class="btn-group" role="group" aria-label="math functions">
+						    <button type="button" class="btn btn-default" onclick='input("&radic;")'>√</button>
+						    <button type="button" class="btn btn-default" onclick='input("&theta;")'>&theta;</button>
+						    <button type="button" class="btn btn-default" onclick='input("&#8710;")'>&#8710;</button>
+						    <button type="button" class="btn btn-default" onclick='input("&#8747;")'>&#8747;</button>
+						    <button type="button" class="btn btn-default" onclick='input("&infin;")'>&infin;</button>
+						    <button type="button" class="btn btn-default" onclick='input("&pi;")'>&pi;</button>
+						  </div>
+						</div>
 						<p id="questionerrors"></p>
 						<button id="submitquestion" onclick="submitquestion()">Submit Question</button>
 					</div>
@@ -278,6 +297,11 @@
 				</div>
 				<div class="row" id="account">
 					<div id="accountinfo" class="col-sm-6">
+						<h3>Account Info</h3>
+						<p id="myname">Name: <i></i></p>
+						<p id="mygrade">Grade: <i></i></p>
+						<p id="myschool">School: <i></i></p>
+						<p id="myparentemail">Parent Email: <i></i></p>
 						<div id="tuteeaward">
 							<h3>My Award Status</h3>
 							<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="20+ completed sessions.  You rock!  You may request sessions 2 days in advance.  You may have up to 10 active requests."><img class="award" id="goldaward" src="images/goldaward.png"></button>
@@ -289,7 +313,7 @@
 							<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Noob: log in once."><img class="achievement" id="noob" src="images/noob.png"></button>
 							<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Oncer: request 1 session."><img class="achievement" id="oncer" src="images/oncer.png"></button>
 						</div>
-						<div id="tuteeaddsubjects">
+						<!--<div id="tuteeaddsubjects">
 							<h3>Add Subjects</h3>
 							<p>Enter the subjects you need help in, and we can match you with the perfect tutor!</p>
 							<input type="text" name="newsubject" id="newsubject" placeholder=""><br>
@@ -330,7 +354,7 @@
 								<div id="goodmatches">
 								</div>
 							</div>
-						</div>
+						</div>-->
 					</div>
 					<div class="col-sm-6" id="tuteesessionssec">
 						<h3>Upcoming Sessions</h3>

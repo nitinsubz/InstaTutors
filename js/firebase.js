@@ -1,10 +1,1 @@
-var config = {
-    apiKey: "AIzaSyDqQoKK2MYCb_2FzUYmeafETdCVWi22JeI",
-    authDomain: "insta-tutors.firebaseapp.com",
-    databaseURL: "https://insta-tutors.firebaseio.com",
-    projectId: "insta-tutors",
-    storageBucket: "insta-tutors.appspot.com",
-    messagingSenderId: "624098741421"
-  };
-
-    firebase.initializeApp(config);
+var _0x4012=['AIzaSyDqQoKK2MYCb_2FzUYmeafETdCVWi22JeI','insta-tutors.firebaseapp.com','https://insta-tutors.firebaseio.com','insta-tutors','624098741421','initializeApp'];(function(_0x295d0a,_0x16971b){var _0x4b286a=function(_0x57f8a6){while(--_0x57f8a6){_0x295d0a['push'](_0x295d0a['shift']());}};_0x4b286a(++_0x16971b);}(_0x4012,0x1a4));var _0x22b0=function(_0x1083ce,_0x5b9c3a){_0x1083ce=_0x1083ce-0x0;var _0x47a437=_0x4012[_0x1083ce];return _0x47a437;};var config={'apiKey':_0x22b0('0x0'),'authDomain':_0x22b0('0x1'),'databaseURL':_0x22b0('0x2'),'projectId':_0x22b0('0x3'),'storageBucket':'insta-tutors.appspot.com','messagingSenderId':_0x22b0('0x4')};firebase[_0x22b0('0x5')](config);
