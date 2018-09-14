@@ -354,23 +354,26 @@ h1 strong {
 	background-position: left;
 }
 
-#indexlogout {
+#adminlogout {
 	background: linear-gradient(to left, #330867, #30CFD0);
 	background-size: 120% 100%;
 	background-position: right;
 	border-radius: 30px;
 	transition-duration: 0.2s;
-	display: none;
-	position: relative;
-	z-index: 4;
+	position: fixed;
+	font-size: 22px;
+	padding: 10px 30px;
+	top: 5px;
+	right: 5px;
+	z-index: 99;
 	transform: scale(1);
 }
 
-#indexlogout a {
+#adminlogout a {
 	color: white;
 }
 
-#indexlogout:hover {
+#adminlogout:hover {
 	background-position: left;
 	cursor: pointer;
 }
@@ -1995,7 +1998,6 @@ canvas {
 	text-decoration: none;
 }*/
 
-
 .main-div {
 	margin-top: 100px;
 }
@@ -2135,6 +2137,132 @@ canvas {
 	display: none;
 }
 
+#adminlogin {
+	margin: 100px auto;
+	width: 35%;
+	padding: 60px 0px;
+	display: none;
+}
+
+#adminlogin h3 {
+	font-size: 35px;
+	text-align: center;
+	padding: 10px 0px;
+}
+
+#adminerrormessage {
+	font-size: 20px;
+	color: red;
+	padding: 10px 0px;
+}
+
+#adminlogin input {
+	font-size: 22px;
+	display: block;
+	margin: 10px 0px;
+	width: 100%;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+#adminlogin input:focus {
+	outline: 0;
+	border-bottom: 3px solid #30CFD0;
+}
+
+#adminbody {
+	padding: 80px 6%;
+	display: none;
+}
+
+#adminbody h1 {
+	font-size: 50px;
+	padding: 10px 0px;
+	color: #444;
+}
+
+#testemail {
+	font-size: 20px;
+	outline: 0;
+}
+
+#adminbody h3 {
+	font-size: 30px;
+}
+
+#adminlogout {
+	background: linear-gradient(to left, #330867, #30CFD0);
+	background-size: 120% 100%;
+	background-position: right;
+	border-radius: 30px;
+	transition-duration: 0.2s;
+	position: fixed;
+	font-size: 22px;
+	padding: 10px 30px;
+	top: 5px;
+	right: 5px;
+	z-index: 99;
+	transform: scale(1);
+}
+
+#adminlogout span {
+	color: white;
+}
+
+#adminlogout:hover {
+	background-position: left;
+	cursor: pointer;
+}
+
+.adminreq, .admintutor {
+	padding: 15px 5%;
+	border-radius: 20px;
+	margin: 10px 0px;
+	transition-duration: 0.2s;
+}
+
+.adminreq:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.hider {
+	display: none;
+}
+
+.adminreq h2 {
+	font-size: 22px;
+}
+
+.adminreq h4, .admintutor h4 {
+	font-size: 18px;
+}
+
+.admintutor {
+	background-color: #eee;
+	transition-duration: 0.2s;
+}
+
+.admintutor:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.admintutor .fas {
+	color: gold;
+}
+
+.admintutor h2 {
+	font-size: 24px;
+}
+
+.admintutor h5 {
+	font-size: 22px;
+	padding-top: 10px;
+}
+
+
+
 #tutorsessions {
 	display: none;
 	background-color: #ddd;
@@ -2222,10 +2350,17 @@ canvas {
 	color: #30CFD0;
 }
 
-#tutoruser {
+#tutoraccountinfo h4 {
 	font-size: 24px;
-	color: #30CFD0;
-	margin: -10px 0px 20px 0px;
+	margin: -10px 0px 30px 5px;
+}
+
+#tutorparentemail, #myparentemail {
+	margin-bottom: 50px;
+}
+
+#tutoraccountinfo h4 i {
+	color: navy;
 }
 
 #tutorrating {
@@ -2942,7 +3077,7 @@ canvas {
 }
 
 #info_div {
-	width: 40%;
+	width: 45%;
 	margin: 0px auto;
   	margin-top: 60px;
   	padding: 20px;
@@ -2966,6 +3101,10 @@ canvas {
 	font-size: 35px;
 	padding: 10px 0px;
 	text-align: center;
+}
+
+#infohello {
+	font-size: 28px;
 }
 
 #email_div a, #info_div a, #reset_div a {
@@ -3047,7 +3186,7 @@ canvas {
 
 #myname, #myparentemail, #mygrade, #myschool {
 	font-size: 22px;
-	padding: 5px 0px 5px 10px;
+	margin: -5px 0px 30px 5px;
 }
 
 #myname i, #myparentemail i, #mygrade i, #myschool i {
@@ -4358,12 +4497,17 @@ canvas {
 
 	#myname, #myparentemail, #mygrade, #myschool {
 		font-size: 18px;
-		padding: 3px 0px 3px 5px;
+		margin: -5px 0px 15px 5px;
 	}
 
 	#info_div {
 		width: 90%;
 	  	margin-top: 50px;
+	}
+
+	#tutoraccountinfo h4 {
+		font-size: 19px;
+		margin: -10px 0px 20px 5px;
 	}
 
 }

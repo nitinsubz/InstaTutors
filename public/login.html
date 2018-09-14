@@ -116,7 +116,7 @@
 		 </div>
 
 		 <div id="info_div">
-		 	<h3>Let's Get to Know You</h3>
+		 	<h3 id="infohello">Hello <i></i>, please fill out some additional information so we can get to know you better</h3>
 		 	<p>School:</p>
 		 	<input type="text" placeholder="The school you attend..." id="school_field" />
 		 	<p>Grade Level:</p>
@@ -420,9 +420,12 @@
 			<h1>My Account</h1>
 			<div id="tutoraccount" class="row">
 				<div id="tutoraccountinfo" class="col-sm-6">
-					<h3>Tutor:</h3>
-					<h4 id="tutoruser"></h4>
-					<h3>My Rating</h3>
+					<h3>Tutor Info:</h3>
+					<h4 id="tutoruser">Email: <i></i></h4>
+					<h4 id="tutorgrade">Grade: <i></i></h4>
+					<h4 id="tutorschool">School: <i></i></h4>
+					<h4 id="tutorparentemail">Parent Email: <i></i><h4>
+					<h3 style="padding-top: 10px;">My Rating</h3>
 					<h4 id="tutorrating"></h4>
 					<h3>My Bio</h3><a id="editbio" onclick="editBio()"><i class="fas fa-edit"></i></a>
 					<textarea style="resize: none;" type="text" name="tutorbio" id="tutorbio"></textarea>

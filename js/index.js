@@ -424,8 +424,21 @@ firebase.auth().onAuthStateChanged(function(user) {
 				    $("#bookasession a").html("See All Requests");
 				    $("#sidelogin").html("SEE ALL REQUESTS");
 				    $("#login2").html("See All Requests");
-				    $("#tutorsessions").fadeIn();
-
+				    var accountInfo = firebase.database().ref('users/' + split);
+					accountInfo.on("value", snap => {
+						if(!snap.hasChild("verified")) {
+							$("#infohello i").html(snap.child("name").val());
+							$("#info_div").fadeIn();
+							$("#tutorsessions").hide();
+						} else {
+							$("#info_div").hide();
+							$("#tutorsessions").fadeIn();
+							$("#tutoruser i").html(snap.child("email").val());
+							$("#tutorgrade i").html(snap.child("grade").val());
+							$("#tutorschool i").html(snap.child("school").val());
+							$("#tutorparentemail i").html(snap.child("parentemail").val());
+						}
+					});
 				 	setTimeout("sortSessions()", 100);
 
 				    var tutorSubjects = firebase.database().ref('users/' + split).child("subjects");
@@ -525,6 +538,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 					var accountInfo = firebase.database().ref('users/' + split);
 					accountInfo.on("value", snap => {
 						if(!snap.hasChild("verified")) {
+							$("#infohello i").html(snap.child("name").val());
 							$("#info_div").fadeIn();
 							$("#mainbody").hide();
 						} else {
@@ -705,7 +719,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 	    if(user != null){
 	      $("#user").html("User: " + user.email + "");
-	      $("#tutoruser").html(user.email);
 	    }
 	}
 
@@ -756,7 +769,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("#logout").css("display", "none");
     $("#sidelogin").html("LOGIN");
     $("#tutorsessions").css("display", "none");
-    
+    $("#adminlogin").fadeIn();
   }
 });
 
@@ -1267,6 +1280,21 @@ function login() {
 	  });
 }
 
+function adminlogin() {
+	var userEmail = $("#adminemail").val();
+	var userPass = $("#adminpassword").val();
+	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+	    // Handle Errors here.
+	    event.preventDefault();
+	    var errorCode = error.code;
+	    var errorMessage = error.message;
+
+	    $("#errormessage").html("Error : " + errorMessage);
+
+	    // ...
+	  });
+}
+
 function googlelogin() {
 	firebase.auth().signInWithRedirect(provider);
 	firebase.auth().getRedirectResult().then(function(result) {
@@ -1476,6 +1504,7 @@ function validate() {
 						 		var tutorids = Object.keys(snap.val());
 						 		for(var i=0; i<tutorids.length; i++) {
 						 			var myUser = firebase.database().ref('users/' + tutorids[i]).child("subjects");
+
 									myUser.on("value", snap => {
 											var splitsubs = snap.val().split(",");
 											var reqsubs = subject.split(", ");
@@ -1490,7 +1519,7 @@ function validate() {
 																snap.val(),
 																"New Tutoring Session Requested for " + subject + " on " + date,
 																content + "<p>Take this session <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
-																{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+																{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
 												});
 											}
 
@@ -1522,13 +1551,12 @@ function validate() {
 							$("#mainbody").css("display", "none");
 							$("#confirmedbody").fadeIn();
 							$("#logout").css("display", "none");
-							console.log(content);
 							//send confirmation email to user
 							Email.send("support@instatutors.org",
 								email,
 								"New Tutoring Session(s) Requested for " + subject + " on " + date,
 								content + "<p>Check out your account <a href=\"https://www.instatutors.org/login\">here</a>.</p>",
-								{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb"});
+								{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
 
 							return true;
 					}
@@ -1888,4 +1916,12 @@ function validatemsg() {
 
 function input(str) {
   $("#question").val($("#question").val() + str);
+}
+
+function sendTestEmail() {
+	Email.send("inquiries@instatutors.org",
+			"instatutorsteam@gmail.com",
+			"TEST EMAIL",
+			"this is a test",
+			{token: "527d49d6-dba7-4334-8775-1b8ccd9b3eeb", callback: function done(message) { console.log("sent") }});
 }

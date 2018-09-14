@@ -269,6 +269,7 @@ h1 strong {
 
 #indexhead a {
 	margin: 0px 10px;
+	box-shadow: 5px 5px 30px #aaa;
 }
 
 #gplaybutton {
@@ -279,6 +280,8 @@ h1 strong {
 	margin-top: -5px;
 	height: 60px;
 	transition-duration: 0.2s;
+	box-shadow: 5px 5px 30px #aaa;
+	border-radius: 10px;
 }
 
 #gplaybutton img:hover {
@@ -354,23 +357,26 @@ h1 strong {
 	background-position: left;
 }
 
-#indexlogout {
+#adminlogout {
 	background: linear-gradient(to left, #330867, #30CFD0);
 	background-size: 120% 100%;
 	background-position: right;
 	border-radius: 30px;
 	transition-duration: 0.2s;
-	display: none;
-	position: relative;
-	z-index: 4;
+	position: fixed;
+	font-size: 22px;
+	padding: 10px 30px;
+	top: 5px;
+	right: 5px;
+	z-index: 99;
 	transform: scale(1);
 }
 
-#indexlogout a {
+#adminlogout a {
 	color: white;
 }
 
-#indexlogout:hover {
+#adminlogout:hover {
 	background-position: left;
 	cursor: pointer;
 }
@@ -534,6 +540,11 @@ canvas {
 	padding: 15px 0px;
 }
 
+#howitworks img {
+	width: 100%;
+	box-shadow: 5px 5px 30px #aaa;
+}
+
 #howitworks h1 {
 	color: #444;
 	padding: 10px 0px;
@@ -554,6 +565,14 @@ canvas {
 	border: 0;
 }
 
+#howitworks .row {
+	padding: 40px 0px;
+}
+
+#howitworks .col-sm-6, #howitworks .col-sm-4, #howitworks .col-sm-8 {
+	padding: 0px 2%;
+} 
+
 #howitworks #getstarted {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 230% 100%;
@@ -563,11 +582,53 @@ canvas {
 	border-radius: 30px;
 	font-size: 26px;
 	transition-duration: 0.2s;
+	margin: auto;
+	display: block;
+	width: 30%;
+	text-align: center;
+}
+
+#howitworks .awardsimg {
+	float: left;
+	width: 32%;
+	margin: 0px 0.5%;
+	box-shadow: 0px 0px 0px #fff;
+	position: relative;
+	z-index: 5;
+	transition-duration: 0.3s;
+}
+
+#howitworks .awardsimg:hover {
+	transform: translateY(-7px);
 }
 
 #howitworks #getstarted:hover {
 	background-position: left;
 	text-decoration: none;
+}
+
+#awardsinfo {
+	background: linear-gradient(black, #528099);
+	border-radius: 10px;
+	padding: 80px 3% 30px 7%;
+	float: left;
+	width: 105%;
+	margin-left: -3%;
+	margin-top: -100px;
+	position: relative;
+	z-index: 0;
+}
+
+#awardsinfo li {
+	font-size: 18px;
+	padding: 4px 0px;
+	color: white;
+}
+
+#awardsinfo .awardsinfocol {
+	float: left;
+	width: 30%;
+	margin: 10px 1.5%;
 }
 
 #howitworks a i {
@@ -1995,7 +2056,6 @@ canvas {
 	text-decoration: none;
 }*/
 
-
 .main-div {
 	margin-top: 100px;
 }
@@ -2222,10 +2282,17 @@ canvas {
 	color: #30CFD0;
 }
 
-#tutoruser {
+#tutoraccountinfo h4 {
 	font-size: 24px;
-	color: #30CFD0;
-	margin: -10px 0px 20px 0px;
+	margin: -10px 0px 30px 5px;
+}
+
+#tutorparentemail, #myparentemail {
+	margin-bottom: 50px;
+}
+
+#tutoraccountinfo h4 i {
+	color: navy;
 }
 
 #tutorrating {
@@ -2942,7 +3009,7 @@ canvas {
 }
 
 #info_div {
-	width: 40%;
+	width: 45%;
 	margin: 0px auto;
   	margin-top: 60px;
   	padding: 20px;
@@ -2966,6 +3033,10 @@ canvas {
 	font-size: 35px;
 	padding: 10px 0px;
 	text-align: center;
+}
+
+#infohello {
+	font-size: 28px;
 }
 
 #email_div a, #info_div a, #reset_div a {
@@ -3047,7 +3118,7 @@ canvas {
 
 #myname, #myparentemail, #mygrade, #myschool {
 	font-size: 22px;
-	padding: 5px 0px 5px 10px;
+	margin: -5px 0px 30px 5px;
 }
 
 #myname i, #myparentemail i, #mygrade i, #myschool i {
@@ -4358,12 +4429,17 @@ canvas {
 
 	#myname, #myparentemail, #mygrade, #myschool {
 		font-size: 18px;
-		padding: 3px 0px 3px 5px;
+		margin: -5px 0px 15px 5px;
 	}
 
 	#info_div {
 		width: 90%;
 	  	margin-top: 50px;
+	}
+
+	#tutoraccountinfo h4 {
+		font-size: 19px;
+		margin: -10px 0px 20px 5px;
 	}
 
 }
