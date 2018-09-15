@@ -125,6 +125,9 @@
 		 	<input type="email" placeholder="Enter your parent email..." id="parentemail_field">
 		 	<p>City:</p>
 		 	<input type="text" placeholder="Enter your city of residence..." id="city_field">
+		 	<p>Invite Code: (optional)</p>
+		 	<input type="text" placeholder="If you received an invite code, enter it here!" id="invite_field">
+		 	<h4 id="foundusers"></h4>
 		 	<p id="infoerrors"></p>
 		 	<a id="submitinfo" onclick="submitinfo()">Submit Info</a>
 		 </div>
@@ -295,73 +298,135 @@
 					<h1>My Account</h1>
 					<h3 id="user">User: </h3>
 				</div>
-				<div class="row" id="account">
-					<div id="accountinfo" class="col-sm-6">
-						<h3>Account Info</h3>
-						<p id="myname">Name: <i></i></p>
-						<p id="mygrade">Grade: <i></i></p>
-						<p id="myschool">School: <i></i></p>
-						<p id="myparentemail">Parent Email: <i></i></p>
-						<div id="tuteeaward">
-							<h3>My Award Status</h3>
-							<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="20+ completed sessions.  You rock!  You may request sessions 2 days in advance.  You may have up to 10 active requests."><img class="award" id="goldaward" src="images/goldaward.png"></button>
-							<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="11-20 completed sessions.  Awesome!  You may request sessions 3 days in advance.  You may have up to 8 active requests."><img class="award" id="silveraward" src="images/silveraward.png"></button>
-							<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="0-9 completed sessions. Keep working!  You may request sessions 4 days in advance.  You may have up to 5 active requests."><img class="award" id="bronzeaward" src="images/bronzeaward.png"></button>
-						</div>
-						<div id="tuteeachievements">
-							<h3>My Achievements</h3>
-							<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Noob: log in once."><img class="achievement" id="noob" src="images/noob.png"></button>
-							<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Oncer: request 1 session."><img class="achievement" id="oncer" src="images/oncer.png"></button>
-						</div>
-						<!--<div id="tuteeaddsubjects">
-							<h3>Add Subjects</h3>
-							<p>Enter the subjects you need help in, and we can match you with the perfect tutor!</p>
-							<input type="text" name="newsubject" id="newsubject" placeholder=""><br>
-							<div class="dropdown">
-						      <button class="btn btn-default dropdown-toggle" type="button" id="subjectselector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="subjecttext">Subject </span> <i class="fas fa-caret-down"></i></button>
-						      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						        <a class="dropdown-item">Math</a>
-						        <a class="dropdown-item">Physics</a>
-						        <a class="dropdown-item">Biology</a>
-						        <a class="dropdown-item">Chemistry</a>
-						        <a class="dropdown-item">Writing</a>
-						        <a class="dropdown-item">History</a>
-						        <a class="dropdown-item">WebDev</a>
-						        <a class="dropdown-item">Java</a>
-						        <a class="dropdown-item">Python</a>
-						        <a class="dropdown-item">Business</a>
-						        <a class="dropdown-item">Spanish</a>
-						        <a class="dropdown-item">French</a>
-						        <a class="dropdown-item">Chinese</a>
-						      </div>
-						    </div>
-						    <div class="row">
-						    	<p id="subjectmessage"></p>
-							    <a onclick="addSubject()" id="addsubject">Add Subject</a>
-							</div>
-						</div>
-						<div id="tuteemysubjects">
+				<div id="account">
+					<ul class="nav nav-tabs" id="myTab2" role="tablist">
+					  <li class="nav-item active">
+					    <a class="nav-link active" id="account-tab" data-toggle="tab" href="#account2" role="tab" aria-controls="account" aria-selected="true">Sessions & Info</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" id="points-tab" data-toggle="tab" href="#points" role="tab" aria-controls="points" aria-selected="false">Points</a>
+					  </li>
+					</ul>
+					<div class="tab-content" id="myTabContent2">
+						<div class="tab-pane fade in active" id="account2" role="tabpanel" aria-labelledby="account-tab">
 							<div class="row">
-								<div class="col-sm-7"><h3>My Subjects</h3></div>
-								<div class="col-sm-5"><a id="subjectdelete" onclick="deletesubjects()"><i class="fas fa-trash-alt"></i></a></div>
-							</div>
-							<div id="mysubjectsarea">
-							</div>
-							<a id="matchtutors" onclick="matchTutors()">Find Tutors</a>
-							<div id="mytutorsarea">
-								<div id="greatmatches">
+								<div id="accountinfo" class="col-sm-6">
+									<h3>Account Info  <a id="editinfo" onclick="editInfo()"><i class="fas fa-edit"></i><i class="fas fa-times"></i></a></h3>
+									<div id="infoparas">
+										<p id="myname">Name: <i></i></p>
+										<p id="mygrade">Grade: <i></i></p>
+										<p id="myschool">School: <i></i></p>
+										<p id="myparentemail">Parent Email: <i></i></p>
+									</div>
+									<div id="infomodify">
+										Name: <input type="text" id="modifyname" placeholder="Enter your name...">
+										<br>
+										Grade: <input type="text" id="modifygrade" placeholder="Enter your grade...">
+										<br>
+										School: <input type="text" id="modifyschool" placeholder="Enter your school...">
+										<br>
+										Parent Email: <input type="text" id="modifyparentemail" placeholder="Enter your parent's email...">
+										<br>
+										<p id="newinfoerrors"></p>
+										<button id="submitnewinfo" onclick="submitnewinfo()">Submit</button>
+									</div>
+									<div id="tuteeachievements">
+										<h3>My Achievements</h3>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Noob: log in once."><img class="achievement" id="noob" src="images/noob.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Oncer: request 1 session."><img class="achievement" id="oncer" src="images/oncer.png"></button>
+									</div>
+									<!--<div id="tuteeaddsubjects">
+										<h3>Add Subjects</h3>
+										<p>Enter the subjects you need help in, and we can match you with the perfect tutor!</p>
+										<input type="text" name="newsubject" id="newsubject" placeholder=""><br>
+										<div class="dropdown">
+									      <button class="btn btn-default dropdown-toggle" type="button" id="subjectselector" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="subjecttext">Subject </span> <i class="fas fa-caret-down"></i></button>
+									      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									        <a class="dropdown-item">Math</a>
+									        <a class="dropdown-item">Physics</a>
+									        <a class="dropdown-item">Biology</a>
+									        <a class="dropdown-item">Chemistry</a>
+									        <a class="dropdown-item">Writing</a>
+									        <a class="dropdown-item">History</a>
+									        <a class="dropdown-item">WebDev</a>
+									        <a class="dropdown-item">Java</a>
+									        <a class="dropdown-item">Python</a>
+									        <a class="dropdown-item">Business</a>
+									        <a class="dropdown-item">Spanish</a>
+									        <a class="dropdown-item">French</a>
+									        <a class="dropdown-item">Chinese</a>
+									      </div>
+									    </div>
+									    <div class="row">
+									    	<p id="subjectmessage"></p>
+										    <a onclick="addSubject()" id="addsubject">Add Subject</a>
+										</div>
+									</div>
+									<div id="tuteemysubjects">
+										<div class="row">
+											<div class="col-sm-7"><h3>My Subjects</h3></div>
+											<div class="col-sm-5"><a id="subjectdelete" onclick="deletesubjects()"><i class="fas fa-trash-alt"></i></a></div>
+										</div>
+										<div id="mysubjectsarea">
+										</div>
+										<a id="matchtutors" onclick="matchTutors()">Find Tutors</a>
+										<div id="mytutorsarea">
+											<div id="greatmatches">
+											</div>
+											<div id="goodmatches">
+											</div>
+										</div>
+									</div>-->
 								</div>
-								<div id="goodmatches">
+								<div class="col-sm-6" id="tuteesessionssec">
+									<h3>Upcoming Sessions</h3>
+									<div id="sessionsbody">
+									</div>
+									<h3>Past Sessions</h3><a id="sessionscount"></a>
+									<div id="pastsessionsbody">
+									</div>
 								</div>
 							</div>
-						</div>-->
-					</div>
-					<div class="col-sm-6" id="tuteesessionssec">
-						<h3>Upcoming Sessions</h3>
-						<div id="sessionsbody">
 						</div>
-						<h3>Past Sessions</h3><a id="sessionscount"></a>
-						<div id="pastsessionsbody">
+						<div class="tab-pane fade" id="points" role="tabpanel" aria-labelledby="points-tab">
+							<div class="row">
+								<div class="col-sm-6">
+									<div id="pointssec">
+										<h3>My Total Points <button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Attend a tutoring session to earn 100 points.  Earn more points by inviting friends!">
+										 <i class="fas fa-info-circle"></i>
+										</button></h3>
+										<div id="totalpoints"></div>
+									</div>
+									<div id="invitefriends">
+										<h3>Invite Friends</h3>
+										<p>Invite friends, and earn 30 points for each session your friend attends!</p>
+										<input type="email" id="invitefriendsemail" placeholder="Enter your friend's VALID email address...">
+										<p id="inviteerror"></p>
+										<button onclick="sendFriendEmail()">Invite Friend!</button>
+									</div>
+									<div id="tuteeaward">
+										<h3>My Award Status</h3>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="2500+ points.  You rock!  You may request SAME DAY sessions.  You may have up to 10 active requests.  Contact support@instatutors.org for your gift card!"><img class="award" id="goldaward" src="images/goldaward.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="1000-2500 points.  Awesome!  You may request sessions 1 day in advance.  You may have up to 8 active requests."><img class="award" id="silveraward" src="images/silveraward.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="0-1000 points. Keep working!  You may request sessions 2 days in advance.  You may have up to 5 active requests."><img class="award" id="bronzeaward" src="images/bronzeaward.png"></button>
+									</div>
+								</div>
+							<div class="col-sm-6">
+								<h3>Leaderboard</h3>
+								<div id="leaderboard">
+									<table class="table table-striped">
+									  	<thead>
+										  <tr>
+										    <th>Rank</th>
+										    <th>Name</th> 
+										    <th>Score</th>
+										  </tr>
+										</thead>
+										<tbody>
+										</tbody>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

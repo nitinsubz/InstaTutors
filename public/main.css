@@ -269,6 +269,7 @@ h1 strong {
 
 #indexhead a {
 	margin: 0px 10px;
+	box-shadow: 5px 5px 30px #aaa;
 }
 
 #gplaybutton {
@@ -279,6 +280,8 @@ h1 strong {
 	margin-top: -5px;
 	height: 60px;
 	transition-duration: 0.2s;
+	box-shadow: 5px 5px 30px #aaa;
+	border-radius: 10px;
 }
 
 #gplaybutton img:hover {
@@ -537,6 +540,11 @@ canvas {
 	padding: 15px 0px;
 }
 
+#howitworks img {
+	width: 100%;
+	box-shadow: 5px 5px 30px #aaa;
+}
+
 #howitworks h1 {
 	color: #444;
 	padding: 10px 0px;
@@ -557,6 +565,14 @@ canvas {
 	border: 0;
 }
 
+#howitworks .row {
+	padding: 40px 0px;
+}
+
+#howitworks .col-sm-6, #howitworks .col-sm-4, #howitworks .col-sm-8 {
+	padding: 0px 2%;
+} 
+
 #howitworks #getstarted {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 230% 100%;
@@ -566,11 +582,62 @@ canvas {
 	border-radius: 30px;
 	font-size: 26px;
 	transition-duration: 0.2s;
+	margin: auto;
+	display: block;
+	width: 30%;
+	text-align: center;
+}
+
+#howitworks .awardsimg {
+	float: left;
+	width: 32%;
+	margin: 0px 0.5%;
+	box-shadow: 0px 0px 0px #fff;
+	position: relative;
+	z-index: 5;
+	transition-duration: 0.3s;
+}
+
+#howitworks .awardsimg:hover {
+	transform: translateY(-7px);
 }
 
 #howitworks #getstarted:hover {
 	background-position: left;
 	text-decoration: none;
+}
+
+.phoneimg {
+		display: none;
+}
+
+.notphoneimg {
+		display: block;
+}
+
+#awardsinfo {
+	background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+	border-radius: 10px;
+	padding: 80px 3% 30px 7%;
+	float: left;
+	width: 105%;
+	margin-left: -3%;
+	margin-top: -100px;
+	position: relative;
+	z-index: 0;
+}
+
+#awardsinfo li {
+	font-size: 20px;
+	list-style-type: square;
+	padding: 4px 0px;
+	color: white;
+}
+
+#awardsinfo .awardsinfocol {
+	float: left;
+	width: 30%;
+	margin: 10px 1.5%;
 }
 
 #howitworks a i {
@@ -1090,9 +1157,7 @@ canvas {
 	padding: 130px 10% 110px 10%;
 	text-align: center;
 	color: white;
-	background: linear-gradient(60deg, #222 50%, #212664 50%);
-	background-size: 120%;
-	background-position: left;
+	background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
 	overflow-y: hidden;
 	background-attachment: fixed;
 }
@@ -1469,7 +1534,7 @@ canvas {
 	border-radius: 20px;
 }
 
-#bookform .infobtn {
+#bookform .infobtn, #account .infobtn {
 	font-size: 25px;
 	color: #777;
 	background-color: white;
@@ -1477,6 +1542,8 @@ canvas {
 	border: 0;
 	transition-duration: 0.2s;
 }
+
+#account .infobtn:hover {color: #999;}
 
 #bookform .infobtn:hover {
 	color: #999;
@@ -1687,7 +1754,7 @@ canvas {
 #footer {
 	width: 100%;
 	padding: 30px 10% 30px 10%; 
-	background-color: #333;
+	background-color: #24242f;
 }
 
 #footer img {
@@ -2137,132 +2204,6 @@ canvas {
 	display: none;
 }
 
-#adminlogin {
-	margin: 100px auto;
-	width: 35%;
-	padding: 60px 0px;
-	display: none;
-}
-
-#adminlogin h3 {
-	font-size: 35px;
-	text-align: center;
-	padding: 10px 0px;
-}
-
-#adminerrormessage {
-	font-size: 20px;
-	color: red;
-	padding: 10px 0px;
-}
-
-#adminlogin input {
-	font-size: 22px;
-	display: block;
-	margin: 10px 0px;
-	width: 100%;
-	border: 0;
-	border-bottom: 1px solid #ccc;
-}
-
-#adminlogin input:focus {
-	outline: 0;
-	border-bottom: 3px solid #30CFD0;
-}
-
-#adminbody {
-	padding: 80px 6%;
-	display: none;
-}
-
-#adminbody h1 {
-	font-size: 50px;
-	padding: 10px 0px;
-	color: #444;
-}
-
-#testemail {
-	font-size: 20px;
-	outline: 0;
-}
-
-#adminbody h3 {
-	font-size: 30px;
-}
-
-#adminlogout {
-	background: linear-gradient(to left, #330867, #30CFD0);
-	background-size: 120% 100%;
-	background-position: right;
-	border-radius: 30px;
-	transition-duration: 0.2s;
-	position: fixed;
-	font-size: 22px;
-	padding: 10px 30px;
-	top: 5px;
-	right: 5px;
-	z-index: 99;
-	transform: scale(1);
-}
-
-#adminlogout span {
-	color: white;
-}
-
-#adminlogout:hover {
-	background-position: left;
-	cursor: pointer;
-}
-
-.adminreq, .admintutor {
-	padding: 15px 5%;
-	border-radius: 20px;
-	margin: 10px 0px;
-	transition-duration: 0.2s;
-}
-
-.adminreq:hover {
-	opacity: 0.8;
-	cursor: pointer;
-}
-
-.hider {
-	display: none;
-}
-
-.adminreq h2 {
-	font-size: 22px;
-}
-
-.adminreq h4, .admintutor h4 {
-	font-size: 18px;
-}
-
-.admintutor {
-	background-color: #eee;
-	transition-duration: 0.2s;
-}
-
-.admintutor:hover {
-	opacity: 0.8;
-	cursor: pointer;
-}
-
-.admintutor .fas {
-	color: gold;
-}
-
-.admintutor h2 {
-	font-size: 24px;
-}
-
-.admintutor h5 {
-	font-size: 22px;
-	padding-top: 10px;
-}
-
-
-
 #tutorsessions {
 	display: none;
 	background-color: #ddd;
@@ -2609,7 +2550,7 @@ canvas {
 
 #questionheader {
 	padding: 130px 10% 80px 10%;
-	background: linear-gradient(45deg, #212664, black);
+	background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
 	text-align: center;
 	color: white;
 }
@@ -2725,7 +2666,7 @@ canvas {
 #sessionsheader {
 	text-align: center;
 	padding: 130px 10% 100px 10%;
-	background-color: #212664;
+	background: linear-gradient(to right, #cb356b, #bd3f32);
 	color: white;
 }
 
@@ -2738,7 +2679,7 @@ canvas {
 }
 
 #account {
-	padding: 40px 3% 70px 3%;
+	padding: 0px 0% 70px 0%;
 	margin: -70px 9% 0px 9%;
 	background-color: white;
 	border-radius: 20px 20px 0px 0px;
@@ -2750,7 +2691,50 @@ canvas {
 	padding-bottom: 10px;
 }
 
-#addsubject, #matchtutors, #submitBio {
+#account .nav-link {
+	font-size: 22px;
+	padding: 15px 30px;
+	border-radius: 20px 20px 0px 0px;
+	color: #666;
+}
+
+#account2, #points {
+	padding: 40px 6%;
+}
+
+#totalpoints {
+	font-size: 80px;
+	color: #cb356b;
+	padding: 10px 0px;
+}
+
+#editinfo {
+	color: #444;
+	margin-left: 20px;
+	transition-duration: 0.2s;
+}
+
+#editinfo:hover {
+	cursor: pointer;
+	color: #cb356b;
+	text-decoration: none;
+}
+
+#newinfoerrors {
+	color: red;
+	font-size: 18px;
+	padding: 10px 0px;
+}
+
+#editinfo .fa-times {
+	display: none;
+}
+
+#infomodify {
+	display: none;
+}
+
+#addsubject, #matchtutors, #submitBio, #invitefriends button {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 200% 100%;
 	background-position: right;
@@ -2761,6 +2745,42 @@ canvas {
 	font-size: 22px;
 	color: white;
 	font-weight: 500;
+}
+
+#invitefriends button {
+	background: linear-gradient(to right, #cb356b, #bd3f32);
+	background-size: 200% 100%;
+	background-position: right;
+}
+
+#invitefriends {
+	padding: 10px 0px 30px 0px;
+}
+
+#invitefriends p {
+	font-size: 20px;
+}
+
+#invitefriends input {
+	width: 100%;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	margin: 20px 0px 5px 0px;
+	font-size: 20px;
+}
+
+#invitefriends input:focus {
+	border-bottom: 2px solid #30CFD0;
+	outline: 0;
+}
+
+#invitefriends button:hover {
+	background-position: left;
+}
+
+#inviteerror {
+	font-size: 18px;
+	padding: 10px 0px;
 }
 
 #tuteeaward {
@@ -3186,13 +3206,63 @@ canvas {
 
 #myname, #myparentemail, #mygrade, #myschool {
 	font-size: 22px;
-	margin: -5px 0px 30px 5px;
+	margin: -5px 0px 20px 5px;
 }
 
 #myname i, #myparentemail i, #mygrade i, #myschool i {
 	color: #330857;
 }
 
+#infoparas {
+	padding: 10px 0px;
+}
+
+#foundusers {
+	font-size: 22px;
+	color: #330867;
+}
+
+#infomodify {
+	padding: 10px 2%;
+	font-size: 18px;
+}
+
+#infomodify input {
+	font-size: 18px;
+	margin: 5px 0px 15px 0px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+#infomodify input:focus {
+	outline: 0;
+	border: 1px solid #30CFD0;
+}
+
+#submitnewinfo {
+	background-color: #212664;
+	padding: 5px 30px;
+	border-radius: 10px;
+	font-size: 20px;
+	color: white;
+	border: 0;
+	transition-duration: 0.2s;
+}
+
+#submitnewinfo:hover {
+	background-color: #30CFD0;
+}
+
+#leaderboard {
+	padding: 0px 2%;
+	font-size: 20px;
+}
+
+#leaderboard thead {
+	background-color: #222;
+	color: white;
+	padding: 5px;
+}
 
 .slideanim {visibility:hidden;}
 
@@ -3452,10 +3522,12 @@ canvas {
 	#indexhead a {
 		display: block;
 		margin: 20px 0px;
+		box-shadow: 0px 0px 0px #fff;
 	}
 
 	#gplaybutton img {
 		height: 50px;
+		box-shadow: 0px 0px 0px #fff;
 	}
 
 	#indexhead p {
@@ -4003,8 +4075,7 @@ canvas {
 	}
 
 	#account {
-		padding: 20px 5%;
-		margin: -60px 6% 50px 6%;
+		margin: -60px 6% 0px 6%;
 	}
 
 	#account h3 {
@@ -4149,9 +4220,13 @@ canvas {
 		font-size: 30px;
 	}
 
+	.carousel .item {
+		padding: 10px 10% 30px 10%;
+	}
+
 	.carousel .item h3 {
 		font-size: 20px;
-		padding: 20px 15% 40px 15%;
+		padding: 20px 15% 10px 15%;
 	}
 
 	.carousel-control.left, .carousel-control.right {
@@ -4174,6 +4249,7 @@ canvas {
 	#howitworks #getstarted {
 		padding: 10px 25px;
 		font-size: 20px;
+		width: 80%;
 	}
 
 	canvas {
@@ -4238,6 +4314,24 @@ canvas {
 
 	#howitworks iframe, #howitworks #tutorialvideo {
 		height: 250px;
+	}
+
+	.phoneimg {
+		display: block;
+	}
+
+	.notphoneimg {
+		display: none;
+	}
+
+	#awardsinfo {
+		margin-top: -60px;
+		padding: 40px 3% 20px 5%;
+	}
+
+	#awardsinfo li {
+		font-size: 16px;
+		list-style-type: none;
 	}
 
 	#abouthead {
@@ -4510,6 +4604,24 @@ canvas {
 		margin: -10px 0px 20px 5px;
 	}
 
+	#account .nav-link {
+		font-size: 18px;
+		padding: 10px 10px;
+	}
+
+	#account2, #points {
+		padding: 30px 7%;
+	}
+
+	#totalpoints {
+		font-size: 50px;
+	}
+
+	#infomodify input {
+		display: block;
+		width: 100%;
+		margin-bottom: 0px;
+	}
 }
 
 
