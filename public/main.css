@@ -618,9 +618,9 @@ canvas {
 #awardsinfo {
 	background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
 	border-radius: 10px;
-	padding: 80px 3% 30px 6%;
+	padding: 80px 1% 30px 6%;
 	float: left;
-	width: 102%;
+	width: 100%;
 	margin-left: -1%;
 	margin-top: -100px;
 	position: relative;
@@ -2706,6 +2706,15 @@ canvas {
 
 #account2, #points {
 	padding: 40px 6%;
+}
+
+.new {
+	background-color: red;
+	color: white;
+	font-size: 16px;
+	margin: 0px 5px;
+	padding: 4px;
+	border-radius: 5px;
 }
 
 #totalpoints {
