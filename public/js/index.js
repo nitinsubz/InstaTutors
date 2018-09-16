@@ -35,15 +35,34 @@ $(window).on('load', function () {
 									firebase.database().ref('names/' + name).child("id").set(split);
 								}
 							});
-	});
-	firebase.database().ref('users').on('value', function(snapshot) {
+	});*/
+	/*firebase.database().ref('users').on('value', function(snapshot) {
 							snapshot.forEach(function(childSnapshot) {
-								var split = splitEmail(childSnapshot.child("email").val());
-								var emailKey = firebase.database().ref('users/' + split).child("emailKey").push().key;
-								firebase.database().ref('users/' + split).child("emailKey").set(emailKey);
-								//console.log(childSnapshot.child("totalPoints").val());
+								console.log(childSnapshot.child("parentemail").val() + "\n");
 							});
 	});*/
+	firebase.database().ref('users').on('value', snap => {
+		var tutorcount = 0;
+		var studentcount = 0;
+		snap.forEach(function(childSnapshot) {
+			if(childSnapshot.child("stat").val() == "tutor") {
+				tutorcount++;
+			} else if(childSnapshot.child("stat").val() == "tutee") {
+				studentcount++;
+			}
+		});
+		$("#totaltutorcount").html(tutorcount);
+		$("#totaltuteecount").html(studentcount);
+	});
+	firebase.database().ref('requests').on('value', snap => {
+		var sessionscount = 0;
+		snap.forEach(function(childSnapshot) {
+			sessionscount++;
+		});
+		$("#totalsessionscount").html(sessionscount);
+	});
+
+
 
 	$('#invite_field').on('input', function() {
 	    var key = $('#invite_field').val();
@@ -417,6 +436,18 @@ function convertMilitary(time) {
 	return(hours + ":" + minutes + " " + ampm);
 }
 
+function convertBack(time) {
+	var arr = time.split(" ");
+	var fin = arr[0].split(":");
+	var hours = fin[0];
+	var minutes = fin[1];
+	var ampm = "am";
+	if(arr[1] == "PM") {
+		hours = parseInt(hours) + 12;
+	} 
+	return(hours + ":" + minutes);
+}
+
 var provider = new firebase.auth.GoogleAuthProvider();
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -471,6 +502,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 							$("#tutorgrade i").html(snap.child("grade").val());
 							$("#tutorschool i").html(snap.child("school").val());
 							$("#tutorparentemail i").html(snap.child("parentemail").val());
+						}
+						if(snap.hasChild("appearLink")) {
+							$("#appearinlink").val(snap.child("appearLink").val());
 						}
 					});
 				 	setTimeout("sortSessions()", 100);
@@ -528,16 +562,23 @@ firebase.auth().onAuthStateChanged(function(user) {
 							var details = snap.child("details").val();
 							var time = snap.child("time").val();
 							var name = snap.child("name").val();
-							var timehour = time.split(":")[0];
+							var timehour = convertBack(time).split(":")[0];
 							var selectedDate = new Date(splitDate(splitDate(date)));
 		   					selectedDate.setTimezoneOffset(-1500 - timehour*100);
 							var now = new Date().setTimezoneOffset(-700);
 
+							var emailsent;
+							if(snap.hasChild("emailSent")) {
+								emailsent = "<i class=\"fas fa-check\"></i>";
+							} else {
+								emailsent = "<i class=\"fas fa-envelope\" onclick=\"openEmailModal()\"></i>";
+							}
+
 							if(now < selectedDate && date != null) {
-								$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Name: " + name + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4>");
+								$("#tutormysessionsbody").append("<div class=\"tutorreq\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Name: " + name + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4> <span>" + emailsent + "</span></div>");
 							} else {
 								if(date != null) {
-									$("#tutorpastsessionsbody").append("<div class=\"tutorreq lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Name: " + name + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4>");				
+									$("#tutorpastsessionsbody").append("<div class=\"tutorreq lightblue\"> <h2>Date: " + date + "</h2> " + "<h4>time: " + time + "</h4> <h4>Name: " + name + "</h4> <h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Email: " + email + "</h4> </div>");				
 								}
 							}
 						}
@@ -556,7 +597,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 							var newArr = [];
 						    for(var n=0; n<returnArr.length; n++) {
 						    	var selectedDate2;
-						    	var timehour = times[n].split(":")[0];
+						    	var timehour = convertBack(times[n]).split(":")[0];
 						    	if(returnArr[n] != null) {
 						        	selectedDate2 = new Date(splitDate(splitDate(returnArr[n])));
 						        }
@@ -623,7 +664,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 							}	
 						});
 						arr = arr.sort(function(a, b){ return a.val - b.val; }).reverse();
-						for(var i=0; i<10; i++) {
+						for(var i=0; i<5; i++) {
 							var key;
 							var id = arr[i][Object.keys(arr[i])[0]].split(", ")[1];
 							var color = "";
@@ -634,7 +675,37 @@ firebase.auth().onAuthStateChanged(function(user) {
 								key = "******";
 							}
 							var value = arr[i][Object.keys(arr[i])[1]];
-							$("#leaderboard table tbody").append("<tr" + color + "><td class=\"leaderrank\">" + (i+1) + "</td><td class=\"leadername\">" + key + "</td> <td class=\"leaderscore\">" + value + "</td></tr>");
+							var rank = i+1;
+							for(var k=0; k<5; k++) {
+								if(value == arr[k][Object.keys(arr[k])[1]]) {
+									rank = k+1;
+									break;
+								}
+							}
+							console.log(rank);
+							$("#leaderboard table tbody").append("<tr" + color + "><td class=\"leaderrank\">" + rank + "</td><td class=\"leadername\">" + key + "</td> <td class=\"leaderscore\">" + value + "</td></tr>");
+						}
+						var rank;
+						for(var j=0; j<arr.length; j++) {
+							var id = arr[j][Object.keys(arr[j])[0]].split(", ")[1];
+							key = arr[j][Object.keys(arr[j])[0]].split(", ")[0];
+							var value = arr[j][Object.keys(arr[j])[1]];
+							if(id == split) {
+								rank = j+1;
+								for(var k=0; k<arr.length; k++) {
+									if(value == arr[k][Object.keys(arr[k])[1]]) {
+										rank = k+1;
+										break;
+									}
+								}
+								if(value == 0) {
+									rank = arr.length;
+								}
+								if(rank > 5) {
+									$("#leaderboard table tbody").append("<tr style=\"background-color: lightgreen\"><td class=\"leaderrank\">" + rank + "</td><td class=\"leadername\">" + key + "</td> <td class=\"leaderscore\">" + value + "</td></tr>");
+								}
+								break;
+							}
 						}
 					});
 
@@ -1165,6 +1236,84 @@ function takeSession() {
 	setTimeout("location.reload(true);",100);
 }
 
+function openEmailModal() {
+	var date = event.currentTarget.parentNode.parentNode.childNodes[1].innerHTML.slice(6);
+	var email = event.currentTarget.parentNode.parentNode.childNodes[11].innerHTML.slice(7);
+	var time = event.currentTarget.parentNode.parentNode.childNodes[3].innerHTML.slice(6);
+	var subject = event.currentTarget.parentNode.parentNode.childNodes[7].innerHTML.slice(10);
+	var name = event.currentTarget.parentNode.parentNode.childNodes[5].innerHTML.slice(6);
+
+	var myemail;
+	var myname;
+	var appear = "";
+	firebase.database().ref('users/' + splitEmail(firebase.auth().currentUser.email)).on('value', snap => {
+		myname = snap.child("name").val();
+		if(snap.hasChild("appearLink")) {
+			appear = snap.child("appearLink").val();
+		}
+	});
+
+	$("#emailto").html("To: " + email);
+	var link = "appear.in/" + myname.split(" ")[0] + "-" + myname.split(" ")[1];
+	if(appear != "") {
+		link = appear;
+	}
+	var content = "Hi " + name.split(" ")[0] + "! \n\n My name is " + myname + " and I will be your tutor for " + subject + " on " + date + " at " + time + ". \n\n When it comes time for your tutoring session, go to this link: " + link.toLowerCase() + ".  The room will be locked, so nobody can access the room but us.\n\nPlease let me know if you have any questions before our tutoring session, and thank you for choosing InstaTutors! \n\n Best, \n " + myname;
+ 	$("#emailcontent").val(content);
+ 	$("#emailmodal h2").attr('id', date);
+
+	$("#emailmodal").css('top', '50px');
+	$("#emailmodal").css('opacity', '1');
+	$("#emailmodalmask").css('opacity', '0.7');
+	$("#emailmodalmask").css('z-index', '98');
+}
+
+function sendStudentEmail() {
+	var content = $("#emailcontent").val();
+	var arr = content.split("\n");
+	var content2 = "";
+	for(var i=0; i<arr.length; i++) {
+		if(arr[i] == "") {
+			content2 += "";
+		} else {
+			content2 += "<p>" + arr[i] + "</p>";
+		}
+	}
+	var myemail = firebase.auth().currentUser.email;
+	var email = $("#emailto").html().slice(4);
+	var myname;
+	firebase.database().ref('users/' + splitEmail(firebase.auth().currentUser.email)).child('name').on('value', snap => {
+		myname = snap.val();
+	});
+	var ref = $("#emailmodal h2").attr('id');
+	firebase.database().ref('requests/' + ref + splitEmail(email)).child("emailSent").set("true");
+	firebase.database().ref('users/' + splitEmail(myemail) + "/" + ref).child("emailSent").set("true");
+	Email.send(myemail,
+		email,
+		"[InstaTutors] Message From Your Tutor: " + myname,
+		content2,
+		{token: "4c110561-2f5a-4bc1-a677-e1c0b05de4e2", callback: function done(message) { alert("sent") }});
+
+	Email.send(myemail,
+		myemail,
+		"[InstaTutors] Message From Your Tutor: " + myname,
+		content2,
+		{token: "4c110561-2f5a-4bc1-a677-e1c0b05de4e2", callback: function done(message) { alert("sent") }});
+
+	$("#emailmodal").css('top', '-100vh');
+	$("#emailmodal").css('opacity', '0');
+	$("#emailmodalmask").css('opacity', '0');
+	$("#emailmodalmask").css('z-index', '0');
+	setTimeout("location.reload(true);",500);
+}
+
+function closeEmailModal() {
+	$("#emailmodal").css('top', '-100vh');
+	$("#emailmodal").css('opacity', '0');
+	$("#emailmodalmask").css('opacity', '0');
+	$("#emailmodalmask").css('z-index', '0');
+}
+
 //cancel Tutoring session (request)
 function cancel() {
 	var input = prompt("To cancel a session, please input your email.");
@@ -1182,10 +1331,10 @@ function cancel() {
 		firebase.database().ref('users/' + newemail + "/" + newdate).remove();
 		
 		Email.send("support@instatutors.org",
-													"instatutorsteam@gmail.com",
-													"New Tutoring Session Requested for " + subject + " on " + newdate,
-													content,
-													{token: "4c110561-2f5a-4bc1-a677-e1c0b05de4e2", callback: function done(message) { console.log("sent") }});
+			"instatutorsteam@gmail.com",
+			"New Tutoring Session Requested for " + subject + " on " + newdate,
+			content,
+			{token: "4c110561-2f5a-4bc1-a677-e1c0b05de4e2", callback: function done(message) { console.log("sent") }});
 
 		/*var ref = firebase.database().ref('users');
 					//get uids of all tutors
@@ -1217,7 +1366,7 @@ function cancel() {
 						 });*/
 		
 		alert("Tutoring session for " + newdate + " canceled.");
-		setTimeout("location.reload(true);",500);
+		setTimeout("location.reload(true);",100);
 	} else {
 		alert("wrong email. aborting.")
 	}
@@ -1713,6 +1862,20 @@ function validate() {
 	});
 }
 
+//submit appear.in link
+function submitAppear() {
+	var link = $("#appearinlink").val();
+	if(link.search("appear.in/") == -1) {
+		$("#appearerrors").css('color', 'red');
+		$("#appearerrors").html('please enter a valid link');
+	} else {
+		var split = splitEmail(firebase.auth().currentUser.email);
+		firebase.database().ref('users/' + split).child("appearLink").set(link);
+		$("#appearerrors").css('color', 'green');
+		$("#appearerrors").html('Success');
+	}
+}
+
 //let tutor edit their bios
 function editBio() {
 	$("#tutorbio").css("border", "2px solid #30CFD0");
@@ -1726,13 +1889,15 @@ function submitBio() {
 	if(wordcount < 100) {
 		$("#tutorbio").css("border", "1px solid #ccc");
 		$("#tutorbio").prop("readonly", true);
-		alert("Thank you for submitting your bio!");
 		$("#submitBio").fadeOut("fast");
 		var user = firebase.auth().currentUser;
 		var split = splitEmail(user.email);
 
 		firebase.database().ref('users/' + split).child("bio").set(content);
+		$("#bioerror").css('color', 'green');
+		$("#bioerror").html("Thank you for submitting your bio!");
 	} else {
+		$("#bioerror").css('color', 'red');
 		$("#bioerror").html("Please keep your bio under 100 words.");
 	}
 
@@ -2063,6 +2228,8 @@ function editInfo() {
 	$("#editinfo .fa-times").fadeToggle();
 }
 
+
+/*Send invites*/
 function sendFriendEmail() {
 	var email = $("#invitefriendsemail").val();
 	var validemail = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -2074,6 +2241,32 @@ function sendFriendEmail() {
 		$("#invitefriendsemail").val("");
 		$("#inviteerror").css('color', 'green');
 		$("#inviteerror").html('Success!  Invite more friends to earn more points!');
+		var split = splitEmail(firebase.auth().currentUser.email);
+	   	firebase.database().ref('users/' + split).once('value', function (snapshot) {
+	   		var code = snapshot.child("emailKey").val();
+	   		var name = snapshot.child("name").val();
+	   		var myemail = snapshot.child("email").val();
+	   		var content = "<body style=\"padding: 50px; background-color: #eee;\"><h1 color=\"#30CFD0\">InstaTutors: A Free Online Tutoring Service!</h1> <p>You have been invited by " + name + " to join InstaTutors, a free online tutoring service for middle school and high school students.  Request a tutoring session, and receive help over video chat from a qualified student tutor.  Or, ask a question and receive a GUARANTEED 2 hour response!</p> <p>Sign up with this code (after you create your account and log in): <strong>" + code + "</strong></p><p>...to earn 100 free points, and benefit " + name + "!  Use points to earn awards, and privileges. Become a Gold Student (2500+ points), and receive a $25 gift card!</p>  <h3>Sign up today at <a href=\"https://www.instatutors.org\">instatutors.org</a>!</h3></body>"; 
+	   		Email.send(myemail,
+			email,
+			"Invite from " + name + " to join InstaTutors!",
+			content,
+			{token: "4c110561-2f5a-4bc1-a677-e1c0b05de4e2", callback: function done(message) { console.log("sent") }});
+	    });
+	}
+}
+
+function sendFriendEmail2() {
+	var email = $("#tutorfriendsemail").val();
+	var validemail = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+
+	if(email.search(validemail) == -1) {
+		$("#tutorinviteerror").css('color', 'red');
+		$("#tutorinviteerror").html('Please enter a valid email!');
+	} else {
+		$("#tutorfriendsemail").val("");
+		$("#tutorinviteerror").css('color', 'green');
+		$("#tutorinviteerror").html('Success!  Invite more friends to earn more points!');
 		var split = splitEmail(firebase.auth().currentUser.email);
 	   	firebase.database().ref('users/' + split).once('value', function (snapshot) {
 	   		var code = snapshot.child("emailKey").val();

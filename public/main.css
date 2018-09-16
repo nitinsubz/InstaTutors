@@ -384,7 +384,7 @@ h1 strong {
 #info {
 	background: linear-gradient(black, #333);
 	overflow: hidden;
-	padding: 120px 10% 480px 10%;
+	padding: 120px 10% 550px 10%;
 	margin: 0;
 	color: white;
   	position: relative;
@@ -414,6 +414,17 @@ canvas {
 	width: 39%;
 }
 
+#infotext #totaltutorcount, #infotext #totaltuteecount, #infotext #totalsessionscount {
+	font-size: 100px;
+	display: inline;
+}
+
+#infotext h2 {
+	font-size: 35px;
+	display: inline;
+	margin-left: 15px;
+}
+
 #info .border-bot {
 	background: linear-gradient(135deg, #30CFD0, #330867);
 }
@@ -440,7 +451,7 @@ canvas {
 	padding: 30px 0px;
 }
 
-#infotext a {
+#infotext .row a {
 	font-size: 24px;
 	padding: 15px 20px;
 	background: linear-gradient(to right, #330867, #30CFD0);
@@ -449,9 +460,11 @@ canvas {
 	border-radius: 30px;
 	color: white;
 	transition-duration: 0.2s;
+	margin-left: 35%;
+	text-align: center;
 }
 
-#infotext a:hover {
+#infotext .row a:hover {
 	background-position: left;
 	text-decoration: none;
 }
@@ -2310,10 +2323,47 @@ canvas {
 	color: navy;
 }
 
-#tutorrating {
-	font-size: 25px;
+#tutoraccountinfo #tutorrating {
+	font-size: 30px;
 	margin-left: 20px;
 	padding-bottom: 20px;
+}
+
+#tutorappearin {
+	margin-bottom: 90px;
+	width: 100%;
+}
+
+#tutorappearin input {
+	width: 80%;
+	border: 0;
+	border-bottom: 1px solid #ccc;
+	font-size: 20px;
+	float: left;
+}
+
+#tutorappearin input:focus {
+	outline: 0;
+	border-bottom: 2px solid #30CFD0;
+}
+
+#tutorappearin button {
+	float: left;
+	font-size: 24px;
+	margin: 0px 3%;
+	background-color: transparent;
+	border: 0;
+	color: #212664;
+}
+
+#tutorappearin button:hover {
+	color: #30CFD0;
+}
+
+#appearerrors {
+	font-size: 18px;
+	padding: 5px 0px;
+	float: left;
 }
 
 #tutorrating .fas {
@@ -2362,7 +2412,7 @@ canvas {
 
 #tutormysessionsbody, #tutorpastsessionsbody {
 	padding: 20px 0px 30px 0px;
-	max-height: 500px;
+	max-height: 700px;
 	width: 100%;
 	margin-bottom: 20px;
 	overflow: auto;
@@ -2375,6 +2425,7 @@ canvas {
 	background-color: white;
 	box-shadow: 5px 5px 20px #666;
 	transition-duration: 0.2s;
+	position: relative;
 }
 
 .tutorreq h2 {
@@ -2387,8 +2438,93 @@ canvas {
 
 .tutorreq:hover {
 	background-color: #ddd;
+	box-shadow: 5px 5px 10px #444;
+}
+
+.tutorreq .fas {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	font-size: 30px;
+	color: #444;
+	transition-duration: 0.2s;
+}
+
+.tutorreq .fa-check {
+	color: green;
+}
+
+.tutorreq .fas:hover {
 	cursor: pointer;
-	box-shadow: 10px 10px 40px #444;
+	color: #30CFD0;
+}
+
+.tutorreq .fa-check:hover {
+	color: green;
+}
+
+#emailmodal {
+	position: fixed;
+	width: 90%;
+	top: -100vh;
+	background-color: white;
+	border-radius: 30px;
+	left: 5%;
+	z-index: 99;
+	padding: 60px 6%;
+	opacity: 0;
+	transition-duration: 0.4s;
+}
+
+#emailmodalmask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: #222;
+	z-index: 0;
+	transition-duration: 0.5s;
+	opacity: 0;
+}
+
+#emailmodal h2 {
+	font-size: 35px;
+}
+
+#emailmodal h3 {
+	padding: 0px;
+	font-size: 22px;
+}
+
+#emailto {
+	color: #30CFD0;
+}
+
+#emailmodal h5 {
+	position: absolute;
+	top: 20px;
+	right: 3%;
+	font-size: 60px;
+	color: #444;
+}
+
+#emailmodal h5:hover {
+	color: red;
+	cursor: pointer;
+}
+
+#emailmodal textarea {
+	font-size: 18px;
+	border: 1px solid #ccc;
+	margin: 20px 0px;
+	width: 100%;
+	height: 30vh;
+}
+
+#emailmodal textarea:focus {
+	outline: 0;
+	border: 1px solid #30CFD0;
 }
 
 #tutormysessionsbody .tutorreq:hover {
@@ -2749,7 +2885,7 @@ canvas {
 	display: none;
 }
 
-#addsubject, #matchtutors, #submitBio, #invitefriends button {
+#addsubject, #matchtutors, #submitBio, #invitefriends button, #tutorinvitefriends button, #sendstudentemail {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 200% 100%;
 	background-position: right;
@@ -2768,15 +2904,19 @@ canvas {
 	background-position: right;
 }
 
-#invitefriends {
+#invitefriends, #tutorinvitefriends {
 	padding: 10px 0px 30px 0px;
 }
 
-#invitefriends p {
+#sendstudentemail:hover {
+	background-position: left;
+}
+
+#invitefriends p, #tutorinvitefriends p {
 	font-size: 20px;
 }
 
-#invitefriends input {
+#invitefriends input, #tutorinvitefriends input {
 	width: 100%;
 	border: 0;
 	border-bottom: 1px solid #ccc;
@@ -2789,11 +2929,20 @@ canvas {
 	outline: 0;
 }
 
+#tutorinvitefriends input:focus {
+	border-bottom: 2px solid #30CFD0;
+	outline: 0;
+}
+
 #invitefriends button:hover {
 	background-position: left;
 }
 
-#inviteerror {
+#tutorinvitefriends button:hover {
+	background-position: left;
+}
+
+#inviteerror, #tutorinviteerror {
 	font-size: 18px;
 	padding: 10px 0px;
 }
@@ -3555,7 +3704,7 @@ canvas {
 	}
 
 	#info {
-		padding: 530px 10% 150px 10%;
+		padding: 530px 10% 240px 10%;
 		color: white;
 	  	position: relative;
 	  	z-index: 2;
@@ -3586,7 +3735,7 @@ canvas {
 		padding: 20px 0px;
 	}
 
-	#infotext a {
+	#infotext .row a {
 		font-size: 18px;
 		padding: 10px 16px;
 		margin: 20px 0px;
@@ -4636,6 +4785,20 @@ canvas {
 		display: block;
 		width: 100%;
 		margin-bottom: 0px;
+	}
+
+	#infotext #totaltutorcount, #infotext #totaltuteecount, #infotext #totalsessionscount {
+		font-size: 50px;
+		margin-bottom: 25px;
+	}
+
+	#infotext h2 {
+		font-size: 25px;
+		margin-left: 10px;
+	}
+
+	.tutorreq .fas {
+		display: none;
 	}
 }
 
