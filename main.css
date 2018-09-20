@@ -1204,7 +1204,7 @@ canvas {
 
 #teamheadimg {
 	position: absolute;
-	z-index: 4;
+	z-index: 0;
 	top: 0;
 	left: 0;
 }
@@ -1228,6 +1228,16 @@ canvas {
 		color: white;
 		transition-duration: 0.2s;
 
+}
+
+#teamtutorcount {
+	background-color: #212664;
+	font-size: 30px;
+	color: white;
+	padding: 10px 20px;
+	border-radius: 30px;
+	margin: 0px 10px;
+	display: none;
 }
 
 #tutorapply:hover {
@@ -1434,7 +1444,7 @@ canvas {
 	color: salmon;
 }
 
-.french {
+.economics {
 	border: 2px solid #7d7dd0;
 	color: #7d7dd0;
 }
@@ -1463,6 +1473,8 @@ canvas {
 	padding: 10px 0px;
 	color: #444;
 	transition-duration: 0.2s;
+	position: relative;
+	z-index: 1;
 }
 
 .back2top:hover {
@@ -2436,11 +2448,6 @@ canvas {
 	font-size: 22px;
 }
 
-.tutorreq:hover {
-	background-color: #ddd;
-	box-shadow: 5px 5px 10px #444;
-}
-
 .tutorreq .fas {
 	position: absolute;
 	top: 20px;
@@ -2452,6 +2459,44 @@ canvas {
 
 .tutorreq .fa-check {
 	color: green;
+}
+
+#tuteeinfo {
+	position: fixed;
+	z-index: 99;
+	width: 70%;
+	top: 15%;
+	padding: 50px 6%;
+	background-color: white;
+	border-radius: 30px;
+	left: 200%;
+	transition-duration: 0.4s;
+}
+
+#tuteeinfo h2 {
+	font-size: 40px;
+}
+
+#tuteeinfo h4 {
+	padding: 5px 0px;
+	font-size: 22px;
+}
+
+#tuteeinfo h5 {
+	position: absolute;
+	top: 20px;
+	right: 3%;
+	font-size: 60px;
+	color: #444;
+}
+
+#tuteeinfo h5:hover {
+	color: red;
+	cursor: pointer;
+}
+
+.tutorreq .fa-info-circle {
+	top: 60px;
 }
 
 .tutorreq .fas:hover {
@@ -2741,14 +2786,13 @@ canvas {
 	margin: 10px 0px;
 	border: 1px solid #ccc;
 	outline: 0;
-	height: 40px;
+	height: 120px;
 	transition-duration: 0.2s;
 	font-size: 18px;
 }
 
 .tutorquestion textarea:focus {
 	border: 1px solid #30CFD0;
-	height: 120px;
 }
 
 .answerquestion {
@@ -2775,6 +2819,8 @@ canvas {
 	padding: 30px;
 	background-color: #eee;
 	margin: 30px 0px;
+	position: relative;
+	z-index: 3;
 }
 
 .tuteequestion h4, .tutorquestion h4 {

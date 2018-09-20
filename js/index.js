@@ -61,8 +61,14 @@ $(window).on('load', function () {
 		});
 		$("#totalsessionscount").html(sessionscount);
 	});
-
-
+	var count = 0;
+	$( ".tutor" ).each(function(index) {
+		$(this).hide();
+		$(this).show();
+		count++;
+	});
+	$("#teamtutorcount").html(count);
+	$("#teamtutorcount").fadeIn();
 
 	$('#invite_field').on('input', function() {
 	    var key = $('#invite_field').val();
@@ -293,6 +299,7 @@ $(document).ready(function(){
 	$( "#tutors .dropdown-item" ).each(function(index) {
 	    $(this).not("#all").on("click", function(){
 	        $("#tutors h4 strong").html(this.innerHTML);
+	        var count = 0;
 	        $("#filtertext").html(this.innerHTML);
 	        var subject = this.innerHTML.toLowerCase();
 	        $( ".tutor" ).each(function( index ) {
@@ -301,18 +308,23 @@ $(document).ready(function(){
 			  	$(this).hide();
 			  } else {
 			  	$(this).show();
+			  	count++;
 			  }
 			});
+			$("#teamtutorcount").html(count);
 	    });
 	});
 
 	$("#all").on("click", function(){
 		$("#tutors h4 strong").html(this.innerHTML);
 	    $("#filtertext").html(this.innerHTML);
+	    var count = 0;
 		$( ".tutor" ).each(function(index) {
 			$(this).hide();
 			$(this).show();
+			count++;
 		});
+		$("#teamtutorcount").html(count);
 	});
 
 	//updates tutor bio in modal
@@ -916,9 +928,15 @@ firebase.auth().onAuthStateChanged(function(user) {
 					display = "red";
 				}
 
+				var subjects = subject.split(", ");
+				for(var i=0; i<subjects.length; i++) {
+					subjects[i] = subjects[i].charAt(0).toUpperCase() + subjects[i].slice(1);
+				}
+				subjects = subjects.join(",  ");
+
 				if(date != null) {
 					firebase.database().ref('users/' + splitEmail(email)).child("name").once("value", snap => {
-						$("#tutorsessionsbody").append("<div class=\"tutorreq\" id=\"" + key + "\" style=\"color: " + display + "; display: none\" onclick=\"takeSession()\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>Time: " + convertMilitary(time) + "</h4> <h4>Name: " + snap.val() + "</h4><h4>Subjects: " + subject + "</h4> <h4>Details: " + details + "</h4> <h4>Tutor: " + tutor + "</h4> </div>");
+						$("#tutorsessionsbody").append("<div class=\"tutorreq\" id=\"" + key + "\" style=\"color: " + display + "; display: none\"> <h2>Email: " + email + "</h2> " + "<h4>Date: " + date + "</h4> " + "<h4>Time: " + convertMilitary(time) + "</h4> <h4>Name: " + snap.val() + "</h4><h4>Subjects: " + subjects + "</h4> <h4>Details: " + details + "</h4> <h4>Tutor: " + tutor + "</h4> <div class\"tutorreqbuttons\"><i onclick=\"takeSession()\" class=\"fas fa-check-circle\"></i> <i onclick=\"showTuteeInfo()\" class=\"fas fa-info-circle\"></i></div></div>");
 					});
 				}
 		});
@@ -960,7 +978,7 @@ function sortSessions() {
 		html.push($("#" + ids[j]).html());
 	}
 	for(var i=0; i<ids.length; i++) {
-		$("#tutorsessionsbody").append("<div class=\"tutorreq\" onclick=\"takeSession()\" style=\"display: block\" id=\"" + ids[i] + "\">" + html[i] + "</div>");
+		$("#tutorsessionsbody").append("<div class=\"tutorreq\" style=\"display: block\" id=\"" + ids[i] + "\">" + html[i] + "</div>");
 	}
 }
 
@@ -1168,14 +1186,15 @@ function answerQuestion() {
 
 //for Tutors to claim a session
 function takeSession() {
-	var date = event.currentTarget.childNodes[3].innerHTML;
+	var date = event.currentTarget.parentNode.parentNode.childNodes[3].innerHTML;
+	console.log(date);
 	var newdate = date.slice(6);
-	var email = event.currentTarget.childNodes[1].innerHTML;
-	var time = event.currentTarget.childNodes[5].innerHTML.slice(6);
-	var name = event.currentTarget.childNodes[7].innerHTML.slice(6);
-	var subject = event.currentTarget.childNodes[8].innerHTML.slice(10);
+	var email = event.currentTarget.parentNode.parentNode.childNodes[1].innerHTML;
+	var time = event.currentTarget.parentNode.parentNode.childNodes[5].innerHTML.slice(6);
+	var name = event.currentTarget.parentNode.parentNode.childNodes[7].innerHTML.slice(6);
+	var subject = event.currentTarget.parentNode.parentNode.childNodes[8].innerHTML.slice(10);
 	var newemail = splitEmail(email.slice(7));
-	var details = event.currentTarget.childNodes[10].innerHTML.slice(9);
+	var details = event.currentTarget.parentNode.parentNode.childNodes[10].innerHTML.slice(9);
 
 	var split = splitEmail(firebase.auth().currentUser.email);
 
@@ -1196,7 +1215,8 @@ function takeSession() {
 		} else {
 			var r = confirm("Confirm that you can commit to tutoring this session?");
 			var yes = "yes";
-			if(r == true) {
+			console.log(r);
+			if(r) {
 				var userName = firebase.database().ref('users/' + split).child('name');
 				userName.on('value', snap => {
 					firebase.database().ref('requests/' + newdate + newemail).child("tutor").set(snap.val());
@@ -1214,7 +1234,7 @@ function takeSession() {
 					details: details,	
 				 });
 
-				var content = "<h3 style=\"color: #30CFD0\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + date + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subjects:</strong> " + subject + "</p>  <p><strong>Details</strong>" + details + "</p> <p>Your tutor will email you within 24 hours!</p>";
+				var content = "<h3 style=\"color: #30CFD0\">Tutor Contact: " + firebase.auth().currentUser.email + "</h3> <p><strong>Date:</strong> " + date + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subjects:</strong> " + subject + "</p>  <p><strong>Details: </strong>" + details + "</p> <p>Your tutor will email you within 24 hours!</p>";
 
 				Email.send("support@instatutors.org",
 					email,
@@ -1222,7 +1242,7 @@ function takeSession() {
 					content,
 					{token: "4c110561-2f5a-4bc1-a677-e1c0b05de4e2", callback: function done(message) { console.log("sent") }});
 
-				var content2 = "<h3><strong>Date:</strong> " + date + "</h3> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject(s):</strong> " + subject + "</p> <p><strong>Details</strong>" + details + "</p> <p>Make sure to email your tutee with the appropriate appear.in link, and set a reminder for yourself so you do not forget to show up for your session.  Good luck!</p>";
+				var content2 = "<h3><strong>Date:</strong> " + date + "</h3> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject(s):</strong> " + subject + "</p> <p><strong>Details: </strong>" + details + "</p> <p>Make sure to email your tutee with the appropriate appear.in link, and set a reminder for yourself so you do not forget to show up for your session.  Good luck!</p>";
 
 				Email.send("support@instatutors.org",
 					firebase.auth().currentUser.email,
@@ -1230,10 +1250,33 @@ function takeSession() {
 					content2,
 					{token: "4c110561-2f5a-4bc1-a677-e1c0b05de4e2", callback: function done(message) { console.log("sent") }});
 				}
+				setTimeout("location.reload(true);",100);
 			}
-
 	});
-	setTimeout("location.reload(true);",100);
+}
+
+//shows tuteeinfo onclick when button clicked
+function showTuteeInfo() {
+	var email = event.currentTarget.parentNode.parentNode.childNodes[1].innerHTML;
+	var split = splitEmail(email.slice(7));
+	firebase.database().ref('users/' + split).once('value', snap => {
+		var name = snap.child("name").val();
+		var grade = snap.child("grade").val();
+		var school = snap.child("school").val();
+		var city = snap.child("city").val();
+		var parentemail = snap.child("parentemail").val();
+		var pastSessions = snap.child("pastSessions").val();
+		$("#tuteemodalbody").html("<h2>Name: " + name + "</h2> <h4>Grade: " + grade + "</h4> <h4>School: " + school + "</h4> <h4>City: " + city + "</h4> <h4>Parent Email: " + parentemail + "</h4> <h4>Past Sessions: " + pastSessions + "</h4>");
+	});
+	$("#tuteeinfo").css('left', '15%');
+	$("#emailmodalmask").css('opacity', '0.7');
+	$("#emailmodalmask").css('z-index', '98');
+}
+
+function closeTuteeModal() {
+	$("#tuteeinfo").css('left', '200%');
+	$("#emailmodalmask").css('opacity', '0');
+	$("#emailmodalmask").css('z-index', '0');
 }
 
 function openEmailModal() {
@@ -1659,6 +1702,12 @@ function validate() {
 	var time = $("#time").val();
 	var tutor = $("#tutor").val();
 	var subject = $("#subject").val();
+	var capitalsubjects = subject.split(", ");
+	for(var k=0; k<capitalsubjects.length; k++) {
+		capitalsubjects[k] = capitalsubjects[k].charAt(0).toUpperCase() + capitalsubjects[k].slice(1);
+	}
+	capitalsubjects = capitalsubjects.join(", ");
+	console.log(capitalsubjects);
 	var details = $("#details").val();
 	var timing;
 
@@ -1768,7 +1817,7 @@ function validate() {
 								}
 							}
 							console.log(polishdates);
-							content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+							content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + time + "</p> <p><strong>Subject:</strong> " + capitalsubjects + "</p> <p><strong>Details: </strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 							$("#bookedheader").html("Your tutoring requests for " + polishdates + " are logged.");
 							date = polishdates;
 
@@ -1782,13 +1831,13 @@ function validate() {
 									polishdates += dates[p];
 								}
 							}
-							content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + convertMilitary(time) + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+							content = "<h3 style=\"color: #30CFD0\">New Tutoring PLAN Requested -</h3>  <p><strong>Dates:</strong> " + polishdates + "</p> <p><strong>Time:</strong> " + convertMilitary(time) + "</p> <p><strong>Subject:</strong> " + capitalsubjects + "</p> <p><strong>Details: </strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 							$("#bookedheader").html("Your tutoring requests for " + polishdates + " are logged.");
 							date = polishdates;
 
 						} else {
 							writeRequest(email, date, time, subject, details, "no", tutor);
-							content = "<h3 style=\"color: #30CFD0\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + convertMilitary(time) + "</p> <p><strong>Subject:</strong> " + subject + "</p> <p><strong>Details:</strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
+							content = "<h3 style=\"color: #30CFD0\">New Tutoring Session -</h3>  <p><strong>Date:</strong> " + splitDate(date) + "</p> <p><strong>Time:</strong> " + convertMilitary(time) + "</p> <p><strong>Subject:</strong> " + capitalsubjects + "</p> <p><strong>Details: </strong>" + details + "</p> <p><strong>Tutee Contact:</strong> " + email + "</p> <p><strong>Tutor:</strong> " + tutor + "</p>";
 							date = splitDate(date);
 							$("#bookedheader").html("Your tutoring request for " + date + " is logged.");
 						}
