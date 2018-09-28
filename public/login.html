@@ -11,7 +11,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   	<script src="http://mathquill.com/lib/mathquill.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
 <body>
@@ -55,12 +54,10 @@
 		</div>
 
 		<div class="create-div">
-		    <a href="login" id="backtologin"></a><h3>Create an Account</h3>
-		    <input type="name" placeholder="Enter your FULL name..." id="createname" />
+		    <a id="backtologin" onclick="closeCreate()"><i class="fas fa-arrow-left"></i></a><h3>Create an Account</h3>
 		    <input type="email" placeholder="Enter a Valid Email address..." id="createemail" />
 		    <input type="password" placeholder="Enter a Password..." id="createpassword" />
 		    <input type="password" placeholder="Confirm your Password..." id="confirmpassword" />
-		    <input type="name" placeholder="Enter a phone number (optional)..." id="createphone" />
 			<span id="termstext">By signing up, you agree to the <a href="termsandconditions"> terms and conditions</a>, and attest that you are over 13 years of age, or else accompanied by a parent/guardian.
 			</span>
 			<p id="errormessage2"></p>
@@ -112,11 +109,13 @@
 		 <div id="email_div">
 		 	<h3 id="verifyemail">Please Verify Your Email Address: </h3>
 		 	<a onclick="sendVerification()">Send Verification Email</a>
-		 	<a href="login">Log In</a>
+		 	<a onclick="writeTempAccount()">Log In</a>
 		 </div>
 
 		 <div id="info_div">
-		 	<h3 id="infohello">Hello <i></i>, please fill out some additional information so we can get to know you better</h3>
+		 	<h3 id="infohello">Hello, please fill out some additional information so we can get to know you better</h3>
+		 	<p>Name:</p>
+		 	<input type="text" placeholder="Your FULL name..." id="name_field" />
 		 	<p>School:</p>
 		 	<input type="text" placeholder="The school you attend..." id="school_field" />
 		 	<p>Grade Level:</p>
@@ -331,9 +330,21 @@
 										<button id="submitnewinfo" onclick="submitnewinfo()">Submit</button>
 									</div>
 									<div id="tuteeachievements">
-										<h3>My Achievements</h3>
-										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Noob: log in once."><img class="achievement" id="noob" src="images/noob.png"></button>
+										<h3>Achievements</h3>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Noob: log in once."><img class="achievement" id="noob" src="images/recruit.png"></button>
 										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Oncer: request 1 session."><img class="achievement" id="oncer" src="images/oncer.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Rater: rate 1 session."><img class="achievement" id="rater" src="images/rater.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Novice: complete 3 sessions."><img class="achievement" id="novice" src="images/novice.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Fiver: complete 5 sessions."><img class="achievement" id="regular" src="images/regular.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Mathematician: complete 5 math sessions."><img class="achievement" id="mathematician" src="images/mathematician.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Scientist: complete 5 science sessions."><img class="achievement" id="scientist" src="images/scientist.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Humanities: complete 5 humanities sessions."><img class="achievement" id="humanities" src="images/humanities.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Decathlete: complete 10 sessions."><img class="achievement" id="decathlete" src="images/decathlete.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Critic: rate 10 sessions."><img class="achievement" id="critic" src="images/critic.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Master of Math: complete 20 math sessions."><img class="achievement" id="masterofmath" src="images/masterofmath.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Master of Science: complete 20 science sessions."><img class="achievement" id="masterofscience" src="images/masterofscience.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Master of humanities: complete 20 humanities sessions."><img class="achievement" id="masterofhumanities" src="images/masterofhumanities.png"></button>
+										<button type="button" class="infobtn" data-container="body" data-toggle="popover" data-placement="bottom" data-content="GRANDMASTER: complete 50 sessions."><img class="achievement" id="grandmaster" src="images/grandmaster.png"></button>
 									</div>
 									<!--<div id="tuteeaddsubjects">
 										<h3>Add Subjects</h3>

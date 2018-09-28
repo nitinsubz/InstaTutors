@@ -1,6 +1,50 @@
 {
   "rules": {
-    ".read": "true",
-    ".write": "true"
+  	".read": "auth.token.email.matches(/.*instatutorsteam@gmail.com$/)",
+  	".write": "auth.token.email.matches(/.*instatutorsteam@gmail.com$/)",
+  	"tempusers": {
+  		".read": "auth!==null",
+  		".write": "auth !== null"	
+  	},
+  	"leaderboard": {
+  		".read": "auth.token.email_verified == true",
+  		".write": "auth.token.email_verified == true"
+  	},
+  	"emailKeys": {
+  		".read": "auth !== null",
+  		".write": "auth !== null"
+  	},
+  	"requests": {
+  		".read": "auth.token.email.matches(/.*@instatutors.org$/)",
+  		".write": "auth.token.email_verified == true && newData.exists()"
+  	},
+  	"questions": {
+  		".read": "auth.token.email.matches(/.*@instatutors.org$/)",
+  		".write": "auth.token.email_verified == true && newData.exists()"
+  	},
+  	"tutors": {
+  			".read": "auth !== null",
+  			".write": "newData.exists() && auth.token.email_verified == true"
+  	},
+  	"users": {
+  		".read": "auth.token.email_verified == true && (auth.token.email.matches(/.*@instatutors.org$/))",
+  		".write": "auth.token.email_verified == true && newData.exists()",
+  		"$uid": {
+        	"email": {
+  				".read": "auth.token.email_verified == true && (auth.token.email.matches(/.*@instatutors.org$/) || data.child('email').val() === auth.token.email)",
+  				".write": "newData.exists() && auth !== null"
+  			},
+        	"stat": {
+  				".read": "auth.token.email_verified == true",
+  				".write": "newData.exists() && auth !== null"
+  			},
+  			"verified": {
+  				".read": "auth !== null",
+  				".write": "newData.exists() && auth.token.email_verified == true"
+  			},
+        ".read": "(auth.token.email.matches(/.*@instatutors.org$/) || data.child('email').val() === auth.token.email)",
+  			".write": "newData.exists() && (auth.token.email.matches(/.*@instatutors.org$/) || data.child('email').val() === auth.token.email)",
+   		}
+  	},
   }
 }

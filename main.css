@@ -1271,6 +1271,10 @@ canvas {
 	border-radius: 30px;
 }
 
+#biopopup h1 a {
+	color: #30CFD0;
+}
+
 #bioname {
 	font-size: 45px;
 	color: #444;
@@ -1306,6 +1310,10 @@ canvas {
 	float: left;
 	height: 520px;
 	background-color: white;
+}
+
+.tutorreqname {
+	display: none;
 }
 
 .tutor {
@@ -1762,12 +1770,16 @@ canvas {
 	border-radius: 30px;
 	transition-duration: 0.2s;
 	text-decoration: none;
+	position: relative;
+	z-index: 5;
 }
 
 .scrolling-wrapper {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+  position: relative;
+  z-index: 4;
 }
 
 #formerrors {
@@ -1990,6 +2002,8 @@ canvas {
   margin-top: 70px;
   padding: 20px;
   display: none;
+  position: relative;
+  z-index: 40;
 }
 
 .google-button {
@@ -2105,6 +2119,22 @@ canvas {
 	padding-bottom: 20px;
 	text-align: center;
 	color: #333;
+}
+
+#backtologin {
+	position: absolute;
+	left: -5%;
+	top: 25px;
+	z-index: 66;
+	font-size: 40px;
+	color: #444;
+	transition-duration: 0.2s;
+}
+
+#backtologin:hover {
+	color: #30CFD0;
+	cursor: pointer;
+	left: -6.5%;
 }
 
 #termstext {
@@ -2428,6 +2458,8 @@ canvas {
 	width: 100%;
 	margin-bottom: 20px;
 	overflow: auto;
+	position: relative;
+	z-index: 5;
 }
 
 .tutorreq {
@@ -2755,6 +2787,8 @@ canvas {
 	padding: 50px 5%;
 	background-color: white;
 	border-radius: 20px 20px 0px 0px;
+	position: relative;
+	z-index: 5;
 }
 
 #questionbody h3 {
@@ -3018,10 +3052,10 @@ canvas {
 }
 
 .achievement {
-	height: 160px;
-	padding: 10px;
+	height: 100px;
+	padding: 10px 15px;
 	transition-duration: 0.2s;
-	display: none;
+	opacity: 0.4;
 }
 
 .achievement:hover {
@@ -3195,6 +3229,8 @@ canvas {
 	max-height: 500px;
 	width: 100%;
 	overflow: auto;
+	position: relative;
+	z-index: 5;
 }
 
 #sessionsbody {
@@ -3267,15 +3303,15 @@ canvas {
 #stars {
 	position: fixed;
 	z-index: 99;
-	top: 15%;
+	top: -100%;
 	left: 0;
 	right: 0;
 	margin: 0px auto;
 	background-color: white;
 	padding: 70px 70px 90px 70px;
 	width: 50%;
-	display: none;
 	border-radius: 30px;
+	transition-duration: 0.3s;
 }
 
 #starsmask {
@@ -3284,10 +3320,10 @@ canvas {
 	left: 0;
 	width: 100%;
 	height: 100vh;
-	opacity: 0.8;
-	z-index: 95;
+	opacity: 0;
+	z-index: 0;
 	position: fixed;
-	display: none;
+	transition-duration: 0.3s;
 }
 
 #stars h3 {
@@ -3312,6 +3348,8 @@ canvas {
   	margin-top: 60px;
   	padding: 20px;
   	display: none;
+  	position: relative;
+  	z-index: 4;
 }
 
 #info_div #infoerrors {
@@ -3325,6 +3363,8 @@ canvas {
   	margin-top: 120px;
   	padding: 20px;
   	display: none;
+  	position: relative;
+  	z-index: 5;
 }
 
 #email_div h3, #info_div h3 {
@@ -3369,6 +3409,8 @@ canvas {
   	margin-top: 150px;
   	padding: 20px;
   	display: none;
+  	position: relative;
+  	z-index: 5; 
 }
 
 #reset_div h3 {
@@ -4493,7 +4535,6 @@ canvas {
 	}
 
 	#stars {
-		top: 5%;
 		width: 80%;
 	}
 
@@ -4845,6 +4886,35 @@ canvas {
 
 	.tutorreq .fas {
 		display: none;
+	}
+
+	#questionbody p {
+		font-size: 18px;
+	}
+
+	.tutorquestion textarea {
+		height: 100px;
+	}
+
+	.tutorquestion h4 {
+		font-size: 18px;
+	}
+
+	#tutorquestionhead {
+		padding: 100px 8% 60px 8%;
+	}
+
+	#tutorquestionhead h1 {
+		font-size: 45px;
+	}
+
+	#tutorquestionhead h3 {
+		font-size: 20px;
+	}
+
+	#tutorquestionbody {
+		padding: 5px 3% 50px 3%;
+		margin: -40px 5% 0px 5%;
 	}
 }
 
