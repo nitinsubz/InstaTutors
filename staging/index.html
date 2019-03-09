@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<title>InstaTutors</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+<body>
+	<!--<div id="temporary">
+		<div id="indeximg" class="slideup">
+				<img src="images/bigpart.png" id="bigpart">
+				<img src="images/smallpart.png" id="smallpart">
+		</div>
+		<h1 class="slideup">InstaTutors will be back on November 1st, 2018.</h1>
+		<h5 class="slideup">In order to streamline our efforts on improving the student experience, revamping our platform, and developing outreach solutions, InstaTutors will not be servicing students until we relaunch on November 1st.</h5>
+		<h5 class="slideup">If you are a current student and need help, please email us at support@instatutors.org</h5>
+		<div id="tempsubscribe">
+			<form action="https://api.elasticemail.com/contact/add?version=2" data-id="crPzTSqBNl" method="post" id="ewf_subscriptionForm_crPzTSqBNl" class="Inline Elegant ElegantSilver Labels">
+		    <div class="headers" style="">
+		      <h3 id="ewf_formheader" class="slideup">Subscribe to our Mailing List for Updates and Notifications!</h3>
+		    </div>
+		    <fieldset style="border:none;" class="webform-custominputs slideup">
+		      <div class="inputs">
+		        <div>
+		          <input class="form-control" name="email" type="email" undefined="" placeholder="Email" required>
+		        </div>
+		      </div>
+		      <div class="webform-lists" style="display: none;">
+		        <div style="display:block;">
+		          <input type="checkbox" name="publiclistid" id="cZgmbWaR" value="e646b0bc-dd63-4476-bcb7-7438f87d3055" checked="checked">
+		          <label class="publiclistlabel" for="cZgmbWaR">subscribed
+		          </label>
+		        </div>
+		      </div>
+		    </fieldset>
+		    <fieldset class="webform-options slideup" style="border:none;">
+		      <input type="submit" name="submit" value="SUBSCRIBE" id="eesubmit">
+		      <input type="hidden" name="publicaccountid" value="1de0aa41-7732-4176-8e55-ced4144a2ab5">
+		      <input type="hidden" name="publicformid" value="3b8b7501-9f2c-45f2-aeba-9957345b51e0">
+		      <input type="hidden" name="returnUrl" value="https://www.instatutors.org/">
+		      <input type="hidden" name="activationReturnUrl" value="https://www.instatutors.org/">
+		      <input type="hidden" name="alreadyactiveurl" value="https://www.instatutors.org/">
+		      <input type="hidden" name="activationTemplate" value="">
+		      <input type="hidden" name="source" value="WebForm">
+		      <input type="hidden" id="ewf_captcha" name="captcha" value="false">
+		      <input type="hidden" name="notifyEmail" value="nitin@zooglr.com">
+		      <button id="ewf_dismissForm" style="display:none; position: absolute; top: 0; right: 0; float: right">X
+		      </button>
+		    </fieldset>
+		  </form>
+		</div>
+		<div id="socialmedias">
+			<p class="slideup">Like our social media:</p>
+			<a href="https://www.facebook.com/instatutorsofficial/"><i class="fab fa-facebook-square slideup"></i></a>
+			<a href="https://www.instagram.com/instatutors/"><i class="fab fa-instagram slideup"></i></a>
+		</div>
+	</div>-->
+	<div id="menubar" onclick="opensidenav()">
+		MENU <div class="bar11"></div><div class="bar22"></div>
+	</div>
+	<div class="sidebar">
+		<div class="sidecancel" onclick="closesidenav()">X</div>
+		<div id="mainlinks">
+			<a href="index">HOME</a>
+			<a href="login" id="sidelogin">LOGIN or SIGNUP</a>
+		</div>
+		<div class="border-bot"></div>
+		<div id="seclinks">
+			<a href="about">About Us</a>
+			<a href="tutors">Tutors</a>
+			<a href="donate">Donate</a>
+			<a href="leadership">Leadership</a>
+			<a href="apply">Apply to Tutor</a>
+		</div>
+		<div class="socialmedia">
+			<a href="https://www.facebook.com/instatutorsofficial/"><i class="fab fa-facebook-square"></i></a>
+			<a href="https://www.instagram.com/instatutors/"><i class="fab fa-instagram"></i></a>
+		</div>
+	</div>
+	<div class="sidemask" onclick="closesidenav()">
+	</div>
+	<div id="versionnumber">V 1.3</div>
+	<div id="navbar">
+			<ul id="nav" class="slideright">
+			   	<li class="navig" id="bookasession"><a href="login">Login or Signup</a></li>
+			</ul>
+		</div>
+
+		<div class="slideright" id="container1" onclick="rotate(this)">
+			<div class="bar1">
+			</div>
+			<div class="bar2">
+			</div>
+		</div>
+		<div id="phonenavlinks">
+			<li class="navig2"><a href="index">Home</a></li>
+			<li class="navig2"><a href="about">About Us</a></li>
+			<li class="navig2"><a href="tutors">Tutors</a></li>
+			<li class="navig2"><a href="leadership">Leadership</a></li>
+			<li class="navig2"><a href="donate">Donate</a></li>
+			<li class="navig2"><a href="login" id="login2">Login or Signup</a></li>
+		</div>
+		<div id="indexhead">
+			<div id="indeximg" class="slideup">
+				<img src="images/bigpart.png" id="bigpart">
+				<img src="images/smallpart.png" id="smallpart">
+			</div>
+			 <h1 href="" class="typewrite" data-period="2000" data-type='[ " Simplifying Tutoring. ", " Empowering Students. ", "Changing the World." ]'>
+			 	 <strong><span class="wrap"></span></strong></h1>
+			<p>Create an Account.  Request a Session.  Get Tutored for Free.</p>
+			<a class="slideup" href="https://play.google.com/store/apps/details?id=org.instatutors.android.app" id="gplaybutton"><img src="images/gplay.svg"></a>
+			<a id="headlink" class="slideup">How it Works <i class="fas fa-arrow-down"></i></a>
+		</div>
+		<div id="info">
+			<canvas id="nokey">
+			    Your Browser Don't Support Canvas, Please Download Chrome ^_^``
+			</canvas>
+			<div id="infomask">
+			</div>
+			<div id="infotext">
+				<h1 class="slideleft">WHO ARE WE?</h1>
+				<p class="slideanim">InstaTutors is a platform created by students to help students schedule online tutoring sessions with qualified student tutors for free.  All tutoring sessions are held over video chat.</p>
+				<p class="slideanim" id="mission">Our mission is to provide better tutoring solutions to students from any background, anywhere.</p>
+				<div class="row">
+					<div class="col-sm-4 slideanim">
+						<h1 id="totaltutorcount">23</h1>
+						<h2>Tutors</h2>
+					</div>
+					<div class="col-sm-4 slideanim">
+						<h1 id="totaltuteecount">90</h1>
+						<h2>Students</h2>
+					</div>
+					<div class="col-sm-4 slideanim">
+						<h1 id="totalsessionscount">44</h1>
+						<h2>Sessions</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div><a class="slideanim" href="about" style="margin-left: 2%;">More About Us <i class="fas fa-arrow-right"></i></a></div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div id="testimonials">
+			<h1>What People Say About Us</h1>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+			  <ol class="carousel-indicators">
+			    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			    <li data-target="#myCarousel" data-slide-to="1"></li>
+			    <li data-target="#myCarousel" data-slide-to="2"></li>
+			    <li data-target="#myCarousel" data-slide-to="3"></li>
+			    <li data-target="#myCarousel" data-slide-to="4"></li>
+			    <li data-target="#myCarousel" data-slide-to="5"></li>
+			    <li data-target="#myCarousel" data-slide-to="6"></li>
+			    <li data-target="#myCarousel" data-slide-to="7"></li>
+			  </ol>
+			  <div class="carousel-inner">
+			    <div class="item active">
+			      <h3>"My first experience with InstaTutors was everything I could have asked for and more."</h3>
+			    </div>
+
+			     <div class="item">
+			    	<h3>"I would recommend this service to anyone because it allows you to choose a time to study and understand difficult concepts and the time is flexible, so you can always be tutored for as long as necessary for you to understand the concepts fully."</h3>
+			    </div>
+
+			    <div class="item">
+			      <h3>"After requesting help on InstaTutors, my tutor responded within minutes."</h3>
+			    </div>
+
+			    <div class="item">
+			      <h3>"My tutor was very helpful and was able to still communicate proficiently even though my microphone wasn't working."</h3>
+			    </div>
+
+			    <div class="item">
+			      <h3>" I definitely did get all my questions answered, and if I needed to clarify something, tutor helped me clarify by showing examples."</h3>
+			    </div>
+
+			    <div class="item">
+			    	<h3>"My tutor gave me a very thorough explanation of how to do the problems that I requested to do."</h3>
+			    </div>
+
+			    <div class="item">
+			      <h3>"My tutor was professional, knowledgeable, and a great hands-on teacher."</h3>
+			    </div>
+
+			    <div class="item">
+			    	<h3>"My tutor not only met my expectations but exceeded them."</h3>
+			    </div>
+			  </div>
+			  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			    <span class="fas fa-arrow-left"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+			    <span class="fas fa-arrow-right"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+			</div>
+		</div>
+		<div id="howitworks">
+			<div class="row" id="getstartedsec">
+					<div class="col-sm-8">
+						<h1 class="slideanim2">Get Started</h1>
+						<div class="border-bot length" style="background-color: #30CFD0;"></div>
+						<li class="slideanim">Create an account, and verify your email (or login with a Google Account).  You will be prompted to enter some basic information about yourself.</li>
+					</div>
+					<div class="col-sm-4"><img src="images/login.png" class="slideanim"></div>
+			</div>
+			<div class="row" id="requestsessionsec">
+				<div class="col-sm-6">
+					<img src="images/requestsession.png" class="slideanim2 notphoneimg">
+				</div>
+				<div class="col-sm-6">
+					<h1 class="slideanim2">Request a Tutoring Session</h1>
+					<div class="border-bot length" style="background-color: #30CFD0;"></div>
+					<li class="slideanim">Make a tutoring request with our "Book A Session" feature.  Browse our tutors on our <a href="tutors">tutors</a> page, or use our "find tutors" feature.</li>
+					<li class="slideanim">You will receive an email when a tutor accepts your request, and your tutor will personally email you shortly after.</li>
+					<li class="slideanim" style="padding-bottom: 40px;">Your tutor will send you a link to a private video chat room on appear.in.  Simply join when it comes time for your FREE tutoring session!</li>
+					<img class="phoneimg" src="images/requestsession.png">
+				</div>
+			</div>
+			<div class="row" id="askquestionsec">
+				<div class="col-sm-7">
+					<h1 class="slideanim2">Ask a Question</h1>
+					<div class="border-bot length" style="background-color: #30CFD0;"></div>
+					<li class="slideanim">Ask a question in a subject you need help with with our questions feature.</li>
+					<li class="slideanim">You will receive a response from a qualified tutor in less than 2 hours, guaranteed!  You can view the response in your "my questions" section.</li>
+				</div>
+				<div class="col-sm-5">
+					<img src="images/askquestion.png" class="slideanim">
+				</div>
+			</div>
+			<div class="row" id="awardssec">
+				<div class="col-sm-8 notphoneimg">
+					<div id="awardscols">
+						<img class="awardsimg slideanim" src="images/bronzeaward.png">
+						<img class="awardsimg slideanim" src="images/silveraward.png">
+						<img class="awardsimg slideanim" src="images/goldaward.png">
+					</div>
+					<div id="awardsinfo" class="slideanim">
+						<div class="awardsinfocol">
+							<h3>0-1000 points</h3>
+							<li><strong>Privileges:</strong> Request sessions at least 2 days in advance, 5 active sessions at a time</li>
+						</div>
+						<div class="awardsinfocol">
+							<h3>1000-2500 points</h3>
+							<li><strong>Privileges:</strong> Request sessions at least 1 day in advance, 8 active sessions at a time</li>
+						</div>
+						<div class="awardsinfocol">
+							<h3>2500+ points</h3>
+							<li>$25 gift card!</li>
+							<li><strong>Privileges:</strong> Book SAME DAY sessions, 10 active sessions at a time</li>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<h1 class="slideanim2">Awards & Achievements</h1>
+					<div class="border-bot length" style="background-color: #30CFD0;"></div>
+					<li class="slideanim">You can earn points by attending tutoring sessions and inviting friends to use InstaTutors!</li>
+					<li class="slideanim">Receive privileges by earning more points, and compare yourself to other students on the leaderboard!</li>
+					<li class="slideanim">If you become a Gold-level student, you will receive a $25 gift card of your choice!</li>
+					<div class="phoneimg">
+					<div id="awardscols">
+						<img class="awardsimg slideanim" src="images/bronzeaward.png">
+						<img class="awardsimg slideanim" src="images/silveraward.png">
+						<img class="awardsimg slideanim" src="images/goldaward.png">
+					</div>
+					<div id="awardsinfo" class="slideanim">
+						<div class="awardsinfocol">
+							<h3>0-1000 points</h3>
+							<li><strong>Privileges:</strong> Request sessions at least 2 days in advance, 5 active sessions at a time</li>
+						</div>
+						<div class="awardsinfocol">
+							<h3>1000-2500 points</h3>
+							<li><strong>Privileges:</strong> Request sessions at least 1 day in advance, 8 active sessions at a time</li>
+						</div>
+						<div class="awardsinfocol">
+							<h3>2500+ points</h3>
+							<li>$25 gift card!</li>
+							<li><strong>Privileges:</strong> Book SAME DAY sessions, 10 active sessions at a time</li>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div class="row">
+				<a id="getstarted" href="login" class="slideanim">Let's Go <i class="fas fa-arrow-right"></i></a>
+			</div>
+		</div>
+		<div id="faq">
+			<h1 class="slideanim2">FEATURED QUESTIONS OF THE MONTH</h1>
+			<div class="container">
+			    <div class="slider">
+			        <ul>
+			        	<li class="qa">
+			        		<div class="indexq"> Student: How can I solve this Calculus problem?  <br>lim <sub>x &rarr; -2 (-)</sub> of (x<sup>2</sup> -4x+4)/[√(x<sup>2</sup>-4x-12)]</div>
+			        		<div class="indexa"> Tutor: You want to evaluate the numerator and the denominator separately.  The numerator, when you plug in (-2), evaluates to 16.  For the denominator, plug in something close to (-2) from the - side, like -2.01.  This will give you a small positive within the &radic;.  Thus, with 16/(0 <sub>+</sub>), you get your answer of <strong>+&infin;</strong>.</div>
+			        	</li>
+			        	<li class="qa">
+			        		<div class="indexq"> Student: Analysis of a gaseous mixture of NO and N<sub>2</sub>O shows that it contains 52% by weight of nitrogen. What is the percent by weight of NO in the mixture? </div>
+			        		<div class="indexa"> Tutor: To solve this, you want to find the percent of N in each compound of the mixture: N<sub>2</sub>O and NO - once you find these decimals you set up an equation that’s multiplying each compounds % N times percent of the compound (NO and N<sub>2</sub>O) NO in this case would be x and N<sub>2</sub>O would be (1-x)</div>
+			        	</li>
+			        	<li class="qa">
+			        		<div class="indexq"> Student: I need help with this: <br>Find lim <sub>x &rarr; &infin;</sub> of tan<sup>-1</sup> [(x<sup>3</sup>+4x<sup>2</sup>+1)/&radic;(4x<sup>4</sup>+7)]</div>
+			        		<div class="indexa"> Tutor:  Simplify it so that you have tan<sup>-1</sup> [(x<sup>3</sup> /2x<sup>2</sup>)].<br>You can get rid of the the 4x<sup>2</sup> + 1 and the 7 because they become insignificant once x reaches a large value.<br>From tan<sup>-1</sup>[(x<sup>3</sup>/2x<sup>2</sup>)], you find that the value inside tan<sup>-1</sup> approaches &infin;, so the entire expression approaches &pi;/2.</div>
+			        	</li>
+			        </ul>
+			        <ol>
+			        	<li class="active"></li>
+			        	<li></li>
+			        	<li></li>
+			        </ol>
+			    </div>
+			</div>
+		</div>
+		<div id="contact">
+			<h1 class="slideanim2">GET IN <strong>TOUCH</strong></h1>
+			<div class="border-bot length" style="background-color: #30CFD0;"></div>
+			<h4 class="slideanim2">Our Email: <a href="mailto:support@instatutors.org">support@instatutors.org</a></h4>
+			<div id="contactsocial" class="slidenim2">
+				<a href="https://www.facebook.com/instatutorsofficial/"><i class="fab fa-facebook-square"></i></a>
+				<a href="https://www.instagram.com/instatutors/"><i class="fab fa-instagram"></i></a>
+			</div>
+			<h3 class="slideanim2">Send Us A Message</h3>
+			<form class="slideanim" id="contactForm">
+				<div class="row">
+					<div class="col-sm-6">
+					    Name:<br>
+					    <input type="text" id="msgname" name="msgname">
+					</div>
+					<div class="col-sm-6">
+					    Email:<br>
+					    <input type="text" id="msgemail" name="email">
+					   </div>
+				</div>
+				    Your Message:<br>
+				    <textarea name="msg" id="msg" wrap="soft"> </textarea>
+			  </form>
+			  <p id="formStatus"> </p>
+				<button type="submit" id="submit" onclick="validatemsg()">Submit</button>			
+		</div>
+		<div id="mailinglist">
+			<form action="https://api.elasticemail.com/contact/add?version=2" data-id="crPzTSqBNl" method="post" id="ewf_subscriptionForm_crPzTSqBNl" class="Inline Elegant ElegantSilver Labels">
+		    <div class="headers" style="">
+		      <h1 id="ewf_formheader">Subscribe to our Mailing List! </h1>
+		    </div>
+		    <fieldset style="border:none;" class="webform-custominputs">
+		      <div class="inputs">
+		        <div>
+		          <input class="form-control" name="email" type="email" undefined="" placeholder="Email" required>
+		        </div>
+		      </div>
+		      <div class="webform-lists" style="display: none;">
+		        <div style="display:block;">
+		          <input type="checkbox" name="publiclistid" id="cZgmbWaR" value="e646b0bc-dd63-4476-bcb7-7438f87d3055" checked="checked">
+		          <label class="publiclistlabel" for="cZgmbWaR">subscribed
+		          </label>
+		        </div>
+		      </div>
+		    </fieldset>
+		    <fieldset class="webform-options" style="border:none;">
+		      <input type="submit" name="submit" value="SUBSCRIBE" id="eesubmit">
+		      <input type="hidden" name="publicaccountid" value="1de0aa41-7732-4176-8e55-ced4144a2ab5">
+		      <input type="hidden" name="publicformid" value="3b8b7501-9f2c-45f2-aeba-9957345b51e0">
+		      <input type="hidden" name="returnUrl" value="https://www.instatutors.org/">
+		      <input type="hidden" name="activationReturnUrl" value="https://www.instatutors.org/">
+		      <input type="hidden" name="alreadyactiveurl" value="https://www.instatutors.org/">
+		      <input type="hidden" name="activationTemplate" value="">
+		      <input type="hidden" name="source" value="WebForm">
+		      <input type="hidden" id="ewf_captcha" name="captcha" value="false">
+		      <input type="hidden" name="notifyEmail" value="nitin@zooglr.com">
+		      <button id="ewf_dismissForm" style="display:none; position: absolute; top: 0; right: 0; float: right">X
+		      </button>
+		    </fieldset>
+		  </form>
+		</div>
+		<div id="footer">
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="images/logo.png">
+				</div>
+				<div class="col-sm-2">
+					<h3>Donate</h3>
+					<a href="donate">Donate</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>Contact</h3>
+					<a href="mailto:support@instatutors.org">Support</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>For Tutors</h3>
+					<a href="pdfs/tutorrequirements.pdf">Requirements</a>
+					<a href="apply">Apply</a>
+					<a href="https://tutors.instatutors.org">Crash Course</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="foot">
+				<span>&#169; InstaTutors 2018.</span>
+				<a onclick="window.open('termsandconditions')">Terms</a>
+			</div>
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+	<script src="js/particles.js">
+    </script>
+	<script src="js/firebase.js">
+	</script>
+	<script src="https://smtpjs.com/v2/smtp.js">
+	</script>
+	<script src="js/index.js">
+    </script>
+</body>
+</html>
+

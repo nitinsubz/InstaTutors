@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-<title>Insta Tutors</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<link rel="icon" href="images/logo.png">
-<link href="https://fonts.googleapis.com/css?family=Raleway:300,700,800" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<head>
+	<title>Tutors</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="icon" href="images/logo.png">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -15,24 +16,30 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
+</head>
 <body>
 	<div id="menubar" onclick="opensidenav()">
-		MENU <div class="bar11"></div><div class="bar22"></div>
+		MENU <i class="fas fa-angle-right" id="arrow1"></i><i class="fas fa-angle-right" id="arrow2"></i>
 	</div>
-
 	<div class="sidebar">
 		<div class="sidecancel" onclick="closesidenav()">X</div>
 		<div id="mainlinks">
 			<a href="index">HOME</a>
 			<a href="login" id="sidelogin">LOGIN or SIGNUP</a>
+			<a href="question" id="sidequestion">Ask a Question</a>
+			<a href="account" id="sideaccount">My Account</a>
 		</div>
 		<div class="border-bot"></div>
 		<div id="seclinks">
-			<a href="about">About Us</a>
+			<a id="aboutnav">About <i id="aboutcaret" class="fas fa-caret-down"></i></a>
+			<div id="aboutlinks">
+				<a href="about">Our Mission</a>
+				<a href="courses">Courses</a>
+				<a href="leadership">Leadership</a>
+			</div>
 			<a href="tutors">Tutors</a>
-			<a href="donate">Donate</a>
-			<a href="leadership">Leadership</a>
 			<a href="apply">Apply to Tutor</a>
+			<a href="donate">Donate</a>
 		</div>
 		<div class="socialmedia">
 			<a href="https://www.facebook.com/instatutorsofficial/"><i class="fab fa-facebook-square"></i></a>
@@ -41,21 +48,27 @@
 	</div>
 	<div class="sidemask" onclick="closesidenav()">
 	</div>
-		<a id="tutorapply" href="apply">Apply to be a Tutor</a>
-		<!--<div id="container1" onclick="rotate(this)">
+		<div class="slideright" id="container1" onclick="rotate(this)">
 			<div class="bar1">
 			</div>
 			<div class="bar2">
 			</div>
 		</div>
 		<div id="phonenavlinks">
-			<li class="navig2"><a href="about.html">About</a></li>
-			<li class="navig2"><a href="service.html">Service</a></li>
-			<li class="navig2"><a href="videos.html">Videos</a></li>
-		</div>-->
+			<li class="navig2"><a href="index">Home</a></li>
+			<li class="navig2"><a href="about">About Us</a></li>
+			<li class="navig2"><a href="tutors">Tutors</a></li>
+			<li class="navig2"><a href="courses">Courses</a></li>
+			<li class="navig2"><a href="leadership">Leadership</a></li>
+			<li class="navig2"><a href="donate">Donate</a></li>
+			<li class="navig2"><a href="login" id="login2">Login or Signup</a></li>
+			<li class="navig2" id="phonelogout"><a href="" onclick="logout()">Log Out</a></li>
+		</div>
+
+		<a id="tutorapply" href="apply">Apply to be a Tutor</a>
 		<div id="teamhead">
 			<h1 class="slideleft">OUR TUTORS</h1>
-			<p class="slideup">We are passionate, driven, and capable high school students.</p>
+			<p class="slideup">Filter by subject or course to find the tutor you need!  Click on tutors to view bios.</p>
 		</div>
 		<div id="teamheadimg">
 			<img src="images/teamhead.png">
@@ -63,16 +76,16 @@
 		<div id="biomask" onclick="fadebiomask()">
 		</div>
 		<div id="biopopup">
-			<a id="biox" onclick="fadebiomask()">X</a>
+			<a id="biox" onclick="fadebiomask()">&times;</a>
 			<h1 id="bioname">Please <a href="login">LOG IN</a> to view our tutors' bios.</h1>
 			<h3 id="biosubjects"></h3>
 			<p id="biobio"></p>
 		</div>
 		<div id="tutors">
-			<h4><strong>All</strong> Tutors <span id="teamtutorcount"></span></h4>
+			<h4><strong>All</strong> Tutors <span id="teamtutorcount">24</span></h4>
 			<div class="border-bot length" style="background-color: #30CFD0; margin-bottom: 20px;"></div>
 			<div id="filter">
-				<div class="dropdown">
+				<div class="dropdown" id="filtersubject">
 					<span>Filter By Subject: </span>
 			      <button class="btn btn-default dropdown-toggle" type="button" id="byLocation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="filtertext">All</span> <i class="fas fa-caret-down"></i></button>
 			      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -86,229 +99,30 @@
 			        <a class="dropdown-item" id="webdev">WebDev</a>
 			        <a class="dropdown-item" id="java">Java</a>
 			        <a class="dropdown-item" id="python">Python</a>
-			        <a class="dropdown-item" id="business">Business</a>
+			        <a class="dropdown-item" id="spanish">Chinese</a>
+			        <a class="dropdown-item" id="spanish">German</a>
 			        <a class="dropdown-item" id="spanish">Spanish</a>
 			        <a class="dropdown-item" id="economics">Economics</a>
 			        <a class="dropdown-item" id="SAT">SAT</a>
 			        <a class="dropdown-item" id="ACT">ACT</a>
 			      </div>
 			    </div>
-			</div>
-				<div class="col4 tutor" id="matthewcho">
-					<img src="images/matthewcho.png">
-					<h3>Matthew Cho</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label physics">Physics</h5>
-					<h5 class="label java">Java</h5>
-					<h5 class="label python">Python</h5>
-				</div>
-				<!--<div class="col4 tutor" id="varsha">
-					<img src="images/varsha.png">
-					<h3>Varsha Subramanyam</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label writing">Writing</h5>
-					<h5 class="label history">History</h5>
-					<h5 class="label chem">Chemistry</h5>
-					<h5 class="label bio">Biology</h5>			
-				</div>-->
-				<div class="col4 tutor" id="sahana">
-					<img src="images/sahana.jpg">
-					<h3>Sahana Prasanna</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label bio">Biology</h5>
-					<h5 class="label spanish">Spanish</h5>
-					<h5 class="label chem">Chemistry</h5>				
-			</div>
-			<div class="col4 tutor" id="nitin">
-				<img src="images/nitin.jpeg">
-				<h3>Nitin Subramanian</h3>
-				<h5 class="label physics">Physics</h5>
-				<h5 class="label web">WebDev</h5>
-				<h5 class="label java">Java</h5>
-				<h5 class="label spanish">Spanish</h5>
-			</div>
-				<div class="col4 tutor" id="alex">
-					<img src="images/alex.png">
-					<h3>Alex Patel</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label writing">Writing</h5>
-					<h5 class="label economics">Economics</h5>
-				</div>
-			<div class="col4 tutor" id="jacobnie">
-				<img src="images/jacobnie.jpg">
-				<h3>Jacob Nie</h3>
-				<h5 class="label math">Math</h5>
-				<h5 class="label physics">Physics</h5>	
-			</div>
-			<div class="col4 tutor" id="sidhu">
-				<img src="images/sidhartha.jpg">
-				<h3>Sidhartha Murthy</h3>
-				<h5 class="label math">Math</h5>
-				<h5 class="label chem">Chemistry</h5>
-				<h5 class="label history">History</h5>
-				<h5 class="label act">ACT</h5>			
-			</div>
-				<div class="col4 tutor" id="matthewsheh">
-					<img src="images/matthew.jpg">
-					<h3>Matthew Sheh</h3>
-					<h5 class="label history">History</h5>
-					<h5 class="label writing">Writing</h5>
-					<h5 class="label spanish">Spanish</h5>
-				</div>
-				
-				<div class="col4 tutor" id="conner">
-						<img src="images/conner.jpg">
-						<h3>Conner Hsu</h3>
-						<h5 class="label math">Math</h5>
-						<h5 class="label chem">Chemistry</h5>
-						<h5 class="label java">Java</h5>			
-				</div>
-				<div class="col4 tutor" id="sangita">
-						<img src="images/sangita.jpg">
-						<h3>Sangita Kunapuli</h3>
-						<h5 class="label bio">Biology</h5>
-						<h5 class="label math">Math</h5>
-						<h5 class="label writing">Writing</h5>
-						<h5 class="label chem">Chemistry</h5>
-				</div>
-				<div class="col4 tutor" id="kyle">
-						<img src="images/kyle.png">
-						<h3>Kyle Tsujimoto</h3>
-						<h5 class="label math">Math</h5>
-						<h5 class="label physics">Physics</h5>
-						<h5 class="label java">Java</h5>
-						<h5 class="label history">History</h5>
-				</div>
-				<div class="col4 tutor" id="chris">
-						<img src="images/chrisyen.png">
-						<h3>Chris Yen</h3>
-						<h5 class="label math">Math</h5>
-						<h5 class="label bio">Biology</h5>
-				</div>
-			
-				<!--<div class="col4 tutor" id="dan">
-							<img src="images/dan.png">
-							<h3>Dan Sachs</h3>
-							<h5 class="label french">French</h5>
-							<h5 class="label writing">Writing</h5>
-							<h5 class="label history">History</h5>
-							<h5 class="label chem">Chemistry</h5>
-						</div>-->
-				<div class="col4 tutor" id="neil">
-					<img src="images/neil.png">
-					<h3>Neil Badlani</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label bio">Biology</h5>
-					<h5 class="label spanish">Spanish</h5>
-					<h5 class="label history">History</h5>
-				</div>
-				<div class="col4 tutor" id="keshav">
-					<img src="images/keshav.jpg">
-					<h3>Keshav Taneja</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label chem">Chemistry</h5>
-					<h5 class="label history">History</h5>
-				</div>
+			    <div class="dropdown" id="filtercourse">
+					<span>Filter By Course: </span>
+			      	<button class="btn btn-default dropdown-toggle" type="button" id="byCourse" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="filtercoursetext">All</span> <i class="fas fa-caret-down"></i></button>
+			      	<div class="dropdown-menu" id="filtercoursemenu" aria-labelledby="dropdownMenuButton">
 
-				<div class="col4 tutor" id="vishnu">
-					<img src="images/vishnu.jpg">
-					<h3>Vishnu Akundi</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label physics">Physics</h5>
-					<h5 class="label history">History</h5>
-					<h5 class="label sat">SAT</h5>
-				</div>
-
-				<div class="col4 tutor" id="arya">
-					<img src="images/arya.jpg">
-					<h3>Arya Kondur</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label spanish">Spanish</h5>
-					<h5 class="label java">Java</h5>
-					<h5 class="label sat">SAT</h5>
-				</div>
-				<div class="col4 tutor" id="kevinwang">
-					<img src="images/kevin.jpg">
-					<h3>Kevin Wang</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label bio">Biology</h5>
-					<h5 class="label java">Java</h5>
-				</div>
-				<div class="col4 tutor" id="chirag">
-					<img src="images/chirag.png">
-					<h3>Chirag Mehta</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label chem">Chemistry</h5>
-					<h5 class="label java">Java</h5>
-				</div>
-				<div class="col4 tutor" id="sophie">
-						<img src="images/sophie.png">
-						<h3>Sophie Ye</h3>
-						<h5 class="label math">Math</h5>
-						<h5 class="label writing">Writing</h5>
-						<h5 class="label physics">Physics</h5>
-						<h5 class="label bio">Biology</h5>			
-				</div>
-				<div class="col4 tutor" id="anshul">
-					<img src="images/anshul.jpg">
-					<h3>Anshul Dash</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label bio">Biology</h5>
-					<h5 class="label spanish">Spanish</h5>
-				</div>
-				<div class="col4 tutor" id="anshul">
-					<img src="images/jeremy.jpg">
-					<h3>Jeremy Huang</h3>
-					<h5 class="label math">Math</h5>
-				</div>
-				<div class="col4 tutor" id="samyang">
-					<img src="images/sam.jpg">
-					<h3>Sam Yang</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label physics">Physics</h5>
-					<h5 class="label web">WebDev</h5>
-					<h5 class="label act">ACT</h5>
-				</div>
-				<div class="col4 tutor" id="rukmini">
-					<img src="images/rukmini.jpg">
-					<h3>Rukmini Banerjee</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label writing">Writing</h5>
-					<h5 class="label history">History</h5>
-				</div>
-				<div class="col4 tutor" id="reedit">
-					<img src="images/reedit.png">
-					<h3>Reedit Shahriar</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label physics">Physics</h5>
-					<h5 class="label java">Java</h5>
-					<h5 class="label python">Python</h5>
-				</div>
-				<div class="col4 tutor" id="stuti">
-					<img src="images/stuti.jpeg">
-					<h3>Stuti Upadhyay</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label bio">Biology</h5>
-					<h5 class="label writing">Writing</h5>
-					<h5 class="label business">Business</h5>
+			      	</div>
+			    </div>
 			</div>
-				<div class="col4 tutor" id="rohun">
-					<img src="images/rohun.jpg">
-					<h3>Rohun Agrawal</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label web">WebDev</h5>
-					<h5 class="label java">Java</h5>
-				</div>
-				
-				<div class="col4 tutor" id="luigi">
-					<img src="images/luigi.png">
-					<h3>Luigi Soriano</h3>
-					<h5 class="label math">Math</h5>
-					<h5 class="label writing">Writing</h5>
-					<h5 class="label bio">Biology</h5>
-					<h5 class="label chem">Chemistry</h5>
-				</div>
-				
+			<div id="tutorsection">
+				<div id="tutorloading">
+				 	<div id="indeximg" class="slideup">
+						<img src="images/bigpart.png" id="bigpart">
+						<img src="images/smallpart.png" id="smallpart">
+					</div>
+				 </div>
+			</div>
 		</div>
 		<a class="back2top" href="#"><i class="fas fa-chevron-up"></i></a>
 		<div id="footer">

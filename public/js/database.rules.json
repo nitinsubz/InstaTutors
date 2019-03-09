@@ -4,15 +4,19 @@
   	".write": "auth.token.email.matches(/.*instatutorsteam@gmail.com$/)",
   	"tempusers": {
   		".read": "auth!==null",
-  		".write": "auth !== null"	
+  		".write": "auth !== null && newData.exists()"	
   	},
   	"leaderboard": {
   		".read": "auth.token.email_verified == true",
-  		".write": "auth.token.email_verified == true"
+  		".write": "auth.token.email_verified == true && newData.exists()"
   	},
   	"emailKeys": {
-  		".read": "auth !== null",
-  		".write": "auth !== null"
+  		".read": "auth.token.email_verified == true",
+  		".write": "auth.token.email_verified == true && newData.exists()"
+  	},
+    "courses": {
+  		".read": "true",
+  		".write": "false"
   	},
   	"requests": {
   		".read": "auth.token.email.matches(/.*@instatutors.org$/)",
@@ -23,7 +27,7 @@
   		".write": "auth.token.email_verified == true && newData.exists()"
   	},
   	"tutors": {
-  			".read": "auth !== null",
+  			".read": "true",
   			".write": "newData.exists() && auth.token.email_verified == true"
   	},
   	"users": {

@@ -11,8 +11,12 @@
   		".write": "auth.token.email_verified == true && newData.exists()"
   	},
   	"emailKeys": {
-  		".read": "auth !== null",
-  		".write": "auth !== null && newData.exists()"
+  		".read": "auth.token.email_verified == true",
+  		".write": "auth.token.email_verified == true && newData.exists()"
+  	},
+    "courses": {
+  		".read": "true",
+  		".write": "false"
   	},
   	"requests": {
   		".read": "auth.token.email.matches(/.*@instatutors.org$/)",
@@ -23,7 +27,7 @@
   		".write": "auth.token.email_verified == true && newData.exists()"
   	},
   	"tutors": {
-  			".read": "auth.token.email_verified == true",
+  			".read": "true",
   			".write": "newData.exists() && auth.token.email_verified == true"
   	},
   	"users": {

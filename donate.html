@@ -17,22 +17,27 @@
     <link rel="stylesheet" href="main.css">
 <body>
 	<div id="menubar" onclick="opensidenav()">
-		MENU <div class="bar11"></div><div class="bar22"></div>
+		MENU <i class="fas fa-angle-right" id="arrow1"></i><i class="fas fa-angle-right" id="arrow2"></i>
 	</div>
-
 	<div class="sidebar">
 		<div class="sidecancel" onclick="closesidenav()">X</div>
 		<div id="mainlinks">
 			<a href="index">HOME</a>
 			<a href="login" id="sidelogin">LOGIN or SIGNUP</a>
+			<a href="question" id="sidequestion">Ask a Question</a>
+			<a href="account" id="sideaccount">My Account</a>
 		</div>
 		<div class="border-bot"></div>
 		<div id="seclinks">
-			<a href="about">About Us</a>
+			<a id="aboutnav">About <i id="aboutcaret" class="fas fa-caret-down"></i></a>
+			<div id="aboutlinks">
+				<a href="about">Our Mission</a>
+				<a href="courses">All Courses</a>
+				<a href="leadership">Leadership</a>
+			</div>
 			<a href="tutors">Tutors</a>
-			<a href="donate">Donate</a>
-			<a href="leadership">Leadership</a>
 			<a href="apply">Apply to Tutor</a>
+			<a href="donate">Donate</a>
 		</div>
 		<div class="socialmedia">
 			<a href="https://www.facebook.com/instatutorsofficial/"><i class="fab fa-facebook-square"></i></a>
@@ -41,7 +46,6 @@
 	</div>
 	<div class="sidemask" onclick="closesidenav()">
 	</div>
-
 		<div class="slideright" id="container1" onclick="rotate(this)">
 			<div class="bar1">
 			</div>
@@ -52,10 +56,20 @@
 			<li class="navig2"><a href="index">Home</a></li>
 			<li class="navig2"><a href="about">About Us</a></li>
 			<li class="navig2"><a href="tutors">Tutors</a></li>
+			<li class="navig2"><a href="courses">Courses</a></li>
 			<li class="navig2"><a href="leadership">Leadership</a></li>
 			<li class="navig2"><a href="donate">Donate</a></li>
 			<li class="navig2"><a href="login" id="login2">Login or Signup</a></li>
+			<li class="navig2" id="phonelogout"><a href="" onclick="logout()">Log Out</a></li>
 		</div>
+		<div id="loginnav">
+			<i class="fas fa-bars"></i>
+			<a href="login"><button id="booknav">Request A Session</button></a>
+			<a href="question"><button id="questionnav" onclick="questiontab()">Ask A Question</button></a>
+			<a href="account"><button id="sessionsnav" onclick="sessionstab()">My Account</button></a>
+			<button id="servicelogout" onclick="logout()">Logout</button>
+		</div>
+		
 		<div id="donatebody">
 			<div id="donatemask">
 			</div>

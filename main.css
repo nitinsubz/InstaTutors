@@ -1,7 +1,7 @@
 
 @font-face {
-    font-family: Gilroy-ExtraBold;
-    src: url("fonts/Gilroy-ExtraBold.otf") format("opentype");
+    font-family: GlacialIndifference-Bold;
+    src: url("fonts/GlacialIndifference-Bold.otf") format("opentype");
 }
 
 @font-face {
@@ -28,10 +28,86 @@ h6{
 	font-size: 22px;
 }
 h1 {
-	font-family: Gilroy-ExtraBold;
+	font-family: GlacialIndifference-Bold;
 }
 
 h1 strong {
+}
+
+
+/*pop up*/
+#popup {
+	position: fixed;
+	z-index: 99;
+	background-color: white;
+	height: 90vh;
+	overflow-y: scroll;
+	top: 5vh;
+	width: 90%;
+	left: 5%;
+	border-radius: 20px;
+	display: none;
+}
+
+#popupmask {
+	position: fixed;
+	z-index: 90;
+	background-color: #222;
+	opacity: 0.8;
+	height: 100vh;
+	width: 100%;
+	display: none;
+}
+
+#popup-close {
+	position: absolute;
+	top: 2vh;
+	right: 3%;
+	font-size: 40px;
+	color: white;
+	transition-duration: 0.2s;
+}
+#popup-close:hover {
+	color: #ccc;
+	cursor: pointer;
+}
+
+#popup-head {
+	background: linear-gradient(to right, #cb356b, #bd3f32);
+	padding: 60px 10% 30px 10%;
+	color: white;
+	text-align: center;
+}
+
+#popup-head h1 {
+	font-size: 60px;
+}
+
+#popup-head h3 {
+	font-size: 30px;
+}
+
+#popup-body {
+	padding: 30px 7% 30px 7%;
+}
+
+#popup-body h3 {
+	font-size: 25px;
+	padding: 10px 0px;
+}
+#popup-body p {
+	font-size: 18px;
+	line-height: 30px;
+}
+
+#popup-body img {
+	width: 100%;
+	border-radius: 5px;
+	box-shadow: 3px 3px 10px #aaa;
+}
+
+#popup-body .row {
+	padding: 50px 0px;
 }
 
 #phonenavlinks, #container {
@@ -83,6 +159,44 @@ h1 strong {
 	color: #30CFD0;
 }
 
+#logininfo {
+	background: linear-gradient(45deg, #04222d, #2e525f);
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 77;
+	padding: 10px 2%;
+	border-radius: 30px 0px 0px 0px;
+	display: none;
+	color: white;
+}
+
+#logininfo p {
+	font-size: 19px;
+	display: inline;
+}
+
+#logininfo a {
+	font-size: 19px;
+	padding-left: 30px;
+	transition-duration: 0.2s;
+	color: white;
+}
+
+#logininfo a:hover {
+	color: gold;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#sidelogout, #phonelogout {
+	display: none;
+}
+
+#phonelogout {
+	padding-bottom: 30px;
+}
+
 #menubar {
 	position: fixed;
 	top: 10px;
@@ -91,45 +205,37 @@ h1 strong {
 	font-size: 28px;
 	color: #999;
 	transition-duration: 0.2s;
-	padding: 10px 50px 10px 20px;
+	padding: 10px 18px 10px 20px;
 	border-radius: 30px;
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 230% 100%;
 	background-position: right;
 	color: white;
-	font-family: Gilroy-ExtraBold;
-}
-
-.bar11, .bar22 {
-	background-color: white;
-	height: 4px;
-	width: 20px;
-	position: fixed;
-	z-index: 70;
-	transition-duration: 0.2s;
-}
-
-.bar11 {
-	top: 32px;
-	left: 120px;
-}
-
-.bar22 {
-	top: 42px;
-	left: 120px;
+	font-family: GlacialIndifference-Bold;
+	display: none;
 }
 
 #menubar:hover {
 	background-position: left;
 	cursor: pointer;
+	padding-right: 13px;
 }
 
-#menubar:hover .bar11 {
-	top: 33px;
+#menubar .fas {
+	transition-duration: 0.2s;
+	margin-left: -2px;
 }
 
-#menubar:hover .bar22 {
-	top: 41px;
+#menubar #arrow1 {
+	margin-left: 0px;
+}
+
+#menubar:hover .fas {
+	margin-left: 1px;
+}
+
+#menubar:hover #arrow1 {
+	margin-left: 2px;
 }
 
 #versionnumber {
@@ -152,7 +258,7 @@ h1 strong {
 	position: fixed;
 	top: 0;
 	left: -400px;
-	padding: 70px 40px;
+	padding: 50px 40px;
 	z-index: 99;
 	transition-duration: 0.3s;
 	opacity: 0.5;
@@ -175,13 +281,18 @@ h1 strong {
 .sidebar a {
 	color: white;
 	display: block;
-	transition-duration: 0.2s;
-	font-family: Gilroy-ExtraBold;
+	transition-duration: 0.4s;
+	font-family: GlacialIndifference-Bold;
 }
 
 .sidebar a:hover {
-	transform: scale(1.02);
+	letter-spacing: 0.5px;
 	text-decoration: none;
+	cursor: pointer;
+}
+
+.letterspacing {
+	animation: letterspacing 1s ease 1;
 }
 
 .sidebar .border-bot {
@@ -191,21 +302,45 @@ h1 strong {
 }
 
 #mainlinks {
-	padding-bottom: 10px;
+	padding-bottom: 20px;
 }
 
 #mainlinks a {
-	font-size: 32px;
-	margin-bottom: 20px;
+	font-size: 28px;
+	margin-bottom: 12px;
 }
 
 #seclinks {
-	padding: 20px 0px;
+	padding: 15px 0px;
 }
 
 #seclinks a {
-	font-size: 26px;
-	margin-bottom: 17px;
+	font-size: 22px;
+	margin-bottom: 12px;
+}
+
+#aboutlinks {
+	max-height: 0px;
+	transition-duration: 0.3s;
+	overflow-y: hidden;
+}
+
+.toggleheight {
+	max-height: 280px;
+}
+
+#aboutcaret {
+	transition-duration: 0.2s;
+}
+
+.rotate180 {
+	transform: rotate(180deg);
+}
+
+#aboutlinks a {
+	font-size: 20px;
+	margin-bottom: 11px;
+	margin-left: 3%;
 }
 
 .socialmedia {
@@ -236,7 +371,7 @@ h1 strong {
 /*Index*/
 
 #indexhead {
-	padding: 120px 8% 0px 8%;
+	padding: 65px 8% 0px 8%;
 	text-align: center;
 	height: 100vh;
 }
@@ -248,16 +383,54 @@ h1 strong {
 #indeximg {
 	width: 400px;
 	transition-duration: 0.2s;
-	margin-bottom: 20px;
+	margin: 20px auto;
+	position: relative;
 }
+
+#indeximg #bigpart {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	transition-duration: 3s;
+}
+
+.rotater1 {
+	animation: rotatertwo 6s linear 1;
+}
+
+#indeximg #smallpart {
+	width: 90%;
+	position: absolute;
+	top: 0%;
+	margin-top: 22%;
+	left: 22%;
+	z-index: 50;
+	transition-duration: 3s;
+}
+
+.rotater2 {
+	animation: rotater 3s linear 2;
+}
+
+#indeximg:hover #bigpart {
+	transform: rotate(180deg);
+}
+
+#indeximg:hover #smallpart{
+	transform: rotate(360deg);
+}
+
 
 #indexhead h1 {
 	font-size: 70px;
 	color: #222;
-	margin-bottom: 30px;
-}
-
-#indexhead h1 {
+	display: block;
+	width: 100%;
+	margin-top: 210px;
+	line-height: 120px;
+	margin-bottom: 10px;
 	background: linear-gradient(135deg, #30CFD0, #330867);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 7s ease infinite;
@@ -298,7 +471,7 @@ h1 strong {
 	border-radius: 30px;
 	font-size: 24px;
 	transition-duration: 0.2s;
-	font-family: Gilroy-ExtraBold;
+	font-family: GlacialIndifference-Bold;
 }
 
 #headlink:hover {
@@ -346,7 +519,7 @@ h1 strong {
 	background-position: right;
 	border-radius: 30px;
 	transition-duration: 0.2s;
-	font-family: Gilroy-ExtraBold;
+	font-family: GlacialIndifference-Bold;
 }
 
 #bookasession a {
@@ -384,7 +557,7 @@ h1 strong {
 #info {
 	background: linear-gradient(black, #333);
 	overflow: hidden;
-	padding: 120px 10% 550px 10%;
+	padding: 120px 10% 530px 10%;
 	margin: 0;
 	color: white;
   	position: relative;
@@ -516,8 +689,9 @@ canvas {
 	padding: 50px 10% 70px 10%;
 }
 
-.carousel .item h3 {
+.carousel .item q {
 	font-size: 30px;
+	quotes: "“" "”";
 }
 
 .carousel-indicators {
@@ -782,8 +956,8 @@ canvas {
 		          font-size: 18px;
 		          display: block;
 		          box-sizing: border-box;
-		          width: 70%;
-		          margin-left: 15%;
+		          width: 80%;
+		          margin-left: 10%;
 		          padding: 8px;
 		          border-radius: 10px;
 		          color: #666;
@@ -792,8 +966,6 @@ canvas {
 		        }
 		        #ewf_subscriptionForm_crPzTSqBNl .inputs input:focus {
 		          box-shadow: 2px 2px 5px #aaa;
-		          width: 80%;
-		          margin-left: 10%;
 		        }
 		        #ewf_subscriptionForm_crPzTSqBNl .inputs {
 		          border-radius: 6px;
@@ -811,12 +983,13 @@ canvas {
 		        }
 		        #ewf_subscriptionForm_crPzTSqBNl input[type="submit"]:hover {
 		        	background-color: #30CFD0;
+		        	border: 1px solid #30CFD0;
 		        }
 
 #faq {
 	padding: 130px 10% 130px 10%;
 	margin-top: -60px;
-	background-color: #111620;
+	background: linear-gradient(20deg, #111620, black);
 	overflow-y: hidden;
 	-webkit-clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
   	clip-path: polygon(0 6%, 100% 0, 100% 100%, 0 94%);
@@ -835,17 +1008,6 @@ canvas {
 .faqsec a {
 	color: #30CFD0;
 	text-decoration: none;
-}
-
-.question {
-	font-size: 28px;
-	padding: 10px 0px;
-	transition-duration: 0.2s;
-}
-
-.answer {
-	font-size: 25px;
-	padding-left: 45px;
 }
 
 #plus {
@@ -926,6 +1088,7 @@ canvas {
 	padding: 20px 3%;
 	color: #333;
 	margin-left: 19px;
+	box-shadow: 2px 2px 10px #aaa;
 }
 
 .indexq:after {
@@ -953,6 +1116,7 @@ canvas {
 	padding: 20px 3%;
 	color: #333;
 	margin-left: 23%;
+	box-shadow: 2px 2px 10px #aaa;
 }
 
 .indexa:after {
@@ -976,6 +1140,7 @@ canvas {
 	padding: 110px 10% 80px 10%;
 	background: linear-gradient(-54deg, black 50%, #333 50%);
 	color: white;
+	background-position: fixed;
 }
 
 #applyhead h1 {
@@ -998,6 +1163,7 @@ canvas {
 #applybody {
 	background: linear-gradient(36deg, #999 50%, #eee 50%);
 	margin: 0px;
+	background-position: fixed;
 }
 
 #applyform {
@@ -1104,7 +1270,7 @@ canvas {
 	top: 0;
 	left: 0;
 	z-index: 30;
-	padding: 100px 8% 80px 8%;
+	padding: 100px 8% 40px 8%;
 }
 
 #aboutheadimg {
@@ -1113,7 +1279,7 @@ canvas {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 400px;
+	height: 360px;
 	background: linear-gradient(to right, black, #212664);
 	opacity: 0.94;
 }
@@ -1136,7 +1302,7 @@ canvas {
 	background: linear-gradient(-84deg, white 50%, #eee 50%);
 	background-size: 160% 100%;
 	background-position: 60%;
-	margin-top: 380px;
+	margin-top: 350px;
 	padding: 60px 8% 110px 8%;
 }
 
@@ -1163,6 +1329,10 @@ canvas {
 	display: none;
 }
 
+#aboutbody .fa-globe {
+	padding-top: 50px;
+}
+
 /*Session*/
 
 #mainbody {
@@ -1173,10 +1343,10 @@ canvas {
 
 #bookheader {
 	width: 100%;
-	padding: 130px 10% 110px 10%;
+	padding: 150px 10% 110px 10%;
 	text-align: center;
 	color: white;
-	background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+	background: linear-gradient(to right, #121f30, #212662);
 	overflow-y: hidden;
 	background-attachment: fixed;
 }
@@ -1198,7 +1368,7 @@ canvas {
 }
 
 #teamhead p {
-	font-size: 35px;
+	font-size: 28px;
 	padding: 15px 0px;
 }
 
@@ -1216,7 +1386,7 @@ canvas {
 
 #tutorapply {
 		position: fixed;
-		z-index: 91;
+		z-index: 40;
 		right: 5px;
 		top: 5px;
 		font-size: 24px;
@@ -1294,7 +1464,7 @@ canvas {
 	position: absolute;
 	top: 20px;
 	right: 30px;
-	font-size: 25px;
+	font-size: 35px;
 	color: #555;
 }
 
@@ -1325,15 +1495,26 @@ canvas {
 	cursor: pointer;
 }
 
-.tutor:hover img {
+.tutor:hover .tutorimg {
 	opacity: 0.8;
 	transform: scale(1.02);
 }
 
-.leader img, .tutor img {
+.leader img, .tutorimg {
 	width: 100%;
 	transition-duration: 0.2s;
 	border-radius: 100%;
+	filter: brightness(1.1);
+}
+
+#tutorsection {
+	padding-bottom: 200px;
+}
+
+.tutorimg {
+	background-size: 100%;
+	background-position: center center;
+  	background-repeat: no-repeat;
 }
 
 .leader h3, .tutor h3 {
@@ -1348,16 +1529,19 @@ canvas {
 .leader h5 {
 	font-size: 24px;
 	color: #330867;
+	margin: 0px 10px;
 }
 
 .leader h6 {
 	font-size: 18px;
 	color: #777;
+	display: block;
+	padding: 4px 0px;
 }
 
 #tutors {
-	padding: 70px 8% 30px 8%;
-	margin: 320px 8% 40px 8%;
+	padding: 70px 8% 0px 8%;
+	margin: 320px 8% 80px 8%;
 	width: 84%;
 	float: left;
 	position: relative;
@@ -1376,100 +1560,85 @@ canvas {
 
 .label {
 	border-radius: 20px;
-	padding: 6px 15px;
-	font-size: 16px;
-	line-height: 42px;
-	font-family: Gilroy-ExtraBold;
+	padding: 8px 16px;
+	font-size: 18px;
+	line-height: 46px;
+	margin: 0px 4px;
+	box-shadow: 3px 3px 10px #aaa;
+	font-family: GlacialIndifference-Bold;
+	color: white;
 }
 
 .math {
-	border: 2px solid #b63f36;
-	color: #b63f36;
+	background: #b63f36;
 }
 
 .physics {
-	border: 2px solid #5e92d8;
-	color: #5e92d8;
+	background: #5e92d8;
 }
 
 .bio {
-	border: 2px solid #5ed876;
-	color: #5ed876;
+	background: #5ed876;
 }
 
 .biology {
-	border: 2px solid #5ed876;
-	color: #5ed876;
+	background: #5ed876;
 }
 
 .chem {
-	border: 2px solid #3bffdd;
-	color: #3bffdd;
+	background: #3bffdd;
 }
 
 .chemistry {
-	border: 2px solid #3bffdd;
-	color: #3bffdd;
+	background: #3bffdd;
 }
 
 .writing {
-	border: 2px solid gold;
-	color: gold;
+	background: gold;
 }
 
 .web {
-	border: 2px solid #af46b3;
-	color: #af46b3;
+	background: #af46b3;
 }
 
 .webdev {
-	border: 2px solid #af46b3;
-	color: #af46b3;
+	background: #af46b3;
 }
 
 .java {
-	border: 2px solid #f983c3;
-	color: #f983c3;
+	background: #f983c3;
 }
 
 .python {
-	border: 2px solid #306998;
-	color: #306998;
+	background: #306998;
 }
 
 .business {
-	border: 2px solid #10174f;
-	color: #10174f;
+	background: #10174f;
 }
 
 .history {
-	border: 2px solid #274f32;
-	color: #274f32;
+	background: #274f32;
 }
 
 .spanish {
-	border: 2px solid salmon;
-	color: salmon;
+	background: salmon;
 }
 
 .economics {
-	border: 2px solid #7d7dd0;
-	color: #7d7dd0;
+	background: #7d7dd0;
 }
 
 .chinese {
-	border: 2px solid #ff4f3b;
-	color: #ff4f3b;
+	background: #ff4f3b;
 }
 
 .sat {
-	border: 2px solid #3d474b;
-	color: #3d474b;
+	background: #3d474b;
 }
 
 .act {
-	border: 2px solid #b85456;
-	color: #b85456;
+	background: #b85456;
 }
 
 .back2top {
@@ -1505,6 +1674,22 @@ canvas {
 
 #filter .dropdown-menu {
 	margin-left: 175px;
+}
+
+#filtercourse, #filtersubject {
+	float: left;
+	width: 45%;
+	margin-bottom: 30px;
+}
+
+#filter #filtercourse {
+	transition-duration: 0.2s;
+	opacity: 0;
+	margin-right: 10%;
+}
+
+#filter #filtercourse .dropdown-menu {
+	margin-left: 170px;
 }
 
 #filter .dropdown-item {
@@ -1589,7 +1774,7 @@ canvas {
 }
 
 #bookform .row {
-	padding-bottom: 30px;
+	padding-bottom: 40px;
 }
 
 #bookform .col-sm-3 {
@@ -1610,50 +1795,49 @@ canvas {
 	border-bottom: 3px solid #30CFD0;
 }
 
-#bookform .col-sm-9 #subject {
-	width: 72%;
-	float: left;
+#courserow {
+	display: none;
 }
 
-#bookform .col-sm-9 #subjectclear {
+#bookform .col-sm-9 #subject, #bookform .col-sm-9 #course {
+	width: 70%;
 	float: left;
-	width: 4%;
-	text-align: center;
-	font-size: 23px;
-}
-
-#subjectfielderror {
-	text-align: center;
-	color: red;
-	font-size: 18px;
-	float: left;
-	margin-left: 3%;
-}
-
-#bookform .col-sm-9 #subjectclear:hover {
-	color: red;
-	cursor: pointer;
+	margin-right: 2%;
 }
 
 #bookform .col-sm-9 #time {
 	outline: 0;
 	border-radius: 0;
+
 }
 
 #bookform .col-sm-9 .input-group {
 	outline: 0;
 }
 
-.col-sm-9 .dropdown {
-	float: left;
-	width: 24%;
+#responsetimediv {
+	display: none;
 }
 
-#subjectselector2 {
+#responsetime {
+	font-size: 30px;
+	text-align: center;
+	background-color: #cffdca;
+	padding: 15px 40px;
+	border-radius: 20px;
+}
+
+.col-sm-9 .dropdown {
+	float: left;
+	width: 28%;
+}
+
+#subjectselector2, #courseselector {
 	width: 100%;
 	text-align: center;
 	font-size: 18px;
 	margin-top: -5px;
+	transition-duration: 0.2s;
 }
 
 .col-sm-9 .dropdown {
@@ -1664,7 +1848,7 @@ canvas {
 }
 
 .col-sm-9 .dropdown-menu {
-	width: 90%;
+	width: 100%;
 }
 
 .col-sm-9 .dropdown-item {
@@ -1724,6 +1908,10 @@ canvas {
 	text-decoration: none;
 }
 
+#tutorspace p {
+	font-size: 20px;
+}
+
 .viewtutor {
 	display: inline-block;
 	padding-left: 30px;
@@ -1732,13 +1920,18 @@ canvas {
 	width: 450px;
 	transition-duration: 0.2s;
 	white-space: normal;
-	height: 390px;
+	height: 410px;
 }
 
-.viewtutor p {
+#tutorspace .viewtutor p {
 	padding-top: 15px;
 	width: 100%;
 	font-size: 14px;
+}
+
+.viewtutor strong {
+	font-size: 18px;
+	color: #212664;
 }
 
 .viewtutor:hover {
@@ -1748,10 +1941,12 @@ canvas {
 
 .viewtutor h2 {
 	font-size: 24px;
+	font-family: GlacialIndifference-Bold;
 }
 
 .viewtutor h4 {
 	font-size: 18px;
+	font-family: GlacialIndifference-Bold;
 }
 
 #submit, #submitapp {
@@ -1771,6 +1966,7 @@ canvas {
 	transition-duration: 0.2s;
 	text-decoration: none;
 	position: relative;
+	box-shadow: 3px 3px 10px #aaa;
 	z-index: 5;
 }
 
@@ -1797,18 +1993,17 @@ canvas {
 #footer {
 	width: 100%;
 	padding: 30px 10% 30px 10%; 
-	background-color: #24242f;
+	background: linear-gradient(45deg, #24242f, #01111f);
 }
 
 #footer img {
-	width: 25%;
-	margin-top: 20px;
+	display: none;
 }
 
 #footer h3 {
 	color: white;
 	font-size: 28px;
-	font-family: Gilroy-ExtraBold;
+	font-family: GlacialIndifference-Bold;
 }
 
 #footer a {
@@ -1913,6 +2108,8 @@ canvas {
 #confirmedbody {
 	padding: 100px 15%;
 	display: none;
+	position: relative;
+	z-index: 30;
 }
 
 #confirmedbody h1 {
@@ -1942,6 +2139,63 @@ canvas {
 #confirmedbody a:hover {
 	background-position: left;
 	text-decoration: none;
+}
+
+/*Courses*/
+#courseshead {
+	background: linear-gradient(30deg, #e93f6a, #212664);
+	padding: 100px 10% 120px 12%;
+	color: white;
+}
+
+#courseshead h1 {
+	font-size: 60px;
+}
+#courseshead h3 {
+	font-size: 26px;
+}
+
+#courseshead a {
+	color: #30CFD0;
+	transition-duration: 0.2s;
+}
+
+#courseshead a:hover {
+	color: #fcfcfc;
+	text-decoration: none;
+}
+
+#allcoursesbody {
+	background-color: #fcfcfc;
+}
+
+#coursesbody {
+	background-color: white;
+	margin: -90px 10% 0px 10%;
+	padding: 40px 4% 200px 4%;
+	border-radius: 30px 30px 0px 0px; 
+}
+
+#coursesbody h3 {
+	font-size: 25px;
+	padding: 5px 0px;
+}
+
+#coursesbody p {
+	font-size: 20px;
+	padding: 2px 10px;
+	color: #e93f6a;
+}
+
+#coursesbody h2 {
+	padding-top: 40px;
+	font-size: 30px;
+}
+
+#coursesbody h4 {
+	font-size: 27px;
+	color: #e93f6a;
+	padding: 10px;
 }
 
 /*Leadership */
@@ -2246,7 +2500,6 @@ canvas {
   text-align: center;
   text-decoration: none;
   color: white;
-
 }
 
 #login:hover {
@@ -2271,7 +2524,7 @@ canvas {
 }
 
 #tutorsessionshead {
-	padding: 140px 10% 90px 10%;
+	padding: 150px 10% 90px 10%;
 	background: linear-gradient(to left, #212664, #330867);
 	color: white;
 }
@@ -2286,18 +2539,22 @@ canvas {
 	margin-top: -50px;
 }
 
+#norequests {
+	padding: 80px 0px;
+	font-size: 30px;
+	text-align: center;
+}
+
 #tutormysessions {
 	background-color: #ddd;
-	display: none;
 }
 
 #tutorallquestions {
-	display: none;
 	background-color: #ddd;
 }
 
 #tutorquestionhead {
-	padding: 120px 10% 90px 10%;
+	padding: 150px 10% 90px 10%;
 	background: linear-gradient(to right, #212664, #330867);
 	text-align: center;
 	color: white;
@@ -2319,18 +2576,11 @@ canvas {
 }
 
 #tutormysessions h1 {
-	background-color: #212664;
-	padding: 140px 10% 110px 10%;
+	background: linear-gradient(30deg, #e93f6a, #212664);
+	padding: 160px 10% 110px 10%;
 	color: white;
 	font-size: 60px;
 	text-align: center;
-}
-
-#tutoraccount {
-	padding: 40px 3% 70px 3%;
-	margin: -50px 9% 0px 9%;
-	background-color: white;
-	border-radius: 20px 20px 0px 0px;
 }
 
 #tutoraccount h3 {
@@ -2371,13 +2621,81 @@ canvas {
 	padding-bottom: 20px;
 }
 
+#teacherphoto {
+	position: relative;
+}
+
+#selectphoto {
+	padding: 40px 7%;
+	margin: 20px 0px;
+	width: 100%;
+	border-radius: 20px;
+	background-color: #eee;
+	display: none;
+}
+
+#selectphoto h4 {
+	font-size: 20px;
+	padding: 0px;
+}
+
+#selectphoto input {
+	padding: 0px 0px;
+	margin-bottom: 15px;
+}
+
+#submitfile {
+	font-size: 18px;
+	padding: 4px 20px;
+	border: 0;
+	background-color: #30CFD0;
+	color: white;
+	border-radius: 5px;
+	transition-duration: 0.2s;
+}
+
+#submitfile:hover {
+	background-color: lightblue;
+}
+
+#profilephoto {
+	transition-duration: 0.2s;
+	top: 0;
+	display: none;
+	margin-top: 30px;
+	width: 60%;
+	border-radius: 5px 5px 0px 0px;
+}
+
+#changephoto {
+	border-radius: 0px 0px 5px 5px;
+	font-size: 17px;
+	padding: 7px 0px;
+	text-align: center;
+	width: 60%;
+	color: white;
+	background-color: #444;
+	z-index: 25;
+	transition-duration: 0.2s;
+	display: none;
+}
+
+#changephoto:hover {
+	background-color: #30CFD0;
+	cursor: pointer;
+}
+
+#changephoto:hover #profilephoto {
+	opacity: 0.9;
+}
+
 #tutorappearin {
-	margin-bottom: 90px;
+	margin: 20px 0px 50px 0px;
 	width: 100%;
 }
 
 #tutorappearin input {
-	width: 80%;
+	width: 85%;
 	border: 0;
 	border-bottom: 1px solid #ccc;
 	font-size: 20px;
@@ -2452,9 +2770,15 @@ canvas {
 	line-height: 50px;
 }
 
+.speciallabel {
+	border-width: 0px;
+	padding: 8px 16px;
+	box-shadow: 7px 7px 20px #555;
+	transform: scale(1.15);
+}
+
 #tutormysessionsbody, #tutorpastsessionsbody {
 	padding: 20px 0px 30px 0px;
-	max-height: 700px;
 	width: 100%;
 	margin-bottom: 20px;
 	overflow: auto;
@@ -2467,7 +2791,7 @@ canvas {
 	border-radius: 20px;
 	margin: 0px 5% 20px 5%;
 	background-color: white;
-	box-shadow: 5px 5px 20px #666;
+	box-shadow: 2px 2px 6px #666;
 	transition-duration: 0.2s;
 	position: relative;
 }
@@ -2540,7 +2864,7 @@ canvas {
 	color: green;
 }
 
-#emailmodal {
+#emailmodal, #coursesmodal {
 	position: fixed;
 	width: 90%;
 	top: -100vh;
@@ -2548,12 +2872,14 @@ canvas {
 	border-radius: 30px;
 	left: 5%;
 	z-index: 99;
-	padding: 60px 6%;
+	padding: 8vh 6%;
 	opacity: 0;
 	transition-duration: 0.4s;
+	max-height: 90vh;
+	overflow: scroll;
 }
 
-#emailmodalmask {
+#emailmodalmask, #coursesmodalmask {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -2565,28 +2891,40 @@ canvas {
 	opacity: 0;
 }
 
-#emailmodal h2 {
+#emailmodal h2, #coursesmodal h2 {
 	font-size: 35px;
+	padding-bottom: 20px;
 }
 
-#emailmodal h3 {
+#emailmodal h3, #coursesmodal h6 {
 	padding: 0px;
 	font-size: 22px;
+}
+
+#coursemodal i {
+	font-size: 16px;
+	color: #666;
 }
 
 #emailto {
 	color: #30CFD0;
 }
 
-#emailmodal h5 {
+#emailmodal h5, #coursesmodal h5 {
 	position: absolute;
 	top: 20px;
 	right: 3%;
 	font-size: 60px;
 	color: #444;
+	transition-duration: 0.2s;
 }
 
 #emailmodal h5:hover {
+	color: red;
+	cursor: pointer;
+}
+
+#coursesmodal h5:hover {
 	color: red;
 	cursor: pointer;
 }
@@ -2604,6 +2942,41 @@ canvas {
 	border: 1px solid #30CFD0;
 }
 
+#courseinputs {
+	padding: 10px 5%;
+	margin: 20px 0px;
+	background-color: #fcfcfc;
+	border-radius: 30px;
+	max-height: 40vh;
+	overflow-y: scroll;
+}
+
+#courseinputs h3 {
+	font-size: 22px;
+}
+
+.courseinput {
+	font-size: 18px;
+	color: #666;
+}
+
+#courseinputs p {
+	font-size: 16px;
+	padding: 0px;
+	transition-duration: 0.2s;
+}
+
+#courseinputs p:hover {
+	color: #30CFD0;
+	cursor: pointer;
+}
+
+.selected {
+	font-size: 18px;
+	padding: 1px;
+	color: #30CFD0;
+}
+
 #tutormysessionsbody .tutorreq:hover {
 	box-shadow: 0;
 	background-color: white;
@@ -2611,39 +2984,86 @@ canvas {
 
 #tutorpastsessionsbody .tutorreq:hover {
 	box-shadow: 0;
-	background-color: lightblue;
+	background-color: #d6f4ee;
 }
 
-#servicenav {
-	background: linear-gradient(30deg, #30CFD0, #212333);
+#servicenav, #tutornav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 15px 2%;
+	background: linear-gradient(80deg, #0d0f1d, black);
+	text-align: right;
+	z-index: 50;
+	opacity: 0.95;
+}
+
+#servicenav a, #tutornav a {
+	background-color: transparent;
+	border: 0;
+	font-size: 22px;
+	padding: 0px 20px;
+	color: white;
+	transition-duration: 0.2s;
+	font-family: GlacialIndifference-Bold;
+}
+
+#servicenav a:hover {
+	color: #a8e4eb;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#tutornav a:hover {
+	color: #a8e4eb;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#servicenav .active, #tutornav .active {
+	color: #a8e4eb;
+}
+
+#loginnav {
+	background: linear-gradient(135deg, #30CFD0, #330867);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 7s ease infinite;
+	-moz-animation: Gradient 7s ease infinite;
+	animation: Gradient 7s ease infinite;
 	position: fixed;
 	top: 10px;
 	right: 10px;
 	font-size: 30px;
 	color: white;
 	z-index: 60;
-	padding: 10px 20px;
+	padding: 10px 18px;
 	border-radius: 60px;
 	transition-duration: 0.4s;
-	font-family: Gilroy-ExtraBold;
+	font-family: GlacialIndifference-Bold;
+	display: none;
 }
 
-#servicenav:hover {
+#loginnav:hover {
 	top: -280px;
 	right: -250px;
 	padding: 280px;
 	border-radius: 100%;
 }
 
-#servicenav:hover i {
+#sidequestion, #sideaccount {
+	display: none;
+}
+
+#loginnav:hover i {
 	transition-duration: 0.3s;
 }
 
-#servicenav:hover i {
+#loginnav:hover i {
 	opacity: 0;
 }
 
-#servicenav button:hover {
+#loginnav button:hover {
 	transform: scale(1.1);
 }
 
@@ -2658,118 +3078,50 @@ canvas {
 	opacity: 0;
 	right: -50px;
 	transition-duration: 0.4s;
-	font-family: Gilroy-ExtraBold;
+	font-family: GlacialIndifference-Bold;
 }
 
-#servicenav:hover #booknav {
+#questionnav {
+	transition-duration: 0.46s;
+}
+#sessionsnav {
+	transition-duration: 0.52s;
+}
+#servicelogout {
+	transition-duration: 0.58s;
+}
+
+#loginnav:hover #booknav {
 	right: 90px;
 	top: 25px;
 	opacity: 1;
 	z-index: 99;
 }
 
-#servicenav:hover #questionnav {
+#loginnav:hover #questionnav {
 	right: 80px;
 	top: 90px;
 	opacity: 1;
 	z-index: 99;
 }
 
-#servicenav:hover #sessionsnav {
+#loginnav:hover #sessionsnav {
 	right: 60px;
 	top: 155px;
 	opacity: 1;
 	z-index: 99;
 }
 
-#servicenav:hover #servicelogout {
+#loginnav:hover #servicelogout {
 	right: 35px;
 	top: 210px;
 	opacity: 1;
 	z-index: 99;
 }
 
-#tutornav {
-	background: linear-gradient(30deg, #30CFD0, #212333);
-	position: fixed;
-	top: 10px;
-	right: 10px;
-	font-size: 30px;
-	color: white;
-	z-index: 60;
-	padding: 10px 20px;
-	border-radius: 60px;
-	transition-duration: 0.4s;
-}
-
-#tutornav:hover {
-	top: -280px;
-	right: -250px;
-	padding: 280px;
-	border-radius: 100%;
-}
-
-#tutornav:hover i {
-	transition-duration: 0.3s;
-}
-
-#tutornav:hover i {
-	opacity: 0;
-}
-
-#tutornav button:hover {
-	transform: scale(1.1);
-}
-
-#tutorbooknav, #tutorquestionsnav, #tutorsessionsnav, #tutorlogout {
-	position: fixed;
-	z-index: 0;
-	color: white;
-	background-color: transparent;
-	border: 0;
-	font-size: 25px;
-	top: -100px;
-	opacity: 0;
-	right: -50px;
-	transition-duration: 0.4s;
-	font-family: Gilroy-ExtraBold;
-}
-
-#tutornav:hover #tutorbooknav {
-	right: 120px;
-	top: 25px;
-	opacity: 1;
-	z-index: 99;
-}
-
-#tutornav:hover #tutorquestionsnav {
-	right: 100px;
-	top: 90px;
-	opacity: 1;
-	z-index: 99;
-}
-
-#tutornav:hover #tutorsessionsnav {
-	right: 70px;
-	top: 155px;
-	opacity: 1;
-	z-index: 99;
-}
-
-#tutornav:hover #tutorlogout {
-	right: 40px;
-	top: 210px;
-	opacity: 1;
-	z-index: 99;
-}
-
-#sessionstab, #questiontab {
-	display: none;
-}
-
 #questionheader {
-	padding: 130px 10% 80px 10%;
-	background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+	padding: 150px 10% 80px 10%;
+	background: linear-gradient(to right, #464b86, #0082c8, #0082c8, #1d203b);
 	text-align: center;
 	color: white;
 }
@@ -2806,6 +3158,7 @@ canvas {
 	margin: 10px 5px;
 	height: 200px;
 	width: 90%;
+	font-size: 18px;
 	outline: 0;
 	display: block;
 }
@@ -2851,7 +3204,7 @@ canvas {
 .tuteequestion, .tutorquestion {
 	border-radius: 30px;
 	padding: 30px;
-	background-color: #eee;
+	background-color: #fbfbfb;
 	margin: 30px 0px;
 	position: relative;
 	z-index: 3;
@@ -2887,7 +3240,7 @@ canvas {
 
 #sessionsheader {
 	text-align: center;
-	padding: 130px 10% 100px 10%;
+	padding: 150px 10% 100px 10%;
 	background: linear-gradient(to right, #cb356b, #bd3f32);
 	color: white;
 }
@@ -2900,9 +3253,9 @@ canvas {
 	font-size: 30px;
 }
 
-#account {
+#account, #tutoraccount {
 	padding: 0px 0% 70px 0%;
-	margin: -70px 9% 0px 9%;
+	margin: -63px 9% 0px 9%;
 	background-color: white;
 	border-radius: 20px 20px 0px 0px;
 }
@@ -2913,14 +3266,14 @@ canvas {
 	padding-bottom: 10px;
 }
 
-#account .nav-link {
+#account .nav-link, #tutoraccount .nav-link {
 	font-size: 22px;
 	padding: 15px 30px;
 	border-radius: 20px 20px 0px 0px;
 	color: #666;
 }
 
-#account2, #points {
+#account2, #points, #tutorsessions-tab, #tutoraccount-tab {
 	padding: 40px 6%;
 }
 
@@ -2965,31 +3318,56 @@ canvas {
 	display: none;
 }
 
-#addsubject, #matchtutors, #submitBio, #invitefriends button, #tutorinvitefriends button, #sendstudentemail {
+.butt {
 	background: linear-gradient(to right, #330867, #30CFD0);
 	background-size: 200% 100%;
 	background-position: right;
 	transition-duration: 0.2s;
 	text-align: center;
+	border: 0px;
 	border-radius: 30px;
 	padding: 13px 40px;
 	font-size: 22px;
 	color: white;
 	font-weight: 500;
+	box-shadow: 3px 3px 10px #aaa;
 }
 
 #invitefriends button {
 	background: linear-gradient(to right, #cb356b, #bd3f32);
-	background-size: 200% 100%;
-	background-position: right;
 }
 
 #invitefriends, #tutorinvitefriends {
 	padding: 10px 0px 30px 0px;
 }
 
-#sendstudentemail:hover {
+#sendstudentemail, #sendstudentrecapemail {
+	display: none;
+}
+
+.butt:hover {
 	background-position: left;
+}
+
+#tutorcourses h5 {
+	margin-top: -20px;
+	font-size: 20px;
+	margin-bottom: 30px;
+}
+
+#tutorcoursesarea {
+	padding: 0px 0px 20px 0px;
+	margin-top: -15px;
+}
+
+#tutorcourses p {
+	font-size: 17px;
+	padding: 6px 0px;
+	color: #1c9bc5;
+}
+
+#tutorcourses strong {
+	color: black;
 }
 
 #invitefriends p, #tutorinvitefriends p {
@@ -3012,14 +3390,6 @@ canvas {
 #tutorinvitefriends input:focus {
 	border-bottom: 2px solid #30CFD0;
 	outline: 0;
-}
-
-#invitefriends button:hover {
-	background-position: left;
-}
-
-#tutorinvitefriends button:hover {
-	background-position: left;
 }
 
 #inviteerror, #tutorinviteerror {
@@ -3204,11 +3574,7 @@ canvas {
 }
 
 .great {
-	border-left: 6px solid #24dc63;
-}
-
-.good {
-	border-left: 3px solid #30CFD0;
+	border-left: 6px solid #30CFD0;
 }
 
 .mytutor h2 {
@@ -3246,7 +3612,7 @@ canvas {
 #sessionscount, #tutorsessionscount {
 	display: inline;
 	margin-top: 10px;
-	padding: 7px 20px 12px 20px; 
+	padding: 8px 18px 8px 18px; 
 	font-size: 23px;
 	float: right;
 	color: white;
@@ -3258,7 +3624,7 @@ canvas {
 	padding: 20px 4%;
 	margin: 0px 4% 20px 4%;
 	border-radius: 20px;
-	box-shadow: 5px 5px 20px #666;
+	box-shadow: 2px 2px 6px #666;
 	position: relative;
 }
 
@@ -3267,7 +3633,7 @@ canvas {
 }
 
 .req h4 {
-	font-size: 24px;
+	font-size: 21px;
 }
 
 .cancel, .star {
@@ -3276,6 +3642,7 @@ canvas {
 	position: absolute;
 	top: 10px;
 	right: 20px;
+	transition-duration: 0.2s;
 }
 
 .star:hover {
@@ -3289,11 +3656,11 @@ canvas {
 }
 
 .green {
-	background-color: lightgreen;
+	background-color: #cffdca;
 }
 
 .lightblue {
-	background-color: lightblue;
+	background-color: #d6f4ee;
 }
 
 .green .cancel {
@@ -3334,8 +3701,9 @@ canvas {
 
 #stars .fas {
 	font-size: 30px;
-	margin: 0px 5px;
+	padding: 0px 5px;
 	color: #444;
+	transition-duration: 0.2s;
 }
 
 #stars .fas:hover {
@@ -3355,6 +3723,11 @@ canvas {
 #info_div #infoerrors {
 	font-size: 20px;
 	color: red;
+}
+
+#info_div select {
+	margin-bottom: 20px;
+	font-size: 18px;
 }
 
 #email_div {
@@ -3377,7 +3750,7 @@ canvas {
 	font-size: 28px;
 }
 
-#email_div a, #info_div a, #reset_div a {
+#email_div a, #submitinfo, #reset_div a {
 	font-size: 22px;
 	padding: 12px 0px;
 	display: block;
@@ -3397,7 +3770,7 @@ canvas {
 	cursor: pointer;
 }
 
-#info_div a:hover {
+#submitinfo:hover {
 	background-position: left;
 	text-decoration: none;
 	cursor: pointer;
@@ -3475,26 +3848,26 @@ canvas {
 }
 
 #infomodify {
-	padding: 10px 2%;
-	font-size: 18px;
+	padding: 5px 2% 5px 1%;
+	font-size: 22px;
 }
 
 #infomodify input {
-	font-size: 18px;
-	margin: 5px 0px 15px 0px;
-	border-radius: 5px;
-	border: 1px solid #ccc;
+	font-size: 22px;
+	margin: -5px 0px 13px 5px;
+	border: 0;
+	border-bottom: 1px solid #ccc;
 }
 
 #infomodify input:focus {
 	outline: 0;
-	border: 1px solid #30CFD0;
+	border-bottom: 1px solid #30CFD0;
 }
 
 #submitnewinfo {
 	background-color: #212664;
 	padding: 5px 30px;
-	border-radius: 10px;
+	border-radius: 25px;
 	font-size: 20px;
 	color: white;
 	border: 0;
@@ -3508,6 +3881,7 @@ canvas {
 #leaderboard {
 	padding: 0px 2%;
 	font-size: 20px;
+	border-radius: 5px;
 }
 
 #leaderboard thead {
@@ -3581,6 +3955,40 @@ canvas {
     100% {
       opacity: 1;
       -webkit-transform: translateY(0%);
+    }
+  }
+
+  @keyframes rotater {
+    0% {
+      transform: rotate(0deg);
+    } 
+    100% {
+       transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes rotater {
+    0% {
+      transform: rotate(0deg);
+    } 
+    100% {
+       transform: rotate(360deg);
+    }
+  }
+
+  @keyframes rotatertwo {
+    0% {
+      transform: rotate(0deg);
+    } 
+    100% {
+       transform: rotate(-360deg);
+    }
+  }
+  @-webkit-keyframes rotatertwo {
+    0% {
+      transform: rotate(0deg);
+    } 
+    100% {
+       transform: rotate(-360deg);
     }
   }
 
@@ -3718,14 +4126,18 @@ canvas {
 	  }
 
 	#phonenavlinks {
-	    background-color: white;
-	    padding: 20px 10px 30px 10px;
+		background-color: white;
+	    padding: 20px 0px;
+	    opacity: 0;
 	    position: fixed;
 	    top: 0;
 	    left: 0;
 	    width: 100%;
 	    z-index: 88;
-	    display: none;
+	    max-height: 0px;
+	    overflow-y: hidden;
+	    display: block;
+	    transition-duration: 0.4s;
 	  }
 
 	.navig2 {
@@ -3743,6 +4155,7 @@ canvas {
 
 	.navig2 a:hover {
 			color: #30CFD0;
+			cursor: pointer;
 		}
 
 	#indexlogout {
@@ -3765,6 +4178,7 @@ canvas {
 	#indexhead h1 {
 		font-size: 35px;
 		margin-bottom: 25px;
+		line-height: 45px;
 	}
 
 	#indexhead h1 strong {
@@ -3792,7 +4206,7 @@ canvas {
 	}
 
 	#info {
-		padding: 530px 10% 240px 10%;
+		padding: 530px 10% 220px 10%;
 		color: white;
 	  	position: relative;
 	  	z-index: 2;
@@ -3949,7 +4363,7 @@ canvas {
 		font-size: 25px;
 	}
 
-	#email_div a, #info_div a {
+	#email_div a, #submitinfo {
 		font-size: 20px;
 		padding: 10px 0px;
 		margin: 10px auto;
@@ -4003,45 +4417,47 @@ canvas {
 		padding: 10px 20px;
 		font-size: 20px;
 		border-radius: 0px 0px 0px 20px;
+		position: relative;
+		z-index: 99;
+	}
+
+	#loginnav {
+		transform: scale(0);
 	}
 
 	#servicenav, #tutornav {
 		background: #eee;
 		bottom: 0;
-		top: 80%;
+		top: 90%;
 		border-radius: 0;
 		width: 100%;
 		right: 0;
 		left: 0;
+	}
+
+	#servicenav, #tutornav {
+		padding: 0;
+	}
+
+	#servicenav a, #tutornav a {
+		font-size: 18px;
+		color: #212664;
+		padding: 0;
+		margin: 0;
+		background-color: #eee;
+		text-align: center;
+		padding-top: 20px;
+	}
+
+	#servicenav a.active, #tutornav a.active {
+		color: #330867;
 	}
 
 	#servicenav i, #tutornav i {
 		display: none;
 	}
 
-	#servicenav:hover {
-		background: #eee;
-		bottom: 0;
-		border-radius: 0;
-		width: 100%;
-		right: 0;
-		left: 0;
-		top: 80%;
-		padding: 0;
-	}
-
-	#tutornav:hover {
-		background: #eee;
-		bottom: 0;
-		border-radius: 0;
-		width: 100%;
-		right: 0;
-		left: 0;
-		top: 80%;
-		padding: 0;
-	}
-
-	#booknav, #questionnav, #sessionsnav, #servicelogout, #tutorbooknav, #tutorquestionsnav, #tutorsessionsnav, #tutorlogout {
+	#booknav2, #questionnav2, #sessionsnav2, #servicelogout2, #tutorbooknav, #tutorquestionsnav, #tutorsessionsnav, #tutorlogout {
 		position: fixed;
 		color: #333;
 		font-size: 18px;
@@ -4053,54 +4469,20 @@ canvas {
 		padding: 0;
 		z-index: 99;
 		opacity: 1;
+		color: black;
 	}
 
-	#booknav, #questionnav, #tutorbooknav, #tutorquestionsnav {
-		top: 75%;
+	#booknav2, #questionnav2, #tutorbooknav, #tutorquestionsnav {
+		top: 80%;
+		padding: 0;
 	}
 
-	#questionnav, #servicelogout, #tutorquestionsnav, #tutorlogout {
+	#questionnav2, #servicelogout2, #tutorquestionsnav, #tutorlogout {
 		left: 50%;
 	}
 
-	#sessionsnav, #servicelogout, #tutorlogout, #tutorsessionsnav {
+	#sessionsnav2, #servicelogout2, #tutorlogout, #tutorsessionsnav {
 		top: 90%;
-	}
-
-	#servicenav:hover #booknav {
-		top: 75%;
-	}
-
-	#servicenav:hover #questionnav {
-		top: 75%;
-		left: 50%;
-	}
-
-	#servicenav:hover #sessionsnav {
-		top: 90%;
-	}
-
-	#servicenav:hover #servicelogout {
-		top: 90%;
-		left: 50%;
-	}
-
-	#tutornav:hover #tutorbooknav {
-		top: 75%;
-	}
-
-	#tutornav:hover #tutorquestionsnav {
-		top: 75%;
-		left: 50%;
-	}
-
-	#tutornav:hover #tutorsessionsnav {
-		top: 90%;
-	}
-
-	#tutornav:hover #tutorlogout {
-		top: 90%;
-		left: 50%;
 	}
 
 	#bookform {
@@ -4152,11 +4534,11 @@ canvas {
 	}
 
 	.req h2 {
-		font-size: 27px;
+		font-size: 24px;
 	}
 
 	.req h4 {
-		font-size: 20px;
+		font-size: 18px;
 	}
 
 	.cancel {
@@ -4196,8 +4578,7 @@ canvas {
 	}
 
 	#tutormysessions h1 {
-		background-color: #212664;
-		padding: 100px 7% 70px 7%;
+		padding: 100px 7% 100px 7%;
 		font-size: 38px;
 	}
 
@@ -4216,7 +4597,7 @@ canvas {
 	}
 
 	.tutorreq h4 {
-		font-size: 18px;
+		font-size: 16px;
 	}
 
 	#teamnavbar {
@@ -4226,9 +4607,10 @@ canvas {
 	#tutorapply {
 		font-size: 18px;
 		top: 0;
-		right: 0;
+		left: 0;
+		right: 40%;
 		padding: 10px 20px;
-		border-radius: 0px 0px 0px 20px;
+		border-radius: 0px 0px 20px 0px;
 	}
 
 	#teamhead {
@@ -4273,6 +4655,16 @@ canvas {
 		padding: 30px 6%;
 	}
 
+	#tutors h4 {
+		font-size: 30px;
+	}
+
+	#teamtutorcount {
+		font-size: 22px;
+		padding: 7px 15px;
+		margin: 0px 7px;
+	}
+
 	.leader {
 		padding: 20px 0px;
 	}
@@ -4298,23 +4690,23 @@ canvas {
 		margin-left: 0px;
 	}
 
-	#bookform .col-sm-9 #subject {
+	#bookform .col-sm-9 #subject, #bookform .col-sm-9 #course {
 		width: 90%;
 		float: left;
 	}
 
-	#bookform .col-sm-9 #subjectclear {
+	#bookform .col-sm-9 #subjectclear, #bookform .col-sm-9 #courseclear {
 		width: 10%;
 		float: left;
 	}
 
 	.col-sm-9 .dropdown {
 		float: left;
-		width: 50%;
-		margin-top: 20px;
+		width: 80%;
+		margin-top: 10px;
 	}
 
-	#subjectselector2 {
+	#subjectselector2, #courseselector {
 		width: 100%;
 		text-align: center;
 		font-size: 18px;
@@ -4334,7 +4726,7 @@ canvas {
 		font-size: 24px;
 	}
 
-	#resetPass2, #addsubject, #matchtutors {
+	.butt {
 		padding: 10px 20px;
 		font-size: 18px;
 		color: white;
@@ -4404,7 +4796,7 @@ canvas {
 	}
 
 	#menubar {
-		display: none;
+		transform: scale(0);
 	}
 
 	#footer {
@@ -4465,7 +4857,12 @@ canvas {
 	}
 
 	#testimonials {
-		padding: 80px 7%;
+		padding: 80px 5%;
+	}
+
+	.carousel-indicators li {
+		width: 12px;
+		transition-duration: 0.2s;
 	}
 
 	#testimonials h1 {
@@ -4473,12 +4870,12 @@ canvas {
 	}
 
 	.carousel .item {
-		padding: 10px 10% 30px 10%;
+		padding: 10px 2% 30px 2%;
 	}
 
-	.carousel .item h3 {
+	.carousel .item q {
 		font-size: 20px;
-		padding: 20px 15% 10px 15%;
+		padding: 30px 13% 20px 13%;
 	}
 
 	.carousel-control.left, .carousel-control.right {
@@ -4507,10 +4904,6 @@ canvas {
 	canvas {
 		transform: scale(0);
 		display: none;
-	}
-
-	#tutoraccount {
-		padding: 20px 3% 40px 3%;
 	}
 
 	#tutoraccount h3 {
@@ -4850,17 +5243,21 @@ canvas {
 	  	margin-top: 50px;
 	}
 
+	#tutoraccountinfo {
+		padding-bottom: 40px;
+	}
+
 	#tutoraccountinfo h4 {
 		font-size: 19px;
 		margin: -10px 0px 20px 5px;
 	}
 
-	#account .nav-link {
+	#account .nav-link, #tutoraccount .nav-link {
 		font-size: 18px;
 		padding: 10px 10px;
 	}
 
-	#account2, #points {
+	#account2, #points, #tutorsessions-tab, #tutoraccount-tab {
 		padding: 30px 7%;
 	}
 
@@ -4886,6 +5283,10 @@ canvas {
 
 	.tutorreq .fas {
 		display: none;
+	}
+
+	.tutorreq .fa-check-circle {
+		display: block;
 	}
 
 	#questionbody p {
@@ -4916,6 +5317,100 @@ canvas {
 		padding: 5px 3% 50px 3%;
 		margin: -40px 5% 0px 5%;
 	}
+
+
+
+	/*Temporary*/
+	#temporary {
+		padding: 30px 8%;
+	}
+
+	#temporary h1 {
+		font-size: 30px;
+	}
+
+	#temporary h5 {
+		font-size: 18px;
+		padding: 10px 0px;
+		color: #666;
+	}
+
+	#socialmedias {
+		font-size: 18px;
+		color: #666;
+		float: left;
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	#socialmedias .fab {
+		font-size: 40px;
+		margin: 10px 5px;
+	}
+
+	#profilephoto {
+		width: 100%;
+	}
+
+	#changephoto {
+		width: 100%;
+	}
+
+	#tutorcourses h5 {
+		margin-top: -10px;
+		font-size: 18px;
+		margin-bottom: 30px;
+	}
+
+	#tutorcourses p {
+		font-size: 15px;
+		padding: 4px 0px;
+		color: #1c9bc5;
+	}
+
+	#logininfo {
+		display: none;
+		transform: scale(0);
+	}
+
+	#courseshead {
+		background: linear-gradient(30deg, #e93f6a, #212664);
+		padding: 60px 10% 100px 10%;
+		color: white;
+	}
+
+	#courseshead h1 {
+		font-size: 38px;
+	}
+	#courseshead h3 {
+		font-size: 18px;
+	}
+
+	#coursesbody {
+		background-color: white;
+		margin: -40px 6% 0px 6%;
+		padding: 2px 6% 100px 6%;
+		border-radius: 30px 30px 0px 0px; 
+	}
+
+	#coursesbody h3 {
+		font-size: 22px;
+	}
+
+	#coursesbody p {
+		font-size: 17px;
+		padding: 1px 5px;
+	}
+
+	#coursesbody h2 {
+		padding-top: 20px;
+		font-size: 25px;
+	}
+
+	#coursesbody h4 {
+		font-size: 22px;
+	}
+
 }
 
 

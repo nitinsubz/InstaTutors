@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<title>InstaTutors</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="icon" href="images/logo.png">
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,800" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+<body>
+	<div id="menubar" onclick="opensidenav()">
+		MENU <div class="bar11"></div><div class="bar22"></div>
+	</div>
+
+	<div class="sidebar">
+		<div class="sidecancel" onclick="closesidenav()">X</div>
+		<div id="mainlinks">
+			<a href="index">HOME</a>
+			<a href="login" id="sidelogin">LOGIN or SIGNUP</a>
+		</div>
+		<div class="border-bot"></div>
+		<div id="seclinks">
+			<a href="about">About Us</a>
+			<a href="tutors">Tutors</a>
+			<a href="donate">Donate</a>
+			<a href="leadership">Leadership</a>
+			<a href="apply">Apply to Tutor</a>
+		</div>
+		<div class="socialmedia">
+			<a href="https://www.facebook.com/instatutorsofficial/"><i class="fab fa-facebook-square"></i></a>
+			<a href="https://www.instagram.com/instatutors/"><i class="fab fa-instagram"></i></a>
+		</div>
+	</div>
+	<div class="sidemask" onclick="closesidenav()">
+	</div>
+
+		<div class="slideright" id="container1" onclick="rotate(this)">
+			<div class="bar1">
+			</div>
+			<div class="bar2">
+			</div>
+		</div>
+		<div id="phonenavlinks">
+			<li class="navig2"><a href="index">Home</a></li>
+			<li class="navig2"><a href="about">About Us</a></li>
+			<li class="navig2"><a href="tutors">Tutors</a></li>
+			<li class="navig2"><a href="leadership">Leadership</a></li>
+			<li class="navig2"><a href="donate">Donate</a></li>
+			<li class="navig2"><a href="login" id="login2">Login or Signup</a></li>
+		</div>
+		<div id="applybody">
+		<div id="applyhead">
+			<h1><strong>APPLY</strong> To Become a Tutor!</h1>
+			<h3>Please read the tutor requirements <a href="pdfs/tutorrequirements.pdf">here</a>.</h3>
+		</div>
+			<div id="applyform">
+				<h3>Personal Information</h3>
+				<div class="row">
+					<div class="col-sm-2">
+						Name:
+					</div>
+					<div class="col-sm-10">
+						<input type="name" placeholder="Enter your FULL name..." id="applyname" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2">
+						Email:
+					</div>
+					<div class="col-sm-10">
+						<input type="email" placeholder="Enter a Valid Email address..." id="applyemail" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2">
+						Grade:
+					</div>
+					<div class="col-sm-10">
+						<input type="text" placeholder="Enter your grade..." id="applygrade" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2">
+						School:
+					</div>
+					<div class="col-sm-10">
+						<input type="text" placeholder="Enter the high school you attend..." id="applyschool" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2">
+						<p>Subjects: </p>
+					</div>
+					<div class="col-sm-10">
+						<input type="text" name="subject" id="applysubjects" placeholder="Use the dropdown to add subjects you would like to tutor..." disabled>
+						<div class="clearinput" id="applysubjectclear">x</div>
+				   			<div class="dropdown">
+						      <button class="btn btn-default dropdown-toggle" type="button" id="subjectselector2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span id="subjecttext3">Subject </span> <i class="fas fa-caret-down"></i></button>
+						      <div class="dropdown-menu" id="applysubjectmenu" aria-labelledby="dropdownMenuButton">
+						        <a class="dropdown-item">Math</a>
+						        <a class="dropdown-item">Physics</a>
+						        <a class="dropdown-item">Biology</a>
+						        <a class="dropdown-item">Chemistry</a>
+						        <a class="dropdown-item">Writing</a>
+						        <a class="dropdown-item">History</a>
+						        <a class="dropdown-item">WebDev</a>
+						        <a class="dropdown-item">Java</a>
+						        <a class="dropdown-item">Python</a>
+						        <a class="dropdown-item">Business</a>
+						        <a class="dropdown-item">Spanish</a>
+						        <a class="dropdown-item">Economics</a>
+						        <a class="dropdown-item">Chinese</a>
+						        <a class="dropdown-item">SAT</a>
+						        <a class="dropdown-item">ACT</a>
+						      </div>
+						    </div>
+					</div>
+				</div>
+				<h3>Supplemental Questions</h3>
+				<div class="row">
+					<div class="col-sm-3">
+						Why do you want to tutor for InstaTutors?
+					</div>
+					<div class="col-sm-9">
+						<textarea style="resize: none;" type="text" name="applyq1" id="applyq1"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3">
+						What qualifies you to tutor for InstaTutors?  Be sure to include any relevant courses or test scores.
+					</div>
+					<div class="col-sm-9">
+						<textarea style="resize: none;" type="text" name="applyq2" id="applyq2"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3">
+						Describe your most significant academic experience.
+					</div>
+					<div class="col-sm-9">
+						<textarea style="resize: none;" type="text" name="applyq3" id="applyq3"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3">
+						What does "volunteering" mean to you?
+					</div>
+					<div class="col-sm-9">
+						<textarea style="resize: none;" type="text" name="applyq4" id="applyq4"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<p id="applyerrors"></p>
+				</div>
+				<div class="row">
+					<button onclick="submitApplication()" id="submitapp">SUBMIT</button>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="images/logo.png">
+				</div>
+				<div class="col-sm-2">
+					<h3>Donate</h3>
+					<a href="donate">Donate</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>Contact</h3>
+					<a href="mailto:support@instatutors.org">Support</a>
+					<a href="mailto:support@instatutors.org">Report a Bug</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>For Tutors</h3>
+					<a href="pdfs/tutorrequirements.pdf">Requirements</a>
+					<a href="apply">Apply</a>
+					<a href="https://tutors.instatutors.org">Crash Course</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="foot">
+				<span>&#169; InstaTutors 2018.</span>
+				<a onclick="window.open('termsandconditions')">Terms</a>
+			</div>
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+	<script src="js/firebase.js">
+	</script>
+	<script src="https://smtpjs.com/v2/smtp.js">
+	</script>
+	<script src="js/index.js">
+    </script>
+</body>
+</html>

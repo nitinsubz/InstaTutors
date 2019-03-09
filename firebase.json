@@ -15,7 +15,19 @@
     } , {
       "source" : "/leadership",
       "destination" : "/leadership.html"
-      
+    
+    } , {
+      "source" : "/courses",
+      "destination" : "/courses.html"
+    
+    } , {
+      "source" : "/question",
+      "destination" : "/question.html"
+    
+    } , {
+      "source" : "/account",
+      "destination" : "/account.html"
+    
     } , {
       "source" : "/donate",
       "destination" : "/donate.html"

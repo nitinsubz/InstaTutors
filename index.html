@@ -17,22 +17,27 @@
     <link rel="stylesheet" href="main.css">
 <body>
 	<div id="menubar" onclick="opensidenav()">
-		MENU <div class="bar11"></div><div class="bar22"></div>
+		MENU <i class="fas fa-angle-right" id="arrow1"></i><i class="fas fa-angle-right" id="arrow2"></i>
 	</div>
-
 	<div class="sidebar">
 		<div class="sidecancel" onclick="closesidenav()">X</div>
 		<div id="mainlinks">
 			<a href="index">HOME</a>
 			<a href="login" id="sidelogin">LOGIN or SIGNUP</a>
+			<a href="question" id="sidequestion">Ask a Question</a>
+			<a href="account" id="sideaccount">My Account</a>
 		</div>
 		<div class="border-bot"></div>
 		<div id="seclinks">
-			<a href="about">About Us</a>
+			<a id="aboutnav">About <i id="aboutcaret" class="fas fa-caret-down"></i></a>
+			<div id="aboutlinks">
+				<a href="about">Our Mission</a>
+				<a href="courses">All Courses</a>
+				<a href="leadership">Leadership</a>
+			</div>
 			<a href="tutors">Tutors</a>
-			<a href="donate">Donate</a>
-			<a href="leadership">Leadership</a>
 			<a href="apply">Apply to Tutor</a>
+			<a href="donate">Donate</a>
 		</div>
 		<div class="socialmedia">
 			<a href="https://www.facebook.com/instatutorsofficial/"><i class="fab fa-facebook-square"></i></a>
@@ -41,14 +46,6 @@
 	</div>
 	<div class="sidemask" onclick="closesidenav()">
 	</div>
-	<div id="versionnumber">V 1.3</div>
-	<div id="navbar">
-			<ul id="nav" class="slideright">
-			   	<li class="navig" id="bookasession"><a href="login">Login or Signup</a></li>
-			   	<!--<li class="navig" id="indexlogout"><a onclick="logout()">Log Out</a></li>-->
-			</ul>
-		</div>
-
 		<div class="slideright" id="container1" onclick="rotate(this)">
 			<div class="bar1">
 			</div>
@@ -59,16 +56,90 @@
 			<li class="navig2"><a href="index">Home</a></li>
 			<li class="navig2"><a href="about">About Us</a></li>
 			<li class="navig2"><a href="tutors">Tutors</a></li>
+			<li class="navig2"><a href="courses">Courses</a></li>
 			<li class="navig2"><a href="leadership">Leadership</a></li>
 			<li class="navig2"><a href="donate">Donate</a></li>
 			<li class="navig2"><a href="login" id="login2">Login or Signup</a></li>
+			<li class="navig2" id="phonelogout"><a href="" onclick="logout()">Log Out</a></li>
 		</div>
+		<div id="loginnav">
+			<i class="fas fa-bars"></i>
+			<a href="login"><button id="booknav">Request A Session</button></a>
+			<a href="question"><button id="questionnav" onclick="questiontab()">Ask A Question</button></a>
+			<a href="account"><button id="sessionsnav" onclick="sessionstab()">My Account</button></a>
+			<button id="servicelogout" onclick="logout()">Logout</button>
+		</div>
+		<div id="navbar">
+			<ul id="nav" class="slideright">
+			   	<li class="navig" id="bookasession"><a href="login">Login or Signup</a></li>
+			</ul>
+		</div>
+
+	<div id="versionnumber">V 2.0</div>
+
+<!--Popup-->
+	<div id="popup">
+	    <div>
+	        <div id="popup-close">&times;</div>
+	        <div id="popup-head">
+	        	<h1>WHAT'S NEW</h1>
+	        	<h3>InstaTutors Version 2.0</h3>
+	        </div>
+	        <div id="popup-body">
+	        	<div class="row">
+	        		<div class="col-sm-6 slideleft">
+	        			<h3>Courses</h3>
+	        			<p>You can request a session for a particular course (i.e. AP Calculus BC, Chemistry, etc.), and use the "view tutors" feature to match with tutors who can tutor that course!  Check out our full list of courses <a href="courses">here</a>, and view all our tutors <a href="tutors">here</a>.</p>
+	        		</div>
+	        		<div class="col-sm-6 slideright">
+	        			<img src="images/courses.png">
+	        		</div>
+	        	</div>
+	        	<div class="row">
+	        		<div class="col-sm-6 slideright">
+	        			<img src="images/estimate.png">
+	        		</div>
+	        		<div class="col-sm-6 slideleft">
+	        			<h3>Estimated Response Time</h3>
+	        			<p>We have added a feature that estimates the tutor response time when you are requesting a session based on the subject/course you request, available tutors, and the time of day.  In addition, you can now request sessions 1 day in advance as a Bronze/Silver Level user.</p>
+	        		</div>
+	        	</div>
+	        	<div class="row">
+	        		<div class="col-sm-6 slideleft">
+	        			<h3>Interface & Navigation</h3>
+	        			<p>We have updated the navigation system to be much more user-friendly and accessible, particularly after users log in.  Access your account, ask a question or request a session directly from every page.</p>
+	        		</div>
+	        		<div class="col-sm-6 slideright">
+	        			<img src="images/navigation.png">
+	        		</div>
+	        	</div>
+	        	<div class="row">
+	        		<div class="col-sm-6 slideright">
+	        			<img src="images/security.jpg">
+	        		</div>
+	        		<div class="col-sm-6 slideleft">
+	        			<h3>Security & Bug Fixes</h3>
+	        			<p>We have locked down our security rules to protect user privacy, as well as re-structured our database to prevent excessive re-directing and improve performance.  Overall, most site functions should run much smoother and without as many breaks.</p>
+	        		</div>
+	        	</div>
+	        	<div class="row">
+	        		<p>Please contact us at <a href="mailto:support@instatutors.org">support@instatutors.org</a> if you have questions.  Otherwise, we hope you enjoy using InstaTutors!</p>
+	        	</div>
+	        </div>
+	    </div>
+	</div>
+	<div id="popupmask">
+	</div>
+
 		<div id="indexhead">
-			<img src="images/logo.png" id="indeximg" class="slideup">
+			<div id="indeximg" class="slideup">
+				<img src="images/bigpart.png" id="bigpart">
+				<img src="images/smallpart.png" id="smallpart">
+			</div>
 			 <h1 href="" class="typewrite" data-period="2000" data-type='[ " Simplifying Tutoring. ", " Empowering Students. ", "Changing the World." ]'>
 			 	 <strong><span class="wrap"></span></strong></h1>
 			<p>Create an Account.  Request a Session.  Get Tutored for Free.</p>
-			<a class="slideup" href="https://play.google.com/store/apps/details?id=org.instatutors.android.app" id="gplaybutton"><img src="images/gplay.svg"></a>
+			<!--<a class="slideup" href="https://play.google.com/store/apps/details?id=org.instatutors.android.app" id="gplaybutton"><img src="images/gplay.svg"></a>-->
 			<a id="headlink" class="slideup">How it Works <i class="fas fa-arrow-down"></i></a>
 		</div>
 		<div id="info">
@@ -79,56 +150,71 @@
 			</div>
 			<div id="infotext">
 				<h1 class="slideleft">WHO ARE WE?</h1>
-				<p class="slideanim">InstaTutors is a platform created by students to help students schedule online tutoring sessions with qualified student tutors for free.  All tutoring sessions are held over video chat.</p>
+				<p class="slideanim">InstaTutors is a platform created by students to help middle and high school students schedule online tutoring sessions with qualified student tutors.  All tutoring sessions are held over video chat, and the service is offered for FREE.</p>
 				<p class="slideanim" id="mission">Our mission is to provide better tutoring solutions to students from any background, anywhere.</p>
 				<div class="row">
 					<div class="col-sm-4 slideanim">
-						<h1 id="totaltutorcount">32</h1>
+						<h1 id="totaltutorcount">24</h1>
 						<h2>Tutors</h2>
 					</div>
 					<div class="col-sm-4 slideanim">
-						<h1 id="totaltuteecount">76</h1>
+						<h1 id="totaltuteecount">137</h1>
 						<h2>Students</h2>
 					</div>
 					<div class="col-sm-4 slideanim">
-						<h1 id="totalsessionscount">42</h1>
+						<h1 id="totalsessionscount">75</h1>
 						<h2>Sessions</h2>
 					</div>
-				</div>
-				<div class="row">
-					<div><a class="slideanim" href="about" style="margin-left: 2%;">More About Us <i class="fas fa-arrow-right"></i></a></div>
 				</div>
 			</div>
 			</div>
 		</div>
 		<div id="testimonials">
 			<h1>What People Say About Us</h1>
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-			  <!-- Indicators -->
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
 			  <ol class="carousel-indicators">
 			    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 			    <li data-target="#myCarousel" data-slide-to="1"></li>
 			    <li data-target="#myCarousel" data-slide-to="2"></li>
+			    <li data-target="#myCarousel" data-slide-to="3"></li>
+			    <li data-target="#myCarousel" data-slide-to="4"></li>
+			    <li data-target="#myCarousel" data-slide-to="5"></li>
+			    <li data-target="#myCarousel" data-slide-to="6"></li>
+			    <li data-target="#myCarousel" data-slide-to="7"></li>
 			  </ol>
-			  <!-- Wrapper for slides -->
 			  <div class="carousel-inner">
 			    <div class="item active">
-			      <h3>"My first experience with InstaTutors was everything I could have asked for and more."</h3>
-			      <h3>-Steven</h3>
+			      <q>My first experience with InstaTutors was everything I could have asked for and more.</q>
 			    </div>
 
 			    <div class="item">
-			      <h3>"After requesting help on InstaTutors, my tutor responded within minutes."</h3>
-			      <h3>-Anonymous</h3>
+			      <q>My tutor was very helpful and was able to still communicate proficiently even though my microphone wasn't working.</q>
 			    </div>
 
 			    <div class="item">
-			      <h3>"My tutor was professional, knowledgeable, and a great hands-on teacher."
-			      <h3>-Anonymous</h3>
+			      <q>After requesting help on InstaTutors, my tutor responded within minutes.</q>
+			    </div>
+
+			    <div class="item">
+			      <q>I definitely did get all my questions answered, and if I needed to clarify something, tutor helped me clarify by showing examples.</q>
+			    </div>
+
+			    <div class="item">
+			    	<q>My tutor gave me a very thorough explanation of how to do the problems that I requested to do.</q>
+			    </div>
+
+			    <div class="item">
+			      <q>My tutor was professional, knowledgeable, and a great hands-on teacher.</q>
+			    </div>
+
+			    <div class="item">
+			    	<q>My tutor not only met my expectations but exceeded them.</q>
+			    </div>
+
+			    <div class="item">
+			    	<q>I would recommend this service to anyone because it allows you to choose a time to study and understand difficult concepts and the time is flexible, so you can always be tutored for as long as necessary for you to understand the concepts fully.</q>
 			    </div>
 			  </div>
-
-			  <!-- Left and right controls -->
 			  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
 			    <span class="fas fa-arrow-left"></span>
 			    <span class="sr-only">Previous</span>
@@ -155,9 +241,8 @@
 				<div class="col-sm-6">
 					<h1 class="slideanim2">Request a Tutoring Session</h1>
 					<div class="border-bot length" style="background-color: #30CFD0;"></div>
-					<li class="slideanim">Make a tutoring request with our "Book A Session" feature.  Browse our tutors on our <a href="tutors">tutors</a> page, or use our "find tutors" feature.</li>
-					<li class="slideanim">You will receive an email when a tutor accepts your request, and your tutor will personally email you shortly after.</li>
-					<li class="slideanim" style="padding-bottom: 40px;">Your tutor will send you a link to a private video chat room on appear.in.  Simply join when it comes time for your FREE tutoring session!</li>
+					<li class="slideanim">Once you're logged in, you can make a <a href="login">tutoring request</a>.  Browse all our available courses/subjects <a href="courses">here</a>, and use the "view tutors" feature to match with the perfect tutor.</li>
+					<li class="slideanim" style="padding-bottom: 40px;">You will receive an email when a tutor accepts your request, and your tutor will personally email you shortly after with a link to a private video chat room on appear.in.  Simply join when it comes time for your FREE tutoring session!</li>
 					<img class="phoneimg" src="images/requestsession.png">
 				</div>
 			</div>
@@ -165,8 +250,8 @@
 				<div class="col-sm-7">
 					<h1 class="slideanim2">Ask a Question</h1>
 					<div class="border-bot length" style="background-color: #30CFD0;"></div>
-					<li class="slideanim">Ask a question in a subject you need help with with our questions feature.</li>
-					<li class="slideanim">You will receive a response from a qualified tutor in less than 2 hours, guaranteed!  You can view the response in your "my questions" section.</li>
+					<li class="slideanim">Ask a question in a subject you need help with with our <a href="question">question</a> feature.</li>
+					<li class="slideanim">You will receive a response from a qualified tutor in less than 2 hours, guaranteed!  You can check out the answer in the "my questions" section, or your email inbox.</li>
 				</div>
 				<div class="col-sm-5">
 					<img src="images/askquestion.png" class="slideanim">
@@ -182,16 +267,16 @@
 					<div id="awardsinfo" class="slideanim">
 						<div class="awardsinfocol">
 							<h3>0-1000 points</h3>
-							<li><strong>Privileges:</strong> Request sessions at least 2 days in advance, 5 active sessions at a time</li>
+							<li>Request sessions at least 1 day in advance, 5 active sessions at a time</li>
 						</div>
 						<div class="awardsinfocol">
 							<h3>1000-2500 points</h3>
-							<li><strong>Privileges:</strong> Request sessions at least 1 day in advance, 8 active sessions at a time</li>
+							<li>Request sessions at least 1 day in advance, 8 active sessions at a time</li>
 						</div>
 						<div class="awardsinfocol">
 							<h3>2500+ points</h3>
 							<li>$25 gift card!</li>
-							<li><strong>Privileges:</strong> Book SAME DAY sessions, 10 active sessions at a time</li>
+							<li>Book SAME DAY sessions, 10 active sessions at a time</li>
 						</div>
 					</div>
 				</div>
@@ -254,38 +339,6 @@
 			        </ol>
 			    </div>
 			</div>
-			<!--<div class="faqsec">
-				<div class="question slideanim" id="question2">
-					<p><i class="fas fa-arrow-right"></i>  What is the no-show policy?</p>
-				</div>
-				<div class="answer slideanim" id="answer2">
-					<p>Your account will be terminated if you do not show up to 2 tutoring sessions.</p>
-				</div>
-			</div>
-			<div class="faqsec">
-				<div class="question slideanim" id="question3">
-					<p><i class="fas fa-arrow-right"></i>  Can I request a certain tutor?</p>
-				</div>
-				<div class="answer slideanim" id="answer3">
-					<p>Yes, and we can help you find a perfect tutor based on the subjects you need help in!  (Go to "My Account")</p>
-				</div>
-			</div>
-			<div class="faqsec">
-				<div class="question slideanim" id="question4">
-					<p><i class="fas fa-arrow-right"></i> Can I sign up for 2 requests on the same day?</p>
-				</div>
-				<div class="answer slideanim" id="answer4">
-					<p>No, and if you do, it will overwrite the first request.</p>
-				</div>
-			</div>
-			<div class="faqsec">
-				<div class="question slideanim" id="question4">
-					<p><i class="fas fa-arrow-right"></i> Do you have any more questions?</p>
-				</div>
-				<div class="answer slideanim" id="answer4">
-					<p><a id="contactlink9" href="#contact">Send us your question</a> and we'll answer it ASAP.</p>
-				</div>
-			</div>-->
 		</div>
 		<div id="contact">
 			<h1 class="slideanim2">GET IN <strong>TOUCH</strong></h1>
@@ -298,22 +351,24 @@
 			<h3 class="slideanim2">Send Us A Message</h3>
 			<form class="slideanim" id="contactForm">
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-6 slideanim">
 					    Name:<br>
 					    <input type="text" id="msgname" name="msgname">
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-6 slideanim">
 					    Email:<br>
 					    <input type="text" id="msgemail" name="email">
 					   </div>
 				</div>
+				<div class="slideanim">
 				    Your Message:<br>
 				    <textarea name="msg" id="msg" wrap="soft"> </textarea>
+				</div>
 			  </form>
 			  <p id="formStatus"> </p>
 				<button type="submit" id="submit" onclick="validatemsg()">Submit</button>			
 		</div>
-		<div id="mailinglist">
+		<!--<div id="mailinglist">
 			<form action="https://api.elasticemail.com/contact/add?version=2" data-id="crPzTSqBNl" method="post" id="ewf_subscriptionForm_crPzTSqBNl" class="Inline Elegant ElegantSilver Labels">
 		    <div class="headers" style="">
 		      <h1 id="ewf_formheader">Subscribe to our Mailing List! </h1>
@@ -347,7 +402,7 @@
 		      </button>
 		    </fieldset>
 		  </form>
-		</div>
+		</div>-->
 		<div id="footer">
 			<div class="row">
 				<div class="col-sm-6">

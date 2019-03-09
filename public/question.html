@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="icon" href="images/logo.png">
+	<meta name="google-signin-client_id" content="624098741421-m0iktcim9gitao0pq918btek7f8cuqii.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,800" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <style>
+    	#menubar:hover {
+    		color: #a8e4eb;
+    	}
+   	</style>
+</head>
+<body id="loggedin">
+	<div id="menubar" onclick="opensidenav()">
+		MENU <i class="fas fa-angle-right" id="arrow1"></i><i class="fas fa-angle-right" id="arrow2"></i>
+	</div>
+	<div class="sidebar">
+		<div class="sidecancel" onclick="closesidenav()">X</div>
+		<div id="mainlinks">
+			<a href="index">HOME</a>
+			<a href="login" id="sidelogin">LOGIN or SIGNUP</a>
+		</div>
+		<div class="border-bot"></div>
+		<div id="seclinks">
+			<a id="aboutnav">About <i id="aboutcaret" class="fas fa-caret-down"></i></a>
+			<div id="aboutlinks">
+				<a href="about">Our Mission</a>
+				<a href="courses">All Courses</a>
+				<a href="leadership">Leadership</a>
+			</div>
+			<a href="tutors">Tutors</a>
+			<a href="apply">Apply to Tutor</a>
+			<a href="donate">Donate</a>
+		</div>
+		<div class="socialmedia">
+			<a href="https://www.facebook.com/instatutorsofficial/"><i class="fab fa-facebook-square"></i></a>
+			<a href="https://www.instagram.com/instatutors/"><i class="fab fa-instagram"></i></a>
+		</div>
+	</div>
+	<div class="sidemask" onclick="closesidenav()">
+	</div>
+		<div class="slideright" id="container1" onclick="rotate(this)">
+			<div class="bar1">
+			</div>
+			<div class="bar2">
+			</div>
+		</div>
+		<div id="phonenavlinks">
+			<li class="navig2"><a href="index">Home</a></li>
+			<li class="navig2"><a href="about">About Us</a></li>
+			<li class="navig2"><a href="tutors">Tutors</a></li>
+			<li class="navig2"><a href="courses">Courses</a></li>
+			<li class="navig2"><a href="leadership">Leadership</a></li>
+			<li class="navig2"><a href="donate">Donate</a></li>
+			<li class="navig2"><a href="login" id="login2">Login or Signup</a></li>
+			<li class="navig2" id="phonelogout"><a href="" onclick="logout()">Log Out</a></li>
+		</div>
+
+		<div class="create-div">
+		    <a id="backtologin" onclick="closeCreate()"><i class="fas fa-arrow-left"></i></a><h3>Create an Account</h3>
+		    <input type="email" placeholder="Enter a Valid Email address..." id="createemail" />
+		    <input type="password" placeholder="Enter a Password..." id="createpassword" />
+		    <input type="password" placeholder="Confirm your Password..." id="confirmpassword" />
+			<span id="termstext">By signing up, you agree to the <a href="termsandconditions"> terms and conditions</a>, and attest that you are over 13 years of age, or else accompanied by a parent/guardian.
+			</span>
+			<p id="errormessage2"></p>
+		
+		    <a onclick="createAccount()" id="create">Let's Go!</a>
+		 </div>
+		 <div id="loading">
+		 	<div id="indeximg" class="slideup">
+				<img src="images/bigpart.png" id="bigpart">
+				<img src="images/smallpart.png" id="smallpart">
+			</div>
+		 </div>
+
+		 <!--<div id="fberrordiv">
+		 	<h3>Facebook Log-in Error:</h3>
+		 	<p>Please log in with a Facebook account that has an email address attached to it.  Try logging in with another Facebook account, a Google account, or contact us at <a href="mailto:support@instatutors.org">support@instatutors.org</a> for help.</p>
+		 	<a id="tryagain" href="login">Try Again</a>
+		 </div>-->
+
+		<div id="login_div" class="main-div">
+		    <h3>Log In</h3>
+		    <input type="email" placeholder="Email..." id="email_field" />
+		    <input type="password" placeholder="Password..." id="password_field" />
+		    <a onclick="openResetPass()">Forgot Password?</a>
+		    <p id="errormessage"></p>
+		    <a id="login" onclick="login()">Log In</a>
+		    <h4>Don't have an account? <a onclick="openCreate()">Create One Today!</a></h4>
+		    <p id="loginor">OR</p>
+		    <button type="button" class="google-button" onclick="googlelogin()">
+			  <span class="google-button__icon">
+			    <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg"><path d="M125.9 10.2c40.2-13.9 85.3-13.6 125.3 1.1 22.2 8.2 42.5 21 59.9 37.1-5.8 6.3-12.1 12.2-18.1 18.3l-34.2 34.2c-11.3-10.8-25.1-19-40.1-23.6-17.6-5.3-36.6-6.1-54.6-2.2-21 4.5-40.5 15.5-55.6 30.9-12.2 12.3-21.4 27.5-27 43.9-20.3-15.8-40.6-31.5-61-47.3 21.5-43 60.1-76.9 105.4-92.4z" id="Shape" fill="#EA4335"/><path d="M20.6 102.4c20.3 15.8 40.6 31.5 61 47.3-8 23.3-8 49.2 0 72.4-20.3 15.8-40.6 31.6-60.9 47.3C1.9 232.7-3.8 189.6 4.4 149.2c3.3-16.2 8.7-32 16.2-46.8z" id="Shape" fill="#FBBC05"/><path d="M361.7 151.1c5.8 32.7 4.5 66.8-4.7 98.8-8.5 29.3-24.6 56.5-47.1 77.2l-59.1-45.9c19.5-13.1 33.3-34.3 37.2-57.5H186.6c.1-24.2.1-48.4.1-72.6h175z" id="Shape" fill="#4285F4"/><path d="M81.4 222.2c7.8 22.9 22.8 43.2 42.6 57.1 12.4 8.7 26.6 14.9 41.4 17.9 14.6 3 29.7 2.6 44.4.1 14.6-2.6 28.7-7.9 41-16.2l59.1 45.9c-21.3 19.7-48 33.1-76.2 39.6-31.2 7.1-64.2 7.3-95.2-1-24.6-6.5-47.7-18.2-67.6-34.1-20.9-16.6-38.3-38-50.4-62 20.3-15.7 40.6-31.5 60.9-47.3z" fill="#34A853"/></svg>
+			  </span>
+			  <span class="google-button__text">Sign in with Google</span>
+			</button>
+		 </div>
+
+		 <div id="reset_div">
+		 	<h3>Reset Your Password</h3>
+		 	<input type="email" placeholder="Email..." id="reset_email_field" />
+		 	<a onclick="resetPass()">Send Reset Email</a>
+		 	<a href="login">Log In</a>
+		 </div>
+
+		 <div id="email_div">
+		 	<h3 id="verifyemail">Please Verify Your Email Address: </h3>
+		 	<a onclick="sendVerification()">Send Verification Email</a>
+		 	<a onclick="writeTempAccount()">Log In</a>
+		 </div>
+
+		 <div id="info_div">
+		 	<h3 id="infohello">Hello, please fill out some additional information so we can get to know you better</h3>
+		 	<p>Name:</p>
+		 	<input type="text" placeholder="Your FULL name..." id="name_field" />
+		 	<p>School:</p>
+		 	<input type="text" placeholder="The school you attend..." id="school_field" />
+		 	<p>Grade Level:</p>
+		 	<input type="text" placeholder="Your grade level..." id="grade_field" />
+		 	<p>Parent Email:</p>
+		 	<input type="email" placeholder="Enter your parent email..." id="parentemail_field">
+		 	<p>City:</p>
+		 	<input type="text" placeholder="Enter your city of residence..." id="city_field">
+		 	<p>Invite Code: (optional)</p>
+		 	<input type="text" placeholder="If you received an invite code, enter it here!" id="invite_field">
+		 	<h4 id="foundusers"></h4>
+		 	<p id="infoerrors"></p>
+		 	<a id="submitinfo" onclick="submitinfo()">Submit Info</a>
+		 </div>
+
+	<div id="mainbody">
+		<div id="servicenav">
+			<a id="booknav2" href="login">Request A Session</a>
+			<a id="questionnav2" class="active" href="question">Ask A Question</a>
+			<a id="sessionsnav2" href="account">My Account</a>
+			<a id="servicelogout2" onclick="logout()">Logout</a>
+		</div>
+	    <div class="tab-content" id="myTabContent">
+			<div id="questiontab">
+				<div id="questionheader">
+					<h1>Need Help Fast?</h1>
+					<h3>Send a question anonymously, and we guarantee a 2 Hour Response from a qualified tutor!</h3>
+				</div>
+				<div id="questionbody">
+					<div id="questionform">
+						<h3>Enter Your Question</h3>
+						<p>Try to be as detailed as possible.  Feel free to include links to webpages or online pdfs.</p>
+						<textarea style="resize: none;" type="text" name="question" id="question"></textarea>
+						<div id="keyboard">
+						  <div class="btn-group" role="group" aria-label="math functions">
+						    <button type="button" class="btn btn-default" onclick='input("&radic;")'>√</button>
+						    <button type="button" class="btn btn-default" onclick='input("&theta;")'>&theta;</button>
+						    <button type="button" class="btn btn-default" onclick='input("&#8710;")'>&#8710;</button>
+						    <button type="button" class="btn btn-default" onclick='input("&#8747;")'>&#8747;</button>
+						    <button type="button" class="btn btn-default" onclick='input("&infin;")'>&infin;</button>
+						    <button type="button" class="btn btn-default" onclick='input("&pi;")'>&pi;</button>
+						  </div>
+						</div>
+						<p id="questionerrors"></p>
+						<button id="submitquestion" onclick="submitquestion()">Submit Question</button>
+					</div>
+					<div id="myquestions">
+						<h3>My Questions</h3>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div id="footer">
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="images/logo.png">
+				</div>
+				<div class="col-sm-2">
+					<h3>Donate</h3>
+					<a href="donate">Donate</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>Contact</h3>
+					<a href="mailto:support@instatutors.org">Support</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>For Tutors</h3>
+					<a href="pdfs/tutorrequirements.pdf">Requirements</a>
+					<a href="apply">Apply</a>
+					<a href="https://tutors.instatutors.org">Crash Course</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="foot">
+				<span>&#169; InstaTutors 2018.</span>
+				<a onclick="window.open('termsandconditions')">Terms</a>
+			</div>
+		</div>
+	</div>
+	<div id="tutorsessions">
+		<div id="tutornav">
+			<a id="tutorbooknav" href="login">All Requests</a>
+			<a id="tutorquestionsnav" class="active" href="question">All Questions</a>
+			<a id="tutorsessionsnav" href="account">My Account</a>
+			<a id="tutorlogout" onclick="logout()">Logout</a>
+		</div>
+		<div id="tutorallquestions">
+			<div id="tutorquestionhead">
+				<h1>All Questions</h1>
+				<h3>If you are able to answer a question, please do so.  If not, do not attempt to answer a question you cannot answer.</h3>
+			</div>
+			<div id="tutorquestionbody">
+			</div>
+		</div>
+		<div id="footer">
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="images/logo.png">
+				</div>
+				<div class="col-sm-2">
+					<h3>Donate</h3>
+					<a href="donate">Donate</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>Contact</h3>
+					<a href="mailto:support@instatutors.org">Support</a>
+				</div>
+				<div class="col-sm-2">
+					<h3>For Tutors</h3>
+					<a href="pdfs/tutorrequirements.pdf">Requirements</a>
+					<a href="apply">Apply</a>
+					<a href="https://tutors.instatutors.org">Crash Course</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="foot">
+			<span>&#169; InstaTutors 2018.</span>
+			<a onclick="window.open('termsandconditions')">Terms</a>
+		</div>
+		</div>
+	</div>
+
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+	<script src="js/firebase.js">
+	</script>
+	<script src="js/date.js">
+	</script>
+	<script src="https://smtpjs.com/v2/smtp.js">
+	</script>
+	<script src="js/index.js">
+    </script>
+</body>
+</html>
+
