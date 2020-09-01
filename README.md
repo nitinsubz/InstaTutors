@@ -1,4 +1,5 @@
-# www.InstaTutors.org
+# www.instatutors.org
+ This repository contains all the code that runs on instatutors.org
  
  ## Overview
 InstaTutors is a platform created by students to help middle and high school students schedule online tutoring sessions with qualified student tutors. All tutoring sessions are held over video chat, and the service is offered for FREE.
